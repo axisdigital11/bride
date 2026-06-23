@@ -1,0 +1,2946 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>bride — תורת המאפרות והמסרקות | ניב גבאי</title>
+<meta name="description" content="הקורס הדיגיטלי שהופך מאפרות ומסרקות מוכשרות לבעלות עסק שסוגר כלות. שיטת BRIDE — למכור בביטחון, לתמחר נכון ולמלא את היומן. הזדמנות אחרונה ב־1,500 ₪." />
+<meta property="og:title" content="bride — תורת המאפרות והמסרקות" />
+<meta property="og:description" content="להפסיק לרדוף אחרי כלות. להתחיל לסגור אותן." />
+<meta property="og:type" content="website" />
+<link rel="icon" type="image/png" href="logo/logo-light.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://www.youtube.com" />
+<link rel="preconnect" href="https://www.youtube-nocookie.com" />
+<link rel="preconnect" href="https://i.ytimg.com" />
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&family=Heebo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+/* ===== styles.css ===== */
+/* ===================== bride — bold dark sales site ===================== */
+:root{
+  --bg:#0A0A0C;
+  --bg-2:#101015;
+  --panel:#16161D;
+  --panel-2:#1E1E27;
+  --ink:#F7F6F4;
+  --ink-soft:#D9D8DE;
+  --muted:#9C9CA7;
+  --muted-2:#74747F;
+  --accent:#F08A5B;
+  --accent-2:#FFB489;
+  --accent-deep:#D96B3C;
+  --accent-soft:rgba(240,138,91,.14);
+  --white:#fff;
+  --line:rgba(255,255,255,.10);
+  --line-accent:rgba(240,138,91,.36);
+  --shadow-sm:0 2px 12px rgba(0,0,0,.35);
+  --shadow:0 30px 70px -30px rgba(0,0,0,.75);
+  --shadow-accent:0 26px 60px -22px rgba(240,138,91,.55);
+  --glow:rgba(240,138,91,.30);
+  --r:18px;
+  --r-lg:26px;
+  --display:'Heebo',sans-serif;
+  --body:'Assistant',sans-serif;
+  --maxw:1180px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:clip}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+::selection{background:var(--accent);color:#1a0e07}
+:focus-visible{outline:3px solid var(--accent-2);outline-offset:3px;border-radius:4px}
+
+/* ---------- scroll progress ---------- */
+.progress{position:fixed;top:0;inset-inline:0;height:3px;z-index:200;background:transparent}
+.progress__bar{height:100%;width:0;background:linear-gradient(90deg,var(--accent-deep),var(--accent),var(--accent-2));
+  box-shadow:0 0 16px rgba(240,138,91,.6);transition:width .08s linear}
+
+/* ---------- layout ---------- */
+.container{max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,5vw,52px)}
+.container--narrow{max-width:840px}
+.section{position:relative;padding:clamp(72px,11vw,140px) 0}
+.section--alt{background:var(--bg-2)}
+.section--ink{background:radial-gradient(120% 130% at 80% -10%,#241710 0%,#0c0c0e 60%)}
+.section--tight{padding:clamp(54px,8vw,96px) 0}
+
+/* ---------- type ---------- */
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;
+  font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent)}
+.eyebrow::before{content:"";width:26px;height:2px;background:var(--accent);border-radius:2px}
+.eyebrow.center{justify-content:center}
+.eyebrow.center::after{content:"";width:26px;height:2px;background:var(--accent);border-radius:2px}
+.h1{font-family:var(--display);font-weight:900;font-size:clamp(40px,6.8vw,90px);line-height:1;letter-spacing:-.035em}
+.h2{font-family:var(--display);font-weight:900;font-size:clamp(31px,4.8vw,62px);line-height:1.04;letter-spacing:-.03em}
+.h3{font-family:var(--display);font-weight:800;font-size:clamp(21px,2.4vw,28px);line-height:1.2;letter-spacing:-.01em}
+.lead{font-size:clamp(17px,1.9vw,21px);line-height:1.65;color:var(--muted);font-weight:400}
+.gold,.accent{color:var(--accent)}
+.center{text-align:center}
+.mxa{margin-inline:auto}
+.balance{text-wrap:balance}
+.tnum{font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+
+/* ---------- buttons ---------- */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;overflow:hidden;
+  font-family:var(--display);font-weight:800;font-size:16px;line-height:1;padding:17px 30px;border-radius:999px;
+  transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s,background .2s;white-space:nowrap}
+.btn svg{width:18px;height:18px}
+.btn--accent{background:linear-gradient(135deg,var(--accent-2) 0%,var(--accent) 45%,var(--accent-deep) 100%);
+  color:#1a0e07;box-shadow:var(--shadow-accent)}
+.btn--accent:hover{transform:translateY(-3px);box-shadow:0 34px 74px -22px rgba(240,138,91,.75)}
+.btn--accent::after{content:"";position:absolute;inset:0;border-radius:inherit;
+  background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.5) 50%,transparent 70%);
+  transform:translateX(-120%);transition:transform .7s}
+.btn--accent:hover::after{transform:translateX(120%)}
+.btn--light{background:var(--ink);color:var(--bg)}
+.btn--light:hover{transform:translateY(-3px);background:#fff}
+.btn--ghost{background:transparent;border:1.5px solid var(--line);color:var(--ink)}
+.btn--ghost:hover{background:var(--accent-soft);border-color:var(--accent)}
+.btn--lg{font-size:18px;padding:21px 40px}
+.btn--block{display:flex;width:100%}
+
+/* ---------- header ---------- */
+.header{position:fixed;top:0;inset-inline:0;z-index:150;transition:all .3s}
+/* static, logo-only header: sits at top, scrolls away, logo on the physical left */
+.header--static{position:absolute;top:calc(clamp(92px,12vw,132px) + 2px);display:none}
+.header--static .header__inner{justify-content:flex-end;background:none!important;backdrop-filter:none!important;box-shadow:none!important;border:none!important;margin-block:0;padding-block:0}
+.header__inner{display:flex;align-items:center;gap:30px;margin:14px auto;max-width:var(--maxw);
+  padding:12px clamp(16px,4vw,28px);border-radius:999px;transition:all .3s}
+.header.stuck .header__inner{background:rgba(14,14,18,.72);backdrop-filter:blur(18px) saturate(1.4);
+  box-shadow:0 14px 44px -20px rgba(0,0,0,.8);border:1px solid var(--line)}
+.brand{font-family:var(--display);font-weight:900;font-size:23px;letter-spacing:.01em;color:var(--ink)}
+.brand small{font-weight:500;color:var(--muted-2);font-size:10.5px;letter-spacing:.14em;display:block;margin-top:-4px}
+.nav{display:flex;gap:28px;margin-inline-start:auto;font-family:var(--display);font-weight:500;font-size:15px;color:var(--ink-soft)}
+.nav a{position:relative;padding:4px 0;transition:color .2s}
+.nav a::after{content:"";position:absolute;inset-inline:0;bottom:-2px;height:2px;background:var(--accent);
+  transform:scaleX(0);transform-origin:center;transition:transform .25s;border-radius:2px}
+.nav a:hover{color:var(--accent)}
+.nav a:hover::after{transform:scaleX(1)}
+.header__cta{padding:12px 24px;font-size:15px}
+.menuBtn{display:none;margin-inline-start:auto;width:44px;height:44px;border-radius:12px;align-items:center;justify-content:center}
+.menuBtn span{display:block;width:20px;height:2px;background:var(--ink);position:relative}
+.menuBtn span::before,.menuBtn span::after{content:"";position:absolute;inset-inline:0;height:2px;background:var(--ink)}
+.menuBtn span::before{top:-6px}.menuBtn span::after{top:6px}
+
+/* mobile drawer */
+.drawer{position:fixed;inset:0;z-index:160;background:rgba(8,8,10,.96);backdrop-filter:blur(10px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  opacity:0;pointer-events:none;transition:opacity .3s}
+.drawer.open{opacity:1;pointer-events:auto}
+.drawer a{font-family:var(--display);font-weight:700;font-size:26px;padding:10px}
+.drawer a:hover{color:var(--accent)}
+.drawer .btn{margin-top:18px}
+.drawer__close{position:absolute;top:24px;inset-inline-end:24px;width:48px;height:48px;border-radius:50%;
+  border:1px solid var(--line);font-size:26px;color:var(--ink);display:grid;place-items:center}
+
+/* ---------- sticky mobile cta ---------- */
+.sticky-cta{position:fixed;bottom:0;inset-inline:0;z-index:140;display:none;align-items:center;
+  justify-content:space-between;gap:14px;padding:11px 16px calc(11px + env(safe-area-inset-bottom));
+  background:rgba(12,12,16,.92);backdrop-filter:blur(18px);border-top:1px solid var(--line-accent)}
+.sticky-cta b{font-family:var(--display);font-weight:800;font-size:15px}
+.sticky-cta small{display:block;color:var(--muted);font-size:12px;font-weight:400}
+.sticky-cta .btn{padding:14px 22px;font-size:15px}
+
+/* ---------- reveal (transform-only: content is ALWAYS opaque, so it can never get stuck hidden) ---------- */
+.rv{opacity:1;transform:none;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+html.can-anim .rv:not(.in){transform:translateY(26px)}
+.rv.in{transform:none}
+@media (prefers-reduced-motion:reduce){html.can-anim .rv:not(.in){transform:none}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding:clamp(92px,12vw,132px) 0 clamp(70px,9vw,110px);overflow:hidden}
+.hero__bg{position:absolute;inset:0;z-index:0;pointer-events:none}
+.hero__bg::before{content:"";position:absolute;width:820px;height:820px;border-radius:50%;
+  background:radial-gradient(circle,rgba(240,138,91,.26),transparent 60%);top:-300px;inset-inline-end:-200px;filter:blur(10px)}
+.hero__bg::after{content:"";position:absolute;width:560px;height:560px;border-radius:50%;
+  background:radial-gradient(circle,rgba(240,138,91,.12),transparent 65%);bottom:-220px;inset-inline-start:-160px}
+.hero__grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr .92fr;gap:clamp(24px,4vw,52px);align-items:start}
+.hero__badge{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:13.5px;
+  color:#fff;background:linear-gradient(135deg,#E0402C,#BC271A);border:1px solid rgba(255,255,255,.22);padding:9px 18px;border-radius:999px;
+  box-shadow:0 10px 26px -10px rgba(216,52,32,.7);margin-bottom:26px;animation:badgePulse 2.4s ease-in-out infinite}
+@keyframes badgePulse{0%,100%{box-shadow:0 10px 26px -10px rgba(216,52,32,.65);transform:scale(1)}
+  50%{box-shadow:0 12px 34px -8px rgba(216,52,32,.95),0 0 0 4px rgba(224,64,44,.16);transform:scale(1.025)}}
+@media (prefers-reduced-motion:reduce){.hero__badge{animation:none}}
+.hero__badge .dot{width:8px;height:8px;border-radius:50%;background:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.25);
+  animation:pulse 2.4s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(240,138,91,.2)}50%{box-shadow:0 0 0 9px rgba(240,138,91,0)}}
+.hero h1{margin-bottom:24px;font-size:clamp(32px,5vw,56px);line-height:1.16;text-wrap:balance}
+.hero h1 em{font-style:normal;color:var(--accent);position:relative;white-space:normal;display:inline-block;margin-top:.18em}
+.hero h1{overflow-wrap:break-word}
+.hero__sub{max-width:560px;margin-bottom:34px}
+.hero__sub strong{color:var(--ink);font-weight:700}
+.hero__actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.hero__micro{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:26px;font-family:var(--display);font-size:13.5px;color:var(--muted);font-weight:500}
+.hero__micro span{display:inline-flex;align-items:center;gap:7px}
+.hero__micro span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent)}
+
+/* mobile-only inline hero image (under the headline); hidden on desktop */
+.hero__media--mobile{display:none}
+.hero__media--mobile img{width:100%;max-width:420px;height:auto;margin:-70px auto 4px;display:block;
+  filter:drop-shadow(0 24px 44px rgba(0,0,0,.5))}
+@media (max-width:980px){
+  .hero__media--mobile{display:block}
+  .hero__visual{display:none}
+}
+
+/* hero media + floating cards */
+.hero__visual{position:relative;max-width:340px;margin-inline:auto;width:100%;margin-top:clamp(56px,7vw,104px)}
+.hero__media{position:relative;aspect-ratio:4/5;border-radius:var(--r-lg);overflow:hidden;
+  width:100%;max-width:none;
+  box-shadow:0 50px 100px -40px rgba(0,0,0,.9);border:1px solid var(--line-accent);will-change:transform}
+.hero__media img{width:100%;height:100%;object-fit:cover;transform:scale(1.06)}
+.hero__media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,12,.1) 40%,rgba(10,10,12,.55))}
+/* transparent device-mockup hero image: float it, drop the card chrome */
+.hero__media--devices{aspect-ratio:auto;background:none;border:none;border-radius:0;box-shadow:none;overflow:visible}
+.hero__media--devices img{height:auto;object-fit:contain;transform:none;filter:drop-shadow(0 30px 55px rgba(0,0,0,.55))}
+.hero__media--devices{max-width:none}
+@media (min-width:981px){
+  .hero__visual:has(.hero__media--devices){width:calc(100% + 80px);margin-inline-end:-80px}
+}
+.hero__media--devices::after{display:none}
+.hero__visual:has(.hero__media--devices){max-width:680px;margin-top:clamp(12px,3vw,40px)}
+.hero__visual:has(.hero__media--devices) .floatcard{display:none}
+.floatcard{position:absolute;z-index:3;background:rgba(22,22,29,.72);backdrop-filter:blur(16px) saturate(1.3);
+  border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:14px 18px;box-shadow:0 24px 50px -18px rgba(0,0,0,.7);
+  display:flex;flex-direction:column;gap:1px;min-width:140px}
+.floatcard b{font-family:var(--display);font-weight:900;font-size:clamp(22px,2.6vw,30px);letter-spacing:-.02em;line-height:1;color:var(--ink)}
+.floatcard small{font-size:12px;color:var(--muted);font-weight:500}
+.floatcard b .gold,.floatcard b .accent{color:var(--accent)}
+.floatcard .was{color:var(--muted-2);text-decoration:line-through;font-weight:600;font-size:12px}
+.floatcard--1{top:4%;inset-inline-start:-92px;inset-inline-end:auto;animation:floaty 6s ease-in-out infinite}
+.floatcard--2{top:46%;inset-inline-end:-96px;animation:floaty 6s ease-in-out infinite .8s}
+.floatcard--3{bottom:5%;inset-inline-start:-64px;animation:floaty 6s ease-in-out infinite 1.6s}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+/* nowrap on desktop, wrap on small screens (prevents horizontal overflow) */
+.nbd{white-space:nowrap}
+@media (max-width:680px){.nbd{white-space:normal}}
+
+/* ---------- identify (pain) ---------- */
+.identifyHead{white-space:nowrap}
+@media (max-width:900px){.identifyHead{white-space:normal;text-wrap:balance}}
+.painGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+.painCard{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:30px 26px;
+  transition:transform .3s,box-shadow .3s,border-color .3s;position:relative;overflow:hidden}
+.painCard::before{content:"";position:absolute;top:0;inset-inline-start:0;width:100%;height:3px;
+  background:linear-gradient(90deg,var(--accent),transparent);transform:scaleX(0);transform-origin:inline-start;transition:transform .35s}
+.painCard:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:var(--line-accent)}
+.painCard:hover::before{transform:scaleX(1)}
+.painCard__n{font-family:var(--display);font-weight:800;font-size:15px;color:var(--accent);margin-bottom:14px;
+  display:inline-flex;width:38px;height:38px;align-items:center;justify-content:center;border-radius:50%;
+  background:var(--accent-soft);border:1px solid var(--line-accent)}
+.painCard p{font-size:17px;line-height:1.5;color:var(--ink-soft)}
+.punch{margin-top:54px;text-align:center;max-width:760px;margin-inline:auto}
+.punch p{font-family:var(--display);font-weight:800;font-size:clamp(23px,3.2vw,38px);line-height:1.28;letter-spacing:-.02em}
+
+/* ---------- BRIDE method ---------- */
+.bride__head{text-align:center;margin-bottom:56px}
+.brideWord{display:flex;justify-content:center;gap:clamp(6px,1.4vw,16px);margin-top:18px;flex-wrap:wrap;direction:ltr}
+.brideWord button{font-family:var(--display);font-weight:900;font-size:clamp(40px,8vw,100px);letter-spacing:-.04em;
+  color:rgba(255,255,255,.14);transition:color .3s,transform .3s;line-height:1}
+.brideWord button.on,.brideWord button:hover{color:var(--accent);transform:translateY(-5px);text-shadow:0 12px 40px var(--glow)}
+.bridePanel{max-width:760px;margin:0 auto;background:var(--panel);border:1px solid var(--line-accent);border-radius:var(--r-lg);
+  padding:clamp(28px,4vw,44px);box-shadow:var(--shadow);display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:start}
+.bridePanel__letter{font-family:var(--display);font-weight:900;font-size:clamp(54px,7vw,84px);line-height:.9;
+  color:#1a0e07;background:linear-gradient(150deg,var(--accent-2),var(--accent-deep));width:clamp(86px,11vw,118px);height:clamp(86px,11vw,118px);
+  border-radius:22px;display:grid;place-items:center;box-shadow:var(--shadow-accent);flex:none}
+.bridePanel__title{font-family:var(--display);font-weight:900;font-size:clamp(22px,2.6vw,30px);margin-bottom:6px;letter-spacing:-.01em}
+.bridePanel__en{font-family:var(--display);font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.bridePanel__body{font-size:18px;line-height:1.6;color:var(--ink-soft)}
+.brideDots{display:flex;justify-content:center;gap:8px;margin-top:26px}
+.brideDots i{width:8px;height:8px;border-radius:50%;background:var(--line);transition:.3s;cursor:pointer}
+.brideDots i.on{background:var(--accent);width:26px;border-radius:5px}
+
+/* ---------- story ---------- */
+.story__grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(30px,5vw,60px);align-items:center}
+.story__media{position:relative;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--line-accent);
+  box-shadow:var(--shadow);aspect-ratio:737/940}
+.story__media img{width:100%;height:100%;object-fit:cover}
+.story__media figcaption{position:absolute;inset-inline:0;bottom:0;padding:24px 22px 18px;
+  background:linear-gradient(transparent,rgba(8,8,10,.86));color:#fff;font-family:var(--display);font-weight:600;font-size:15px}
+.prose p{font-size:17.5px;line-height:1.8;color:var(--ink-soft);margin-bottom:18px}
+.prose strong{color:var(--ink);font-weight:700}
+.quoteCard{margin:30px 0;background:linear-gradient(150deg,var(--panel-2),var(--panel));color:var(--ink);
+  border:1px solid var(--line-accent);border-radius:var(--r-lg);padding:clamp(28px,4vw,40px);
+  position:relative;box-shadow:var(--shadow);overflow:hidden}
+.quoteCard::before{content:"\201D";position:absolute;top:-26px;inset-inline-start:18px;font-family:Georgia,serif;
+  font-size:170px;color:var(--accent);opacity:.3;line-height:1}
+.quoteCard q{quotes:none;font-family:var(--display);font-weight:700;font-size:clamp(20px,2.5vw,28px);line-height:1.4;position:relative}
+.quoteCard cite{display:block;margin-top:16px;font-style:normal;color:var(--accent);font-size:14.5px}
+.priceMorph{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:8px;font-family:var(--display);font-weight:900}
+.priceMorph .pm{font-size:clamp(20px,2.4vw,28px);color:var(--muted-2);text-decoration:line-through;text-decoration-color:var(--accent)}
+.priceMorph .pm.now{color:var(--accent);text-decoration:none;font-size:clamp(30px,4vw,46px)}
+.priceMorph .arr{color:var(--accent);font-size:20px}
+
+/* ---------- proof ---------- */
+.resultBanner{display:grid;grid-template-columns:auto 1fr;gap:30px;align-items:center;max-width:760px;margin:0 auto 56px;
+  background:linear-gradient(135deg,#241710,#0d0d0f);border:1px solid var(--line-accent);border-radius:var(--r-lg);
+  padding:clamp(26px,4vw,40px);box-shadow:var(--shadow)}
+.resultBanner__num{font-family:var(--display);font-weight:900;font-size:clamp(46px,9vw,92px);line-height:.88;
+  color:var(--accent);letter-spacing:-.04em;text-shadow:0 0 60px rgba(240,138,91,.5)}
+.resultBanner__num small{font-size:.32em;color:var(--muted);display:block;font-weight:700;letter-spacing:0}
+.resultBanner p{color:var(--ink-soft);font-size:16px;line-height:1.6}
+.resultBanner p strong{color:#fff}
+.carousel{position:relative;margin-top:10px}
+.carousel__track{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px 2px 24px;scrollbar-width:none}
+.carousel__track::-webkit-scrollbar{display:none}
+.tcard{scroll-snap-align:start;flex:0 0 clamp(250px,80vw,300px);background:var(--panel);border:1px solid var(--line);
+  border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow-sm);transition:transform .3s,box-shadow .3s;cursor:pointer}
+.tcard:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:var(--line-accent)}
+.tcard__img{position:relative;aspect-ratio:462/640;overflow:hidden;background:var(--panel-2)}
+.tcard__img img{width:100%;height:100%;object-fit:cover;object-position:top}
+.tcard__wa{position:absolute;top:12px;inset-inline-end:12px;width:34px;height:34px;border-radius:50%;
+  background:#25D366;display:grid;place-items:center;box-shadow:0 6px 16px rgba(0,0,0,.4)}
+.tcard__wa svg{width:20px;height:20px;fill:#fff}
+.tcard__cap{padding:16px 18px}
+.tcard__cap b{font-family:var(--display);font-weight:700;font-size:15px}
+.tcard__cap p{font-size:13.5px;color:var(--muted);margin-top:3px}
+.tcard__zoom{position:absolute;bottom:12px;inset-inline-start:12px;background:rgba(0,0,0,.7);color:#fff;
+  font-size:11px;font-family:var(--display);font-weight:600;padding:5px 11px;border-radius:999px;display:flex;align-items:center;gap:5px;opacity:0;transition:.25s}
+.tcard:hover .tcard__zoom{opacity:1}
+.carousel__nav{display:flex;gap:10px;justify-content:flex-end;margin-top:6px}
+.carousel__nav button{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--line);background:var(--panel);
+  display:grid;place-items:center;transition:.2s;color:var(--ink)}
+.carousel__nav button:hover{background:var(--accent);color:#1a0e07;border-color:var(--accent)}
+.carousel__nav svg{width:18px;height:18px}
+
+/* modal */
+.modal{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;padding:24px;
+  background:rgba(5,5,7,.9);backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .3s}
+.modal.open{opacity:1;pointer-events:auto}
+.modal__inner{max-width:420px;width:100%;max-height:88vh;background:var(--panel);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;
+  transform:scale(.94);transition:transform .3s;display:flex;flex-direction:column}
+.modal.open .modal__inner{transform:scale(1)}
+.modal__inner img{width:100%;height:auto;object-fit:contain;max-height:74vh}
+.modal__bar{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--line)}
+.modal__bar b{font-family:var(--display);font-weight:700}
+.modal__close{position:fixed;top:20px;inset-inline-end:22px;width:46px;height:46px;border-radius:50%;
+  background:rgba(255,255,255,.12);color:#fff;font-size:24px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.25)}
+
+/* video + audio */
+.media-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:8px}
+.vid{display:flex;flex-direction:column;gap:10px}
+.vid__box{position:relative;width:100%;max-width:300px;margin-inline:auto;aspect-ratio:9/16;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:#000;box-shadow:var(--shadow-sm)}
+.vid__frame{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+.vid figcaption{text-align:center;color:var(--ink-soft);font-family:var(--display);font-weight:600;font-size:14.5px}
+.audios{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:30px}
+.aud{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;align-items:center;gap:13px;box-shadow:var(--shadow-sm);transition:border-color .2s}
+.aud--on{border-color:var(--line-accent)}
+.aud__btn{flex:none;width:46px;height:46px;border-radius:50%;background:linear-gradient(150deg,var(--accent-2),var(--accent-deep));color:#1a0e07;display:grid;place-items:center;box-shadow:var(--shadow-accent);cursor:pointer;transition:transform .2s}
+.aud__btn:hover{transform:scale(1.06)}
+.aud__btn svg{width:20px;height:20px}
+.aud__main{flex:1;min-width:0}
+.aud__name{font-family:var(--display);font-weight:700;font-size:14.5px;display:flex;align-items:center;gap:7px}
+.aud__name .wa{width:16px;height:16px;fill:#25D366}
+.aud__viz{display:flex;align-items:center;gap:2px;height:26px;margin-top:9px;cursor:pointer}
+.aud__viz span{flex:1;height:16%;min-width:2px;border-radius:2px;background:var(--muted-2);opacity:.55;transition:height .25s,background .25s,opacity .25s}
+.aud__viz span.on{background:var(--accent);opacity:1}
+.aud--on .aud__viz span{animation:vizBar 1.1s ease-in-out infinite}
+@keyframes vizBar{0%,100%{height:20%}50%{height:88%}}
+.aud--on .aud__viz span:nth-child(3n){animation-duration:.85s}
+.aud--on .aud__viz span:nth-child(4n){animation-duration:1.35s}
+.aud--on .aud__viz span:nth-child(5n){animation-duration:.7s}
+.aud__time{flex:none;font-family:ui-monospace,'Heebo',monospace;font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums;min-width:34px;text-align:center}
+@media (prefers-reduced-motion:reduce){.aud--on .aud__viz span{animation:none}}
+
+/* ---------- before / after ---------- */
+.ba{display:grid;grid-template-columns:1fr auto 1fr;gap:0;margin-top:48px;border-radius:var(--r-lg);overflow:hidden;
+  border:1px solid var(--line);box-shadow:var(--shadow)}
+.baCol{padding:clamp(26px,4vw,42px)}
+.baCol--before{background:var(--panel)}
+.baCol--after{background:linear-gradient(160deg,#241710,#120c09)}
+.baCol h4{font-family:var(--display);font-weight:900;font-size:20px;margin-bottom:22px;display:flex;align-items:center;gap:10px}
+.baCol--before h4{color:var(--muted)}
+.baCol--after h4{color:var(--accent)}
+.baCol ul{list-style:none;display:flex;flex-direction:column;gap:15px}
+.baCol li{display:flex;gap:12px;font-size:16px;line-height:1.45}
+.baCol li svg{flex:none;width:21px;height:21px;margin-top:1px}
+.baCol--before li{color:var(--muted)}
+.baCol--before li svg{color:var(--muted-2)}
+.baCol--after li{color:var(--ink-soft)}
+.baCol--after li svg{color:var(--accent)}
+.baDivider{width:74px;background:var(--panel);display:grid;place-items:center;position:relative}
+.baDivider span{width:54px;height:54px;border-radius:50%;background:linear-gradient(150deg,var(--accent-2),var(--accent-deep));color:#1a0e07;display:grid;place-items:center;
+  font-family:var(--display);font-weight:900;font-size:13px;box-shadow:var(--shadow-accent);z-index:2;border:3px solid var(--panel)}
+.baDivider::before{content:"";position:absolute;inset-block:0;width:2px;background:var(--line-accent)}
+
+/* ---------- curriculum accordion ---------- */
+.acc{max-width:840px;margin:48px auto 0;display:flex;flex-direction:column;gap:14px}
+.acc__item{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:border-color .3s,box-shadow .3s}
+.acc__item.open{border-color:var(--line-accent);box-shadow:var(--shadow)}
+.acc__head{width:100%;display:flex;align-items:center;gap:20px;padding:24px clamp(20px,3vw,30px);text-align:start}
+.acc__num{font-family:var(--display);font-weight:900;font-size:clamp(22px,3vw,32px);color:var(--accent);flex:none;width:54px}
+.acc__t{flex:1}
+.acc__t b{font-family:var(--display);font-weight:800;font-size:clamp(17px,2.1vw,21px);display:block}
+.acc__t small{color:var(--muted);font-size:13.5px;font-weight:500}
+.acc__plus{flex:none;width:38px;height:38px;border-radius:50%;border:1.5px solid var(--line-accent);display:grid;place-items:center;
+  color:var(--accent);transition:.3s;position:relative}
+.acc__plus::before,.acc__plus::after{content:"";position:absolute;background:currentColor;border-radius:2px}
+.acc__plus::before{width:14px;height:2px}.acc__plus::after{width:2px;height:14px;transition:transform .3s}
+.acc__item.open .acc__plus{background:var(--accent);color:#1a0e07;border-color:var(--accent)}
+.acc__item.open .acc__plus::after{transform:rotate(90deg)}
+.acc__body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.2,.7,.2,1)}
+.acc__bodyin{padding:0 clamp(20px,3vw,30px) 26px;margin-inline-start:74px}
+.acc__bodyin p{font-size:16.5px;line-height:1.65;color:var(--ink-soft)}
+.acc__tag{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-family:var(--display);font-weight:600;
+  font-size:13px;color:var(--accent);background:var(--accent-soft);border:1px solid var(--line-accent);padding:7px 14px;border-radius:999px}
+
+/* ---------- bonus ---------- */
+.bonus{position:relative;max-width:920px;margin:0 auto;border-radius:var(--r-lg);overflow:hidden;
+  background:linear-gradient(135deg,#2a1a10,#120c08);border:1px solid var(--line-accent);
+  padding:clamp(34px,5vw,56px);box-shadow:var(--shadow)}
+.bonus::before{content:"";position:absolute;width:440px;height:440px;border-radius:50%;
+  background:radial-gradient(circle,rgba(240,138,91,.34),transparent 65%);top:-190px;inset-inline-end:-130px}
+.bonus__tag{position:relative;display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-weight:800;
+  font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:#1a0e07;background:linear-gradient(135deg,var(--accent-2),var(--accent-deep));
+  padding:8px 16px;border-radius:999px;margin-bottom:20px}
+.bonus h3{position:relative;font-family:var(--display);font-weight:900;font-size:clamp(26px,3.6vw,42px);margin-bottom:16px;letter-spacing:-.02em}
+.bonus h3 .accent,.bonus h3 .gold{color:var(--accent)}
+.bonus p{position:relative;color:var(--ink-soft);font-size:17.5px;line-height:1.7;max-width:620px}
+.bonus p strong{color:#fff}
+
+/* ---------- pricing ---------- */
+.priceWrap{max-width:560px;margin:48px auto 0;position:relative}
+.priceWrap::before{content:"";position:absolute;inset:-60px -40px;z-index:0;
+  background:radial-gradient(circle at 50% 60%,rgba(240,138,91,.28),transparent 60%)}
+.priceCard{position:relative;z-index:1;background:var(--panel);border:1px solid var(--line-accent);border-radius:var(--r-lg);
+  box-shadow:var(--shadow);overflow:hidden}
+.priceCompare{padding:clamp(24px,4vw,34px);border-bottom:1px dashed var(--line-accent)}
+.pRow{display:flex;align-items:center;justify-content:space-between;padding:13px 0}
+.pRow+.pRow{border-top:1px solid var(--line)}
+.pRow .lab{color:var(--muted);font-size:15.5px}
+.pRow .val{font-family:var(--display);font-weight:700;font-size:21px;color:var(--muted-2);text-decoration:line-through;text-decoration-color:var(--accent)}
+.priceNow{position:relative;padding:clamp(28px,4vw,40px);text-align:center;background:radial-gradient(120% 100% at 50% 0,rgba(240,138,91,.12),transparent 60%)}
+.priceNow .spot{position:absolute;top:0;inset-inline:0;height:100%;pointer-events:none;
+  background:radial-gradient(60% 50% at 50% 30%,rgba(240,138,91,.26),transparent 70%);animation:spot 4s ease-in-out infinite}
+@keyframes spot{0%,100%{opacity:.55}50%{opacity:1}}
+.priceNow__lab{position:relative;font-family:var(--display);font-weight:800;font-size:14px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.priceNow__big{position:relative;font-family:var(--display);font-weight:900;font-size:clamp(58px,10vw,100px);line-height:.95;letter-spacing:-.05em;color:var(--ink)}
+.priceNow__big small{font-size:.26em;color:var(--muted);font-weight:700;letter-spacing:0}
+.priceNow__sub{position:relative;color:var(--muted);font-size:14px;margin:6px 0 22px}
+.priceNote{text-align:center;max-width:520px;margin:30px auto 0;font-size:16px;color:var(--ink-soft);line-height:1.6}
+.priceNote strong{color:var(--ink)}
+
+/* ---------- why ---------- */
+.whyCard{max-width:780px;margin:0 auto;background:var(--panel);border:1px solid var(--line);border-radius:var(--r-lg);
+  padding:clamp(30px,4vw,48px);box-shadow:var(--shadow-sm)}
+.whyCard p{font-size:17.5px;line-height:1.8;color:var(--ink-soft);margin-bottom:18px}
+.whyCard p:last-child{margin-bottom:0}
+.whyCard strong{color:var(--ink);font-weight:700}
+.whyCard em{font-style:normal;color:var(--accent);font-weight:700}
+
+/* ---------- for who ---------- */
+#forwho{padding-block:clamp(44px,7vw,88px)}
+#forwho .h2{font-size:clamp(26px,3.4vw,40px)}
+#forwho .fwGrid{max-width:740px;margin-inline:auto;gap:14px;margin-top:32px}
+.fwGrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:48px}
+.fwCard{border-radius:var(--r-lg);padding:clamp(22px,3vw,30px);border:1px solid var(--line)}
+.fwCard--yes{background:linear-gradient(165deg,#241710,var(--panel));border-color:var(--line-accent);box-shadow:var(--shadow)}
+.fwCard--no{background:var(--bg-2)}
+.fwCard h4{font-family:var(--display);font-weight:900;font-size:clamp(18px,2.1vw,22px);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.fwCard--yes h4{color:var(--accent)}
+.fwCard--no h4{color:var(--muted)}
+.fwCard ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.fwCard li{display:flex;gap:10px;font-size:15px;line-height:1.4;color:var(--ink-soft)}
+.fwCard li svg{flex:none;width:19px;height:19px;margin-top:1px}
+.fwCard--yes li svg{color:var(--accent)}
+.fwCard--no li{color:var(--muted)}
+.fwCard--no li svg{color:var(--muted-2)}
+
+/* ---------- what you get ---------- */
+.getGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:840px;margin:46px auto 0}
+.getItem{display:flex;gap:14px;align-items:center;background:var(--panel);border:1px solid var(--line);
+  border-radius:14px;padding:18px 20px;transition:.25s}
+.getItem:hover{border-color:var(--line-accent);transform:translateY(-3px);box-shadow:var(--shadow-sm)}
+.getItem .chk{flex:none;width:30px;height:30px;border-radius:50%;background:var(--accent-soft);border:1px solid var(--line-accent);
+  display:grid;place-items:center;color:var(--accent)}
+.getItem .chk svg{width:16px;height:16px}
+.getItem span{font-size:16px;font-weight:500;color:var(--ink-soft)}
+.getItem b{font-weight:800;color:var(--ink)}
+
+/* ---------- faq ---------- */
+.faq{max-width:820px;margin:46px auto 0;display:flex;flex-direction:column;gap:12px}
+.faq__item{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:border-color .3s}
+.faq__item.open{border-color:var(--line-accent)}
+.faq__q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px clamp(20px,3vw,28px);
+  text-align:start;font-family:var(--display);font-weight:700;font-size:clamp(16px,2vw,18px)}
+.faq__q .ic{flex:none;width:30px;height:30px;border-radius:50%;border:1.5px solid var(--line-accent);color:var(--accent);
+  display:grid;place-items:center;font-size:20px;transition:.3s}
+.faq__item.open .faq__q .ic{transform:rotate(45deg);background:var(--accent);color:#1a0e07;border-color:var(--accent)}
+.faq__a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq__a p{padding:0 clamp(20px,3vw,28px) 24px;font-size:16px;line-height:1.65;color:var(--ink-soft)}
+
+/* ---------- final ---------- */
+.final{position:relative;overflow:hidden;text-align:center}
+.final__photo{width:96px;height:96px;border-radius:50%;object-fit:cover;margin:0 auto 22px;border:3px solid var(--accent);
+  box-shadow:var(--shadow-accent)}
+.final h2{margin-bottom:24px}
+.final .lead{max-width:620px;margin:0 auto 14px}
+.final__lines{max-width:560px;margin:0 auto 34px}
+.final__lines p{font-size:18px;line-height:1.85;color:var(--ink-soft)}
+.final__lines strong{color:var(--accent)}
+.final__sign{font-family:var(--display);font-weight:800;color:var(--accent);margin-top:18px}
+
+/* ---------- footer ---------- */
+.footer{background:#070708;color:var(--muted);padding:64px 0 40px;text-align:center;border-top:1px solid var(--line)}
+.footer .brand{color:var(--ink)}
+.footer__links{display:flex;gap:24px;justify-content:center;margin:22px 0;font-family:var(--display);font-weight:500;flex-wrap:wrap}
+.footer__links a{color:var(--accent)}
+.footer__ig{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;border:1px solid var(--line-accent);color:var(--accent)!important;transition:.2s}
+.footer__ig:hover{background:var(--accent-soft);transform:translateY(-2px)}
+.footer__ig svg{width:19px;height:19px}
+.footer__links button{color:var(--accent);font-family:var(--display)}
+.footer small{display:block;color:var(--muted-2);font-size:12.5px;margin-top:14px}
+
+/* ===================== floating action buttons ===================== */
+.fab{position:fixed;z-index:170;width:60px;height:60px;border-radius:50%;display:grid;place-items:center;
+  box-shadow:0 16px 40px -10px rgba(0,0,0,.7);transition:transform .25s}
+.fab:hover{transform:scale(1.08)}
+.fab svg{width:30px;height:30px}
+.fab--wa{bottom:26px;inset-inline-start:22px;background:#25D366}
+.fab--wa svg{fill:#fff}
+.fab--wa::after{content:"שאלות על הקורס?";position:absolute;inset-inline-start:72px;white-space:nowrap;
+  background:var(--ink);color:var(--bg);font-family:var(--display);font-weight:700;font-size:13px;padding:9px 14px;border-radius:12px;
+  box-shadow:var(--shadow-sm);opacity:0;transform:translateX(8px);transition:.25s;pointer-events:none}
+.fab--wa::before{content:"";position:absolute;inset-inline-start:64px;width:0;height:0;
+  border-block:7px solid transparent;border-inline-end:8px solid var(--ink);opacity:0;transition:.25s}
+.fab--wa:hover::after,.fab--wa:hover::before{opacity:1;transform:none}
+.fab--wa .wa-ping{position:absolute;inset:0;border-radius:50%;background:#25D366;z-index:-1;animation:ping 2.4s ease-out infinite}
+@keyframes ping{0%{transform:scale(1);opacity:.6}80%,100%{transform:scale(1.7);opacity:0}}
+
+/* ===================== accessibility widget ===================== */
+.a11yBtn{position:fixed;z-index:170;bottom:26px;inset-inline-end:22px;width:60px;height:60px;border-radius:50%;
+  background:#1d4ed8;color:#fff;display:grid;place-items:center;box-shadow:0 16px 40px -10px rgba(0,0,0,.7);
+  border:2px solid rgba(255,255,255,.25);transition:transform .25s}
+.a11yBtn:hover{transform:scale(1.08)}
+.a11yBtn svg{width:32px;height:32px}
+.a11yPanel{position:fixed;z-index:200;bottom:96px;inset-inline-end:22px;width:min(360px,calc(100vw - 32px));
+  max-height:78vh;overflow-y:auto;background:#fff;color:#15151b;border-radius:18px;
+  box-shadow:0 40px 90px -20px rgba(0,0,0,.7);transform:translateY(16px) scale(.96);opacity:0;pointer-events:none;
+  transition:.28s cubic-bezier(.2,.7,.2,1)}
+.a11yPanel.open{transform:none;opacity:1;pointer-events:auto}
+.a11yPanel__head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:18px 20px;
+  background:#1d4ed8;color:#fff;position:sticky;top:0;z-index:2}
+.a11yPanel__head b{font-family:var(--display);font-weight:800;font-size:17px}
+.a11yPanel__head button{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.18);display:grid;place-items:center;font-size:20px;color:#fff}
+.a11yPanel__body{padding:16px}
+.a11yRow{margin-bottom:16px}
+.a11yRow>span{display:block;font-family:var(--display);font-weight:700;font-size:12.5px;color:#555;margin-bottom:8px;letter-spacing:.02em}
+.a11yGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.a11yOpt{display:flex;align-items:center;gap:10px;padding:12px 12px;border:1.5px solid #e3e3e8;border-radius:12px;
+  font-family:var(--display);font-weight:600;font-size:13.5px;color:#222;text-align:start;transition:.18s;background:#fff;min-height:52px}
+.a11yOpt:hover{border-color:#1d4ed8;background:#f5f8ff}
+.a11yOpt.on{border-color:#1d4ed8;background:#1d4ed8;color:#fff;box-shadow:0 6px 16px -6px rgba(29,78,216,.6)}
+.a11yOpt svg{width:20px;height:20px;flex:none}
+.a11yFont{display:flex;align-items:center;gap:8px}
+.a11yFont button{flex:1;border:1.5px solid #e3e3e8;border-radius:12px;padding:12px;font-family:var(--display);font-weight:800;background:#fff;transition:.18s}
+.a11yFont button:hover{border-color:#1d4ed8;background:#f5f8ff}
+.a11yFont .lvl{flex:1.4;text-align:center;font-family:var(--display);font-weight:700;font-size:13px;color:#444}
+.a11yReset{width:100%;margin-top:6px;padding:13px;border-radius:12px;background:#15151b;color:#fff;font-family:var(--display);font-weight:800;transition:.2s}
+.a11yReset:hover{background:#000}
+.a11yState{display:block;width:100%;margin-top:12px;text-align:center;font-size:12px;color:#1d4ed8;font-family:var(--display);font-weight:700;text-decoration:underline}
+
+/* reading guide */
+.readGuide{position:fixed;z-index:195;inset-inline:0;height:42px;background:rgba(240,138,91,.16);
+  border-block:2px solid var(--accent);pointer-events:none;display:none}
+html.a11y-guide .readGuide{display:block}
+
+/* ===================== accessibility profiles (applied to <html>) ===================== */
+html.a11y-fs1 #content{zoom:1.12}
+html.a11y-fs2 #content{zoom:1.26}
+html.a11y-fs3 #content{zoom:1.42}
+
+html.a11y-gray{filter:grayscale(1)}
+html.a11y-gray .a11yPanel,html.a11y-gray .a11yBtn{filter:grayscale(0)}
+
+html.a11y-contrast,html.a11y-contrast body{background:#000!important;color:#fff!important}
+html.a11y-contrast .section,html.a11y-contrast .section--alt,html.a11y-contrast .section--ink,
+html.a11y-contrast .panel,html.a11y-contrast .painCard,html.a11y-contrast .tcard,html.a11y-contrast .acc__item,
+html.a11y-contrast .faq__item,html.a11y-contrast .getItem,html.a11y-contrast .whyCard,html.a11y-contrast .priceCard,
+html.a11y-contrast .bridePanel,html.a11y-contrast .quoteCard,html.a11y-contrast .resultBanner,html.a11y-contrast .bonus,
+html.a11y-contrast .fwCard,html.a11y-contrast .aud,html.a11y-contrast .baCol,html.a11y-contrast .header__inner,
+html.a11y-contrast .floatcard,html.a11y-contrast .hero__badge,html.a11y-contrast .sticky-cta{
+  background:#000!important;border-color:#ffec3d!important;box-shadow:none!important}
+html.a11y-contrast *{color:#fff!important;text-shadow:none!important}
+html.a11y-contrast .accent,html.a11y-contrast .gold,html.a11y-contrast .h1 em,
+html.a11y-contrast .eyebrow,html.a11y-contrast .resultBanner__num,html.a11y-contrast .priceNow__big,
+html.a11y-contrast .brideWord button.on{color:#ffec3d!important}
+html.a11y-contrast .btn{background:#ffec3d!important;color:#000!important;border:2px solid #fff!important}
+html.a11y-contrast .eyebrow::before,html.a11y-contrast .eyebrow::after{background:#ffec3d!important}
+
+html.a11y-links a:not(.btn){text-decoration:underline!important;text-underline-offset:3px;color:var(--accent)!important;font-weight:700}
+html.a11y-contrast.a11y-links a:not(.btn){color:#ffec3d!important}
+
+html.a11y-readable,html.a11y-readable *{font-family:Arial,"Assistant",sans-serif!important;letter-spacing:.01em!important;
+  font-weight:500!important;line-height:1.7!important}
+html.a11y-readable .btn,html.a11y-readable .h1,html.a11y-readable .h2,html.a11y-readable .h3,
+html.a11y-readable .brand{font-weight:800!important}
+
+html.a11y-noanim *,html.a11y-noanim *::before,html.a11y-noanim *::after{
+  animation:none!important;transition:none!important;scroll-behavior:auto!important}
+html.a11y-noanim .rv{opacity:1!important;transform:none!important}
+
+html.a11y-cursor,html.a11y-cursor *{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cpath d='M8 4l30 18-14 3 8 15-5 2-8-15-11 8z' fill='%23ffffff' stroke='%23000000' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") 6 4,auto!important}
+
+/* ===================== responsive ===================== */
+@media (max-width:980px){
+  .hero__grid{grid-template-columns:1fr;gap:48px}
+  .hero__media{width:100%;max-width:520px;margin-inline:auto;aspect-ratio:4/4.4}
+  .hero__media--devices{aspect-ratio:auto;max-width:none}
+  .hero__visual{margin-top:0}
+  .floatcard--1{inset-inline-start:0}.floatcard--2{inset-inline-end:0}
+  .story__grid{grid-template-columns:1fr}
+  .story__media{max-width:380px;margin-inline:auto}
+  .painGrid{grid-template-columns:1fr 1fr}
+  .media-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){
+  .nav,.header__cta{display:none}
+  .menuBtn{display:flex}
+  .header__inner{margin:10px;background:rgba(14,14,18,.78);backdrop-filter:blur(16px);box-shadow:var(--shadow-sm);border:1px solid var(--line)}
+  .sticky-cta{display:flex}
+  body{padding-bottom:74px}
+  .painGrid{grid-template-columns:1fr}
+  .media-grid{grid-template-columns:1fr}
+  .audios{grid-template-columns:1fr}
+  .ba{grid-template-columns:1fr}
+  .baDivider{width:100%;height:64px}
+  .baDivider::before{inset-block:auto;inset-inline:0;width:100%;height:2px}
+  .bridePanel{grid-template-columns:1fr;justify-items:center;text-align:center}
+  .fwGrid,.getGrid{grid-template-columns:1fr}
+  .resultBanner{grid-template-columns:1fr;text-align:center;justify-items:center}
+  .floatcard{transform:scale(.84)}
+  .fab,.a11yBtn{width:52px;height:52px;bottom:84px}
+  .fab svg{width:26px;height:26px}.a11yBtn svg{width:28px;height:28px}
+  .a11yPanel{bottom:146px}
+  .fab--wa::after,.fab--wa::before{display:none}
+  .final .btn{display:flex;width:100%;max-width:340px;margin-inline:auto;white-space:normal;font-size:16px;padding:16px 22px;line-height:1.35;text-align:center}
+}
+@media (max-width:420px){
+  .hero__actions .btn{width:100%}
+}
+
+/* pause decorative infinite loops for reduced-motion users (battery + jank friendly) */
+@media (prefers-reduced-motion:reduce){
+  .floatcard,.hero__badge .dot,.hero__bg .pcl,.priceNow .spot,
+  .fab--wa .wa-ping{animation:none!important}
+}
+
+/* ===== case.css ===== */
+/* ===================== bride — case studies (trust section) ===================== */
+.cs{position:relative;overflow:hidden;padding:clamp(80px,12vw,150px) 0;
+  background:radial-gradient(130% 120% at 80% -10%,#241710 0%,#0A0A0C 55%)}
+.cs__bg{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.cs__blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.55;
+  transition:transform 1.1s cubic-bezier(.2,.7,.2,1);will-change:transform}
+.cs__blob--1{width:640px;height:640px;background:radial-gradient(circle,rgba(240,138,91,.42),transparent 65%);top:-220px;inset-inline-end:-160px}
+.cs__blob--2{width:520px;height:520px;background:radial-gradient(circle,rgba(217,107,60,.32),transparent 65%);bottom:-200px;inset-inline-start:-140px}
+.cs__blob--3{width:380px;height:380px;background:radial-gradient(circle,rgba(255,180,137,.18),transparent 65%);top:40%;inset-inline-start:46%}
+.cs__inner{position:relative;z-index:1}
+
+.cs__head{text-align:center;margin-bottom:clamp(40px,6vw,68px)}
+.cs__head .h2{font-size:clamp(34px,5.4vw,68px)}
+.cs__head .lead{margin:18px auto 0;max-width:34ch}
+.cs__kicker{display:inline-flex;align-items:center;gap:9px;font-family:var(--display);font-weight:700;font-size:12.5px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--accent);background:rgba(240,138,91,.1);
+  border:1px solid var(--line-accent);padding:8px 18px;border-radius:999px;margin-bottom:22px;white-space:nowrap}
+.cs__kicker svg{width:15px;height:15px;flex:none}
+
+/* layout */
+.cs__layout{display:grid;grid-template-columns:30% 1fr;gap:clamp(20px,2.6vw,34px);align-items:start;min-width:0}
+.cs__layout>*{min-width:0}
+.cs__left{min-width:0}
+.cs__stage,.csContent,.csCol{min-width:0}
+
+/* ---- left: vertical tabs ---- */
+/* left column */
+.cs__left{position:sticky;top:84px}
+.cs__progress{display:flex;align-items:center;gap:14px;margin-bottom:16px;padding:0 4px}
+.cs__progNum{font-family:var(--display);font-weight:900;font-size:20px;color:var(--accent);letter-spacing:.02em;flex:none}
+.cs__progNum i{font-style:normal;color:var(--muted-2);font-weight:700;font-size:14px}
+.cs__progBar{flex:1;height:4px;border-radius:3px;background:rgba(255,255,255,.1);overflow:hidden}
+.cs__progBar>span{display:block;height:100%;border-radius:3px;background:linear-gradient(90deg,var(--accent-deep),var(--accent),var(--accent-2));
+  transition:width .5s cubic-bezier(.2,.7,.2,1);box-shadow:0 0 12px var(--glow)}
+.cs__tabs{display:flex;flex-direction:column;gap:12px}
+.csTab{position:relative;display:flex;align-items:center;gap:15px;padding:13px 15px;border-radius:18px;
+  background:rgba(255,255,255,.04);border:1px solid var(--line);text-align:start;
+  transition:transform .35s cubic-bezier(.2,.7,.2,1),background .3s,border-color .3s,box-shadow .35s;overflow:hidden}
+.csTab:hover{background:rgba(255,255,255,.07);transform:translateX(-4px)}
+.csTab__ph{flex:none;width:52px;height:52px;border-radius:14px;object-fit:cover;background:var(--panel-2);
+  border:1px solid var(--line);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.csTab:hover .csTab__ph{transform:scale(1.08)}
+.csTab__mono{flex:none;width:52px;height:52px;border-radius:14px;display:grid;place-items:center;
+  font-family:var(--display);font-weight:800;font-size:19px;color:#1a0e07;
+  background:linear-gradient(150deg,var(--accent-2),var(--accent-deep))}
+.csTab__t b{display:block;font-family:var(--display);font-weight:700;font-size:16px;color:var(--ink);line-height:1.15}
+.csTab__t small{font-size:12.5px;color:var(--muted);font-weight:500}
+.csTab__go{margin-inline-start:auto;color:var(--muted-2);opacity:0;transform:translateX(6px);transition:.3s}
+.csTab__go svg{width:18px;height:18px}
+.csTab:hover .csTab__go{opacity:1;transform:none}
+.csTab.on{background:linear-gradient(150deg,rgba(240,138,91,.16),rgba(20,20,26,.6));
+  border-color:transparent;transform:scale(1.03);
+  box-shadow:0 0 0 1.5px var(--accent),0 24px 50px -20px rgba(240,138,91,.5)}
+.csTab.on .csTab__go{opacity:1;transform:none;color:var(--accent)}
+.csTab.on::before{content:"";position:absolute;inset-inline-start:0;top:14%;bottom:14%;width:4px;border-radius:0 4px 4px 0;
+  background:linear-gradient(var(--accent-2),var(--accent-deep))}
+
+/* ---- right: glass stage ---- */
+.cs__stage{position:relative;border-radius:30px;padding:clamp(20px,2.4vw,30px);
+  background:linear-gradient(155deg,rgba(34,34,44,.78),rgba(14,14,18,.84));
+  border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(12px) saturate(1.2);
+  box-shadow:0 50px 110px -40px rgba(0,0,0,.85),inset 0 1px 0 rgba(255,255,255,.06)}
+.cs__stage::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:linear-gradient(150deg,rgba(255,255,255,.07),transparent 40%)}
+@keyframes csIn{from{transform:translateY(16px)}to{transform:none}}
+@keyframes csInUp{from{transform:translateY(22px)}to{transform:none}}
+.csContent{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2.2vw,26px);
+  animation:csIn .5s cubic-bezier(.2,.7,.2,1)}
+.csContent>*{animation:csInUp .55s cubic-bezier(.2,.7,.2,1)}
+.csContent>*:nth-child(2){animation-delay:.07s}
+.csCol{display:flex;flex-direction:column;gap:18px;min-width:0}
+
+/* big image + floating success card */
+.csHero{position:relative;border-radius:22px;overflow:hidden;border:1px solid var(--line-accent);aspect-ratio:4/4.6;
+  box-shadow:0 30px 60px -28px rgba(0,0,0,.8)}
+.csHero--tall{aspect-ratio:auto;flex:1 1 auto;min-height:380px;animation:csHeroGlow 3.6s ease-in-out infinite}
+@keyframes csHeroGlow{0%,100%{box-shadow:0 30px 60px -28px rgba(0,0,0,.8),0 0 0 0 rgba(240,138,91,0)}
+  50%{box-shadow:0 30px 60px -28px rgba(0,0,0,.8),0 0 46px 3px rgba(240,138,91,.4)}}
+.csHero img{width:100%;height:100%;object-fit:cover;object-position:center 30%;
+  transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.csHero:hover img{transform:scale(1.06)}
+.csHero__mono{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--display);font-weight:900;
+  font-size:clamp(60px,9vw,104px);color:rgba(26,14,7,.85);
+  background:linear-gradient(150deg,var(--accent-2),var(--accent-deep))}
+.csHero::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(8,8,10,.6),transparent 50%)}
+.csHero__name{position:absolute;inset-inline:0;bottom:0;z-index:2;padding:22px 22px 18px;
+  font-family:var(--display);font-weight:800;font-size:21px;color:#fff}
+.csHero__name small{display:block;font-weight:500;font-size:13px;color:var(--accent-2);margin-top:2px}
+.csFloat{position:absolute;z-index:3;top:18px;inset-inline-start:18px;display:flex;flex-direction:column;gap:1px;
+  padding:14px 18px;border-radius:16px;background:rgba(12,12,16,.6);backdrop-filter:blur(14px) saturate(1.3);
+  border:1px solid rgba(255,255,255,.16);box-shadow:0 18px 40px -16px rgba(0,0,0,.7)}
+.csFloat b{font-family:var(--display);font-weight:900;font-size:clamp(26px,3vw,36px);line-height:1;letter-spacing:-.02em;
+  color:var(--accent);text-shadow:0 0 26px var(--glow)}
+.csFloat__text{font-size:clamp(17px,1.9vw,22px)!important;line-height:1.1}
+.csFloat small{font-size:12px;color:var(--ink-soft);font-weight:600}
+
+/* video */
+.csVideo{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#000;
+  aspect-ratio:16/10}
+.csVideo video{width:100%;height:100%;object-fit:cover;display:block}
+.csVideo__overlay{position:absolute;inset:0;display:grid;place-items:center;cursor:pointer;
+  background:linear-gradient(0deg,rgba(8,8,10,.5),rgba(8,8,10,.15));transition:opacity .3s}
+.csVideo.playing .csVideo__overlay{opacity:0;pointer-events:none}
+.csPlay{width:68px;height:68px;border-radius:50%;display:grid;place-items:center;
+  background:linear-gradient(150deg,var(--accent-2),var(--accent-deep));color:#1a0e07;
+  box-shadow:0 14px 36px -8px rgba(240,138,91,.7);transition:transform .25s}
+.csPlay svg{width:28px;height:28px;margin-inline-start:3px}
+.csVideo__overlay:hover .csPlay{transform:scale(1.1)}
+.csPlay__ring{position:absolute;width:68px;height:68px;border-radius:50%;border:2px solid rgba(255,180,137,.6);
+  animation:csPing 2.2s ease-out infinite}
+@keyframes csPing{0%{transform:scale(1);opacity:.7}80%,100%{transform:scale(1.7);opacity:0}}
+.csVideo__label{position:absolute;bottom:12px;inset-inline-end:14px;z-index:2;font-family:var(--display);font-weight:600;
+  font-size:12.5px;color:#fff;background:rgba(0,0,0,.5);padding:5px 12px;border-radius:999px;pointer-events:none}
+.csVideo__soon{position:absolute;inset:0;display:grid;place-items:center;gap:6px;text-align:center;
+  background:linear-gradient(150deg,#1a120c,#0c0c0e);color:var(--muted)}
+.csVideo__soon b{font-family:var(--display);font-weight:700;color:var(--ink-soft);font-size:15px}
+
+/* story */
+.csStory{display:flex;flex-direction:column;gap:16px}
+.csStep{position:relative;padding-inline-start:20px}
+.csStep::before{content:"";position:absolute;inset-inline-start:0;top:7px;width:9px;height:9px;border-radius:50%;
+  background:var(--accent);box-shadow:0 0 14px var(--glow)}
+.csStep::after{content:"";position:absolute;inset-inline-start:4px;top:18px;bottom:-16px;width:1.5px;background:var(--line-accent)}
+.csStory .csStep:last-child::after{display:none}
+.csStep h5{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.04em;color:var(--accent);margin-bottom:5px}
+.csStep p{font-size:15px;line-height:1.6;color:var(--ink-soft)}
+
+/* quote */
+.csQuote{position:relative;border-radius:20px;padding:26px 26px 24px;
+  background:linear-gradient(150deg,rgba(240,138,91,.12),rgba(20,20,26,.5));border:1px solid var(--line-accent);overflow:hidden}
+@media (min-width:761px){.csQuote{margin-top:auto}}
+.csQuote::before{content:"\201D";position:absolute;top:-30px;inset-inline-start:14px;font-family:Georgia,serif;font-size:150px;
+  color:var(--accent);opacity:.32;line-height:1}
+.csQuote q{quotes:none;position:relative;font-family:var(--display);font-weight:700;font-size:clamp(18px,2vw,23px);
+  line-height:1.42;color:var(--ink)}
+
+/* results grid */
+.csResults{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.csRes{display:flex;align-items:center;gap:11px;padding:15px 16px;border-radius:14px;
+  background:rgba(255,255,255,.04);border:1px solid var(--line);transition:transform .28s,border-color .28s,background .28s}
+.csRes:hover{transform:translateY(-4px);border-color:var(--line-accent);background:rgba(240,138,91,.08)}
+.csRes .ic{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;color:var(--accent);
+  background:var(--accent-soft);border:1px solid var(--line-accent)}
+.csRes .ic svg{width:16px;height:16px}
+.csRes span{font-family:var(--display);font-weight:600;font-size:14.5px;color:var(--ink-soft)}
+
+/* ---- ticker ---- */
+.cs__ticker{position:relative;z-index:1;margin-top:clamp(40px,5vw,64px);padding:18px 0;
+  border-block:1px solid var(--line);overflow:hidden;
+  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.cs__tickRow{display:flex;width:max-content;gap:0;animation:csTick 32s linear infinite}
+.cs:hover .cs__tickRow{animation-play-state:paused}
+@keyframes csTick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.cs__tickRow span{display:inline-flex;align-items:center;gap:12px;padding:0 26px;font-family:var(--display);
+  font-weight:700;font-size:clamp(18px,2.2vw,26px);color:var(--ink);white-space:nowrap}
+.cs__tickRow span::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);margin-inline-start:26px}
+.cs__tickRow .em{color:var(--accent)}
+
+/* ---- final cta ---- */
+.cs__cta{position:relative;z-index:1;margin-top:clamp(48px,6vw,80px);text-align:center;
+  border-radius:32px;padding:clamp(40px,6vw,72px) clamp(24px,5vw,60px);overflow:hidden;
+  background:linear-gradient(150deg,#2a1a10,#100b09);border:1px solid var(--line-accent);
+  box-shadow:0 50px 110px -45px rgba(0,0,0,.9)}
+.cs__cta::before{content:"";position:absolute;width:520px;height:520px;border-radius:50%;top:-240px;inset-inline-start:50%;
+  transform:translateX(-50%);background:radial-gradient(circle,rgba(240,138,91,.4),transparent 65%);pointer-events:none}
+.cs__cta h3{position:relative;font-family:var(--display);font-weight:900;font-size:clamp(26px,3.8vw,46px);line-height:1.16;
+  letter-spacing:-.02em;color:var(--ink);max-width:20ch;margin:0 auto 18px}
+.cs__cta h3 .accent{color:var(--accent)}
+.cs__cta p{position:relative;font-size:clamp(16px,1.8vw,19px);line-height:1.6;color:var(--ink-soft);max-width:52ch;margin:0 auto 30px}
+.cs__cta .btn{position:relative}
+
+/* ---- responsive ---- */
+@media (max-width:980px){
+  .cs__layout{grid-template-columns:1fr;gap:22px}
+  .cs__left{position:static;min-width:0;width:100%}
+  /* all students visible as a 2-column grid — no horizontal scrolling */
+  .cs__tabs{display:grid;grid-template-columns:1fr 1fr;gap:10px;overflow:visible;min-width:0;max-width:100%;position:static;flex-direction:initial}
+  .csTab{flex:none;scroll-snap-align:none}
+  .csTab:hover{transform:none}
+  .csTab.on{transform:none;box-shadow:0 0 0 1.5px var(--accent)}
+}
+@media (max-width:760px){
+  .cs{padding:64px 0 72px}
+  .cs__head{margin-bottom:34px}
+  .cs__head .h2{font-size:clamp(27px,7vw,38px)}
+  .csContent{grid-template-columns:1fr;gap:16px;display:flex;flex-direction:column}
+  .csContent .csCol{display:contents}
+  .csContent .csHero--tall{order:1}
+  .csContent .csStory{order:2}
+  .csContent .csQuote{order:3}
+  .csContent .csResults{order:4;grid-template-columns:1fr 1fr;gap:9px}
+  .csTab{flex:none;padding:10px 11px;gap:10px;border-radius:14px}
+  .csTab__ph,.csTab__mono{width:40px;height:40px;border-radius:11px}
+  .csTab__mono{font-size:15px}
+  .csTab__t b{font-size:13.5px}
+  .csTab__t small{font-size:11px}
+  .csTab__go{display:none}
+  .cs__stage{padding:14px;border-radius:22px}
+  /* keep the photo from dominating the screen */
+  .csHero--tall{aspect-ratio:1/1;max-height:62vh;margin-inline:auto;width:100%;flex:0 0 auto;min-height:0}
+  .csHero__name{font-size:18px;padding:18px 18px 14px}
+  .csFloat{top:14px;inset-inline-start:14px;padding:11px 14px}
+  .csFloat b{font-size:24px}
+  .csFloat__text{font-size:16px!important}
+  .csStory{gap:12px}
+  .csStep p{font-size:14px}
+  .csStep::after{bottom:-12px}
+  .csQuote{padding:20px 20px 18px}
+  .csQuote q{font-size:17px}
+  .csRes{padding:12px 13px}
+  .csRes span{font-size:13.5px}
+  .cs__cta{padding:38px 22px}
+}
+@media (max-width:430px){
+  .csResults{grid-template-columns:1fr}
+  .csHero--tall{aspect-ratio:4/4.2;max-height:56vh}
+}
+
+/* pause decorative loops when the user prefers reduced motion (also lighter on weak devices) */
+@media (prefers-reduced-motion:reduce){
+  .cs__blob,.csHero--tall,.cs__tickRow,.csPlay__ring{animation:none!important}
+  .cs__blob{transform:none!important}
+}
+
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin></script>
+</head>
+<body>
+<div id="root"></div>
+<noscript style="display:block;padding:60px;text-align:center;font-family:Assistant,sans-serif">האתר דורש JavaScript מופעל לצפייה מלאה.</noscript>
+<script>
+
+/* ===== helpers.jsx ===== */
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const {
+  useState,
+  useEffect,
+  useRef,
+  useCallback
+} = React;
+requestAnimationFrame(function (t1) {
+  requestAnimationFrame(function (t2) {
+    try {
+      if (t2 - t1 < 80) document.documentElement.classList.add('can-anim');
+    } catch (e) {}
+  });
+});
+const PAY_LINK = "REPLACE_WITH_PAYMENT_LINK";
+const WA_NUMBER = "972559125112";
+const WA_LINK = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent("היי! יש לי שאלה על קורס bride 🙂");
+const IG_LINK = "https://www.instagram.com/nivgabay12/";
+function goTo(id) {
+  const el = document.getElementById(id);
+  if (el) {
+    const y = el.getBoundingClientRect().top + window.pageYOffset - 76;
+    window.scrollTo({
+      top: y,
+      behavior: 'smooth'
+    });
+  }
+}
+function onAnchor(e, id) {
+  e.preventDefault();
+  goTo(id);
+}
+const _revealReg = new Set();
+let _revealBound = false;
+let _revealInterval = null;
+let _revealTick = null;
+function _teardownReveal() {
+  if (_revealReg.size) return;
+  if (_revealInterval) {
+    clearInterval(_revealInterval);
+    _revealInterval = null;
+  }
+  if (_revealTick) {
+    ['scroll', 'resize', 'load', 'orientationchange'].forEach(ev => window.removeEventListener(ev, _revealTick));
+    _revealTick = null;
+  }
+  _revealBound = false;
+}
+function _checkReveals() {
+  const vh = window.innerHeight || document.documentElement.clientHeight;
+  _revealReg.forEach(entry => {
+    const el = entry.ref.current;
+    if (!el) {
+      _revealReg.delete(entry);
+      return;
+    }
+    const r = el.getBoundingClientRect();
+    if (r.top < vh * 0.92 && r.bottom > -40) {
+      entry.cb();
+      _revealReg.delete(entry);
+    }
+  });
+  _teardownReveal();
+}
+function _bindReveal() {
+  if (_revealBound) return;
+  _revealBound = true;
+  _revealTick = () => requestAnimationFrame(_checkReveals);
+  ['scroll', 'resize', 'load', 'orientationchange'].forEach(ev => window.addEventListener(ev, _revealTick, {
+    passive: true
+  }));
+  _revealInterval = setInterval(_checkReveals, 400);
+}
+function useInView() {
+  const ref = useRef(null);
+  const [seen, setSeen] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (el) {
+      const r = el.getBoundingClientRect();
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      if (r.top < vh * 0.96 && r.bottom > -40) {
+        setSeen(true);
+        return;
+      }
+    }
+    const entry = {
+      ref,
+      cb: () => setSeen(true)
+    };
+    _revealReg.add(entry);
+    _bindReveal();
+    requestAnimationFrame(_checkReveals);
+    return () => _revealReg.delete(entry);
+  }, []);
+  return [ref, seen];
+}
+function Reveal({
+  children,
+  delay = 0,
+  className = '',
+  as = 'div',
+  ...rest
+}) {
+  const [ref, seen] = useInView();
+  const Tag = as;
+  return React.createElement(Tag, _extends({
+    ref: ref,
+    className: "rv " + (seen ? 'in ' : '') + className,
+    style: {
+      transitionDelay: delay + 'ms'
+    }
+  }, rest), children);
+}
+function CountUp({
+  to,
+  dur = 1700,
+  prefix = '',
+  suffix = '',
+  sep = false,
+  className = ''
+}) {
+  const [ref, seen] = useInView();
+  const [v, setV] = useState(0);
+  useEffect(() => {
+    if (!seen) return;
+    let raf,
+      start = null;
+    const tick = t => {
+      if (start === null) start = t;
+      const p = Math.min((t - start) / dur, 1);
+      const e = 1 - Math.pow(1 - p, 3);
+      setV(Math.round(e * to));
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    const safety = setTimeout(() => setV(to), dur + 300);
+    return () => {
+      cancelAnimationFrame(raf);
+      clearTimeout(safety);
+    };
+  }, [seen]);
+  const num = sep ? v.toLocaleString('en-US') : v;
+  return React.createElement("span", {
+    ref: ref,
+    className: "tnum " + className
+  }, prefix, num, suffix);
+}
+const Ico = {
+  check: React.createElement("svg", {
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2.6",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }, React.createElement("path", {
+    d: "M20 6 9 17l-5-5"
+  })),
+  x: React.createElement("svg", {
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2.4",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }, React.createElement("path", {
+    d: "M18 6 6 18M6 6l12 12"
+  })),
+  arrowL: React.createElement("svg", {
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2.2",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }, React.createElement("path", {
+    d: "M15 18l-6-6 6-6"
+  })),
+  arrowR: React.createElement("svg", {
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2.2",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }, React.createElement("path", {
+    d: "M9 18l6-6-6-6"
+  })),
+  play: React.createElement("svg", {
+    viewBox: "0 0 24 24"
+  }, React.createElement("path", {
+    d: "M8 5v14l11-7z",
+    fill: "currentColor"
+  })),
+  pause: React.createElement("svg", {
+    viewBox: "0 0 24 24"
+  }, React.createElement("path", {
+    d: "M7 5h4v14H7zM13 5h4v14h-4z",
+    fill: "currentColor"
+  })),
+  lock: React.createElement("svg", {
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }, React.createElement("rect", {
+    x: "4",
+    y: "11",
+    width: "16",
+    height: "9",
+    rx: "2"
+  }), React.createElement("path", {
+    d: "M8 11V7a4 4 0 0 1 8 0v4"
+  })),
+  zoom: React.createElement("svg", {
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }, React.createElement("circle", {
+    cx: "11",
+    cy: "11",
+    r: "7"
+  }), React.createElement("path", {
+    d: "m21 21-4.3-4.3M11 8v6M8 11h6"
+  })),
+  wa: React.createElement("svg", {
+    viewBox: "0 0 24 24"
+  }, React.createElement("path", {
+    d: "M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z",
+    fill: "currentColor"
+  })),
+  a11y: React.createElement("svg", {
+    viewBox: "0 0 24 24",
+    fill: "currentColor"
+  }, React.createElement("circle", {
+    cx: "12",
+    cy: "4",
+    r: "2"
+  }), React.createElement("path", {
+    d: "M21 9c0 .6-.4 1-1 1l-4-.4v3.2l1.9 6.1c.2.6-.1 1.2-.7 1.4-.5.2-1.1-.1-1.3-.6L12.8 15h-.6l-1.8 4.7c-.2.5-.8.8-1.3.6-.6-.2-.9-.8-.7-1.4L10 12.8V9.6L6 10c-.6 0-1-.4-1-1s.4-1 1-1l5 .5h2L18 8c.6 0 1 .4 1 1z",
+    stroke: "currentColor",
+    strokeWidth: ".4"
+  })),
+  spark: React.createElement("svg", {
+    viewBox: "0 0 24 24",
+    fill: "currentColor"
+  }, React.createElement("path", {
+    d: "M12 2l1.8 5.6L19.5 9l-4.7 3.4 1.8 5.6L12 14.6 7.4 18l1.8-5.6L4.5 9l5.7-1.4z"
+  }))
+};
+Object.assign(window, {
+  React,
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  PAY_LINK,
+  WA_LINK,
+  WA_NUMBER,
+  IG_LINK,
+  goTo,
+  onAnchor,
+  useInView,
+  Reveal,
+  CountUp,
+  Ico
+});
+
+/* ===== sectionsA.jsx ===== */
+const NAVLINKS = [['story', 'הסיפור'], ['proof', 'ההוכחות'], ['method', 'מה בפנים'], ['pricing', 'המחיר'], ['faq', 'שאלות']];
+function Header() {
+  return React.createElement("header", {
+    className: "header header--static"
+  }, React.createElement("div", {
+    className: "header__inner"
+  }, React.createElement("a", {
+    href: "#",
+    onClick: e => onAnchor(e, 'top'),
+    className: "brand"
+  }, "bride")));
+}
+function Hero() {
+  const mediaRef = useRef(null);
+  useEffect(() => {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+    let raf,
+      ticking = false;
+    const f = () => {
+      if (ticking) return;
+      ticking = true;
+      raf = requestAnimationFrame(() => {
+        ticking = false;
+        const el = mediaRef.current;
+        if (!el) return;
+        const y = window.pageYOffset;
+        if (y > 900) {
+          return;
+        }
+        el.style.transform = "translateY(" + Math.min(y * 0.06, 40) + "px)";
+      });
+    };
+    window.addEventListener('scroll', f, {
+      passive: true
+    });
+    return () => {
+      window.removeEventListener('scroll', f);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+  return React.createElement("section", {
+    className: "hero",
+    id: "top"
+  }, React.createElement("div", {
+    className: "hero__bg"
+  }), React.createElement("div", {
+    className: "container"
+  }, React.createElement("div", {
+    className: "hero__grid"
+  }, React.createElement("div", {
+    className: "hero__copy"
+  }, React.createElement(Reveal, {
+    className: "hero__badge",
+    delay: 0
+  }, React.createElement("span", {
+    className: "dot"
+  }), " \u05D4\u05D6\u05D3\u05DE\u05E0\u05D5\u05EA \u05D0\u05D7\u05E8\u05D5\u05E0\u05D4 \xB7 \u05D0\u05E0\u05D9 \u05E2\u05D5\u05D6\u05D1 \u05D0\u05EA \u05D4\u05EA\u05D7\u05D5\u05DD"), React.createElement(Reveal, {
+    as: "h1",
+    className: "h1",
+    delay: 80
+  }, "\u05D4\u05DB\u05D9\u05E9\u05E8\u05D5\u05DF \u05D4\u05D1\u05D9\u05D0 \u05D0\u05D5\u05EA\u05DA \u05E2\u05D3 \u05DC\u05DB\u05D0\u05DF.", React.createElement("br", null), React.createElement("em", null, "\u05D4\u05E9\u05D9\u05D8\u05D4 \u05E9\u05DC\u05D9 \u05EA\u05D9\u05E7\u05D7 \u05D0\u05D5\u05EA\u05DA \u05D4\u05E8\u05D1\u05D4 \u05D9\u05D5\u05EA\u05E8 \u05E8\u05D7\u05D5\u05E7.")), React.createElement("div", {
+    className: "hero__media--mobile",
+    "aria-hidden": "true"
+  }, React.createElement("img", {
+    src: "images/hero-devices.png",
+    alt: "\u05E7\u05D5\u05E8\u05E1 bride \u2014 \u05E6\u05E4\u05D9\u05D9\u05D4 \u05DE\u05DB\u05DC \u05DE\u05DB\u05E9\u05D9\u05E8"
+  })), React.createElement(Reveal, {
+    as: "p",
+    className: "lead hero__sub",
+    delay: 160
+  }, "\u05DE\u05D0\u05E4\u05E8\u05D5\u05EA \u05D5\u05DE\u05E1\u05E8\u05E7\u05D5\u05EA \u05D1\u05D5\u05D2\u05E8\u05D5\u05EA ", React.createElement("strong", null, "BRIDE"), " \u05DB\u05D1\u05E8 \u05E1\u05D5\u05D2\u05E8\u05D5\u05EA \u05D7\u05D5\u05D3\u05E9\u05D9\u05DD \u05E9\u05DC ", React.createElement("strong", null, "\xA030,000\xA0\u20AA, 40,000\xA0\u20AA \u05D5\u05D0\u05E4\u05D9\u05DC\u05D5 60,000\xA0\u20AA"), ". \u05D4\u05E9\u05D0\u05DC\u05D4 \u05D4\u05D9\u05D0 \u05DC\u05D0 \u05D0\u05DD \u05D6\u05D4 \u05D0\u05E4\u05E9\u05E8\u05D9.", React.createElement("br", null), "\u05D4\u05E9\u05D0\u05DC\u05D4 \u05D4\u05D9\u05D0 \u05D0\u05D9\u05DA \u05D4\u05DF \u05D4\u05D2\u05D9\u05E2\u05D5 \u05DC\u05E9\u05DD.", React.createElement("br", null), "\u05D0\u05D5\u05EA\u05D4 \u05E9\u05D9\u05D8\u05D4 \u05E9\u05E0\u05DE\u05DB\u05E8\u05D4 \u05D1\u05DC\u05D9\u05D5\u05D5\u05D9 \u05D0\u05D9\u05E9\u05D9 \u05D1\u05BE18,000\xA0\u20AA \u05D5\u05D1\u05E7\u05D5\u05E8\u05E1 \u05D3\u05D9\u05D2\u05D9\u05D8\u05DC\u05D9 \u05D1\u05BE7,500\xA0\u20AA \u2014 \u05E0\u05E4\u05EA\u05D7\u05EA \u05E2\u05DB\u05E9\u05D9\u05D5 \u05D1\u05E4\u05E2\u05DD \u05D4\u05D0\u05D7\u05E8\u05D5\u05E0\u05D4 \u05D1\u05BE", React.createElement("strong", null, "1,500\xA0\u20AA \u05D1\u05DC\u05D1\u05D3"), "."), React.createElement(Reveal, {
+    className: "hero__actions",
+    delay: 240
+  }, React.createElement("a", {
+    href: "#pricing",
+    onClick: e => onAnchor(e, 'pricing'),
+    className: "btn btn--accent btn--lg"
+  }, "\u05D0\u05E0\u05D9 \u05E8\u05D5\u05E6\u05D4 \u05DC\u05E8\u05DB\u05D5\u05E9 \u05D0\u05EA - BRIDE")), React.createElement(Reveal, {
+    className: "hero__micro",
+    delay: 320
+  }, React.createElement("span", null, "\u05D2\u05D9\u05E9\u05D4 \u05DE\u05D9\u05D9\u05D3\u05D9\u05EA"), React.createElement("span", null, "\u05EA\u05E9\u05DC\u05D5\u05DD \u05D7\u05D3\u05BE\u05E4\u05E2\u05DE\u05D9"), React.createElement("span", null, "\u05E7\u05D1\u05D5\u05E6\u05EA \u05D5\u05D5\u05D0\u05D8\u05E1\u05D0\u05E4 \u05E1\u05D2\u05D5\u05E8\u05D4"), React.createElement("span", null, "\u05D1\u05D5\u05E0\u05D5\u05E1 AI \u05D1\u05DE\u05EA\u05E0\u05D4"))), React.createElement(Reveal, {
+    className: "hero__visual",
+    delay: 180
+  }, React.createElement("div", {
+    className: "hero__media hero__media--devices",
+    ref: mediaRef
+  }, React.createElement("img", {
+    src: "images/hero-devices.png",
+    alt: "\u05E7\u05D5\u05E8\u05E1 bride \u2014 \u05E6\u05E4\u05D9\u05D9\u05D4 \u05DE\u05DB\u05DC \u05DE\u05DB\u05E9\u05D9\u05E8"
+  })), React.createElement("div", {
+    className: "floatcard floatcard--1"
+  }, React.createElement("b", null, React.createElement(CountUp, {
+    to: 38000,
+    sep: true
+  }), React.createElement("span", {
+    className: "accent"
+  }, "\xA0\u20AA")), React.createElement("small", null, "\u05D1\u05D7\u05D5\u05D3\u05E9 \u05D0\u05D7\u05D3 \xB7 \u05D1\u05D5\u05D2\u05E8\u05EA \u05D0\u05D7\u05EA")), React.createElement("div", {
+    className: "floatcard floatcard--2"
+  }, React.createElement("b", null, React.createElement(CountUp, {
+    to: 100,
+    suffix: "+"
+  })), React.createElement("small", null, "\u05D1\u05D5\u05D2\u05E8\u05D5\u05EA \u05DE\u05E8\u05D5\u05E6\u05D5\u05EA")), React.createElement("div", {
+    className: "floatcard floatcard--3"
+  }, React.createElement("b", {
+    className: "accent"
+  }, "1,500\xA0\u20AA"), React.createElement("small", null, React.createElement("span", {
+    className: "was"
+  }, "7,500\xA0\u20AA"), " \xA0\u05D4\u05D6\u05D3\u05DE\u05E0\u05D5\u05EA \u05D0\u05D7\u05E8\u05D5\u05E0\u05D4"))))));
+}
+Object.assign(window, {
+  Header,
+  Hero,
+  NAVLINKS
+});
+
+/* ===== sectionsB.jsx ===== */
+const PAINS = ['את מוכשרת, אבל היומן לא מלא כמו שהוא אמור להיות.', 'את משקיעה שעות בשיחות עם כלות — ואז הן נעלמות.', 'את מפחדת להגיד את המחיר האמיתי שלך.', 'את רואה מאפרות פחות טובות ממך עם יומן מלא — ולא מבינה איך.', 'את שואלת את עצמך אם בכלל שווה להמשיך בתחום.'];
+function Identify() {
+  return React.createElement("section", {
+    className: "section section--alt",
+    id: "identify"
+  }, React.createElement("div", {
+    className: "container"
+  }, React.createElement("div", {
+    className: "center"
+  }, React.createElement(Reveal, {
+    as: "p",
+    className: "eyebrow center"
+  }, "\u05E8\u05D2\u05E2 \u05E9\u05DC \u05DB\u05E0\u05D5\u05EA"), React.createElement(Reveal, {
+    as: "h2",
+    className: "h2 mxa",
+    delay: 60,
+    style: {
+      maxWidth: 'none'
+    }
+  }, React.createElement("span", {
+    className: "nbd"
+  }, "\u05D0\u05DD \u05D0\u05EA \u05DE\u05D6\u05D4\u05D4 \u05D0\u05EA \u05E2\u05E6\u05DE\u05DA \u05DB\u05D0\u05DF -"), React.createElement("br", null), React.createElement("span", {
+    className: "nbd"
+  }, "\u05D0\u05EA \u05DE\u05DE\u05E9 \u05DC\u05D0 \u05DC\u05D1\u05D3."))), React.createElement("div", {
+    className: "painGrid"
+  }, PAINS.map((p, i) => React.createElement(Reveal, {
+    key: i,
+    className: "painCard",
+    delay: i * 70
+  }, React.createElement("span", {
+    className: "painCard__n"
+  }, String(i + 1).padStart(2, '0')), React.createElement("p", null, p))), React.createElement(Reveal, {
+    className: "painCard",
+    delay: PAINS.length * 70,
+    style: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      background: 'transparent',
+      borderStyle: 'dashed'
+    }
+  }, React.createElement("p", {
+    style: {
+      color: 'var(--accent)',
+      fontWeight: 700,
+      fontFamily: 'var(--display)'
+    }
+  }, "\u2026\u05E0\u05E9\u05DE\u05E2 \u05DE\u05D5\u05DB\u05E8?"))), React.createElement(Reveal, {
+    className: "punch"
+  }, React.createElement("p", null, "\u05D4\u05D1\u05E2\u05D9\u05D4 \u05D0\u05E3 \u05E4\u05E2\u05DD \u05DC\u05D0 \u05D4\u05D9\u05D9\u05EA\u05D4 \u05D4\u05DB\u05D9\u05E9\u05E8\u05D5\u05DF \u05E9\u05DC\u05DA.", React.createElement("br", null), "\u05D4\u05D1\u05E2\u05D9\u05D4 \u05D4\u05D9\u05D0 \u05E9\u05D0\u05E3 \u05D0\u05D7\u05D3 \u05DC\u05D0 \u05DC\u05D9\u05DE\u05D3 \u05D0\u05D5\u05EA\u05DA ", React.createElement("span", {
+    className: "accent"
+  }, "\u05DC\u05DE\u05DB\u05D5\u05E8"), " \u05D0\u05EA \u05D4\u05DB\u05D9\u05E9\u05E8\u05D5\u05DF \u05D4\u05D6\u05D4."))));
+}
+const BRIDE = [['B', 'בניית עמוד שמושך כלות', 'Build Your Page', 'איך לבנות עמוד שגורם לכלות לבחור בך — כל פעם מחדש. עמוד שמשדר מקצועיות, יוצר אמון, וגורם לכל כלה שנכנסת אליו להרגיש שהיא חייבת דווקא אותך.'], ['R', 'שיחת המכירה שסוגרת', 'Real Sales Conversation', 'איך לנהל שיחה עם כלה שמובילה ל"כן" בלי לרדוף, בלי ללחוץ ובלי להרגיש שאת מתחננת. מבנה שיחה מדויק שאפשר ליישם כבר מחר.'], ['I', 'זהות ותמחור', 'Identity & Pricing', 'איך להפסיק להתנצל על המחיר שלך ולהתחיל לעמוד מאחוריו — להציג מחיר, להסביר אותו, ולהפסיק להוריד מתוך פחד.'], ['D', 'מכונת הביקוש', 'Demand Machine', 'איך לבנות מערכת שמייצרת פניות רלוונטיות של כלות שבאמת רוצות אותך — באופן קבוע, לא לייקים ולא הפתעות.'], ['E', 'חוויה והפניות', 'Experience & Referrals', 'איך להפוך כל לקוחה לשגרירה — תיק עבודות, המלצות וחוויית לקוחה שהופכים לקוחה אחת לעוד שלוש.']];
+function BrideMethod() {
+  const [ix, setIx] = useState(0);
+  const cur = BRIDE[ix];
+  return React.createElement("section", {
+    className: "section",
+    id: "method"
+  }, React.createElement("div", {
+    className: "container"
+  }, React.createElement("div", {
+    className: "bride__head"
+  }, React.createElement(Reveal, {
+    as: "p",
+    className: "eyebrow center"
+  }, "\u05DE\u05E0\u05D2\u05E0\u05D5\u05DF \u05D9\u05D9\u05D7\u05D5\u05D3\u05D9"), React.createElement(Reveal, {
+    as: "h2",
+    className: "h2 balance mxa",
+    delay: 60,
+    style: {
+      maxWidth: '18ch'
+    }
+  }, "\u05D6\u05D5 \u05DC\u05D0 \u05E2\u05D5\u05D3 \u05D4\u05D3\u05E8\u05DB\u05D4 \u05E2\u05DC \u05E9\u05D9\u05D5\u05D5\u05E7. ", React.createElement("span", {
+    className: "accent"
+  }, "\u05D6\u05D5 \u05E9\u05D9\u05D8\u05EA BRIDE.")), React.createElement(Reveal, {
+    as: "p",
+    className: "lead mxa",
+    delay: 120,
+    style: {
+      maxWidth: '52ch',
+      marginTop: '14px'
+    }
+  }, "\u05E9\u05D9\u05D8\u05D4 \u05E9\u05E0\u05D1\u05E0\u05EA\u05D4 \u05D1\u05DE\u05D9\u05D5\u05D7\u05D3 \u05DC\u05DE\u05D0\u05E4\u05E8\u05D5\u05EA \u05D5\u05DE\u05E1\u05E8\u05E7\u05D5\u05EA \u05E9\u05E8\u05D5\u05E6\u05D5\u05EA \u05DC\u05D4\u05E4\u05D5\u05DA \u05DE\u05DB\u05D9\u05E9\u05E8\u05D5\u05DF \u05D8\u05D5\u05D1 \u2014 \u05DC\u05E2\u05E1\u05E7 \u05DE\u05D1\u05D5\u05E7\u05E9. \u05D7\u05DE\u05D9\u05E9\u05D4 \u05E9\u05DC\u05D1\u05D9\u05DD, \u05E1\u05D3\u05E8 \u05D0\u05D7\u05D3."), React.createElement(Reveal, {
+    className: "brideWord",
+    delay: 160
+  }, BRIDE.map((b, i) => React.createElement("button", {
+    key: i,
+    className: i === ix ? 'on' : '',
+    onClick: () => setIx(i),
+    "aria-label": b[1]
+  }, b[0])))), React.createElement(Reveal, {
+    className: "bridePanel",
+    key: ix
+  }, React.createElement("div", {
+    className: "bridePanel__letter"
+  }, cur[0]), React.createElement("div", null, React.createElement("div", {
+    className: "bridePanel__en"
+  }, cur[2]), React.createElement("h3", {
+    className: "bridePanel__title"
+  }, cur[1]), React.createElement("p", {
+    className: "bridePanel__body"
+  }, cur[3]))), React.createElement("div", {
+    className: "brideDots"
+  }, BRIDE.map((b, i) => React.createElement("i", {
+    key: i,
+    className: i === ix ? 'on' : '',
+    onClick: () => setIx(i),
+    role: "button",
+    "aria-label": "שלב " + b[0]
+  })))));
+}
+function Story() {
+  return React.createElement("section", {
+    className: "section section--ink",
+    id: "story"
+  }, React.createElement("div", {
+    className: "container"
+  }, React.createElement("div", {
+    className: "story__grid"
+  }, React.createElement(Reveal, {
+    className: "story__media"
+  }, React.createElement("img", {
+    src: "images/founder.jpg",
+    alt: "\u05E0\u05D9\u05D1 \u05D2\u05D1\u05D0\u05D9"
+  }), React.createElement("figcaption", null, "\u05E0\u05D9\u05D1 \u05D2\u05D1\u05D0\u05D9 \xB7 \u05D9\u05D5\u05E6\u05E8 \u05D4\u05E7\u05D5\u05E8\u05E1")), React.createElement("div", null, React.createElement(Reveal, {
+    as: "p",
+    className: "eyebrow"
+  }, "\u05DC\u05DE\u05D4 \u05D0\u05E0\u05D9 \u05E4\u05D5\u05EA\u05D7 \u05D0\u05EA \u05D6\u05D4 \u05E2\u05DB\u05E9\u05D9\u05D5"), React.createElement(Reveal, {
+    as: "h2",
+    className: "h2",
+    delay: 60,
+    style: {
+      margin: '12px 0 26px'
+    }
+  }, React.createElement("span", {
+    className: "nbd"
+  }, "\u05D0\u05E8\u05D1\u05E2 \u05E9\u05E0\u05D9\u05DD. \u05E9\u05D9\u05D8\u05D4 \u05D0\u05D7\u05EA."), React.createElement("br", null), "\u05D4\u05D6\u05D3\u05DE\u05E0\u05D5\u05EA \u05D0\u05D7\u05E8\u05D5\u05E0\u05D4 \u05DC\u05E7\u05D1\u05DC \u05D0\u05D5\u05EA\u05D4."), React.createElement(Reveal, {
+    className: "prose",
+    delay: 120
+  }, React.createElement("p", null, "\u05E7\u05D5\u05E8\u05D0\u05D9\u05DD \u05DC\u05D9 ", React.createElement("strong", null, "\u05E0\u05D9\u05D1 \u05D2\u05D1\u05D0\u05D9"), ". \u05D1\u05DE\u05E9\u05DA \u05D0\u05E8\u05D1\u05E2 \u05E9\u05E0\u05D9\u05DD \u05E2\u05E9\u05D9\u05EA\u05D9 \u05D3\u05D1\u05E8 \u05D0\u05D7\u05D3: \u05DC\u05E7\u05D7\u05EA\u05D9 \u05DE\u05D0\u05E4\u05E8\u05D5\u05EA \u05D5\u05DE\u05E1\u05E8\u05E7\u05D5\u05EA \u05E2\u05DD \u05D9\u05D3\u05D9\u05D9\u05DD \u05E9\u05DC \u05D6\u05D4\u05D1 \u2014 \u05D5\u05DC\u05D9\u05DE\u05D3\u05EA\u05D9 \u05D0\u05D5\u05EA\u05DF \u05DC\u05D4\u05E4\u05D5\u05DA \u05D0\u05EA \u05D4\u05DB\u05D9\u05E9\u05E8\u05D5\u05DF \u05DC\u05E2\u05E1\u05E7 \u05E9\u05E1\u05D5\u05D2\u05E8. \u05D1\u05E0\u05D9\u05EA\u05D9 \u05E9\u05D9\u05D8\u05D4: \u05DC\u05D9\u05D5\u05D5\u05D9 \u05D0\u05D9\u05E9\u05D9 \u05E9\u05E0\u05DE\u05DB\u05E8 \u05D1\u05BE", React.createElement("strong", null, "18,000\xA0\u20AA"), ", \u05D5\u05E7\u05D5\u05E8\u05E1 \u05D3\u05D9\u05D2\u05D9\u05D8\u05DC\u05D9 \u05D1\u05BE", React.createElement("strong", null, "7,500\xA0\u20AA"), ". \u05E2\u05E9\u05E8\u05D5\u05EA \u05E0\u05E9\u05D9\u05DD \u05E2\u05D1\u05E8\u05D5 \u05D0\u05EA \u05D4\u05EA\u05D4\u05DC\u05D9\u05DA \u2014 \u05D5\u05D4\u05EA\u05D5\u05E6\u05D0\u05D5\u05EA \u05D3\u05D9\u05D1\u05E8\u05D5 \u05D1\u05E2\u05D3 \u05E2\u05E6\u05DE\u05DF."), React.createElement("p", null, "\u05D0\u05D1\u05DC \u05DC\u05E4\u05E0\u05D9 \u05DB\u05DE\u05D4 \u05D7\u05D5\u05D3\u05E9\u05D9\u05DD \u05D4\u05D7\u05DC\u05D8\u05EA\u05D9 \u05DC\u05E1\u05D2\u05D5\u05E8 \u05D0\u05EA \u05D4\u05E4\u05E8\u05E7 \u05D4\u05D6\u05D4 \u05D5\u05DC\u05E2\u05D1\u05D5\u05E8 \u05DC\u05E9\u05D9\u05D5\u05D5\u05E7 \u05D1\u05D7\u05D5\u05F4\u05DC. \u05D5\u05D0\u05D6 \u05D0\u05D7\u05EA \u05D4\u05DC\u05E7\u05D5\u05D7\u05D5\u05EA \u05D4\u05D0\u05D7\u05E8\u05D5\u05E0\u05D5\u05EA \u05E9\u05DC\u05D9 \u05D0\u05DE\u05E8\u05D4 \u05DC\u05D9 \u05DE\u05E9\u05E4\u05D8 \u05E9\u05DC\u05D0 \u05D4\u05E6\u05DC\u05D7\u05EA\u05D9 \u05DC\u05E9\u05D7\u05E8\u05E8:")), React.createElement(Reveal, {
+    className: "quoteCard",
+    delay: 120
+  }, React.createElement("q", null, "\u05E0\u05D9\u05D1, \u05D0\u05EA\u05D4 \u05DC\u05D0 \u05D9\u05DB\u05D5\u05DC \u05DC\u05E2\u05D6\u05D5\u05D1 \u05DB\u05DB\u05D4. \u05DE\u05D4 \u05E9\u05D9\u05E9 \u05DC\u05DA \u05E4\u05D4 \u05D6\u05D4 \u05D0\u05D5\u05E6\u05E8 \u2014 \u05D6\u05D4 \u05D7\u05D9\u05D9\u05D1 \u05DC\u05D4\u05DE\u05E9\u05D9\u05DA \u05DC\u05E2\u05D6\u05D5\u05E8 \u05DC\u05E2\u05D5\u05D3 \u05DE\u05D0\u05E4\u05E8\u05D5\u05EA \u05D5\u05DE\u05E1\u05E8\u05E7\u05D5\u05EA."), React.createElement("cite", null, "\u2014 \u05D4\u05DC\u05E7\u05D5\u05D7\u05D4 \u05D4\u05D0\u05D7\u05E8\u05D5\u05E0\u05D4 \u05E9\u05E2\u05E9\u05EA\u05D4 \u05D0\u05EA \u05D4\u05E7\u05D5\u05E8\u05E1")), React.createElement(Reveal, {
+    className: "prose",
+    delay: 120
+  }, React.createElement("p", null, "\u05D5\u05D4\u05D9\u05D0 \u05D9\u05D3\u05E2\u05D4 \u05D1\u05D3\u05D9\u05D5\u05E7 \u05E2\u05DC \u05DE\u05D4 \u05D4\u05D9\u05D0 \u05DE\u05D3\u05D1\u05E8\u05EA. \u05DB\u05E9\u05D4\u05D9\u05D0 \u05D4\u05D2\u05D9\u05E2\u05D4 \u05D0\u05DC\u05D9\u05D9 \u05D4\u05D9\u05D0 \u05D4\u05D9\u05D9\u05EA\u05D4 ", React.createElement("strong", null, "\u05E2\u05DC \u05E1\u05E3 \u05E1\u05D2\u05D9\u05E8\u05EA \u05D4\u05E2\u05E1\u05E7"), ". \u05D7\u05D5\u05D3\u05E9 \u05D0\u05D7\u05E8\u05D9 \u2014 \u05D4\u05D9\u05D0 \u05E1\u05D2\u05E8\u05D4 ", React.createElement("strong", null, "38,000\xA0\u20AA"), ". \u05D0\u05D6 \u05DC\u05E4\u05E0\u05D9 \u05E9\u05D0\u05E0\u05D9 \u05E1\u05D5\u05D2\u05E8 \u05D0\u05EA \u05D4\u05D3\u05DC\u05EA \u05DC\u05EA\u05DE\u05D9\u05D3, \u05D0\u05E0\u05D9 \u05E4\u05D5\u05EA\u05D7 \u05D0\u05EA \u05D4\u05E7\u05D5\u05E8\u05E1 \u05D1\u05E4\u05E2\u05DD \u05D4\u05D0\u05D7\u05E8\u05D5\u05E0\u05D4 \u2014 \u05D1\u05DE\u05D7\u05D9\u05E8 \u05E9\u05DC\u05D0 \u05D9\u05D7\u05D6\u05D5\u05E8:")), React.createElement(Reveal, {
+    className: "priceMorph",
+    delay: 120
+  }, React.createElement("span", {
+    className: "pm"
+  }, "18,000\xA0\u20AA"), React.createElement("span", {
+    className: "arr"
+  }, "\u2190"), React.createElement("span", {
+    className: "pm"
+  }, "7,500\xA0\u20AA"), React.createElement("span", {
+    className: "arr"
+  }, "\u2190"), React.createElement("span", {
+    className: "pm now"
+  }, "1,500\xA0\u20AA"))))));
+}
+Object.assign(window, {
+  Identify,
+  BrideMethod,
+  Story
+});
+
+/* ===== sectionsC.jsx ===== */
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const SCREENS = [{
+  img: 'images/testi-1.jpg',
+  name: 'בוגרת הקורס',
+  note: 'מסף סגירה ← יומן מלא'
+}, {
+  img: 'images/testi-2.jpg',
+  name: 'בוגרת הקורס',
+  note: 'סגרה כלה בביטחון'
+}, {
+  img: 'images/testi-3.jpg',
+  name: 'בוגרת הקורס',
+  note: 'הפסיקה לפחד מהמחיר'
+}, {
+  img: 'images/testi-4.jpg',
+  name: 'בוגרת הקורס',
+  note: 'פניות איכותיות יותר'
+}, {
+  img: 'images/testi-5.jpg',
+  name: 'בוגרת הקורס',
+  note: 'יותר כלות, פחות מאמץ'
+}];
+const VIDEOS = [{
+  poster: 'media/poster-hodaya.jpg',
+  yt: 'Ga1g-a90I2Q',
+  name: 'הודיה אהרוני'
+}, {
+  poster: 'media/poster-marik.jpg',
+  yt: 'YTZZr9-KRSg',
+  name: 'מאריק קולקר'
+}, {
+  poster: 'media/poster-eden.jpg',
+  yt: '1oFUJfwwoLk',
+  name: 'עדן דיין'
+}];
+const VOICES = [{
+  name: 'אוריאן ממן',
+  src: 'media/voice-oriane.mp3'
+}, {
+  name: 'מיכל',
+  src: 'media/voice-michal.mp3'
+}, {
+  name: 'עדיה',
+  src: 'media/voice-adya.mp3'
+}, {
+  name: 'עמית ממן',
+  src: 'media/voice-amit.mp3'
+}, {
+  name: 'תכלת חסין',
+  src: 'media/voice-techelet.mp3'
+}, {
+  name: 'מאריק קולקר',
+  src: 'media/voice-marik.mp3'
+}];
+const waMini = React.createElement("svg", {
+  className: "wa",
+  viewBox: "0 0 24 24"
+}, React.createElement("path", {
+  d: "M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z",
+  fill: "#25D366"
+}));
+const YtVideo = React.memo(function YtVideo({
+  name,
+  yt
+}) {
+  return React.createElement("figure", {
+    className: "vid"
+  }, React.createElement("span", {
+    className: "vid__box"
+  }, React.createElement("iframe", {
+    className: "vid__frame",
+    loading: "lazy",
+    title: name,
+    src: "https://www.youtube.com/embed/" + yt,
+    frameBorder: "0",
+    allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
+    referrerPolicy: "strict-origin-when-cross-origin",
+    allowFullScreen: true
+  })), React.createElement("figcaption", null, name));
+});
+function AudioPlayer({
+  name,
+  src
+}) {
+  const ref = useRef(null);
+  const [playing, setPlaying] = useState(false);
+  const [pct, setPct] = useState(0);
+  const [time, setTime] = useState('0:00');
+  const fmt = s => {
+    s = Math.floor(s || 0);
+    return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+  };
+  const toggle = () => {
+    const a = ref.current;
+    if (!a) return;
+    if (!a.paused) {
+      a.pause();
+      return;
+    }
+    const p = a.play();
+    if (p && p.catch) p.catch(() => setPlaying(false));
+  };
+  const seek = e => {
+    const a = ref.current;
+    if (!a || !a.duration) return;
+    const r = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width;
+    a.currentTime = Math.max(0, Math.min(1, x)) * a.duration;
+  };
+  const BARS = 40;
+  return React.createElement("div", {
+    className: "aud " + (playing ? 'aud--on' : '')
+  }, React.createElement("button", {
+    className: "aud__btn",
+    onClick: toggle,
+    "aria-label": (playing ? 'עצירה' : 'נגינה') + ' — ' + name
+  }, playing ? Ico.pause : Ico.play), React.createElement("div", {
+    className: "aud__main"
+  }, React.createElement("div", {
+    className: "aud__name"
+  }, waMini, name), React.createElement("div", {
+    className: "aud__viz",
+    onClick: seek
+  }, [...Array(BARS)].map((_, i) => React.createElement("span", {
+    key: i,
+    className: i / BARS * 100 <= pct ? 'on' : '',
+    style: {
+      animationDelay: i * 0.045 + 's'
+    }
+  })))), React.createElement("span", {
+    className: "aud__time"
+  }, time), React.createElement("audio", {
+    ref: ref,
+    preload: "metadata",
+    src: src,
+    onPlay: () => setPlaying(true),
+    onPause: () => setPlaying(false),
+    onEnded: () => {
+      setPlaying(false);
+      setPct(0);
+      setTime('0:00');
+    },
+    onTimeUpdate: e => {
+      const a = e.target;
+      if (a.duration) {
+        setPct(a.currentTime / a.duration * 100);
+        setTime(fmt(a.currentTime));
+      }
+    }
+  }));
+}
+function Proof() {
+  const trackRef = useRef(null);
+  const [modal, setModal] = useState(null);
+  const scroll = dir => {
+    const t = trackRef.current;
+    if (!t) return;
+    t.scrollBy({
+      left: dir * (t.clientWidth * 0.8) * (document.dir === 'rtl' ? -1 : 1),
+      behavior: 'smooth'
+    });
+  };
+  useEffect(() => {
+    const onKey = e => {
+      if (e.key === 'Escape') setModal(null);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
+  return React.createElement("section", {
+    className: "section",
+    id: "proof"
+  }, React.createElement("div", {
+    className: "container"
+  }, React.createElement("div", {
+    className: "center"
+  }, React.createElement(Reveal, {
+    as: "p",
+    className: "eyebrow center"
+  }, "\u05D4\u05D5\u05DB\u05D7\u05D5\u05EA"), React.createElement(Reveal, {
+    as: "h2",
+    className: "h2 balance mxa",
+    delay: 60,
+    style: {
+      maxWidth: '16ch'
+    }
+  }, "\u05DC\u05D0 \u05E6\u05E8\u05D9\u05DA \u05DC\u05D4\u05D0\u05DE\u05D9\u05DF \u05DC\u05D9.", React.createElement("br", null), React.createElement("span", {
+    className: "accent"
+  }, "\u05EA\u05E9\u05DE\u05E2\u05D9 \u05DE\u05D4\u05DF."))), React.createElement(Reveal, {
+    as: "p",
+    className: "eyebrow",
+    delay: 40
+  }, "\u05E6\u05D9\u05DC\u05D5\u05DE\u05D9 \u05DE\u05E1\u05DA \u05D0\u05DE\u05D9\u05EA\u05D9\u05D9\u05DD \xB7 \u05D5\u05D5\u05D0\u05D8\u05E1\u05D0\u05E4"), React.createElement("div", {
+    className: "carousel"
+  }, React.createElement("div", {
+    className: "carousel__track",
+    ref: trackRef
+  }, SCREENS.map((s, i) => React.createElement("div", {
+    className: "tcard",
+    key: i,
+    onClick: () => setModal(s),
+    role: "button",
+    "aria-label": "הגדלת המלצה " + (i + 1)
+  }, React.createElement("div", {
+    className: "tcard__img"
+  }, React.createElement("img", {
+    src: s.img,
+    alt: "\u05D4\u05DE\u05DC\u05E6\u05EA \u05D1\u05D5\u05D2\u05E8\u05EA \u05D1\u05D5\u05D5\u05D0\u05D8\u05E1\u05D0\u05E4",
+    loading: "lazy"
+  }), React.createElement("span", {
+    className: "tcard__wa"
+  }, waMini), React.createElement("span", {
+    className: "tcard__zoom"
+  }, Ico.zoom, " \u05D4\u05D2\u05D3\u05DC\u05D4")), React.createElement("div", {
+    className: "tcard__cap"
+  }, React.createElement("b", null, s.name), React.createElement("p", null, s.note))))), React.createElement("div", {
+    className: "carousel__nav"
+  }, React.createElement("button", {
+    onClick: () => scroll(1),
+    "aria-label": "\u05D4\u05E7\u05D5\u05D3\u05DD"
+  }, Ico.arrowR), React.createElement("button", {
+    onClick: () => scroll(-1),
+    "aria-label": "\u05D4\u05D1\u05D0"
+  }, Ico.arrowL))), React.createElement(Reveal, {
+    as: "p",
+    className: "eyebrow",
+    delay: 40,
+    style: {
+      marginTop: '46px'
+    }
+  }, "\u05D4\u05DE\u05DC\u05E6\u05D5\u05EA \u05D5\u05D9\u05D3\u05D0\u05D5 \u2014 \u05D1\u05DC\u05D9 \u05E4\u05D9\u05DC\u05D8\u05E8\u05D9\u05DD"), React.createElement("div", {
+    className: "media-grid"
+  }, VIDEOS.map((v, i) => React.createElement(YtVideo, _extends({
+    key: i
+  }, v)))), React.createElement(Reveal, {
+    as: "p",
+    className: "eyebrow",
+    delay: 40,
+    style: {
+      marginTop: '40px'
+    }
+  }, "\u05D5\u05D2\u05DD \u05D4\u05E7\u05DC\u05D8\u05D5\u05EA \u05E7\u05D5\u05DC\u05D9\u05D5\u05EA \u05E9\u05E9\u05DC\u05D7\u05D5 \u05DC\u05D9"), React.createElement("div", {
+    className: "audios"
+  }, VOICES.map((v, i) => React.createElement(AudioPlayer, {
+    key: i,
+    name: v.name,
+    src: v.src
+  }))), React.createElement("p", {
+    style: {
+      textAlign: 'center',
+      color: 'var(--muted-2)',
+      fontSize: '13px',
+      marginTop: '22px'
+    }
+  }, "* \u05DB\u05DC \u05D4\u05D4\u05DE\u05DC\u05E6\u05D5\u05EA \u05D0\u05DE\u05D9\u05EA\u05D9\u05D5\u05EA, \u05DE\u05EA\u05D5\u05DA \u05E9\u05D9\u05D7\u05D5\u05EA \u05E2\u05DD \u05D1\u05D5\u05D2\u05E8\u05D5\u05EA \u05D4\u05E7\u05D5\u05E8\u05E1.")), React.createElement("div", {
+    className: "modal " + (modal ? 'open' : ''),
+    onClick: () => setModal(null)
+  }, modal && React.createElement(React.Fragment, null, React.createElement("button", {
+    className: "modal__close",
+    "aria-label": "\u05E1\u05D2\u05D9\u05E8\u05D4"
+  }, "\u2715"), React.createElement("div", {
+    className: "modal__inner",
+    onClick: e => e.stopPropagation()
+  }, React.createElement("div", {
+    className: "modal__bar"
+  }, React.createElement("b", null, waMini, "\xA0 \u05D4\u05DE\u05DC\u05E6\u05EA \u05D1\u05D5\u05D2\u05E8\u05EA"), React.createElement("span", {
+    style: {
+      color: 'var(--muted)',
+      fontSize: '13px'
+    }
+  }, modal.note)), React.createElement("img", {
+    src: modal.img,
+    alt: "\u05D4\u05DE\u05DC\u05E6\u05D4 \u05DE\u05D5\u05D2\u05D3\u05DC\u05EA"
+  })))));
+}
+const BEFORE = ['שיחות ארוכות שלא נסגרות', 'פחד מלהגיד את המחיר', 'פניות לא איכותיות', 'יומן לא יציב', 'השוואות מתישות למתחרות', 'תחושת תקיעות'];
+const AFTER = ['שיחת מכירה מסודרת שסוגרת', 'ביטחון מלא במחיר שלך', 'פניות איכותיות של כלות שרוצות אותך', 'יומן מלא ויציב', 'בידול ברור — בוחרות דווקא בך', 'תחושה שאת מנהלת עסק אמיתי'];
+function BeforeAfter() {
+  return React.createElement("section", {
+    className: "section section--alt",
+    id: "beforeafter"
+  }, React.createElement("div", {
+    className: "container"
+  }, React.createElement("div", {
+    className: "center"
+  }, React.createElement(Reveal, {
+    as: "p",
+    className: "eyebrow center"
+  }, "\u05D4\u05E9\u05D9\u05E0\u05D5\u05D9"), React.createElement(Reveal, {
+    as: "h2",
+    className: "h2 balance mxa",
+    delay: 60,
+    style: {
+      maxWidth: '20ch'
+    }
+  }, "\u05DE\u05D4 \u05DE\u05E9\u05EA\u05E0\u05D4 \u05D0\u05D7\u05E8\u05D9 \u05E9\u05D0\u05EA \u05DE\u05D1\u05D9\u05E0\u05D4 \u05D0\u05D9\u05DA \u05DC\u05DE\u05DB\u05D5\u05E8 \u05D0\u05EA \u05E2\u05E6\u05DE\u05DA \u05E0\u05DB\u05D5\u05DF?")), React.createElement(Reveal, {
+    className: "ba",
+    delay: 80
+  }, React.createElement("div", {
+    className: "baCol baCol--before"
+  }, React.createElement("h4", null, Ico.x, " \u05DC\u05E4\u05E0\u05D9"), React.createElement("ul", null, BEFORE.map((b, i) => React.createElement("li", {
+    key: i
+  }, Ico.x, React.createElement("span", null, b))))), React.createElement("div", {
+    className: "baDivider"
+  }, React.createElement("span", null, "BRIDE")), React.createElement("div", {
+    className: "baCol baCol--after"
+  }, React.createElement("h4", null, Ico.check, " \u05D0\u05D7\u05E8\u05D9"), React.createElement("ul", null, AFTER.map((b, i) => React.createElement("li", {
+    key: i
+  }, Ico.check, React.createElement("span", null, b))))))));
+}
+Object.assign(window, {
+  Proof,
+  BeforeAfter,
+  AudioPlayer
+});
+
+/* ===== sectionsD.jsx ===== */
+const MODULES = [['01', 'הפוזיציה שלך', 'תדעי לענות לעצמך ולכלה על השאלה: למה לבחור דווקא בך?', 'מסר בידול שגורם לכלה לרצות רק אותך'], ['02', 'שיחת המכירה שסוגרת', 'תדעי לנהל שיחה שמובילה ל"כן" — בלי לרדוף, בלי ללחוץ ובלי להרגיש שאת מתחננת.', 'מבנה שיחת מכירה מוכן ליישום'], ['03', 'תמחור בלי פחד', 'תדעי לבקש את המחיר שמגיע לך, להסביר אותו, ולהפסיק להוריד מחיר מתוך פחד.', 'תמחור שאת עומדת מאחוריו'], ['04', 'מכונת הלידים', 'תדעי לבנות מערכת שמייצרת פניות רלוונטיות של כלות — ולא רק לייקים.', 'זרם קבוע של פניות איכותיות'], ['05', 'ניהול זמן ויומן', 'תדעי לסנן מתעניינות, לחסוך זמן ולהתעסק רק עם מי שבאמת רלוונטית.', 'יומן מלא בלי בלאגן'], ['06', 'לקוחות שמביאות לקוחות', 'תדעי להפוך תיק עבודות, המלצות וחוויית לקוחה למנוע צמיחה אורגני.', 'כל לקוחה מביאה עוד שלוש']];
+function Curriculum() {
+  const [open, setOpen] = useState(0);
+  return React.createElement("section", {
+    className: "section section--alt",
+    id: "curriculum"
+  }, React.createElement("div", {
+    className: "container"
+  }, React.createElement("div", {
+    className: "center"
+  }, React.createElement(Reveal, {
+    as: "p",
+    className: "eyebrow center"
+  }, "\u05EA\u05D5\u05DB\u05DF \u05D4\u05E7\u05D5\u05E8\u05E1"), React.createElement(Reveal, {
+    as: "h2",
+    className: "h2 balance mxa",
+    delay: 60,
+    style: {
+      maxWidth: '16ch'
+    }
+  }, "\u05DE\u05D4 \u05EA\u05D3\u05E2\u05D9 \u05DC\u05E2\u05E9\u05D5\u05EA \u05D0\u05D7\u05E8\u05D9 \u05D4\u05E7\u05D5\u05E8\u05E1?")), React.createElement("div", {
+    className: "acc"
+  }, MODULES.map((m, i) => {
+    const isOpen = open === i;
+    return React.createElement("div", {
+      className: "acc__item " + (isOpen ? 'open' : ''),
+      key: i
+    }, React.createElement("button", {
+      className: "acc__head",
+      onClick: () => setOpen(isOpen ? -1 : i),
+      "aria-expanded": isOpen
+    }, React.createElement("span", {
+      className: "acc__num"
+    }, m[0]), React.createElement("span", {
+      className: "acc__t"
+    }, React.createElement("b", null, m[1]), React.createElement("small", null, isOpen ? '' : 'לחצי לפתיחה')), React.createElement("span", {
+      className: "acc__plus"
+    })), React.createElement("div", {
+      className: "acc__body",
+      style: {
+        maxHeight: isOpen ? '320px' : '0'
+      }
+    }, React.createElement("div", {
+      className: "acc__bodyin"
+    }, React.createElement("p", null, m[2]), React.createElement("span", {
+      className: "acc__tag"
+    }, Ico.check, " ", m[3]))));
+  }))));
+}
+function Bonus() {
+  return React.createElement("section", {
+    className: "section section--tight section--ink",
+    id: "bonus"
+  }, React.createElement("div", {
+    className: "container"
+  }, React.createElement(Reveal, {
+    className: "bonus"
+  }, React.createElement("span", {
+    className: "bonus__tag"
+  }, Ico.spark, " \u05DE\u05EA\u05E0\u05D4 \u05DC\u05DE\u05E6\u05D8\u05E8\u05E4\u05D5\u05EA \u05E2\u05DB\u05E9\u05D9\u05D5"), React.createElement("h3", null, "the\xA0top\xA0feed \u2014 ", React.createElement("span", {
+    className: "accent"
+  }, "\u05E7\u05D5\u05E8\u05E1 \u05D4\u05BEAI")), React.createElement("p", null, "\u05E7\u05D5\u05E8\u05E1 \u05E9\u05DC\u05DD \u05E9\u05DE\u05DC\u05DE\u05D3 \u05D0\u05D5\u05EA\u05DA \u05DC\u05D9\u05E6\u05D5\u05E8 ", React.createElement("strong", null, "\u05D4\u05E4\u05E7\u05EA \u05E6\u05D9\u05DC\u05D5\u05DD \u05DE\u05D5\u05E9\u05DC\u05DE\u05EA \u05DE\u05DB\u05DC \u05EA\u05DE\u05D5\u05E0\u05D4 \u05E4\u05E9\u05D5\u05D8\u05D4"), " \u2014 \u05D1\u05DC\u05D9 \u05E6\u05DC\u05DD, \u05D1\u05DC\u05D9 \u05D3\u05D5\u05D2\u05DE\u05E0\u05D9\u05EA \u05D5\u05D1\u05DC\u05D9 \u05EA\u05E7\u05E6\u05D9\u05D1. \u05E4\u05D9\u05D3 \u05E9\u05E0\u05E8\u05D0\u05D4 \u05DB\u05DE\u05D5 \u05E7\u05DE\u05E4\u05D9\u05D9\u05DF \u05D9\u05D5\u05E7\u05E8\u05EA\u05D9, \u05D9\u05E9\u05E8 \u05DE\u05D4\u05D8\u05DC\u05E4\u05D5\u05DF. \u05D4\u05D1\u05D5\u05E0\u05D5\u05E1 \u05E0\u05DE\u05DB\u05E8 \u05D1\u05E0\u05E4\u05E8\u05D3 \u2014 \u05DB\u05D0\u05DF \u05D4\u05D5\u05D0 \u05E9\u05DC\u05DA \u05D1\u05DE\u05EA\u05E0\u05D4."))));
+}
+function Pricing() {
+  return React.createElement("section", {
+    className: "section",
+    id: "pricing"
+  }, React.createElement("div", {
+    className: "container"
+  }, React.createElement("div", {
+    className: "center"
+  }, React.createElement(Reveal, {
+    as: "p",
+    className: "eyebrow center"
+  }, "\u05D4\u05D4\u05E6\u05E2\u05D4"), React.createElement(Reveal, {
+    as: "h2",
+    className: "h2 balance mxa",
+    delay: 60,
+    style: {
+      maxWidth: '14ch'
+    }
+  }, "\u05D0\u05D5\u05EA\u05D5 \u05D9\u05D3\u05E2 \u05D1\u05D3\u05D9\u05D5\u05E7. ", React.createElement("span", {
+    className: "accent"
+  }, "\u05E8\u05D1\u05E2 \u05DE\u05D4\u05DE\u05D7\u05D9\u05E8."))), React.createElement(Reveal, {
+    className: "priceWrap",
+    delay: 80
+  }, React.createElement("div", {
+    className: "priceCard"
+  }, React.createElement("div", {
+    className: "priceCompare"
+  }, React.createElement("div", {
+    className: "pRow"
+  }, React.createElement("span", {
+    className: "lab"
+  }, "\u05D4\u05DC\u05D9\u05D5\u05D5\u05D9 \u05D4\u05D0\u05D9\u05E9\u05D9 \u05E9\u05DC\u05D9"), React.createElement("span", {
+    className: "val"
+  }, "18,000\xA0\u20AA")), React.createElement("div", {
+    className: "pRow"
+  }, React.createElement("span", {
+    className: "lab"
+  }, "\u05D4\u05E7\u05D5\u05E8\u05E1 \u05D4\u05D3\u05D9\u05D2\u05D9\u05D8\u05DC\u05D9 \u05D4\u05DE\u05DC\u05D0"), React.createElement("span", {
+    className: "val"
+  }, "7,500\xA0\u20AA"))), React.createElement("div", {
+    className: "priceNow"
+  }, React.createElement("span", {
+    className: "spot"
+  }), React.createElement("div", {
+    className: "priceNow__lab"
+  }, "\u05D4\u05D9\u05D5\u05DD \xB7 \u05D1\u05D4\u05D6\u05D3\u05DE\u05E0\u05D5\u05EA \u05D4\u05D0\u05D7\u05E8\u05D5\u05E0\u05D4"), React.createElement("div", {
+    className: "priceNow__big"
+  }, "1,500\xA0\u20AA", React.createElement("small", null, "\xA0+\u05DE\u05E2\"\u05DE")), React.createElement("div", {
+    className: "priceNow__sub"
+  }, "\u05EA\u05E9\u05DC\u05D5\u05DD \u05D7\u05D3\u05BE\u05E4\u05E2\u05DE\u05D9 \xB7 \u05D2\u05D9\u05E9\u05D4 \u05DE\u05D9\u05D9\u05D3\u05D9\u05EA"), React.createElement("a", {
+    href: PAY_LINK,
+    className: "btn btn--accent btn--block btn--lg"
+  }, "\u05D0\u05E0\u05D9 \u05E8\u05D5\u05E6\u05D4 \u05DC\u05E8\u05DB\u05D5\u05E9 \u05D0\u05EA - BRIDE"), React.createElement("p", {
+    style: {
+      marginTop: '14px',
+      fontSize: '12.5px',
+      color: 'var(--muted)',
+      display: 'flex',
+      gap: '7px',
+      alignItems: 'center',
+      justifyContent: 'center'
+    }
+  }, React.createElement("span", {
+    style: {
+      width: '14px',
+      height: '14px',
+      display: 'inline-flex'
+    }
+  }, Ico.lock), " \u05EA\u05E9\u05DC\u05D5\u05DD \u05DE\u05D0\u05D5\u05D1\u05D8\u05D7 \xB7 \u05E4\u05E8\u05D8\u05D9 \u05D4\u05D2\u05D9\u05E9\u05D4 \u05E0\u05E9\u05DC\u05D7\u05D9\u05DD \u05DC\u05DE\u05D9\u05D9\u05DC \u05DE\u05D9\u05D3")))), React.createElement(Reveal, {
+    as: "p",
+    className: "priceNote",
+    delay: 120
+  }, React.createElement("strong", null, "\u05DB\u05DC\u05D4 \u05D0\u05D7\u05EA \u05E0\u05D5\u05E1\u05E4\u05EA \u05E9\u05EA\u05E1\u05D2\u05E8\u05D9"), " \u05D9\u05DB\u05D5\u05DC\u05D4 \u05DC\u05D4\u05D7\u05D6\u05D9\u05E8 \u05DC\u05DA \u05D0\u05EA \u05D4\u05D4\u05E9\u05E7\u05E2\u05D4. \u05DB\u05DC \u05DE\u05D4 \u05E9\u05DE\u05E2\u05D1\u05E8 \u05DC\u05D6\u05D4 \u2014 \u05DB\u05D1\u05E8 \u05E8\u05D5\u05D5\u05D7.")));
+}
+function WhyPrice() {
+  return React.createElement("section", {
+    className: "section section--alt",
+    id: "why"
+  }, React.createElement("div", {
+    className: "container container--narrow"
+  }, React.createElement("div", {
+    className: "center"
+  }, React.createElement(Reveal, {
+    as: "p",
+    className: "eyebrow center"
+  }, "\u05E9\u05E7\u05D9\u05E4\u05D5\u05EA \u05DE\u05DC\u05D0\u05D4"), React.createElement(Reveal, {
+    as: "h2",
+    className: "h2 balance mxa",
+    delay: 60,
+    style: {
+      maxWidth: '16ch'
+    }
+  }, "\u05D4\u05DE\u05D7\u05D9\u05E8 \u05E0\u05DE\u05D5\u05DA \u05DE\u05D3\u05D9? ", React.createElement("span", {
+    className: "accent"
+  }, "\u05D6\u05D5 \u05D1\u05D3\u05D9\u05D5\u05E7 \u05D4\u05E1\u05D9\u05D1\u05D4."))), React.createElement(Reveal, {
+    className: "whyCard",
+    delay: 80,
+    style: {
+      marginTop: '40px'
+    }
+  }, React.createElement("p", null, "\u05D0\u05D9\u05DF \u05DB\u05D0\u05DF \u05E7\u05D0\u05E5'. \u05D4\u05DC\u05D9\u05D5\u05D5\u05D9 \u05D4\u05D0\u05D9\u05E9\u05D9 \u05E9\u05DC\u05D9 \u05E2\u05DC\u05D4 ", React.createElement("strong", null, "18,000\xA0\u20AA"), ". \u05D4\u05E7\u05D5\u05E8\u05E1 \u05D4\u05D3\u05D9\u05D2\u05D9\u05D8\u05DC\u05D9 \u05E0\u05DE\u05DB\u05E8 \u05D1\u05BE", React.createElement("strong", null, "7,500\xA0\u20AA"), ". \u05D5\u05D0\u05D5\u05EA\u05D5 \u05D9\u05D3\u05E2 \u05D1\u05D3\u05D9\u05D5\u05E7 \u05E0\u05DE\u05E6\u05D0 \u05DB\u05D0\u05DF."), React.createElement("p", null, "\u05D4\u05E1\u05D9\u05D1\u05D4 \u05D4\u05D9\u05D7\u05D9\u05D3\u05D4 \u05E9\u05D4\u05E7\u05D5\u05E8\u05E1 \u05E0\u05E4\u05EA\u05D7 \u05E2\u05DB\u05E9\u05D9\u05D5 \u05D1\u05BE1,500\xA0\u20AA \u05E4\u05E9\u05D5\u05D8\u05D4: ", React.createElement("strong", null, "\u05D0\u05E0\u05D9 \u05E2\u05D5\u05D6\u05D1 \u05D0\u05EA \u05EA\u05D7\u05D5\u05DD \u05E9\u05D9\u05D5\u05D5\u05E7 \u05D4\u05DE\u05D0\u05E4\u05E8\u05D5\u05EA \u05D5\u05D4\u05DE\u05E1\u05E8\u05E7\u05D5\u05EA \u05D5\u05E2\u05D5\u05D1\u05E8 \u05DC\u05E9\u05D9\u05D5\u05D5\u05E7 \u05D1\u05D7\u05D5\u05F4\u05DC."), " \u05D0\u05E0\u05D9 \u05DB\u05D1\u05E8 \u05DC\u05D0 \u05DE\u05D7\u05E4\u05E9 \u05DC\u05E7\u05D5\u05D7\u05D5\u05EA \u05DC\u05D9\u05D5\u05D5\u05D9 \u05D7\u05D3\u05E9\u05D9\u05DD \u05D1\u05EA\u05D7\u05D5\u05DD \u2014 \u05D0\u05E0\u05D9 \u05E8\u05D5\u05E6\u05D4 \u05DC\u05D4\u05E9\u05D0\u05D9\u05E8 \u05D0\u05D7\u05E8\u05D9\u05D9 \u05D0\u05EA \u05D4\u05E9\u05D9\u05D8\u05D4 \u05D4\u05D6\u05D0\u05EA \u05DC\u05E2\u05D5\u05D3 \u05DE\u05D0\u05E4\u05E8\u05D5\u05EA \u05D5\u05DE\u05E1\u05E8\u05E7\u05D5\u05EA, \u05DC\u05E4\u05E0\u05D9 \u05E9\u05D0\u05E0\u05D9 \u05E1\u05D5\u05D2\u05E8 \u05D0\u05EA \u05D4\u05E4\u05E8\u05E7 \u05D4\u05D6\u05D4 \u05DC\u05EA\u05DE\u05D9\u05D3."), React.createElement("p", null, React.createElement("em", null, "\u05D6\u05D5 \u05DC\u05D0 \u05DE\u05DB\u05D9\u05E8\u05EA \u05D7\u05D9\u05E1\u05D5\u05DC \u05E2\u05DD \u05D8\u05D9\u05D9\u05DE\u05E8 \u05DE\u05D6\u05D5\u05D9\u05E3. \u05D6\u05D5 \u05D4\u05D6\u05D3\u05DE\u05E0\u05D5\u05EA \u05D0\u05D7\u05E8\u05D5\u05E0\u05D4 \u05D0\u05DE\u05D9\u05EA\u05D9\u05EA \u2014 \u05D5\u05DB\u05E9\u05D4\u05D3\u05DC\u05EA \u05E0\u05E1\u05D2\u05E8\u05EA, \u05D4\u05DE\u05D7\u05D9\u05E8 \u05DC\u05D0 \u05D9\u05D7\u05D6\u05D5\u05E8.")))));
+}
+const YES = ['את מאפרת או מסרקת בעולם הכלות', 'יש לך כישרון אבל לא מספיק עבודה', 'את רוצה לסגור יותר כלות', 'את מוכנה ליישם, לא רק לצפות', 'את רוצה למכור בלי להרגיש "מוכרת"', 'את רוצה להפסיק להתחרות רק על מחיר'];
+const NO = ['את מחפשת קסם בלי לעשות כלום', 'את לא מוכנה לשנות איך שאת מדברת עם לקוחות', 'את לא עוסקת בעולם הכלות', 'את מצפה לפגישות אישיות עם ניב', 'את רוצה רק לצפות ולא ליישם'];
+function ForWho() {
+  return React.createElement("section", {
+    className: "section",
+    id: "forwho"
+  }, React.createElement("div", {
+    className: "container"
+  }, React.createElement("div", {
+    className: "center"
+  }, React.createElement(Reveal, {
+    as: "p",
+    className: "eyebrow center"
+  }, "\u05D1\u05D5\u05D0\u05D9 \u05E0\u05D4\u05D9\u05D4 \u05DB\u05E0\u05D9\u05DD \u05E8\u05D2\u05E2"), React.createElement(Reveal, {
+    as: "h2",
+    className: "h2 mxa",
+    delay: 60
+  }, "\u05DC\u05DE\u05D9 \u05D4\u05E7\u05D5\u05E8\u05E1 \u05D4\u05D6\u05D4 \u05DE\u05EA\u05D0\u05D9\u05DD?")), React.createElement("div", {
+    className: "fwGrid"
+  }, React.createElement(Reveal, {
+    className: "fwCard fwCard--yes"
+  }, React.createElement("h4", null, Ico.check, " \u05DE\u05EA\u05D0\u05D9\u05DD \u05DC\u05DA \u05D0\u05DD\u2026"), React.createElement("ul", null, YES.map((t, i) => React.createElement("li", {
+    key: i
+  }, Ico.check, React.createElement("span", null, t))))), React.createElement(Reveal, {
+    className: "fwCard fwCard--no",
+    delay: 80
+  }, React.createElement("h4", null, Ico.x, " \u05E4\u05D7\u05D5\u05EA \u05DE\u05EA\u05D0\u05D9\u05DD \u05D0\u05DD\u2026"), React.createElement("ul", null, NO.map((t, i) => React.createElement("li", {
+    key: i
+  }, Ico.x, React.createElement("span", null, t))))))));
+}
+const GET = [['קורס bride המלא', '— כל שיטת BRIDE, שלב אחר שלב'], ['גישה מיידית', 'מכל מכשיר, בכל זמן'], ['קבוצת וואטסאפ סגורה', 'להתייעצות וקהילה תומכת'], ['בונוס the top feed', 'קורס AI במתנה'], ['גישה חוזרת לתכנים', 'חוזרים מתי שרוצים'], ['חשבונית מס כחוק', 'תשלום חד־פעמי']];
+function WhatYouGet() {
+  return React.createElement("section", {
+    className: "section section--ink",
+    id: "whatyouget"
+  }, React.createElement("div", {
+    className: "container"
+  }, React.createElement("div", {
+    className: "center"
+  }, React.createElement(Reveal, {
+    as: "p",
+    className: "eyebrow center"
+  }, "\u05DE\u05D4 \u05D0\u05EA \u05DE\u05E7\u05D1\u05DC\u05EA"), React.createElement(Reveal, {
+    as: "h2",
+    className: "h2 mxa",
+    delay: 60
+  }, "\u05DE\u05D4 \u05D0\u05EA \u05DE\u05E7\u05D1\u05DC\u05EA \u05D1\u05E8\u05D2\u05E2 \u05E9\u05D0\u05EA \u05DE\u05E6\u05D8\u05E8\u05E4\u05EA?")), React.createElement("div", {
+    className: "getGrid"
+  }, GET.map((g, i) => React.createElement(Reveal, {
+    className: "getItem",
+    key: i,
+    delay: i * 60
+  }, React.createElement("span", {
+    className: "chk"
+  }, Ico.check), React.createElement("span", null, React.createElement("b", null, g[0]), " ", g[1])))), React.createElement(Reveal, {
+    className: "center",
+    delay: 120,
+    style: {
+      marginTop: '40px'
+    }
+  }, React.createElement("a", {
+    href: PAY_LINK,
+    className: "btn btn--accent btn--lg"
+  }, "\u05D0\u05E0\u05D9 \u05E8\u05D5\u05E6\u05D4 \u05DC\u05E8\u05DB\u05D5\u05E9 \u05D0\u05EA - BRIDE"))));
+}
+Object.assign(window, {
+  Curriculum,
+  Bonus,
+  Pricing,
+  WhyPrice,
+  ForWho,
+  WhatYouGet
+});
+
+/* ===== caseStudies.jsx ===== */
+const STUDENTS = [{
+  id: 'tachelet',
+  name: 'תכלת חסין',
+  label: 'מאפרת ומסרקת',
+  img: 'images/students/tachelet-hasin.png',
+  metric: {
+    value: 40000,
+    prefix: '₪',
+    sep: true,
+    label: 'הכנסה חודשית ללא מלוות'
+  },
+  story: {
+    start: 'כשתכלת הגיעה אליי היא כבר הייתה מותשת מהתחום — סקפטית, עייפה, והסביבה הקרובה כבר לחצה עליה למצוא עבודה מסודרת. היא הרגישה שהיא משקיעה המון בלי לראות תוצאות.',
+    work: 'בנינו מחדש את העמוד שלה, דייקנו את המסרים, שיפרנו מהיסוד את שיחות המכירה והקמנו קמפיין שמביא לה מעל 80 פניות בחודש.',
+    change: 'תכלת הפסיקה לפעול מתוך לחץ והתחילה לעבוד מתוך שיטה ברורה.',
+    result: 'תוך 3 חודשים בלבד הגיעה ל-10 כלות בחודש והכנסה של כ-40,000 ₪.'
+  },
+  quote: 'היום אני יודעת בדיוק מה אני שווה ומה אני מסוגלת להשיג.',
+  results: ['מעל 80 פניות בחודש', '10 כלות בחודש', 'כ-40,000 ₪', 'עבודה מתוך שיטה']
+}, {
+  id: 'stav',
+  name: 'סתיו קורב',
+  label: 'מאפר ומסרק',
+  img: 'images/students/stav-korev.png',
+  metric: {
+    text: 'לקוחות קבועים',
+    label: 'סגירות יציבות מהקמפיין'
+  },
+  story: {
+    start: 'כשסתיו הגיע אליי היה לו כישרון, אנרגיה מדהימה והמון רצון להצליח — אבל גם הרבה בלאגן. רוב העבודות הגיעו דרך מאפרות ומסרקות אחרות.',
+    work: 'עשינו סדר בעמוד, שיפרנו את שיחות המכירה, לימדתי אותו להשתמש ב-AI, והוא התחיל להפיק תוכן ברמה אחרת.',
+    change: 'הוא התחיל להיראות כמו מותג מקצועי.',
+    result: 'היום סתיו סוגר כלות באופן יציב ועקבי דרך הקמפיינים.'
+  },
+  quote: 'פתאום אנשים התחילו להתייחס אליי אחרת לגמרי.',
+  results: ['סדר בעמוד', 'תוכן עם AI', 'מותג מקצועי', 'סגירות יציבות']
+}, {
+  id: 'noagal',
+  name: 'נועה גל',
+  label: 'מאפרת ומסרקת',
+  img: 'images/students/noa-gal.png',
+  metric: {
+    value: 21,
+    label: 'התחילה את הדרך בגיל'
+  },
+  story: {
+    start: 'נועה הגיעה אליי זמן קצר אחרי השחרור — עדיין לא סגרה כלות, והעמוד שלה לא היה מוכן לעבודה מקצועית.',
+    work: 'בנינו בסיס נכון: עמוד מקצועי, אסטרטגיית תוכן ומסרים ברורים.',
+    change: 'נועה עבדה קשה בצורה יוצאת דופן — בלי לחפש קיצורי דרך.',
+    result: 'תוך חודשיים בלבד היא התחילה לסגור כלות.'
+  },
+  quote: 'הבנתי שהצלחה לא קשורה לגיל אלא לעבודה נכונה.',
+  results: ['עמוד מקצועי', 'אסטרטגיית תוכן', 'מסרים ברורים', 'כלות תוך חודשיים']
+}, {
+  id: 'morgadi',
+  name: 'מור געדי',
+  label: 'מאפרת',
+  img: 'images/students/mor-gadi.png',
+  metric: {
+    value: 20,
+    label: 'כלות בחודש השלישי'
+  },
+  story: {
+    start: 'מור כבר הייתה מאפרת פעילה — אבל מבחינתה "בסדר" אף פעם לא היה מספיק.',
+    work: 'עבדנו על תהליך המכירה ועל המעבר מפניות חמות לפניות קרות.',
+    change: 'בחודש הראשון סגרה כלה אחת, בשני שתיים — אבל היא לא ויתרה.',
+    result: 'בחודש השלישי מור סגרה 20 כלות.'
+  },
+  quote: 'ההתמדה ניצחה כל דבר אחר בדרך.',
+  results: ['תהליך מכירה', 'פניות קרות', 'התמדה', '20 כלות בחודש']
+}, {
+  id: 'dornoy',
+  name: 'דור נוי',
+  label: 'מאפר ומסרק',
+  img: 'images/students/dor-noy.png',
+  metric: {
+    value: 16,
+    label: 'כלות תוך שבועיים'
+  },
+  story: {
+    start: 'דור הגיע עם המון ביטחון — אבל בשבועיים הראשונים לא הצליח לסגור אפילו כלה אחת.',
+    work: 'ישבנו על תסריט המכירה ועברנו על השיטה שלב אחר שלב.',
+    change: 'הוא הבין שהבעיה לא הייתה בפניות, אלא בדרך שבה הוא ניהל את השיחות.',
+    result: 'תוך שבועיים בלבד הוא סגר 16 כלות.'
+  },
+  quote: 'ברגע שהבנתי את המכירות הכול השתנה.',
+  results: ['תסריט מכירה', 'ניהול שיחה נכון', 'ביטחון', '16 כלות בשבועיים']
+}, {
+  id: 'yaron',
+  name: 'ירון אופיר',
+  label: 'מסרק',
+  img: 'images/students/yaron-ofir.png',
+  metric: {
+    value: 15,
+    label: 'כלות תוך שבועיים'
+  },
+  story: {
+    start: 'ירון הוא איש מקצוע מדהים — אבל שיחות המכירה שלו נמשכו בערך דקה וחצי.',
+    work: 'בנינו מחדש את תהליך המכירה, ולימדתי אותו איך ליצור אמון וחיבור.',
+    change: 'הוא הפסיק רק לתת מחיר והתחיל לנהל שיחה אמיתית.',
+    result: 'בשבועיים שאחרי השינוי הוא סגר 15 כלות.'
+  },
+  quote: 'הבנתי שהמכירה מתחילה הרבה לפני המחיר.',
+  results: ['אמון וחיבור', 'שיחה אמיתית', 'לא רק מחיר', '15 כלות בשבועיים']
+}, {
+  id: 'noaatias',
+  name: 'נועה אטיאס',
+  label: 'מאפרת ומסרקת',
+  img: 'images/students/noa-atias.png',
+  metric: {
+    value: 23,
+    label: 'כלות בחודש השני'
+  },
+  story: {
+    start: 'כשנועה הגיעה היא כבר הייתה סוגרת 4 כלות בחודש — אבל רצתה להגיע ל-100 כלות בשנה.',
+    work: 'שיפרנו את תסריט המכירה, בנינו קמפיין לפי השיטה ושדרגנו את העמוד שלה.',
+    change: 'היא יישמה כל דבר בצורה יוצאת דופן.',
+    result: '20 כלות בחודש הראשון, ו-23 כלות בחודש השני.'
+  },
+  quote: 'כשהבנתי איך המערכת עובדת הכול התחיל לרוץ.',
+  results: ['תסריט משופר', 'קמפיין לפי השיטה', 'עמוד משודרג', '23 כלות בחודש']
+}, {
+  id: 'adya',
+  name: 'עדיה אברג\'יל',
+  label: 'מאפרת',
+  img: 'images/students/adya-abergil.jpg',
+  metric: {
+    value: 19,
+    label: 'עסקאות בחודש הראשון'
+  },
+  story: {
+    start: 'לעדיה היה כישרון מטורף — אבל היא לא ידעה איך לדחוף את עצמה.',
+    work: 'בנינו תסריט מכירה, קמפיין מדויק ומערכת שיווק מסודרת.',
+    change: 'היא התחילה להציג את עצמה בצורה מקצועית.',
+    result: '19 עסקאות בחודש הראשון.'
+  },
+  quote: 'הבנתי שהבעיה אף פעם לא הייתה בכישרון.',
+  results: ['תסריט מכירה', 'קמפיין מדויק', 'שיווק מסודר', '19 עסקאות']
+}];
+const TICKER = ['יותר ביטחון', 'יותר כלות', 'יותר לקוחות', 'יותר הכנסות', 'יותר פניות', 'יותר חשיפה', 'יותר המלצות', 'יותר מקצועיות', 'יותר סדר'];
+function initials(name) {
+  const p = String(name || '').trim().split(/\s+/);
+  return ((p[0] || '')[0] || '') + ((p[1] || '')[0] || '');
+}
+function Avatar({
+  src,
+  name,
+  cls,
+  monoCls
+}) {
+  const [err, setErr] = useState(false);
+  if (err || !src) return React.createElement("span", {
+    className: monoCls,
+    "aria-label": name
+  }, initials(name));
+  return React.createElement("img", {
+    className: cls,
+    src: src,
+    alt: name,
+    loading: "lazy",
+    onError: () => setErr(true)
+  });
+}
+function CsCounter({
+  to,
+  prefix = '',
+  suffix = '',
+  sep = false,
+  dur = 1200
+}) {
+  const [v, setV] = useState(0);
+  useEffect(() => {
+    let raf,
+      s = null;
+    const tick = t => {
+      if (s === null) s = t;
+      const p = Math.min((t - s) / dur, 1);
+      setV(Math.round((1 - Math.pow(1 - p, 3)) * to));
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    const safety = setTimeout(() => setV(to), dur + 300);
+    return () => {
+      cancelAnimationFrame(raf);
+      clearTimeout(safety);
+    };
+  }, []);
+  const num = sep ? v.toLocaleString('en-US') : v;
+  return React.createElement("span", {
+    className: "tnum"
+  }, prefix, num, suffix);
+}
+function Metric({
+  metric
+}) {
+  if (typeof metric.value === 'number') {
+    return React.createElement("b", null, React.createElement(CsCounter, {
+      to: metric.value,
+      prefix: metric.prefix || '',
+      suffix: metric.suffix || '',
+      sep: !!metric.sep
+    }));
+  }
+  return React.createElement("b", {
+    className: "csFloat__text"
+  }, metric.text);
+}
+function CaseStudies() {
+  const [ix, setIx] = useState(0);
+  const s = STUDENTS[ix];
+  const secRef = useRef(null);
+  useEffect(() => {
+    const el = secRef.current;
+    if (!el) return;
+    if (!window.matchMedia || !window.matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+    if (window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+    let raf,
+      ticking = false;
+    const onMove = e => {
+      if (ticking) return;
+      ticking = true;
+      raf = requestAnimationFrame(() => {
+        const r = el.getBoundingClientRect();
+        const mx = (e.clientX - r.left) / r.width - 0.5;
+        const my = (e.clientY - r.top) / r.height - 0.5;
+        el.style.setProperty('--mx', mx.toFixed(3));
+        el.style.setProperty('--my', my.toFixed(3));
+        ticking = false;
+      });
+    };
+    el.addEventListener('mousemove', onMove, {
+      passive: true
+    });
+    return () => {
+      el.removeEventListener('mousemove', onMove);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+  const stageRef = useRef(null);
+  const tabsRef = useRef(null);
+  const selectStudent = i => {
+    setIx(i);
+    if (window.matchMedia && window.matchMedia('(max-width:980px)').matches) {
+      requestAnimationFrame(() => {
+        const el = stageRef.current;
+        if (!el) return;
+        const y = el.getBoundingClientRect().top + window.pageYOffset - 70;
+        window.scrollTo({
+          top: y,
+          behavior: 'smooth'
+        });
+      });
+    }
+  };
+  useEffect(() => {
+    const strip = tabsRef.current;
+    if (!strip) return;
+    let raf;
+    const onScroll = () => {
+      if (!window.matchMedia || !window.matchMedia('(max-width:980px)').matches) return;
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const r = strip.getBoundingClientRect();
+        const cx = r.left + r.width / 2;
+        let best = 0,
+          bestD = Infinity;
+        strip.querySelectorAll('.csTab').forEach((t, i) => {
+          const tr = t.getBoundingClientRect();
+          const d = Math.abs(tr.left + tr.width / 2 - cx);
+          if (d < bestD) {
+            bestD = d;
+            best = i;
+          }
+        });
+        setIx(best);
+      });
+    };
+    strip.addEventListener('scroll', onScroll, {
+      passive: true
+    });
+    return () => {
+      strip.removeEventListener('scroll', onScroll);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+  const pct = (ix + 1) / STUDENTS.length * 100;
+  return React.createElement("section", {
+    className: "cs",
+    id: "cases",
+    ref: secRef,
+    "data-screen-label": "\u05E1\u05D9\u05E4\u05D5\u05E8\u05D9 \u05D4\u05E6\u05DC\u05D7\u05D4"
+  }, React.createElement("div", {
+    className: "cs__bg"
+  }, React.createElement("span", {
+    className: "cs__blob cs__blob--1",
+    style: {
+      transform: 'translate(calc(var(--mx,0)*-40px),calc(var(--my,0)*-40px))'
+    }
+  }), React.createElement("span", {
+    className: "cs__blob cs__blob--2",
+    style: {
+      transform: 'translate(calc(var(--mx,0)*36px),calc(var(--my,0)*36px))'
+    }
+  }), React.createElement("span", {
+    className: "cs__blob cs__blob--3",
+    style: {
+      transform: 'translate(calc(var(--mx,0)*24px),calc(var(--my,0)*-24px))'
+    }
+  })), React.createElement("div", {
+    className: "container cs__inner"
+  }, React.createElement(Reveal, {
+    className: "cs__head"
+  }, React.createElement("span", {
+    className: "cs__kicker"
+  }, Ico.spark, " \u05E1\u05D9\u05E4\u05D5\u05E8\u05D9 \u05D4\u05E6\u05DC\u05D7\u05D4 \u05D0\u05DE\u05D9\u05EA\u05D9\u05D9\u05DD"), React.createElement("h2", {
+    className: "h2"
+  }, "\u05D4\u05E1\u05D9\u05E4\u05D5\u05E8\u05D9\u05DD \u05E9\u05DE\u05D0\u05D7\u05D5\u05E8\u05D9 \u05D4\u05D4\u05E6\u05DC\u05D7\u05D4"), React.createElement("p", {
+    className: "lead balance"
+  }, "\u05DB\u05DC \u05D0\u05D7\u05EA \u05D4\u05EA\u05D7\u05D9\u05DC\u05D4 \u05DE\u05DE\u05E7\u05D5\u05DD \u05D0\u05D7\u05E8.", React.createElement("br", null), "\u05DB\u05D5\u05DC\u05DF \u05D1\u05D7\u05E8\u05D5 \u05DC\u05D4\u05E9\u05E7\u05D9\u05E2 \u05D1\u05E2\u05E6\u05DE\u05DF.")), React.createElement(Reveal, {
+    className: "cs__layout",
+    delay: 80
+  }, React.createElement("div", {
+    className: "cs__left"
+  }, React.createElement("div", {
+    className: "cs__progress"
+  }, React.createElement("span", {
+    className: "cs__progNum"
+  }, String(ix + 1).padStart(2, '0'), React.createElement("i", null, " / ", String(STUDENTS.length).padStart(2, '0'))), React.createElement("span", {
+    className: "cs__progBar"
+  }, React.createElement("span", {
+    style: {
+      width: pct + '%'
+    }
+  }))), React.createElement("div", {
+    className: "cs__tabs",
+    role: "tablist",
+    "aria-label": "\u05D1\u05D7\u05D9\u05E8\u05EA \u05E1\u05D8\u05D5\u05D3\u05E0\u05D8",
+    ref: tabsRef
+  }, STUDENTS.map((st, i) => React.createElement("button", {
+    key: st.id,
+    className: "csTab " + (i === ix ? 'on' : ''),
+    role: "tab",
+    "aria-selected": i === ix,
+    onClick: () => selectStudent(i)
+  }, React.createElement(Avatar, {
+    src: st.img,
+    name: st.name,
+    cls: "csTab__ph",
+    monoCls: "csTab__mono"
+  }), React.createElement("span", {
+    className: "csTab__t"
+  }, React.createElement("b", null, st.name), React.createElement("small", null, st.label)), React.createElement("span", {
+    className: "csTab__go"
+  }, Ico.arrowL))))), React.createElement("div", {
+    className: "cs__stage",
+    ref: stageRef
+  }, React.createElement("div", {
+    className: "csContent",
+    key: s.id
+  }, React.createElement("div", {
+    className: "csCol"
+  }, React.createElement("div", {
+    className: "csHero csHero--tall"
+  }, React.createElement(Avatar, {
+    src: s.img,
+    name: s.name,
+    cls: "csHero__img",
+    monoCls: "csHero__mono"
+  }), React.createElement("div", {
+    className: "csFloat"
+  }, React.createElement(Metric, {
+    metric: s.metric
+  }), React.createElement("small", null, s.metric.label)), React.createElement("div", {
+    className: "csHero__name"
+  }, s.name, React.createElement("small", null, s.label))), React.createElement("div", {
+    className: "csResults"
+  }, s.results.map((r, i) => React.createElement("div", {
+    className: "csRes",
+    key: i
+  }, React.createElement("span", {
+    className: "ic"
+  }, Ico.check), React.createElement("span", null, r))))), React.createElement("div", {
+    className: "csCol"
+  }, React.createElement("div", {
+    className: "csStory"
+  }, React.createElement("div", {
+    className: "csStep"
+  }, React.createElement("h5", null, "\u05E0\u05E7\u05D5\u05D3\u05EA \u05D4\u05E4\u05EA\u05D9\u05D7\u05D4"), React.createElement("p", null, s.story.start)), React.createElement("div", {
+    className: "csStep"
+  }, React.createElement("h5", null, "\u05DE\u05D4 \u05E2\u05D1\u05D3\u05E0\u05D5 \u05E2\u05DC\u05D9\u05D5"), React.createElement("p", null, s.story.work)), React.createElement("div", {
+    className: "csStep"
+  }, React.createElement("h5", null, "\u05D4\u05E9\u05D9\u05E0\u05D5\u05D9"), React.createElement("p", null, s.story.change)), React.createElement("div", {
+    className: "csStep"
+  }, React.createElement("h5", null, "\u05D4\u05EA\u05D5\u05E6\u05D0\u05D4"), React.createElement("p", null, s.story.result))), React.createElement("div", {
+    className: "csQuote"
+  }, React.createElement("q", null, s.quote))))))), React.createElement("div", {
+    className: "container cs__inner"
+  }, React.createElement(Reveal, {
+    className: "cs__cta"
+  }, React.createElement("h3", null, "\u05D4\u05E9\u05D0\u05DC\u05D4 \u05D4\u05D9\u05D0 \u05DC\u05D0 \u05D0\u05DD \u05D6\u05D4 \u05D0\u05E4\u05E9\u05E8\u05D9.", React.createElement("br", null), React.createElement("span", {
+    className: "accent"
+  }, "\u05D4\u05E9\u05D0\u05DC\u05D4 \u05D4\u05D9\u05D0 \u05D0\u05D9\u05E4\u05D4 \u05EA\u05D4\u05D9\u05D9 \u05D1\u05E2\u05D5\u05D3 \u05E9\u05E0\u05D4 \u05D0\u05DD \u05EA\u05EA\u05D7\u05D9\u05DC\u05D9 \u05D4\u05D9\u05D5\u05DD.")), React.createElement("p", null, "\u05D0\u05DD \u05D2\u05DD \u05D0\u05EA \u05E8\u05D5\u05E6\u05D4 \u05DC\u05D4\u05E4\u05D5\u05DA \u05D0\u05EA \u05D4\u05DB\u05D9\u05E9\u05E8\u05D5\u05DF \u05E9\u05DC\u05DA \u05DC\u05E2\u05E1\u05E7 \u05DE\u05E1\u05D5\u05D3\u05E8, \u05DE\u05E7\u05E6\u05D5\u05E2\u05D9 \u05D5\u05E8\u05D5\u05D5\u05D7\u05D9 \u2014 bride \u05E0\u05D1\u05E0\u05EA\u05D4 \u05D1\u05D3\u05D9\u05D5\u05E7 \u05D1\u05E9\u05D1\u05D9\u05DC\u05DA."), React.createElement("a", {
+    href: "#pricing",
+    onClick: e => onAnchor(e, 'pricing'),
+    className: "btn btn--accent btn--lg"
+  }, "\u05D0\u05E0\u05D9 \u05E8\u05D5\u05E6\u05D4 \u05DC\u05E8\u05DB\u05D5\u05E9 \u05D0\u05EA - BRIDE"))));
+}
+Object.assign(window, {
+  CaseStudies
+});
+
+/* ===== sectionsE.jsx ===== */
+const FAQS = [['המחיר נמוך מדי — מה הקאץ\'?', 'אין קאץ\'. הליווי שלי עלה 18,000 ₪ והקורס נמכר ב־7,500 ₪ — ואותו ידע בדיוק נמצא כאן. המחיר נמוך כי אני עוזב את תחום שיווק המאפרות והמסרקות ופותח את הקורס בפעם האחרונה. זה תזמון, לא חיסרון.'], ['אני בתחילת הדרך — זה מתאים לי?', 'כן, אם יש לך בסיס מקצועי ואת מוכנה ליישם. הקורס לא מלמד לאפר או לסרק — הוא מלמד לבנות עסק שסוגר יותר כלות, והשיטה בנויה צעד אחר צעד.'], ['יש פגישות אישיות עם ניב?', 'לא. זו לא תוכנית ליווי אישית. זה קורס דיגיטלי מלא לצפייה עצמית + קבוצת וואטסאפ סגורה להתייעצות. בדיוק בגלל זה המחיר כזה.'], ['איך מקבלים גישה?', 'מיד לאחר התשלום יישלח אלייך מייל עם פרטי הגישה לקורס. אם לא הגיע תוך כמה דקות — בדקי גם בתיקיית הספאם / קידומי מכירות.'], ['לכמה זמן הגישה?', 'הגישה לתכני הקורס נשארת איתך — תוכלי לחזור ולצפות מתי שתרצי, מכל מכשיר.'], ['אני מקבלת חשבונית?', 'כן, תופק לך חשבונית מס כדין על הרכישה.'], ['אני לא טובה במכירות — זה בשבילי?', 'בדיוק בשביל זה הקורס קיים. הוא מלמד אותך למכור בצורה טבעית, בלי לחץ ובלי להרגיש שאת משחקת דמות. מילים נכונות, מבנה ברור, וביטחון.']];
+function FAQ() {
+  const [open, setOpen] = useState(-1);
+  return React.createElement("section", {
+    className: "section section--alt",
+    id: "faq"
+  }, React.createElement("div", {
+    className: "container"
+  }, React.createElement("div", {
+    className: "center"
+  }, React.createElement(Reveal, {
+    as: "p",
+    className: "eyebrow center"
+  }, "\u05E9\u05D0\u05DC\u05D5\u05EA \u05D5\u05EA\u05E9\u05D5\u05D1\u05D5\u05EA"), React.createElement(Reveal, {
+    as: "h2",
+    className: "h2 mxa",
+    delay: 60
+  }, "\u05E9\u05D0\u05DC\u05D5\u05EA \u05E9\u05D7\u05D5\u05D6\u05E8\u05D5\u05EA \u05D0\u05E6\u05DC \u05DB\u05D5\u05DC\u05DF")), React.createElement("div", {
+    className: "faq"
+  }, FAQS.map((f, i) => {
+    const isOpen = open === i;
+    return React.createElement("div", {
+      className: "faq__item " + (isOpen ? 'open' : ''),
+      key: i
+    }, React.createElement("button", {
+      className: "faq__q",
+      onClick: () => setOpen(isOpen ? -1 : i),
+      "aria-expanded": isOpen
+    }, React.createElement("span", null, f[0]), React.createElement("span", {
+      className: "ic"
+    }, "+")), React.createElement("div", {
+      className: "faq__a",
+      style: {
+        maxHeight: isOpen ? '260px' : '0'
+      }
+    }, React.createElement("p", null, f[1])));
+  }))));
+}
+function Final() {
+  return React.createElement("section", {
+    className: "section section--ink final",
+    id: "final"
+  }, React.createElement("div", {
+    className: "container container--narrow"
+  }, React.createElement(Reveal, null, React.createElement("img", {
+    className: "final__photo",
+    src: "images/founder.jpg",
+    alt: "\u05E0\u05D9\u05D1 \u05D2\u05D1\u05D0\u05D9"
+  })), React.createElement(Reveal, {
+    as: "p",
+    className: "eyebrow center",
+    delay: 40
+  }, "\u05DE\u05D9\u05DC\u05D4 \u05D0\u05D9\u05E9\u05D9\u05EA \u05D0\u05D7\u05E8\u05D5\u05E0\u05D4"), React.createElement(Reveal, {
+    as: "h2",
+    className: "h2 balance mxa",
+    delay: 80,
+    style: {
+      maxWidth: '20ch'
+    }
+  }, "\u05D0\u05DD \u05D9\u05E9 \u05DC\u05DA \u05D9\u05D3\u05D9\u05D9\u05DD \u05D8\u05D5\u05D1\u05D5\u05EA \u2014 ", React.createElement("span", {
+    className: "accent"
+  }, "\u05D0\u05DC \u05EA\u05EA\u05E0\u05D9 \u05DC\u05E2\u05E1\u05E7 \u05E9\u05DC\u05DA \u05DC\u05D4\u05D9\u05E9\u05D0\u05E8 \u05E7\u05D8\u05DF.")), React.createElement(Reveal, {
+    className: "final__lines",
+    delay: 120
+  }, React.createElement("p", null, "\u05D0\u05EA \u05DC\u05D0 \u05E6\u05E8\u05D9\u05DB\u05D4 \u05DC\u05D4\u05D9\u05D5\u05EA \u05D4\u05DE\u05D0\u05E4\u05E8\u05EA \u05D4\u05DB\u05D9 \u05E8\u05D5\u05E2\u05E9\u05EA \u05D1\u05D0\u05D9\u05E0\u05E1\u05D8\u05D2\u05E8\u05DD. \u05D0\u05EA \u05DC\u05D0 \u05E6\u05E8\u05D9\u05DB\u05D4 \u05DC\u05E8\u05D3\u05D5\u05E3 \u05D0\u05D7\u05E8\u05D9 \u05DB\u05DC\u05D5\u05EA. \u05D0\u05EA \u05DC\u05D0 \u05E6\u05E8\u05D9\u05DB\u05D4 \u05DC\u05D4\u05D5\u05E8\u05D9\u05D3 \u05DE\u05D7\u05D9\u05E8\u05D9\u05DD \u05DB\u05D3\u05D9 \u05E9\u05D9\u05D1\u05D7\u05E8\u05D5 \u05D1\u05DA."), React.createElement("p", null, "\u05D0\u05EA \u05E6\u05E8\u05D9\u05DB\u05D4 ", React.createElement("strong", null, "\u05E9\u05D9\u05D8\u05D4"), ". \u05EA\u05D4\u05DC\u05D9\u05DA. \u05DE\u05D9\u05DC\u05D9\u05DD \u05E0\u05DB\u05D5\u05E0\u05D5\u05EA. \u05D1\u05D9\u05D8\u05D7\u05D5\u05DF. \u05D5\u05D4\u05D1\u05E0\u05D4 \u05D0\u05D9\u05DA \u05DC\u05D4\u05E4\u05D5\u05DA \u05D0\u05EA \u05D4\u05DB\u05D9\u05E9\u05E8\u05D5\u05DF \u05E9\u05DC\u05DA \u05DC\u05E2\u05E1\u05E7 \u05E9\u05E1\u05D5\u05D2\u05E8."), React.createElement("p", null, "\u05D6\u05D5 \u05D4\u05E4\u05E2\u05DD \u05D4\u05D0\u05D7\u05E8\u05D5\u05E0\u05D4 \u05E9\u05D0\u05E0\u05D9 \u05E4\u05D5\u05EA\u05D7 \u05D0\u05EA \u05D4\u05D3\u05DC\u05EA \u05D4\u05D6\u05D0\u05EA. \u05D0\u05DD \u05D6\u05D4 \u05DE\u05D3\u05D1\u05E8 \u05D0\u05DC\u05D9\u05D9\u05DA \u2014 \u05D6\u05D4 \u05D4\u05D6\u05DE\u05DF."), React.createElement("p", {
+    className: "final__sign"
+  }, "\u2014 \u05E0\u05D9\u05D1 \u05D2\u05D1\u05D0\u05D9")), React.createElement(Reveal, {
+    delay: 160
+  }, React.createElement("a", {
+    href: PAY_LINK,
+    className: "btn btn--accent btn--lg"
+  }, "\u05D0\u05E0\u05D9 \u05E8\u05D5\u05E6\u05D4 \u05DC\u05E8\u05DB\u05D5\u05E9 \u05D0\u05EA - BRIDE"))));
+}
+const IG_ICON = React.createElement("svg", {
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: "1.9"
+}, React.createElement("rect", {
+  x: "3",
+  y: "3",
+  width: "18",
+  height: "18",
+  rx: "5"
+}), React.createElement("circle", {
+  cx: "12",
+  cy: "12",
+  r: "4"
+}), React.createElement("circle", {
+  cx: "17.5",
+  cy: "6.5",
+  r: "1.1",
+  fill: "currentColor",
+  stroke: "none"
+}));
+function PolicyModal({
+  open,
+  onClose
+}) {
+  return React.createElement("div", {
+    className: "modal " + (open ? 'open' : ''),
+    onClick: onClose
+  }, open && React.createElement(React.Fragment, null, React.createElement("button", {
+    className: "modal__close",
+    "aria-label": "\u05E1\u05D2\u05D9\u05E8\u05D4"
+  }, "\u2715"), React.createElement("div", {
+    className: "modal__inner",
+    style: {
+      maxWidth: '560px',
+      background: '#fff',
+      color: '#15151b'
+    },
+    onClick: e => e.stopPropagation()
+  }, React.createElement("div", {
+    className: "modal__bar",
+    style: {
+      borderColor: '#eee'
+    }
+  }, React.createElement("b", {
+    style: {
+      color: '#15151b'
+    }
+  }, "\u05DE\u05D3\u05D9\u05E0\u05D9\u05D5\u05EA \u05E4\u05E8\u05D8\u05D9\u05D5\u05EA \u05D5\u05EA\u05E7\u05E0\u05D5\u05DF")), React.createElement("div", {
+    style: {
+      padding: '22px 24px',
+      overflowY: 'auto',
+      lineHeight: 1.7,
+      fontSize: '15px'
+    }
+  }, React.createElement("p", {
+    style: {
+      marginBottom: '12px'
+    }
+  }, "\u05D0\u05EA\u05E8 ", React.createElement("strong", null, "bride"), " (\"\u05D4\u05D0\u05EA\u05E8\") \u05DE\u05DB\u05D1\u05D3 \u05D0\u05EA \u05E4\u05E8\u05D8\u05D9\u05D5\u05EA \u05D4\u05DE\u05E9\u05EA\u05DE\u05E9\u05D9\u05DD \u05D5\u05E4\u05D5\u05E2\u05DC \u05D1\u05D4\u05EA\u05D0\u05DD \u05DC\u05D7\u05D5\u05E7 \u05D4\u05D2\u05E0\u05EA \u05D4\u05E4\u05E8\u05D8\u05D9\u05D5\u05EA, \u05D4\u05EA\u05E9\u05DE\"\u05D0\u20131981."), React.createElement("p", {
+    style: {
+      fontWeight: 700,
+      marginBottom: '6px'
+    }
+  }, "\u05D0\u05D9\u05E1\u05D5\u05E3 \u05D5\u05E9\u05D9\u05DE\u05D5\u05E9 \u05D1\u05DE\u05D9\u05D3\u05E2"), React.createElement("p", {
+    style: {
+      marginBottom: '12px'
+    }
+  }, "\u05E4\u05E8\u05D8\u05D9\u05DD \u05E9\u05EA\u05DE\u05E1\u05E8\u05D9 \u05D1\u05E2\u05EA \u05E8\u05DB\u05D9\u05E9\u05D4 \u05D0\u05D5 \u05D9\u05E6\u05D9\u05E8\u05EA \u05E7\u05E9\u05E8 (\u05E9\u05DD, \u05D8\u05DC\u05E4\u05D5\u05DF, \u05D3\u05D5\u05D0\"\u05DC) \u05DE\u05E9\u05DE\u05E9\u05D9\u05DD \u05D0\u05DA \u05D5\u05E8\u05E7 \u05DC\u05E6\u05D5\u05E8\u05DA \u05D0\u05E1\u05E4\u05E7\u05EA \u05D4\u05E7\u05D5\u05E8\u05E1, \u05DE\u05EA\u05DF \u05E9\u05D9\u05E8\u05D5\u05EA \u05D5\u05EA\u05DE\u05D9\u05DB\u05D4. \u05D0\u05D9\u05E0\u05E0\u05D5 \u05DE\u05E2\u05D1\u05D9\u05E8\u05D9\u05DD \u05D0\u05EA \u05E4\u05E8\u05D8\u05D9\u05D9\u05DA \u05DC\u05E6\u05D3\u05D3\u05D9\u05DD \u05E9\u05DC\u05D9\u05E9\u05D9\u05D9\u05DD, \u05DC\u05DE\u05E2\u05D8 \u05E1\u05E4\u05E7\u05D9 \u05E1\u05DC\u05D9\u05E7\u05D4 \u05D5\u05EA\u05E9\u05EA\u05D9\u05EA \u05D4\u05D3\u05E8\u05D5\u05E9\u05D9\u05DD \u05DC\u05D4\u05E9\u05DC\u05DE\u05EA \u05D4\u05E8\u05DB\u05D9\u05E9\u05D4."), React.createElement("p", {
+    style: {
+      fontWeight: 700,
+      marginBottom: '6px'
+    }
+  }, "\u05EA\u05E9\u05DC\u05D5\u05DE\u05D9\u05DD"), React.createElement("p", {
+    style: {
+      marginBottom: '12px'
+    }
+  }, "\u05D4\u05EA\u05E9\u05DC\u05D5\u05DD \u05DE\u05EA\u05D1\u05E6\u05E2 \u05D1\u05E2\u05DE\u05D5\u05D3 \u05E1\u05DC\u05D9\u05E7\u05D4 \u05DE\u05D0\u05D5\u05D1\u05D8\u05D7. \u05E4\u05E8\u05D8\u05D9 \u05D4\u05D0\u05E9\u05E8\u05D0\u05D9 \u05D0\u05D9\u05E0\u05DD \u05E0\u05E9\u05DE\u05E8\u05D9\u05DD \u05D1\u05D9\u05D3\u05D9\u05E0\u05D5."), React.createElement("p", {
+    style: {
+      fontWeight: 700,
+      marginBottom: '6px'
+    }
+  }, "\u05DE\u05D3\u05D9\u05E0\u05D9\u05D5\u05EA \u05D1\u05D9\u05D8\u05D5\u05DC\u05D9\u05DD"), React.createElement("p", {
+    style: {
+      marginBottom: '12px'
+    }
+  }, "\u05D1\u05D9\u05D8\u05D5\u05DC \u05E2\u05E1\u05E7\u05D4 \u05D9\u05D9\u05E2\u05E9\u05D4 \u05D1\u05D4\u05EA\u05D0\u05DD \u05DC\u05D7\u05D5\u05E7 \u05D4\u05D2\u05E0\u05EA \u05D4\u05E6\u05E8\u05DB\u05DF, \u05D4\u05EA\u05E9\u05DE\"\u05D0\u20131981 \u05D5\u05EA\u05E7\u05E0\u05D5\u05EA\u05D9\u05D5. \u05DE\u05D0\u05D7\u05E8 \u05E9\u05DE\u05D3\u05D5\u05D1\u05E8 \u05D1\u05DE\u05D5\u05E6\u05E8 \u05D3\u05D9\u05D2\u05D9\u05D8\u05DC\u05D9 \u05D1\u05E2\u05DC \u05D2\u05D9\u05E9\u05D4 \u05DE\u05D9\u05D9\u05D3\u05D9\u05EA, \u05D6\u05DB\u05D5\u05EA \u05D4\u05D1\u05D9\u05D8\u05D5\u05DC \u05DB\u05E4\u05D5\u05E4\u05D4 \u05DC\u05DE\u05D2\u05D1\u05DC\u05D5\u05EA \u05D4\u05E7\u05D1\u05D5\u05E2\u05D5\u05EA \u05D1\u05D7\u05D5\u05E7 \u05DC\u05D2\u05D1\u05D9 \u05EA\u05D5\u05DB\u05DF \u05D3\u05D9\u05D2\u05D9\u05D8\u05DC\u05D9 \u05E9\u05E1\u05D5\u05E4\u05E7."), React.createElement("p", {
+    style: {
+      fontWeight: 700,
+      marginBottom: '6px'
+    }
+  }, "\u05E7\u05E0\u05D9\u05D9\u05DF \u05E8\u05D5\u05D7\u05E0\u05D9"), React.createElement("p", {
+    style: {
+      marginBottom: '12px'
+    }
+  }, "\u05DB\u05DC \u05D4\u05EA\u05DB\u05E0\u05D9\u05DD \u05D1\u05E7\u05D5\u05E8\u05E1 \u05D5\u05D1\u05D0\u05EA\u05E8 \u05DE\u05D5\u05D2\u05E0\u05D9\u05DD \u05D1\u05D6\u05DB\u05D5\u05D9\u05D5\u05EA \u05D9\u05D5\u05E6\u05E8\u05D9\u05DD. \u05D0\u05D9\u05DF \u05DC\u05D4\u05E2\u05EA\u05D9\u05E7, \u05DC\u05D4\u05E4\u05D9\u05E5 \u05D0\u05D5 \u05DC\u05E9\u05EA\u05E3 \u05D0\u05EA \u05D4\u05EA\u05DB\u05E0\u05D9\u05DD \u05DC\u05DC\u05D0 \u05D0\u05D9\u05E9\u05D5\u05E8 \u05D1\u05DB\u05EA\u05D1."), React.createElement("p", {
+    style: {
+      fontWeight: 700,
+      marginBottom: '6px'
+    }
+  }, "\u05D9\u05E6\u05D9\u05E8\u05EA \u05E7\u05E9\u05E8"), React.createElement("p", null, "\u05D1\u05DB\u05DC \u05E9\u05D0\u05DC\u05D4 \u05D1\u05E0\u05D5\u05E9\u05D0 \u05E4\u05E8\u05D8\u05D9\u05D5\u05EA \u05D0\u05D5 \u05EA\u05E7\u05E0\u05D5\u05DF \u05E0\u05D9\u05EA\u05DF \u05DC\u05E4\u05E0\u05D5\u05EA \u05D0\u05DC\u05D9\u05E0\u05D5 \u05D3\u05E8\u05DA \u05E2\u05DE\u05D5\u05D3 \u05D4\u05D0\u05D9\u05E0\u05E1\u05D8\u05D2\u05E8\u05DD \u05E9\u05DC \u05D4\u05D0\u05EA\u05E8."), React.createElement("p", {
+    style: {
+      marginTop: '14px',
+      fontSize: '12.5px',
+      color: '#888'
+    }
+  }, "\u05E2\u05D5\u05D3\u05DB\u05DF \u05DC\u05D0\u05D7\u05E8\u05D5\u05E0\u05D4: ", new Date().toLocaleDateString('he-IL'))))));
+}
+function Footer({
+  onStatement
+}) {
+  const [policy, setPolicy] = useState(false);
+  useEffect(() => {
+    const onKey = e => {
+      if (e.key === 'Escape') setPolicy(false);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
+  return React.createElement("footer", {
+    className: "footer"
+  }, React.createElement("div", {
+    className: "container"
+  }, React.createElement("div", {
+    className: "brand"
+  }, "bride"), React.createElement("p", {
+    style: {
+      marginTop: '6px'
+    }
+  }, "\u05EA\u05D5\u05E8\u05EA \u05D4\u05DE\u05D0\u05E4\u05E8\u05D5\u05EA \u05D5\u05D4\u05DE\u05E1\u05E8\u05E7\u05D5\u05EA"), React.createElement("div", {
+    className: "footer__links"
+  }, React.createElement("a", {
+    href: IG_LINK,
+    target: "_blank",
+    rel: "noopener",
+    "aria-label": "\u05D0\u05D9\u05E0\u05E1\u05D8\u05D2\u05E8\u05DD",
+    className: "footer__ig"
+  }, IG_ICON), React.createElement("button", {
+    onClick: onStatement
+  }, "\u05D4\u05E6\u05D4\u05E8\u05EA \u05E0\u05D2\u05D9\u05E9\u05D5\u05EA"), React.createElement("button", {
+    onClick: () => setPolicy(true)
+  }, "\u05DE\u05D3\u05D9\u05E0\u05D9\u05D5\u05EA \u05E4\u05E8\u05D8\u05D9\u05D5\u05EA")), React.createElement("small", null, "\xA9 ", new Date().getFullYear(), " bride \xB7 \u05DB\u05DC \u05D4\u05D6\u05DB\u05D5\u05D9\u05D5\u05EA \u05E9\u05DE\u05D5\u05E8\u05D5\u05EA."), React.createElement("small", null, "\u05D4\u05D0\u05EA\u05E8 \u05E0\u05D1\u05E0\u05D4 \u05D1\u05E0\u05D2\u05D9\u05E9\u05D5\u05EA \u05DC\u05E4\u05D9 \u05EA\u05E7\u05DF \u05D9\u05E9\u05E8\u05D0\u05DC\u05D9 5568 \u05D5\u05EA\u05E7\u05E0\u05D5\u05EA \u05E9\u05D5\u05D5\u05D9\u05D5\u05DF \u05D6\u05DB\u05D5\u05D9\u05D5\u05EA \u05DC\u05D0\u05E0\u05E9\u05D9\u05DD \u05E2\u05DD \u05DE\u05D5\u05D2\u05D1\u05DC\u05D5\u05EA.")), React.createElement(PolicyModal, {
+    open: policy,
+    onClose: () => setPolicy(false)
+  }));
+}
+function Progress() {
+  const ref = useRef(null);
+  useEffect(() => {
+    let raf;
+    const f = () => {
+      raf = requestAnimationFrame(() => {
+        const h = document.documentElement;
+        const max = h.scrollHeight - h.clientHeight;
+        const p = max > 0 ? h.scrollTop / max * 100 : 0;
+        if (ref.current) ref.current.style.width = p + '%';
+      });
+    };
+    window.addEventListener('scroll', f, {
+      passive: true
+    });
+    f();
+    return () => {
+      window.removeEventListener('scroll', f);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+  return React.createElement("div", {
+    className: "progress"
+  }, React.createElement("div", {
+    className: "progress__bar",
+    ref: ref
+  }));
+}
+function StickyCTA() {
+  return React.createElement("a", {
+    className: "sticky-cta",
+    href: "#pricing",
+    onClick: e => onAnchor(e, 'pricing')
+  }, React.createElement("span", null, React.createElement("b", null, "\u05D0\u05E0\u05D9 \u05E8\u05D5\u05E6\u05D4 \u05DC\u05E8\u05DB\u05D5\u05E9 \u05D0\u05EA - BRIDE"), React.createElement("small", null, "\u05D4\u05D6\u05D3\u05DE\u05E0\u05D5\u05EA \u05D0\u05D7\u05E8\u05D5\u05E0\u05D4 \xB7 \u05D2\u05D9\u05E9\u05D4 \u05DE\u05D9\u05D9\u05D3\u05D9\u05EA")), React.createElement("span", {
+    className: "btn btn--accent"
+  }, "1,500\xA0\u20AA"));
+}
+function WhatsAppFab() {
+  return React.createElement("a", {
+    className: "fab fab--wa",
+    href: WA_LINK,
+    target: "_blank",
+    rel: "noopener",
+    "aria-label": "\u05E9\u05D0\u05DC\u05D5\u05EA \u05E2\u05DC \u05D4\u05E7\u05D5\u05E8\u05E1 \u05D1\u05D5\u05D5\u05D0\u05D8\u05E1\u05D0\u05E4"
+  }, React.createElement("span", {
+    className: "wa-ping"
+  }), Ico.wa);
+}
+const A11Y_TOGGLES = [['contrast', 'ניגודיות גבוהה', React.createElement("svg", {
+  viewBox: "0 0 24 24",
+  fill: "currentColor"
+}, React.createElement("path", {
+  d: "M12 2a10 10 0 100 20V2z"
+}), React.createElement("circle", {
+  cx: "12",
+  cy: "12",
+  r: "9.2",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: "1.6"
+}))], ['gray', 'גווני אפור', React.createElement("svg", {
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: "1.8"
+}, React.createElement("circle", {
+  cx: "12",
+  cy: "12",
+  r: "9"
+}), React.createElement("path", {
+  d: "M12 3v18"
+}))], ['links', 'הדגשת קישורים', React.createElement("svg", {
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: "1.9",
+  strokeLinecap: "round"
+}, React.createElement("path", {
+  d: "M10 13a5 5 0 007 0l2-2a5 5 0 00-7-7l-1 1"
+}), React.createElement("path", {
+  d: "M14 11a5 5 0 00-7 0l-2 2a5 5 0 007 7l1-1"
+}))], ['readable', 'פונט קריא', React.createElement("svg", {
+  viewBox: "0 0 24 24",
+  fill: "currentColor"
+}, React.createElement("path", {
+  d: "M5 19l5-14h2l5 14h-2l-1.3-4H8.3L7 19H5zm3.9-6h4.2L11 7.2 8.9 13z"
+}))], ['noanim', 'עצירת אנימציות', React.createElement("svg", {
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: "1.8"
+}, React.createElement("rect", {
+  x: "4",
+  y: "4",
+  width: "16",
+  height: "16",
+  rx: "2"
+}), React.createElement("path", {
+  d: "M9 9h6v6H9z",
+  fill: "currentColor"
+}))], ['cursor', 'סמן גדול', React.createElement("svg", {
+  viewBox: "0 0 24 24",
+  fill: "currentColor"
+}, React.createElement("path", {
+  d: "M5 3l13 8-5.2 1.2L16 19l-2 .9-3.2-6.8L7 17z"
+}))], ['guide', 'מדריך קריאה', React.createElement("svg", {
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: "1.8"
+}, React.createElement("path", {
+  d: "M3 8h18M3 12h18M3 16h12"
+}))]];
+const DEFAULT_A11Y = {
+  fs: 0,
+  contrast: false,
+  gray: false,
+  links: false,
+  readable: false,
+  noanim: false,
+  cursor: false,
+  guide: false
+};
+function applyA11y(s) {
+  const c = document.documentElement.classList;
+  ['a11y-fs1', 'a11y-fs2', 'a11y-fs3', 'a11y-contrast', 'a11y-gray', 'a11y-links', 'a11y-readable', 'a11y-noanim', 'a11y-cursor', 'a11y-guide'].forEach(x => c.remove(x));
+  if (s.fs > 0) c.add('a11y-fs' + s.fs);
+  if (s.contrast) c.add('a11y-contrast');
+  if (s.gray) c.add('a11y-gray');
+  if (s.links) c.add('a11y-links');
+  if (s.readable) c.add('a11y-readable');
+  if (s.noanim) c.add('a11y-noanim');
+  if (s.cursor) c.add('a11y-cursor');
+  if (s.guide) c.add('a11y-guide');
+}
+function A11y({
+  onStatement
+}) {
+  const [open, setOpen] = useState(false);
+  const [s, setS] = useState(() => {
+    try {
+      return Object.assign({}, DEFAULT_A11Y, JSON.parse(localStorage.getItem('bride_a11y') || '{}'));
+    } catch (e) {
+      return Object.assign({}, DEFAULT_A11Y);
+    }
+  });
+  const guideRef = useRef(null);
+  useEffect(() => {
+    applyA11y(s);
+    try {
+      localStorage.setItem('bride_a11y', JSON.stringify(s));
+    } catch (e) {}
+  }, [s]);
+  useEffect(() => {
+    if (!s.guide) return;
+    const mv = e => {
+      if (guideRef.current) guideRef.current.style.top = e.clientY - 21 + 'px';
+    };
+    window.addEventListener('mousemove', mv);
+    window.addEventListener('touchmove', e => {
+      if (e.touches[0]) mv(e.touches[0]);
+    }, {
+      passive: true
+    });
+    return () => window.removeEventListener('mousemove', mv);
+  }, [s.guide]);
+  const tog = k => setS(p => Object.assign({}, p, {
+    [k]: !p[k]
+  }));
+  const setFs = d => setS(p => Object.assign({}, p, {
+    fs: Math.max(0, Math.min(3, p.fs + d))
+  }));
+  const reset = () => setS(Object.assign({}, DEFAULT_A11Y));
+  return React.createElement(React.Fragment, null, React.createElement("div", {
+    className: "readGuide",
+    ref: guideRef
+  }), React.createElement("button", {
+    className: "a11yBtn",
+    "aria-label": "\u05EA\u05E4\u05E8\u05D9\u05D8 \u05E0\u05D2\u05D9\u05E9\u05D5\u05EA",
+    "aria-expanded": open,
+    onClick: () => setOpen(o => !o)
+  }, Ico.a11y), React.createElement("div", {
+    className: "a11yPanel " + (open ? 'open' : ''),
+    role: "dialog",
+    "aria-label": "\u05D4\u05D2\u05D3\u05E8\u05D5\u05EA \u05E0\u05D2\u05D9\u05E9\u05D5\u05EA"
+  }, React.createElement("div", {
+    className: "a11yPanel__head"
+  }, React.createElement("b", null, "\u05EA\u05E4\u05E8\u05D9\u05D8 \u05E0\u05D2\u05D9\u05E9\u05D5\u05EA"), React.createElement("button", {
+    "aria-label": "\u05E1\u05D2\u05D9\u05E8\u05D4",
+    onClick: () => setOpen(false)
+  }, "\u2715")), React.createElement("div", {
+    className: "a11yPanel__body"
+  }, React.createElement("div", {
+    className: "a11yRow"
+  }, React.createElement("span", null, "\u05D2\u05D5\u05D3\u05DC \u05EA\u05E6\u05D5\u05D2\u05D4"), React.createElement("div", {
+    className: "a11yFont"
+  }, React.createElement("button", {
+    onClick: () => setFs(-1),
+    "aria-label": "\u05D4\u05E7\u05D8\u05E0\u05D4"
+  }, "A\u2212"), React.createElement("span", {
+    className: "lvl"
+  }, ['רגיל', 'גדול', 'גדול יותר', 'הכי גדול'][s.fs]), React.createElement("button", {
+    onClick: () => setFs(1),
+    "aria-label": "\u05D4\u05D2\u05D3\u05DC\u05D4"
+  }, "A+"))), React.createElement("div", {
+    className: "a11yRow"
+  }, React.createElement("span", null, "\u05D4\u05EA\u05D0\u05DE\u05D5\u05EA \u05EA\u05E6\u05D5\u05D2\u05D4"), React.createElement("div", {
+    className: "a11yGrid"
+  }, A11Y_TOGGLES.map(([k, label, icon]) => React.createElement("button", {
+    key: k,
+    className: "a11yOpt " + (s[k] ? 'on' : ''),
+    "aria-pressed": !!s[k],
+    onClick: () => tog(k)
+  }, icon, React.createElement("span", null, label))))), React.createElement("button", {
+    className: "a11yReset",
+    onClick: reset
+  }, "\u05D0\u05D9\u05E4\u05D5\u05E1 \u05D4\u05D2\u05D3\u05E8\u05D5\u05EA \u05E0\u05D2\u05D9\u05E9\u05D5\u05EA"), React.createElement("button", {
+    className: "a11yState",
+    onClick: () => {
+      setOpen(false);
+      onStatement();
+    }
+  }, "\u05E7\u05E8\u05D0\u05D9 \u05D0\u05EA \u05D4\u05E6\u05D4\u05E8\u05EA \u05D4\u05E0\u05D2\u05D9\u05E9\u05D5\u05EA \u05D4\u05DE\u05DC\u05D0\u05D4"))));
+}
+function StatementModal({
+  open,
+  onClose
+}) {
+  return React.createElement("div", {
+    className: "modal " + (open ? 'open' : ''),
+    onClick: onClose
+  }, open && React.createElement(React.Fragment, null, React.createElement("button", {
+    className: "modal__close",
+    "aria-label": "\u05E1\u05D2\u05D9\u05E8\u05D4"
+  }, "\u2715"), React.createElement("div", {
+    className: "modal__inner",
+    style: {
+      maxWidth: '560px',
+      background: '#fff',
+      color: '#15151b'
+    },
+    onClick: e => e.stopPropagation()
+  }, React.createElement("div", {
+    className: "modal__bar",
+    style: {
+      borderColor: '#eee'
+    }
+  }, React.createElement("b", {
+    style: {
+      color: '#15151b'
+    }
+  }, "\u05D4\u05E6\u05D4\u05E8\u05EA \u05E0\u05D2\u05D9\u05E9\u05D5\u05EA")), React.createElement("div", {
+    style: {
+      padding: '22px 24px',
+      overflowY: 'auto',
+      lineHeight: 1.7,
+      fontSize: '15px'
+    }
+  }, React.createElement("p", {
+    style: {
+      marginBottom: '12px'
+    }
+  }, "\u05D0\u05EA\u05E8 ", React.createElement("strong", null, "bride \u2014 \u05EA\u05D5\u05E8\u05EA \u05D4\u05DE\u05D0\u05E4\u05E8\u05D5\u05EA \u05D5\u05D4\u05DE\u05E1\u05E8\u05E7\u05D5\u05EA"), " \u05E8\u05D5\u05D0\u05D4 \u05D7\u05E9\u05D9\u05D1\u05D5\u05EA \u05E8\u05D1\u05D4 \u05D1\u05DE\u05EA\u05DF \u05E9\u05D9\u05E8\u05D5\u05EA \u05E9\u05D5\u05D5\u05D9\u05D5\u05E0\u05D9 \u05DC\u05DB\u05DC\u05DC \u05D4\u05D2\u05D5\u05DC\u05E9\u05D9\u05DD \u05D5\u05D1\u05E9\u05D9\u05E4\u05D5\u05E8 \u05D7\u05D5\u05D5\u05D9\u05D9\u05EA \u05D4\u05E9\u05D9\u05DE\u05D5\u05E9 \u05DC\u05D0\u05E0\u05E9\u05D9\u05DD \u05E2\u05DD \u05DE\u05D5\u05D2\u05D1\u05DC\u05D5\u05EA."), React.createElement("p", {
+    style: {
+      marginBottom: '12px'
+    }
+  }, "\u05D4\u05D0\u05EA\u05E8 \u05D4\u05D5\u05E0\u05D2\u05E9 \u05D1\u05D4\u05EA\u05D0\u05DD \u05DC\u05EA\u05E7\u05E0\u05D5\u05EA \u05E9\u05D5\u05D5\u05D9\u05D5\u05DF \u05D6\u05DB\u05D5\u05D9\u05D5\u05EA \u05DC\u05D0\u05E0\u05E9\u05D9\u05DD \u05E2\u05DD \u05DE\u05D5\u05D2\u05D1\u05DC\u05D5\u05EA (\u05D4\u05EA\u05D0\u05DE\u05D5\u05EA \u05E0\u05D2\u05D9\u05E9\u05D5\u05EA \u05DC\u05E9\u05D9\u05E8\u05D5\u05EA), \u05D4\u05EA\u05E9\u05E2\"\u05D2\u20132013, \u05D5\u05DC\u05EA\u05E7\u05DF \u05D4\u05D9\u05E9\u05E8\u05D0\u05DC\u05D9 ", React.createElement("strong", null, "\u05EA\"\u05D9 5568"), " \u05D4\u05DE\u05D1\u05D5\u05E1\u05E1 \u05E2\u05DC \u05D4\u05E0\u05D7\u05D9\u05D5\u05EA ", React.createElement("strong", null, "WCAG 2.0"), " \u05D1\u05E8\u05DE\u05D4 AA."), React.createElement("p", {
+    style: {
+      marginBottom: '8px',
+      fontWeight: 700
+    }
+  }, "\u05D0\u05DE\u05E6\u05E2\u05D9 \u05D4\u05E0\u05D2\u05D9\u05E9\u05D5\u05EA \u05D1\u05D0\u05EA\u05E8 \u05DB\u05D5\u05DC\u05DC\u05D9\u05DD:"), React.createElement("ul", {
+    style: {
+      margin: '0 0 12px',
+      paddingInlineStart: '20px'
+    }
+  }, React.createElement("li", null, "\u05EA\u05E4\u05E8\u05D9\u05D8 \u05E0\u05D2\u05D9\u05E9\u05D5\u05EA \u05E7\u05D1\u05D5\u05E2 \u05D1\u05DB\u05DC \u05E2\u05DE\u05D5\u05D3\u05D9 \u05D4\u05D0\u05EA\u05E8"), React.createElement("li", null, "\u05D4\u05D2\u05D3\u05DC\u05EA \u05D5\u05D4\u05E7\u05D8\u05E0\u05EA \u05EA\u05E6\u05D5\u05D2\u05D4"), React.createElement("li", null, "\u05E0\u05D9\u05D2\u05D5\u05D3\u05D9\u05D5\u05EA \u05D2\u05D1\u05D5\u05D4\u05D4 \u05D5\u05D2\u05D5\u05D5\u05E0\u05D9 \u05D0\u05E4\u05D5\u05E8"), React.createElement("li", null, "\u05D4\u05D3\u05D2\u05E9\u05EA \u05E7\u05D9\u05E9\u05D5\u05E8\u05D9\u05DD \u05D5\u05E4\u05D5\u05E0\u05D8 \u05E7\u05E8\u05D9\u05D0"), React.createElement("li", null, "\u05E2\u05E6\u05D9\u05E8\u05EA \u05D0\u05E0\u05D9\u05DE\u05E6\u05D9\u05D5\u05EA \u05D5\u05EA\u05E0\u05D5\u05E2\u05D4"), React.createElement("li", null, "\u05E1\u05DE\u05DF \u05E2\u05DB\u05D1\u05E8 \u05DE\u05D5\u05D2\u05D3\u05DC \u05D5\u05DE\u05D3\u05E8\u05D9\u05DA \u05E7\u05E8\u05D9\u05D0\u05D4"), React.createElement("li", null, "\u05EA\u05DE\u05D9\u05DB\u05D4 \u05D1\u05E0\u05D9\u05D5\u05D5\u05D8 \u05DE\u05E7\u05DC\u05D3\u05EA \u05D5\u05D1\u05E7\u05D5\u05E8\u05D0\u05D9 \u05DE\u05E1\u05DA (\u05EA\u05D2\u05D9\u05D5\u05EA ARIA, \u05D8\u05E7\u05E1\u05D8 \u05D7\u05DC\u05D5\u05E4\u05D9 \u05DC\u05EA\u05DE\u05D5\u05E0\u05D5\u05EA)")), React.createElement("p", {
+    style: {
+      marginBottom: '12px'
+    }
+  }, "\u05E2\u05DC \u05D0\u05E3 \u05DE\u05D0\u05DE\u05E6\u05D9\u05E0\u05D5 \u05DC\u05D4\u05E0\u05D2\u05D9\u05E9 \u05D0\u05EA \u05DB\u05DC\u05DC \u05D4\u05D3\u05E4\u05D9\u05DD, \u05D9\u05D9\u05EA\u05DB\u05DF \u05E9\u05D9\u05D9\u05DE\u05E6\u05D0\u05D5 \u05D7\u05DC\u05E7\u05D9\u05DD \u05E9\u05D8\u05E8\u05DD \u05D4\u05D5\u05E0\u05D2\u05E9\u05D5 \u05D1\u05DE\u05DC\u05D5\u05D0\u05DD. \u05D0\u05E0\u05D5 \u05DE\u05DE\u05E9\u05D9\u05DB\u05D9\u05DD \u05DC\u05E4\u05E2\u05D5\u05DC \u05DC\u05E9\u05D9\u05E4\u05D5\u05E8 \u05D4\u05E0\u05D2\u05D9\u05E9\u05D5\u05EA \u05D1\u05D0\u05D5\u05E4\u05DF \u05E9\u05D5\u05D8\u05E3."), React.createElement("p", {
+    style: {
+      marginBottom: '4px',
+      fontWeight: 700
+    }
+  }, "\u05E4\u05E0\u05D9\u05D9\u05D4 \u05D1\u05E0\u05D5\u05E9\u05D0 \u05E0\u05D2\u05D9\u05E9\u05D5\u05EA"), React.createElement("p", null, "\u05E0\u05EA\u05E7\u05DC\u05EA \u05D1\u05E7\u05D5\u05E9\u05D9? \u05E0\u05E9\u05DE\u05D7 \u05DC\u05E1\u05D9\u05D9\u05E2. \u05E8\u05DB\u05D6 \u05D4\u05E0\u05D2\u05D9\u05E9\u05D5\u05EA: \u05E0\u05D9\u05D1 \u05D2\u05D1\u05D0\u05D9 \xB7 \u05D1\u05D5\u05D5\u05D0\u05D8\u05E1\u05D0\u05E4 ", React.createElement("a", {
+    href: WA_LINK,
+    style: {
+      color: '#1d4ed8',
+      fontWeight: 700
+    }
+  }, "\u05DC\u05D7\u05E6\u05D9 \u05DB\u05D0\u05DF"), " \u05D0\u05D5 \u05D1\u05D0\u05D9\u05E0\u05E1\u05D8\u05D2\u05E8\u05DD ", React.createElement("a", {
+    href: IG_LINK,
+    style: {
+      color: '#1d4ed8',
+      fontWeight: 700
+    }
+  }, "@nivgabay12"), "."), React.createElement("p", {
+    style: {
+      marginTop: '14px',
+      fontSize: '12.5px',
+      color: '#888'
+    }
+  }, "\u05EA\u05D0\u05E8\u05D9\u05DA \u05E2\u05D3\u05DB\u05D5\u05DF \u05D0\u05D7\u05E8\u05D5\u05DF: ", new Date().toLocaleDateString('he-IL'))))));
+}
+function App() {
+  const [stmt, setStmt] = useState(false);
+  useEffect(() => {
+    const onKey = e => {
+      if (e.key === 'Escape') setStmt(false);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
+  return React.createElement(React.Fragment, null, React.createElement(Progress, null), React.createElement(Header, null), React.createElement("div", {
+    id: "content"
+  }, React.createElement(Hero, null), React.createElement(Identify, null), React.createElement(BrideMethod, null), React.createElement(Story, null), React.createElement(CaseStudies, null), React.createElement(Proof, null), React.createElement(Curriculum, null), React.createElement(Bonus, null), React.createElement(Pricing, null), React.createElement(WhyPrice, null), React.createElement(ForWho, null), React.createElement(WhatYouGet, null), React.createElement(FAQ, null), React.createElement(Final, null), React.createElement(Footer, {
+    onStatement: () => setStmt(true)
+  })), React.createElement(StickyCTA, null), React.createElement(WhatsAppFab, null), React.createElement(A11y, {
+    onStatement: () => setStmt(true)
+  }), React.createElement(StatementModal, {
+    open: stmt,
+    onClose: () => setStmt(false)
+  }));
+}
+ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(App, null));
+
+</script>
+</body>
+</html>
