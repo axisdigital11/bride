@@ -267,17 +267,6 @@ const WORKER = "https://bride-payment.axis-office11.workers.dev";
 let allSales = [];
 let sessionToken = sessionStorage.getItem('bride_admin_token') || '';
 
-// ── INIT ──────────────────────────────────────────────────────────────────────
-
-const resetToken = new URLSearchParams(location.search).get('reset');
-if (resetToken) {
-  showReset();
-} else if (sessionToken) {
-  loadSales();
-} else {
-  showLogin();
-}
-
 // ── SCREEN SWITCHING ──────────────────────────────────────────────────────────
 
 function showLogin() {
@@ -534,6 +523,16 @@ function exportCSV() {
   a.href = URL.createObjectURL(new Blob(['﻿'+csv],{type:'text/csv;charset=utf-8'}));
   a.download = `bride-sales-${new Date().toISOString().slice(0,10)}.csv`;
   a.click();
+}
+
+// ── INIT (runs after all functions defined) ───────────────────────────────────
+const resetToken = new URLSearchParams(location.search).get('reset');
+if (resetToken) {
+  showReset();
+} else if (sessionToken) {
+  loadSales();
+} else {
+  showLogin();
 }
 </script>
 </body>
