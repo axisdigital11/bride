@@ -322,8 +322,9 @@ async function doLogin() {
       err.textContent = data.error || 'שגיאת התחברות';
       btn.disabled = false; btn.textContent = 'כניסה';
     }
-  } catch {
-    err.textContent = 'שגיאת חיבור לשרת';
+  } catch(e) {
+    console.error('Login error:', e);
+    err.textContent = 'שגיאת חיבור: ' + (e.message || e);
     btn.disabled = false; btn.textContent = 'כניסה';
   }
 }
