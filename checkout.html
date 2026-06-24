@@ -185,6 +185,14 @@ body{font-family:var(--body);background:var(--bg);color:var(--ink);min-height:10
 <script>
 const WORKER_URL = "https://bride-payment.axis-office11.workers.dev";
 
+// Capture UTM params from URL
+const _utmParams = Object.fromEntries(
+  ['utm_source','utm_medium','utm_campaign','utm_content','utm_term']
+    .map(k => [k, new URLSearchParams(location.search).get(k) || sessionStorage.getItem(k) || ''])
+);
+// Persist in session so they survive redirects
+Object.entries(_utmParams).forEach(([k,v]) => v && sessionStorage.setItem(k, v));
+
 function openTerms() {
   document.getElementById('termsOverlay').classList.add('open');
 }
@@ -224,7 +232,7 @@ async function handleSubmit(e) {
     const res = await fetch(WORKER_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ firstName, lastName, phone, email, country })
+      body: JSON.stringify({ firstName, lastName, phone, email, country, ..._utmParams })
     });
     const data = await res.json();
     if (data.url) {
