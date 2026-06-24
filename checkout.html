@@ -183,7 +183,7 @@ body{font-family:var(--body);background:var(--bg);color:var(--ink);min-height:10
 </div>
 
 <script>
-const PAY_LINK = "REPLACE_WITH_GROW_PAYMENT_LINK";
+const WORKER_URL = "https://bride-payment.axis-office11.workers.dev";
 
 function openTerms() {
   document.getElementById('termsOverlay').classList.add('open');
@@ -220,14 +220,25 @@ function handleSubmit(e) {
   btn.disabled = true;
   btn.textContent = 'מעבר לתשלום...';
 
-  const url = new URL(PAY_LINK);
-  url.searchParams.set('first_name', firstName);
-  url.searchParams.set('last_name', lastName);
-  url.searchParams.set('phone', phone);
-  url.searchParams.set('email', email);
-  url.searchParams.set('country', country);
-
-  window.location.href = url.toString();
+  try {
+    const res = await fetch(WORKER_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ firstName, lastName, phone, email, country })
+    });
+    const data = await res.json();
+    if (data.url) {
+      window.location.href = data.url;
+    } else {
+      alert('שגיאה ביצירת דף התשלום. נסי שוב.');
+      btn.disabled = false;
+      btn.textContent = 'המשך לתשלום';
+    }
+  } catch (err) {
+    alert('שגיאת חיבור. בדקי את החיבור לאינטרנט ונסי שוב.');
+    btn.disabled = false;
+    btn.textContent = 'המשך לתשלום';
+  }
 }
 </script>
 </body>
