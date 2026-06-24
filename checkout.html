@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>השלמת רכישה — bride</title>
+<link rel="icon" type="image/png" href="logo/logo-light.png" />
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&family=Heebo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#0A0A0C;--bg-2:#101015;--panel:#16161D;--panel-2:#1E1E27;
+  --ink:#F7F6F4;--ink-soft:#D9D8DE;--muted:#9C9CA7;
+  --accent:#F08A5B;--accent-2:#FFB489;--accent-deep:#D96B3C;
+  --accent-soft:rgba(240,138,91,.14);--line:rgba(255,255,255,.10);
+  --line-accent:rgba(240,138,91,.36);--r:14px;
+  --display:'Heebo',sans-serif;--body:'Assistant',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);min-height:100vh;
+  -webkit-font-smoothing:antialiased;display:flex;flex-direction:column;align-items:center;
+  justify-content:flex-start;padding:40px 20px 80px}
+.logo{font-family:var(--display);font-weight:900;font-size:28px;color:var(--accent);
+  letter-spacing:-0.5px;margin-bottom:8px;text-decoration:none}
+.subtitle{color:var(--muted);font-size:15px;margin-bottom:40px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:20px;
+  padding:36px 40px;width:100%;max-width:480px}
+.card h1{font-family:var(--display);font-weight:800;font-size:22px;margin-bottom:6px}
+.card .price{color:var(--accent);font-family:var(--display);font-weight:900;font-size:28px;margin-bottom:28px}
+.field{margin-bottom:18px}
+.field label{display:block;font-size:14px;font-weight:600;color:var(--ink-soft);margin-bottom:6px}
+.field input,.field select{
+  width:100%;padding:13px 16px;border-radius:10px;border:1px solid var(--line);
+  background:var(--bg-2);color:var(--ink);font-family:var(--body);font-size:15px;
+  outline:none;transition:.2s;appearance:none;-webkit-appearance:none}
+.field input:focus,.field select:focus{border-color:var(--accent);background:var(--panel-2)}
+.field input::placeholder{color:var(--muted)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.terms-row{display:flex;align-items:flex-start;gap:10px;margin:22px 0 26px;font-size:14px;color:var(--ink-soft);line-height:1.5}
+.terms-row input[type="checkbox"]{
+  width:18px;height:18px;min-width:18px;margin-top:2px;accent-color:var(--accent);cursor:pointer}
+.terms-row a{color:var(--accent);text-decoration:underline;cursor:pointer}
+.btn{width:100%;padding:16px;border:none;border-radius:12px;cursor:pointer;
+  background:linear-gradient(135deg,var(--accent),var(--accent-deep));
+  color:#fff;font-family:var(--display);font-weight:800;font-size:17px;
+  transition:.2s;box-shadow:0 8px 24px rgba(240,138,91,.35)}
+.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.secure{display:flex;align-items:center;justify-content:center;gap:6px;
+  margin-top:14px;font-size:13px;color:var(--muted)}
+.secure svg{width:14px;height:14px;color:var(--muted)}
+.divider{height:1px;background:var(--line);margin:24px 0}
+.summary{font-size:14px;color:var(--muted);line-height:1.7}
+.summary strong{color:var(--ink)}
+
+/* modal */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:100;
+  display:flex;align-items:center;justify-content:center;padding:20px;
+  opacity:0;pointer-events:none;transition:.2s}
+.overlay.open{opacity:1;pointer-events:auto}
+.modal{background:#fff;color:#15151b;border-radius:16px;max-width:540px;width:100%;
+  max-height:85vh;overflow:hidden;display:flex;flex-direction:column}
+.modal-bar{display:flex;align-items:center;justify-content:space-between;
+  padding:16px 20px;border-bottom:1px solid #eee;font-family:var(--display);font-weight:700;font-size:16px}
+.modal-close{background:none;border:none;cursor:pointer;font-size:20px;color:#888;line-height:1}
+.modal-body{padding:22px 24px;overflow-y:auto;font-size:14px;line-height:1.7}
+.modal-body h3{font-size:14px;font-weight:700;margin:16px 0 4px}
+.modal-body h3:first-child{margin-top:0}
+.modal-body p{margin-bottom:10px;color:#333}
+
+@media(max-width:520px){
+  .card{padding:26px 20px}
+  .row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<a href="index.html" class="logo">bride</a>
+<p class="subtitle">תורת המאפרות והמסרקות</p>
+
+<div class="card">
+  <h1>השלמת רכישה</h1>
+  <div class="price">1,500 ₪</div>
+
+  <form id="checkoutForm" onsubmit="handleSubmit(event)" novalidate>
+    <div class="row">
+      <div class="field">
+        <label for="firstName">שם פרטי *</label>
+        <input type="text" id="firstName" name="firstName" placeholder="שם פרטי" required />
+      </div>
+      <div class="field">
+        <label for="lastName">שם משפחה *</label>
+        <input type="text" id="lastName" name="lastName" placeholder="שם משפחה" required />
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="phone">טלפון *</label>
+      <input type="tel" id="phone" name="phone" placeholder="05X-XXXXXXX" required />
+    </div>
+
+    <div class="field">
+      <label for="email">כתובת מייל *</label>
+      <input type="email" id="email" name="email" placeholder="email@example.com" required />
+    </div>
+
+    <div class="field">
+      <label for="country">מדינה *</label>
+      <select id="country" name="country" required>
+        <option value="">בחרי מדינה</option>
+        <option value="IL" selected>ישראל</option>
+        <option value="US">ארצות הברית</option>
+        <option value="GB">בריטניה</option>
+        <option value="CA">קנדה</option>
+        <option value="AU">אוסטרליה</option>
+        <option value="DE">גרמניה</option>
+        <option value="FR">צרפת</option>
+        <option value="other">אחר</option>
+      </select>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="terms-row">
+      <input type="checkbox" id="terms" required />
+      <label for="terms">
+        קראתי ואני מאשר/ת את
+        <a onclick="openTerms()">התקנון ומדיניות הפרטיות</a>
+        של האתר, כולל מדיניות הביטולים.
+      </label>
+    </div>
+
+    <button type="submit" class="btn" id="submitBtn">המשך לתשלום</button>
+
+    <div class="secure">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/>
+      </svg>
+      תשלום מאובטח דרך Grow
+    </div>
+  </form>
+</div>
+
+<!-- Terms Modal -->
+<div class="overlay" id="termsOverlay" onclick="closeTerms(event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-bar">
+      תקנון ומדיניות פרטיות
+      <button class="modal-close" onclick="closeTerms()">✕</button>
+    </div>
+    <div class="modal-body">
+      <h3>פרטי בית העסק</h3>
+      <p>ניב גבאי · מרדכי 6, אופקים · טלפון: 055-9125112</p>
+
+      <h3>הגבלת גיל</h3>
+      <p>תנאי לרכישה באתר הוא שהרוכש בן 18 שנים ומעלה.</p>
+
+      <h3>אספקת המוצר</h3>
+      <p>הקורס הוא מוצר דיגיטלי. הגישה לחומרי הקורס נפתחת מיידית עם השלמת התשלום, ומועברת לכתובת המייל שהוזנה בעת הרכישה.</p>
+
+      <h3>ביטול עסקה</h3>
+      <p>מאחר שמדובר במוצר דיגיטלי הניתן לגישה מיידית, לאחר ביצוע הרכישה ופתיחת הגישה לתכנים אין אפשרות לביטול העסקה, בהתאם לחוק הגנת הצרכן התשמ"א–1981, סעיף 14ג(ד). לפניות בנושא ביטול: 055-9125112.</p>
+
+      <h3>אחריות המוצר</h3>
+      <p>bride ו/או מי מטעמה לא יהיו אחראים לנזק ישיר ו/או עקיף שייגרם כתוצאה משימוש בקורס. התכנים אינם מהווים ייעוץ מקצועי. האחריות על יישום המידע מוטלת על המשתמש בלבד.</p>
+
+      <h3>פרטיות</h3>
+      <p>אתר bride פועל בהתאם לחוק הגנת הפרטיות התשמ"א–1981. פרטים שנמסרו בעת רכישה משמשים אך ורק לצורך אספקת הקורס ותמיכה. אנו נוקטים באמצעי אבטחה מקובלים ולא מעבירים מידע לצדדים שלישיים, למעט ספקי סליקה הנדרשים להשלמת הרכישה.</p>
+
+      <h3>תשלומים</h3>
+      <p>התשלום מתבצע בעמוד סליקה מאובטח. פרטי האשראי אינם נשמרים בידינו.</p>
+
+      <h3>קניין רוחני</h3>
+      <p>כל התכנים בקורס ובאתר מוגנים בזכויות יוצרים. אין להעתיק, להפיץ או לשתף ללא אישור בכתב.</p>
+
+      <h3>יצירת קשר</h3>
+      <p>לכל שאלה: טלפון 055-9125112 או דרך עמוד האינסטגרם של האתר.</p>
+
+      <p style="margin-top:16px;font-size:12px;color:#888">עודכן לאחרונה: יוני 2026</p>
+    </div>
+  </div>
+</div>
+
+<script>
+const PAY_LINK = "REPLACE_WITH_GROW_PAYMENT_LINK";
+
+function openTerms() {
+  document.getElementById('termsOverlay').classList.add('open');
+}
+function closeTerms(e) {
+  if (!e || e.target === document.getElementById('termsOverlay')) {
+    document.getElementById('termsOverlay').classList.remove('open');
+  }
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeTerms();
+});
+
+function handleSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const firstName = form.firstName.value.trim();
+  const lastName = form.lastName.value.trim();
+  const phone = form.phone.value.trim();
+  const email = form.email.value.trim();
+  const country = form.country.value;
+  const terms = form.terms.checked;
+
+  if (!firstName || !lastName || !phone || !email || !country) {
+    alert('נא למלא את כל השדות הנדרשים.');
+    return;
+  }
+  if (!terms) {
+    alert('נא לאשר את התקנון לפני המשך.');
+    return;
+  }
+
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = 'מעבר לתשלום...';
+
+  const url = new URL(PAY_LINK);
+  url.searchParams.set('first_name', firstName);
+  url.searchParams.set('last_name', lastName);
+  url.searchParams.set('phone', phone);
+  url.searchParams.set('email', email);
+  url.searchParams.set('country', country);
+
+  window.location.href = url.toString();
+}
+</script>
+</body>
+</html>
