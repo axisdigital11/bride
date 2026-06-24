@@ -197,7 +197,7 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeTerms();
 });
 
-function handleSubmit(e) {
+async function handleSubmit(e) {
   e.preventDefault();
   const form = e.target;
   const firstName = form.firstName.value.trim();
