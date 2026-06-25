@@ -81,7 +81,7 @@ body{font-family:var(--body);background:var(--bg);color:var(--ink);min-height:10
 
 <div class="card">
   <h1>השלמת רכישה</h1>
-  <div class="price">1,500 ₪</div>
+  <div class="price"><span id="priceNow">1,500 ₪</span><span id="priceWas" style="display:none;color:var(--muted);text-decoration:line-through;font-size:18px;margin-inline-start:10px;font-weight:700"></span></div>
 
   <form id="checkoutForm" onsubmit="handleSubmit(event)" novalidate>
     <div class="row">
@@ -118,6 +118,15 @@ body{font-family:var(--body);background:var(--bg);color:var(--ink);min-height:10
         <option value="FR">צרפת</option>
         <option value="other">אחר</option>
       </select>
+    </div>
+
+    <div class="field">
+      <label for="coupon">קוד קופון (אופציונלי)</label>
+      <div style="display:flex;gap:10px">
+        <input type="text" id="coupon" name="coupon" placeholder="הזיני קוד" style="flex:1" autocapitalize="characters" />
+        <button type="button" id="couponBtn" onclick="applyCoupon()" style="padding:0 20px;border-radius:10px;border:1px solid var(--line-accent);background:var(--accent-soft);color:var(--accent);font-family:var(--display);font-weight:700;font-size:14px;cursor:pointer;white-space:nowrap">החל</button>
+      </div>
+      <div id="couponMsg" style="font-size:13px;margin-top:8px"></div>
     </div>
 
     <div class="divider"></div>
@@ -193,6 +202,42 @@ const _utmParams = Object.fromEntries(
 // Persist in session so they survive redirects
 Object.entries(_utmParams).forEach(([k,v]) => v && sessionStorage.setItem(k, v));
 
+let appliedCoupon = '';
+
+async function applyCoupon() {
+  const code = document.getElementById('coupon').value.trim();
+  const msg = document.getElementById('couponMsg');
+  const btn = document.getElementById('couponBtn');
+  if (!code) { msg.textContent = ''; return; }
+  btn.disabled = true; btn.textContent = '...';
+  try {
+    const res = await fetch(WORKER_URL + '/coupon', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ coupon: code })
+    });
+    const data = await res.json();
+    if (data.valid) {
+      appliedCoupon = code;
+      document.getElementById('priceNow').textContent = data.amount.toLocaleString('he-IL') + ' ₪';
+      const was = document.getElementById('priceWas');
+      was.textContent = data.basePrice.toLocaleString('he-IL') + ' ₪';
+      was.style.display = 'inline';
+      msg.style.color = '#7ed957';
+      msg.textContent = '✓ קופון הופעל — ' + data.percent + '% הנחה';
+    } else {
+      appliedCoupon = '';
+      document.getElementById('priceNow').textContent = '1,500 ₪';
+      document.getElementById('priceWas').style.display = 'none';
+      msg.style.color = '#ff6b6b';
+      msg.textContent = data.error || 'קוד קופון לא תקין';
+    }
+  } catch (err) {
+    msg.style.color = '#ff6b6b';
+    msg.textContent = 'שגיאה באימות הקופון';
+  }
+  btn.disabled = false; btn.textContent = 'החל';
+}
+
 function openTerms() {
   document.getElementById('termsOverlay').classList.add('open');
 }
@@ -232,7 +277,7 @@ async function handleSubmit(e) {
     const res = await fetch(WORKER_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ firstName, lastName, phone, email, country, ..._utmParams })
+      body: JSON.stringify({ firstName, lastName, phone, email, country, coupon: appliedCoupon, ..._utmParams })
     });
     const data = await res.json();
     if (data.url) {
