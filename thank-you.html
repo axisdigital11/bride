@@ -55,8 +55,10 @@ document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init','712897050240711');
 fbq('track','PageView');
 (function(){
-  var val = parseFloat(new URLSearchParams(location.search).get('value')) || 1500;
-  fbq('track','Purchase',{value:val,currency:'ILS'});
+  var qs = new URLSearchParams(location.search);
+  var val = parseFloat(qs.get('value')) || 1500;
+  var saleId = qs.get('sale');
+  fbq('track','Purchase',{value:val,currency:'ILS'}, saleId ? {eventID:saleId} : undefined);
 })();
 </script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=712897050240711&ev=PageView&noscript=1"/></noscript>
