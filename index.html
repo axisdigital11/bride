@@ -2910,5 +2910,54 @@ function App() {
 ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(App, null));
 
 </script>
+<script>
+/* ── live size editor — only with ?edit=1 ── */
+(function(){
+  if(!/[?&]edit=1/.test(location.search)) return;
+  var st = document.createElement('style'); st.id='dev-ov'; document.head.appendChild(st);
+  var v = { zoom:0.8, pad:112, h2:62, h3:28, lead:21 };
+  function apply(){
+    st.textContent =
+      'body{zoom:'+v.zoom+'}'+
+      '.section:not(.hero){padding:'+v.pad+'px 0 !important}'+
+      '.h2{font-size:'+v.h2+'px !important}'+
+      '.h3{font-size:'+v.h3+'px !important}'+
+      '.section:not(.hero) .lead{font-size:'+v.lead+'px !important}';
+  }
+  apply();
+  function row(label,key,min,max,step){
+    return '<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">'+
+      '<label style="font-size:12px;min-width:84px;color:#ddd">'+label+'</label>'+
+      '<input type="range" data-k="'+key+'" min="'+min+'" max="'+max+'" step="'+step+'" value="'+v[key]+'" style="flex:1">'+
+      '<span data-o="'+key+'" style="font-size:12px;color:#fff;min-width:44px;text-align:left">'+v[key]+'</span></div>';
+  }
+  var p = document.createElement('div');
+  p.dir='rtl';
+  p.style.cssText='position:fixed;top:12px;left:12px;z-index:99999;background:#16161D;border:1px solid #F08A5B;border-radius:14px;padding:16px;width:300px;font-family:sans-serif;box-shadow:0 20px 60px rgba(0,0,0,.6)';
+  p.innerHTML='<div style="color:#F08A5B;font-weight:800;margin-bottom:10px;font-size:14px">עריכת גדלים · bride</div>'+
+    row('גודל כללי','zoom',0.6,1,0.05)+
+    row('ריווח סקשנים','pad',40,140,4)+
+    row('כותרת ראשית','h2',28,70,2)+
+    row('כותרת משנה','h3',16,34,1)+
+    row('טקסט רץ','lead',13,24,1)+
+    '<button id="dev-copy" style="width:100%;margin-top:8px;background:#F08A5B;color:#1a0e07;border:none;border-radius:8px;padding:9px;font-weight:800;cursor:pointer">העתק ערכים</button>'+
+    '<div id="dev-msg" style="color:#9C9CA7;font-size:11px;margin-top:6px;text-align:center"></div>';
+  document.body.appendChild(p);
+  p.addEventListener('input',function(e){
+    var k=e.target.getAttribute('k')||e.target.getAttribute('data-k'); if(!k) return;
+    v[k]=parseFloat(e.target.value);
+    p.querySelector('[data-o="'+k+'"]').textContent=v[k];
+    apply();
+  });
+  document.getElementById('dev-copy').addEventListener('click',function(){
+    var txt='zoom='+v.zoom+' | ריווח סקשנים='+v.pad+'px | כותרת ראשית h2='+v.h2+'px | כותרת משנה h3='+v.h3+'px | טקסט רץ lead='+v.lead+'px';
+    navigator.clipboard.writeText(txt).then(function(){
+      document.getElementById('dev-msg').textContent='הועתק! שלח לקלוד את הטקסט';
+    },function(){
+      document.getElementById('dev-msg').textContent=txt;
+    });
+  });
+})();
+</script>
 </body>
 </html>
