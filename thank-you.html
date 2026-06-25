@@ -72,5 +72,17 @@ h1 .accent{color:var(--accent)}
   <a class="btn btn-ghost" href="index.html">חזרה לדף הבית</a>
 </div>
 
+<script>
+(function(){
+  var saleId = new URLSearchParams(location.search).get('sale');
+  if(saleId){
+    fetch('https://bride-payment.axis-office11.workers.dev/confirm', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ sale: saleId })
+    }).catch(function(){});
+  }
+})();
+</script>
+
 </body>
 </html>
