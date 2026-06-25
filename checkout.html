@@ -216,6 +216,7 @@ const _utmParams = Object.fromEntries(
 Object.entries(_utmParams).forEach(([k,v]) => v && sessionStorage.setItem(k, v));
 
 let appliedCoupon = '';
+let currentAmount = 1500;
 
 async function applyCoupon() {
   const code = document.getElementById('coupon').value.trim();
@@ -231,6 +232,7 @@ async function applyCoupon() {
     const data = await res.json();
     if (data.valid) {
       appliedCoupon = code;
+      currentAmount = data.amount;
       document.getElementById('priceNow').textContent = data.amount.toLocaleString('he-IL') + ' ₪';
       const was = document.getElementById('priceWas');
       was.textContent = data.basePrice.toLocaleString('he-IL') + ' ₪';
@@ -239,6 +241,7 @@ async function applyCoupon() {
       msg.textContent = '✓ קופון הופעל — ' + data.percent + '% הנחה';
     } else {
       appliedCoupon = '';
+      currentAmount = 1500;
       document.getElementById('priceNow').textContent = '1,500 ₪';
       document.getElementById('priceWas').style.display = 'none';
       msg.style.color = '#ff6b6b';
@@ -294,6 +297,7 @@ async function handleSubmit(e) {
     });
     const data = await res.json();
     if (data.url) {
+      if (window.fbq) fbq('track','AddPaymentInfo',{value:currentAmount,currency:'ILS'});
       window.location.href = data.url;
     } else {
       alert('שגיאה ביצירת דף התשלום. נסי שוב.');
