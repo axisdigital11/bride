@@ -855,21 +855,21 @@ html.a11y-cursor,html.a11y-cursor *{cursor:url("data:image/svg+xml,%3Csvg xmlns=
   .cs__blob{transform:none!important}
 }
 
-/* ── 80% compact — all sections except hero ── */
-.section{padding:clamp(58px,8.8vw,112px) 0}
-.section--tight{padding:clamp(43px,6.4vw,77px) 0}
-.h2{font-size:clamp(25px,3.84vw,50px)}
-.h3{font-size:clamp(17px,1.92vw,22px)}
-.lead{font-size:clamp(14px,1.52vw,17px)}
-/* restore hero lead */
-.hero .lead{font-size:clamp(17px,1.9vw,21px)}
+/* ── compact sections (non-hero) ── */
+.section{padding:clamp(46px,7vw,90px) 0 !important}
+.section--tight{padding:clamp(34px,5vw,62px) 0 !important}
+.h2{font-size:clamp(25px,3.84vw,50px) !important}
+.h3{font-size:clamp(17px,1.92vw,22px) !important}
+.lead{font-size:clamp(14px,1.52vw,17px) !important}
+/* restore hero */
+.hero .lead{font-size:clamp(17px,1.9vw,21px) !important}
 /* component sizes */
 .brideWord button{font-size:clamp(32px,6.4vw,80px)}
 .bridePanel__letter{font-size:clamp(43px,5.6vw,67px)}
 .bridePanel__title{font-size:clamp(18px,2.08vw,24px)}
-.bridePanel{padding:clamp(22px,3.2vw,35px)}
+.bridePanel{padding:clamp(22px,3.2vw,35px) !important}
 .quoteCard q{font-size:clamp(16px,2vw,22px)}
-.quoteCard{padding:clamp(22px,3.2vw,32px)}
+.quoteCard{padding:clamp(22px,3.2vw,32px) !important}
 .priceMorph .pm{font-size:clamp(16px,1.92vw,22px)}
 .priceMorph .pm.now{font-size:clamp(24px,3.2vw,37px)}
 .resultBanner__num{font-size:clamp(37px,7.2vw,74px)}
@@ -878,11 +878,11 @@ html.a11y-cursor,html.a11y-cursor *{cursor:url("data:image/svg+xml,%3Csvg xmlns=
 .acc__num{font-size:clamp(18px,2.4vw,26px)}
 .acc__t b{font-size:clamp(14px,1.68vw,17px)}
 .bonus h3{font-size:clamp(21px,2.88vw,34px)}
-.bonus{padding:clamp(27px,4vw,45px)}
-.baCol{padding:clamp(21px,3.2vw,34px)}
+.bonus{padding:clamp(27px,4vw,45px) !important}
+.baCol{padding:clamp(21px,3.2vw,34px) !important}
 .priceNow__big{font-size:clamp(46px,8vw,80px)}
-.priceNow{padding:clamp(22px,3.2vw,32px)}
-.priceCompare{padding:clamp(19px,3.2vw,27px)}
+.priceNow{padding:clamp(22px,3.2vw,32px) !important}
+.priceCompare{padding:clamp(19px,3.2vw,27px) !important}
 
 </style>
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin></script>
