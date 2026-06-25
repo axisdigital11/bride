@@ -2940,17 +2940,45 @@ ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(
     row('כותרת ראשית','h2',28,70,2)+
     row('כותרת משנה','h3',16,34,1)+
     row('טקסט רץ','lead',13,24,1)+
+    '<button id="dev-text" style="width:100%;margin-top:10px;background:#1E1E27;color:#fff;border:1px solid #F08A5B;border-radius:8px;padding:9px;font-weight:700;cursor:pointer">✏️ עריכת טקסט: כבוי</button>'+
     '<button id="dev-copy" style="width:100%;margin-top:8px;background:#F08A5B;color:#1a0e07;border:none;border-radius:8px;padding:9px;font-weight:800;cursor:pointer">העתק ערכים</button>'+
-    '<div id="dev-msg" style="color:#9C9CA7;font-size:11px;margin-top:6px;text-align:center"></div>';
+    '<div id="dev-msg" style="color:#9C9CA7;font-size:11px;margin-top:6px;text-align:center;line-height:1.5"></div>';
   document.body.appendChild(p);
   p.addEventListener('input',function(e){
-    var k=e.target.getAttribute('k')||e.target.getAttribute('data-k'); if(!k) return;
+    var k=e.target.getAttribute('data-k'); if(!k) return;
     v[k]=parseFloat(e.target.value);
     p.querySelector('[data-o="'+k+'"]').textContent=v[k];
     apply();
   });
+
+  var editMode=false, edited=[];
+  var SEL='#content h1,#content h2,#content h3,#content h4,#content p,#content .lead,#content li,#content blockquote';
+  document.getElementById('dev-text').addEventListener('click',function(){
+    editMode=!editMode;
+    var nodes=document.querySelectorAll(SEL);
+    nodes.forEach(function(n){
+      if(editMode){
+        n.contentEditable='true';
+        n.style.outline='1px dashed rgba(240,138,91,.6)';
+        n.addEventListener('input',markEdited);
+      } else {
+        n.contentEditable='false';
+        n.style.outline='';
+      }
+    });
+    this.textContent='✏️ עריכת טקסט: '+(editMode?'דלוק':'כבוי');
+    document.getElementById('dev-msg').textContent=editMode?'לחץ על טקסט, מקם סמן, Enter = שורה חדשה':'';
+  });
+  function markEdited(e){ if(edited.indexOf(e.target)<0) edited.push(e.target); }
+
   document.getElementById('dev-copy').addEventListener('click',function(){
     var txt='zoom='+v.zoom+' | ריווח סקשנים='+v.pad+'px | כותרת ראשית h2='+v.h2+'px | כותרת משנה h3='+v.h3+'px | טקסט רץ lead='+v.lead+'px';
+    if(edited.length){
+      txt+='\n\nטקסטים ששונו:';
+      edited.forEach(function(n){
+        txt+='\n• <'+n.tagName.toLowerCase()+'> '+n.innerHTML.replace(/\s+/g,' ').trim();
+      });
+    }
     navigator.clipboard.writeText(txt).then(function(){
       document.getElementById('dev-msg').textContent='הועתק! שלח לקלוד את הטקסט';
     },function(){
