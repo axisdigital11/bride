@@ -62,10 +62,10 @@ button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
 /* ---------- layout ---------- */
 .container{max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,5vw,52px)}
 .container--narrow{max-width:840px}
-.section{position:relative;padding:clamp(72px,11vw,140px) 0}
+.section{position:relative;padding:clamp(58px,8.8vw,112px) 0}
 .section--alt{background:var(--bg-2)}
 .section--ink{background:radial-gradient(120% 130% at 80% -10%,#241710 0%,#0c0c0e 60%)}
-.section--tight{padding:clamp(54px,8vw,96px) 0}
+.section--tight{padding:clamp(43px,6.4vw,77px) 0}
 
 /* ---------- type ---------- */
 .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;
@@ -855,18 +855,6 @@ html.a11y-cursor,html.a11y-cursor *{cursor:url("data:image/svg+xml,%3Csvg xmlns=
   .cs__blob{transform:none!important}
 }
 
-/* ── compact non-hero sections — hard 80% ── */
-.section:not(.hero){padding:72px 0 !important}
-.section.section--tight:not(.hero){padding:52px 0 !important}
-.section:not(.hero) .h2{font-size:clamp(25px,3.84vw,50px) !important}
-.section:not(.hero) .h3{font-size:clamp(17px,1.92vw,22px) !important}
-.section:not(.hero) .lead{font-size:clamp(14px,1.52vw,17px) !important}
-.section:not(.hero) .bridePanel{padding:clamp(22px,3.2vw,35px) !important}
-.section:not(.hero) .quoteCard{padding:clamp(22px,3.2vw,32px) !important}
-.section:not(.hero) .bonus{padding:clamp(27px,4vw,45px) !important}
-.section:not(.hero) .baCol{padding:clamp(21px,3.2vw,34px) !important}
-.section:not(.hero) .priceNow{padding:clamp(22px,3.2vw,32px) !important}
-.section:not(.hero) .priceCompare{padding:clamp(19px,3.2vw,27px) !important}
 
 </style>
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin></script>
