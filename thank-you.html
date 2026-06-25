@@ -66,6 +66,8 @@ fbq('track','PageView');
   var val = parseFloat(qs.get('value')) || 1500;
   var saleId = qs.get('sale');
   fbq('track','Purchase',{value:val,currency:'ILS'}, saleId ? {eventID:saleId} : undefined);
+  window.dataLayer = window.dataLayer || [];
+  dataLayer.push({event:'purchase', value:val, currency:'ILS', transaction_id:saleId || ''});
 })();
 </script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=712897050240711&ev=PageView&noscript=1"/></noscript>
