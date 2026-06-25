@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>תודה על הרכישה — bride</title>
+<link rel="icon" type="image/png" href="logo/logo-light.png" />
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&family=Heebo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#0A0A0C;--bg-2:#101015;--panel:#16161D;--panel-2:#1E1E27;
+  --ink:#F7F6F4;--ink-soft:#D9D8DE;--muted:#9C9CA7;
+  --accent:#F08A5B;--accent-2:#FFB489;--accent-deep:#D96B3C;
+  --accent-soft:rgba(240,138,91,.14);--line:rgba(255,255,255,.10);
+  --line-accent:rgba(240,138,91,.36);
+  --display:'Heebo',sans-serif;--body:'Assistant',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);min-height:100vh;
+  -webkit-font-smoothing:antialiased;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;padding:40px 20px;text-align:center}
+.logo{font-family:var(--display);font-weight:900;font-size:26px;color:var(--accent);
+  letter-spacing:-0.5px;margin-bottom:36px;text-decoration:none}
+.card{background:var(--panel);border:1px solid var(--line-accent);border-radius:24px;
+  padding:48px 40px;width:100%;max-width:520px;box-shadow:0 30px 70px -30px rgba(0,0,0,.75)}
+.check{width:84px;height:84px;border-radius:50%;margin:0 auto 26px;
+  background:linear-gradient(135deg,var(--accent-2),var(--accent-deep));
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 16px 40px -10px rgba(240,138,91,.6)}
+.check svg{width:42px;height:42px;color:#1a0e07}
+h1{font-family:var(--display);font-weight:900;font-size:30px;margin-bottom:14px;letter-spacing:-.02em}
+h1 .accent{color:var(--accent)}
+.lead{color:var(--ink-soft);font-size:17px;line-height:1.7;margin-bottom:8px}
+.lead strong{color:var(--ink)}
+.note{color:var(--muted);font-size:14.5px;line-height:1.6;margin-top:18px}
+.divider{height:1px;background:var(--line);margin:30px 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;padding:16px;border:none;border-radius:12px;cursor:pointer;text-decoration:none;
+  background:linear-gradient(135deg,#25D366,#128C7E);
+  color:#fff;font-family:var(--display);font-weight:800;font-size:16px;
+  transition:.2s;box-shadow:0 8px 24px rgba(37,211,102,.3)}
+.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.btn svg{width:22px;height:22px}
+.btn-ghost{background:none;box-shadow:none;border:1px solid var(--line);color:var(--ink-soft);
+  margin-top:12px;font-weight:600;font-size:15px}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+</style>
+</head>
+<body>
+
+<a href="index.html" class="logo">bride</a>
+
+<div class="card">
+  <div class="check">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 6L9 17l-5-5"/>
+    </svg>
+  </div>
+
+  <h1>תודה רבה! <span class="accent">הרכישה הושלמה</span></h1>
+  <p class="lead">קיבלנו את התשלום שלך וחשבונית נשלחה למייל.</p>
+  <p class="lead"><strong>פרטי הגישה לקורס נשלחים כעת לכתובת המייל שהזנת.</strong> אם לא הגיע תוך כמה דקות, בדקי גם בתיבת הספאם/קידומי מכירות.</p>
+
+  <p class="note">מומלץ להצטרף לקבוצת הוואטסאפ הסגורה של בוגרות bride — לתמיכה, התייעצות וקהילה.</p>
+
+  <div class="divider"></div>
+
+  <a class="btn" href="https://wa.me/972559125112?text=%D7%94%D7%99%D7%99!%20%D7%A8%D7%9B%D7%A9%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%A7%D7%95%D7%A8%D7%A1%20bride%20%F0%9F%99%82" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1012 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.3-1.7-1.3-3.2s.8-2.3 1-2.6c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l.9 2.2c.1.2.1.4 0 .6l-.4.6-.4.4c-.2.2-.4.4-.2.7.2.3.9 1.5 2 2.4 1.3 1.2 2.4 1.5 2.7 1.7.3.1.5.1.7-.1l.8-1c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.3.6.4.1.2.1.7-.1 1.4z"/></svg>
+    הצטרפי לקבוצת הוואטסאפ
+  </a>
+  <a class="btn btn-ghost" href="index.html">חזרה לדף הבית</a>
+</div>
+
+</body>
+</html>
