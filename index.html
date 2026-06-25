@@ -2941,6 +2941,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(
     row('כותרת משנה','h3',16,34,1)+
     row('טקסט רץ','lead',13,24,1)+
     '<button id="dev-text" style="width:100%;margin-top:10px;background:#1E1E27;color:#fff;border:1px solid #F08A5B;border-radius:8px;padding:9px;font-weight:700;cursor:pointer">✏️ עריכת טקסט: כבוי</button>'+
+    '<button id="dev-br" style="width:100%;margin-top:8px;background:#1E1E27;color:#FFB489;border:1px solid #F08A5B;border-radius:8px;padding:9px;font-weight:700;cursor:pointer">↵ הורד שורה כאן</button>'+
     '<button id="dev-copy" style="width:100%;margin-top:8px;background:#F08A5B;color:#1a0e07;border:none;border-radius:8px;padding:9px;font-weight:800;cursor:pointer">העתק ערכים</button>'+
     '<div id="dev-msg" style="color:#9C9CA7;font-size:11px;margin-top:6px;text-align:center;line-height:1.5"></div>';
   document.body.appendChild(p);
@@ -2970,6 +2971,30 @@ ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(
     document.getElementById('dev-msg').textContent=editMode?'לחץ על טקסט, מקם סמן, Enter = שורה חדשה':'';
   });
   function markEdited(e){ if(edited.indexOf(e.target)<0) edited.push(e.target); }
+
+  var savedRange=null;
+  document.addEventListener('selectionchange',function(){
+    var s=document.getSelection();
+    if(s && s.rangeCount){
+      var n=s.anchorNode;
+      while(n && n.nodeType===3) n=n.parentNode;
+      if(n && n.isContentEditable) savedRange=s.getRangeAt(0).cloneRange();
+    }
+  });
+  document.getElementById('dev-br').addEventListener('click',function(){
+    if(!editMode){ document.getElementById('dev-msg').textContent='קודם הדלק "עריכת טקסט"'; return; }
+    if(!savedRange){ document.getElementById('dev-msg').textContent='לחץ קודם בתוך הטקסט'; return; }
+    var host=savedRange.startContainer;
+    while(host && host.nodeType===3) host=host.parentNode;
+    var br=document.createElement('br');
+    savedRange.deleteContents();
+    savedRange.insertNode(br);
+    savedRange.setStartAfter(br);
+    savedRange.collapse(true);
+    var s=document.getSelection(); s.removeAllRanges(); s.addRange(savedRange);
+    if(host && edited.indexOf(host)<0) edited.push(host);
+    document.getElementById('dev-msg').textContent='שורה נוספה ✓';
+  });
 
   document.getElementById('dev-copy').addEventListener('click',function(){
     var txt='zoom='+v.zoom+' | ריווח סקשנים='+v.pad+'px | כותרת ראשית h2='+v.h2+'px | כותרת משנה h3='+v.h3+'px | טקסט רץ lead='+v.lead+'px';
