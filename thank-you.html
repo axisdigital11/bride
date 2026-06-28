@@ -65,9 +65,16 @@ fbq('track','PageView');
   var qs = new URLSearchParams(location.search);
   var val = parseFloat(qs.get('value')) || 1770;
   var saleId = qs.get('sale');
-  fbq('track','Purchase',{value:val,currency:'ILS'}, saleId ? {eventID:saleId} : undefined);
-  window.dataLayer = window.dataLayer || [];
-  dataLayer.push({event:'purchase', value:val, currency:'ILS', transaction_id:saleId || ''});
+  // ירה Purchase פעם אחת בלבד לכל מכירה — מונע ספירה כפולה ברענון/חזרה לדף
+  var key = 'bride_purch_' + (saleId || 'nosale');
+  var alreadyFired = false;
+  try { alreadyFired = !!localStorage.getItem(key); } catch(e) {}
+  if (!alreadyFired) {
+    fbq('track','Purchase',{value:val,currency:'ILS'}, saleId ? {eventID:saleId} : undefined);
+    window.dataLayer = window.dataLayer || [];
+    dataLayer.push({event:'purchase', value:val, currency:'ILS', transaction_id:saleId || ''});
+    try { if (saleId) localStorage.setItem(key, '1'); } catch(e) {}
+  }
 })();
 </script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=712897050240711&ev=PageView&noscript=1"/></noscript>
@@ -107,9 +114,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 (function(){
   var saleId = new URLSearchParams(location.search).get('sale');
   if(saleId){
+    var ck = function(n){ var m = document.cookie.match('(^|;)\\s*'+n+'\\s*=\\s*([^;]+)'); return m ? m.pop() : ''; };
     fetch('https://bride-payment.axis-office11.workers.dev/confirm', {
       method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ sale: saleId })
+      body: JSON.stringify({ sale: saleId, fbp: ck('_fbp'), fbc: ck('_fbc') })
     }).catch(function(){});
   }
 })();
