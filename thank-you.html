@@ -70,7 +70,8 @@ fbq('track','PageView');
   var alreadyFired = false;
   try { alreadyFired = !!localStorage.getItem(key); } catch(e) {}
   if (!alreadyFired) {
-    fbq('track','Purchase',{value:val,currency:'ILS'}, saleId ? {eventID:saleId} : undefined);
+    // Purchase לפייסבוק נשלח רק מהשרת (CAPI) כדי למנוע ספירה כפולה.
+    // כאן רק GA4 (דרך dataLayer):
     window.dataLayer = window.dataLayer || [];
     dataLayer.push({event:'purchase', value:val, currency:'ILS', transaction_id:saleId || ''});
     try { if (saleId) localStorage.setItem(key, '1'); } catch(e) {}
