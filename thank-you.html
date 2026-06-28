@@ -53,34 +53,22 @@ h1 .accent{color:var(--accent)}
   margin-top:12px;font-weight:600;font-size:15px}
 .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
 </style>
-<!-- Meta Pixel -->
 <script>
-!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init','712897050240711');
-fbq('track','PageView');
 (function(){
   var qs = new URLSearchParams(location.search);
   var val = parseFloat(qs.get('value')) || 1770;
   var saleId = qs.get('sale');
-  // ירה Purchase פעם אחת בלבד לכל מכירה — מונע ספירה כפולה ברענון/חזרה לדף
+  // GA4 purchase (דרך dataLayer); Purchase לפייסבוק נשלח מ-CAPI בשרת.
   var key = 'bride_purch_' + (saleId || 'nosale');
   var alreadyFired = false;
   try { alreadyFired = !!localStorage.getItem(key); } catch(e) {}
   if (!alreadyFired) {
-    // Purchase לפייסבוק נשלח רק מהשרת (CAPI) כדי למנוע ספירה כפולה.
-    // כאן רק GA4 (דרך dataLayer):
     window.dataLayer = window.dataLayer || [];
     dataLayer.push({event:'purchase', value:val, currency:'ILS', transaction_id:saleId || ''});
     try { if (saleId) localStorage.setItem(key, '1'); } catch(e) {}
   }
 })();
 </script>
-<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=712897050240711&ev=PageView&noscript=1"/></noscript>
-<!-- End Meta Pixel -->
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->

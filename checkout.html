@@ -81,21 +81,10 @@ body{font-family:var(--body);background:var(--bg);color:var(--ink);min-height:10
   .row{grid-template-columns:1fr}
 }
 </style>
-<!-- Meta Pixel -->
 <script>
-!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init','712897050240711');
-fbq('track','PageView');
-fbq('track','InitiateCheckout',{value:1770,currency:'ILS'});
 window.dataLayer = window.dataLayer || [];
 dataLayer.push({event:'initiate_checkout', value:1770, currency:'ILS'});
 </script>
-<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=712897050240711&ev=PageView&noscript=1"/></noscript>
-<!-- End Meta Pixel -->
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -314,7 +303,6 @@ async function handleSubmit(e) {
     });
     const data = await res.json();
     if (data.url) {
-      if (window.fbq) fbq('track','AddPaymentInfo',{value:currentAmount,currency:'ILS'});
       window.dataLayer = window.dataLayer || [];
       dataLayer.push({event:'add_payment_info', value:currentAmount, currency:'ILS', coupon:appliedCoupon});
       window.location.href = data.url;
