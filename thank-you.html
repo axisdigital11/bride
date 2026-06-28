@@ -63,7 +63,7 @@ fbq('init','712897050240711');
 fbq('track','PageView');
 (function(){
   var qs = new URLSearchParams(location.search);
-  var val = parseFloat(qs.get('value')) || 1500;
+  var val = parseFloat(qs.get('value')) || 1770;
   var saleId = qs.get('sale');
   fbq('track','Purchase',{value:val,currency:'ILS'}, saleId ? {eventID:saleId} : undefined);
   window.dataLayer = window.dataLayer || [];

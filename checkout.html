@@ -23,8 +23,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   --display:'Heebo',sans-serif;--body:'Assistant',sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:var(--body);background:var(--bg);color:var(--ink);min-height:100vh;
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);min-height:100vh;width:100%;max-width:100%;overflow-x:hidden;
   -webkit-font-smoothing:antialiased;display:flex;flex-direction:column;align-items:center;
   justify-content:flex-start;padding:40px 20px 80px}
 .logo{font-family:var(--display);font-weight:900;font-size:28px;color:var(--accent);
@@ -89,9 +89,9 @@ t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
 document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init','712897050240711');
 fbq('track','PageView');
-fbq('track','InitiateCheckout',{value:1500,currency:'ILS'});
+fbq('track','InitiateCheckout',{value:1770,currency:'ILS'});
 window.dataLayer = window.dataLayer || [];
-dataLayer.push({event:'initiate_checkout', value:1500, currency:'ILS'});
+dataLayer.push({event:'initiate_checkout', value:1770, currency:'ILS'});
 </script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=712897050240711&ev=PageView&noscript=1"/></noscript>
 <!-- End Meta Pixel -->
@@ -107,7 +107,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="card">
   <h1>השלמת רכישה</h1>
-  <div class="price"><span id="priceNow">1,500 ₪</span><span id="priceWas" style="display:none;color:var(--muted);text-decoration:line-through;font-size:18px;margin-inline-start:10px;font-weight:700"></span></div>
+  <div class="price"><span id="priceNow">1,770 ₪</span><span id="priceWas" style="display:none;color:var(--muted);text-decoration:line-through;font-size:18px;margin-inline-start:10px;font-weight:700"></span></div>
+  <p id="payNote" style="color:var(--muted);font-size:13.5px;margin:-18px 0 24px">כולל מע״מ · או 3 תשלומים שווים של 590 ₪</p>
 
   <form id="checkoutForm" onsubmit="handleSubmit(event)" novalidate>
     <div class="row">
@@ -229,7 +230,7 @@ const _utmParams = Object.fromEntries(
 Object.entries(_utmParams).forEach(([k,v]) => v && sessionStorage.setItem(k, v));
 
 let appliedCoupon = '';
-let currentAmount = 1500;
+let currentAmount = 1770;
 
 async function applyCoupon() {
   const code = document.getElementById('coupon').value.trim();
@@ -250,13 +251,15 @@ async function applyCoupon() {
       const was = document.getElementById('priceWas');
       was.textContent = data.basePrice.toLocaleString('he-IL') + ' ₪';
       was.style.display = 'inline';
+      const pn = document.getElementById('payNote'); if (pn) pn.style.display = 'none';
       msg.style.color = '#7ed957';
       msg.textContent = '✓ קופון הופעל — ' + data.percent + '% הנחה';
     } else {
       appliedCoupon = '';
-      currentAmount = 1500;
-      document.getElementById('priceNow').textContent = '1,500 ₪';
+      currentAmount = 1770;
+      document.getElementById('priceNow').textContent = '1,770 ₪';
       document.getElementById('priceWas').style.display = 'none';
+      const pn = document.getElementById('payNote'); if (pn) pn.style.display = '';
       msg.style.color = '#ff6b6b';
       msg.textContent = data.error || 'קוד קופון לא תקין';
     }
