@@ -332,7 +332,7 @@ html.can-anim .rv:not(.in){transform:translateY(26px)}
 .media-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:8px}
 .vid{display:flex;flex-direction:column;gap:10px}
 .vid__box{position:relative;width:100%;max-width:300px;margin-inline:auto;aspect-ratio:9/16;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:#000;box-shadow:var(--shadow-sm)}
-.vid__frame{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+.vid__frame{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;object-fit:cover;background:#000}
 .vid figcaption{text-align:center;color:var(--ink-soft);font-family:var(--display);font-weight:600;font-size:14.5px}
 .audios{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:30px}
 .aud{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;align-items:center;gap:13px;box-shadow:var(--shadow-sm);transition:border-color .2s}
@@ -1487,15 +1487,15 @@ const SCREENS = [{
 }];
 const VIDEOS = [{
   poster: 'media/poster-hodaya.jpg',
-  yt: 'Ga1g-a90I2Q',
+  src: 'media/video-hodaya.mp4',
   name: 'הודיה אהרוני'
 }, {
   poster: 'media/poster-marik.jpg',
-  yt: 'YTZZr9-KRSg',
+  src: 'media/video-marik.mp4',
   name: 'מאריק קולקר'
 }, {
   poster: 'media/poster-eden.jpg',
-  yt: '1oFUJfwwoLk',
+  src: 'media/video-eden.mp4',
   name: 'עדן דיין'
 }];
 const VOICES = [{
@@ -1526,22 +1526,23 @@ const waMini = React.createElement("svg", {
 }));
 const YtVideo = React.memo(function YtVideo({
   name,
-  yt
+  src,
+  poster
 }) {
   return React.createElement("figure", {
     className: "vid"
   }, React.createElement("span", {
     className: "vid__box"
-  }, React.createElement("iframe", {
+  }, React.createElement("video", {
     className: "vid__frame",
-    loading: "lazy",
-    title: name,
-    src: "https://www.youtube.com/embed/" + yt,
-    frameBorder: "0",
-    allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
-    referrerPolicy: "strict-origin-when-cross-origin",
-    allowFullScreen: true
-  })), React.createElement("figcaption", null, name));
+    controls: true,
+    preload: "metadata",
+    playsInline: true,
+    poster: poster
+  }, React.createElement("source", {
+    src: src,
+    type: "video/mp4"
+  }))), React.createElement("figcaption", null, name));
 });
 function AudioPlayer({
   name,
