@@ -1898,14 +1898,14 @@ function AIBot() {
     {ico:'📣', title:'קמפיינים שממירים', desc:'אסטרטגיה, קופי ומבנה קמפיין — תשאלי, תקבלי תשובה מיידית'},
     {ico:'💰', title:'מכירות וסגירות', desc:'תסריטי שיחה, התמודדות עם התנגדויות, איך להוביל לסגירה בטבעיות'},
     {ico:'🎯', title:'תמחור נכון', desc:'איך להתמחר בביטחון ולא להתנצל על המחיר שלך'},
-    {ico:'📱', title:'בניית פרופיל', desc:'מה לפרסם, מתי, ואיך שיראה כמו קמפיין יקרתי'},
+    {ico:'📱', title:'בניית פרופיל', desc:'איך לבנות עמוד שידגיש את הרמה המקצועית שלך!'},
     {ico:'🧠', title:'התייעצות אישית', desc:'כל שאלה עסקית שעולה לך — יש מי שעונה 24/7'},
   ];
   const msgs = [
     {side:'user', text:'איך אני עונה ללקוחה שאומרת יקר לי?', time:'16:42'},
     {side:'bot',  text:'תגידי לי קודם — מה את כבר אמרת לה על המחיר ומה הייתה תגובתה?', time:'16:42'},
-    {side:'user', text:'אמרתי 1,000 ₪ והיא אמרה "יקר לי, לא חשבתי שיעלה כלכך"', time:'16:43'},
-    {side:'bot',  text:'מושלם! זו התנגדות קלאסית על מחיר. תעני לה: "אני מבינה אותך. ספרי לי — מה הכי חשוב לך שתרגישי ביום החתונה שלך?"', time:'16:43'},
+    {side:'user', text:'אמרתי לה שהמחיר 4,500 ₪ והיא אמרה שזה יקר', time:'16:43'},
+    {side:'bot',  text:'מושלם! זו התנגדות קלאסית על מחיר. תעני לה: מבינה אותך לגמרי. נכון אני לא הבחירה הכי זולה, אלא הבחירה הכי בטוחה ליום החתונה. 🤍', time:'16:43'},
   ];
   return React.createElement("section", {className:"section section--ink"},
     React.createElement("div", {className:"container"},
@@ -1913,7 +1913,8 @@ function AIBot() {
         React.createElement(Reveal, {as:"p", className:"eyebrow center"}, "בלעדי לתלמידות הקורס"),
         React.createElement(Reveal, {as:"h2", className:"h2 balance mxa", delay:60, style:{maxWidth:'18ch'}},
           "לא צריך לחכות לתשובות. יש לך ",
-          React.createElement("span", {className:"accent"}, "AI שעונה עכשיו.")
+          React.createElement("span", {style:{color:'#c4b5fd', textShadow:'0 0 40px rgba(167,139,250,.5)'}}, "AI"),
+          " שעונה עכשיו."
         )
       ),
       React.createElement(Reveal, {delay:80},
@@ -1923,12 +1924,11 @@ function AIBot() {
             "כלול בקורס — בלעדי לתלמידות"
           ),
           React.createElement("h2", null,
-            "הבוט שלנו ",
-            React.createElement("span", {className:"glow"}, "מכיר את ניב"),
-            " — ועונה כמוהו"
+            React.createElement("span", {className:"glow"}, "בובי"),
+            " — הבוט שמכיר את ניב, ועונה כמוהו"
           ),
           React.createElement("p", {className:"aiBot__lead"},
-            "בוט ה-AI של קורס bride למד מכל שיחות המייעץ של ניב, מתסריטי המכירות ומחומרי הקורס. שואלי אותו כל שאלה עסקית בוואטסאפ — מקבלים תשובה תוך שניות."
+            "בוט ה-AI של קורס bride למד מכל השיחות של ניב עם מאפרות ומסרקים, מתסריטי המכירות ומחומרי הקורס. תשאלי אותו כל שאלה עסקית בוואטסאפ — ותקבלי תשובה תוך שניות."
           ),
           React.createElement("div", {className:"aiBot__layout"},
             React.createElement("div", {className:"aiBot__features"},
@@ -1947,7 +1947,7 @@ function AIBot() {
                 React.createElement("div", {className:"aiBot__chat-header"},
                   React.createElement("div", {className:"aiBot__chat-av"}, "🤖"),
                   React.createElement("div", null,
-                    React.createElement("div", {className:"aiBot__chat-name"}, "bride AI — הבוט שלנו"),
+                    React.createElement("div", {className:"aiBot__chat-name"}, "בובי — הבוט של bride"),
                     React.createElement("div", {className:"aiBot__chat-status"}, "מחובר ועונה")
                   )
                 ),
