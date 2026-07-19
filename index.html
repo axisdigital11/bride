@@ -180,6 +180,9 @@ html.can-anim .rv:not(.in){transform:translateY(26px)}
 .hero h1 em{font-style:normal;color:var(--accent);position:relative;white-space:normal;display:inline-block;margin-top:.18em}
 .hero h1{overflow-wrap:break-word}
 /* ---------- hero variant B: the calendar that fills itself ---------- */
+/* size the headline to the copy column so each line stays a single line */
+.hero__copy{container-type:inline-size}
+.hero h1{font-size:min(clamp(32px,5vw,56px),8.8cqw)}
 .hrev{display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em}
 .hrev i{display:block;font-style:normal;transform:translateY(118%);
   animation:hrise .8s cubic-bezier(.2,.8,.2,1) forwards}
