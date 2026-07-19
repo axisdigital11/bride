@@ -179,6 +179,50 @@ html.can-anim .rv:not(.in){transform:translateY(26px)}
 .hero h1{margin-bottom:24px;font-size:clamp(32px,5vw,56px);line-height:1.16;text-wrap:balance}
 .hero h1 em{font-style:normal;color:var(--accent);position:relative;white-space:normal;display:inline-block;margin-top:.18em}
 .hero h1{overflow-wrap:break-word}
+/* ---------- hero variant B: the calendar that fills itself ---------- */
+.hrev{display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em}
+.hrev i{display:block;font-style:normal;transform:translateY(118%);
+  animation:hrise .8s cubic-bezier(.2,.8,.2,1) forwards}
+.hrev--2 i{color:var(--accent);animation-delay:.45s;text-shadow:0 8px 44px rgba(240,138,91,.35)}
+@keyframes hrise{to{transform:translateY(0)}}
+.hcal{position:relative;background:linear-gradient(180deg,var(--panel-2),var(--panel));
+  border:1px solid var(--line);border-radius:26px;padding:clamp(16px,2.2vw,26px);
+  box-shadow:0 30px 70px -30px rgba(0,0,0,.75);
+  opacity:0;animation:hfade .7s ease .7s forwards,hshake .35s ease var(--shakeAt,6.2s)}
+@keyframes hfade{to{opacity:1}}
+@keyframes hshake{0%,100%{transform:none}30%{transform:translate(2px,3px) rotate(.3deg)}
+  60%{transform:translate(-2px,1px) rotate(-.25deg)}}
+.hcal__head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px;gap:10px}
+.hcal__head b{font-family:var(--display);font-weight:800;font-size:16px}
+.hcal__count{font-family:var(--display);font-weight:800;color:var(--accent-2);font-size:14.5px;
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+.hcal__grid{display:grid;grid-template-columns:repeat(6,1fr);gap:7px}
+.hcal__cell{aspect-ratio:1/.92;border-radius:11px;background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.06);display:grid;place-content:center;gap:1px;
+  text-align:center;color:var(--muted-2);min-width:0}
+.hcal__cell b{font-family:var(--display);font-weight:600;font-size:12px;color:var(--muted)}
+.hcal__cell small{font-size:10px;color:var(--ink-soft);font-weight:600;white-space:nowrap}
+.hcal__cell--b{background:linear-gradient(160deg,rgba(240,138,91,.16),rgba(217,107,60,.07));
+  border-color:var(--line-accent);opacity:0;transform:scale(.55);filter:blur(3px);
+  animation:hbook .4s cubic-bezier(.3,1.4,.4,1) forwards}
+.hcal__cell--b b{color:var(--accent-2)}
+@keyframes hbook{to{opacity:1;transform:scale(1);filter:blur(0)}}
+.hcal__stamp{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.hcal__stamp span{font-family:var(--display);font-weight:900;font-size:clamp(38px,4.4vw,58px);
+  color:var(--accent);border:4px solid var(--accent);border-radius:16px;padding:4px 24px 8px;
+  transform:rotate(-9deg) scale(2.8);opacity:0;letter-spacing:.02em;
+  background:rgba(10,10,12,.55);backdrop-filter:blur(2px);
+  box-shadow:0 0 0 6px rgba(240,138,91,.12),0 26px 60px -18px rgba(240,138,91,.5);
+  animation:hstamp .45s cubic-bezier(.3,1.6,.4,1) var(--stampAt,6.05s) forwards}
+@keyframes hstamp{to{transform:rotate(-9deg) scale(1);opacity:1}}
+.hero__visual:has(.hcal){max-width:520px;margin-top:clamp(12px,3vw,40px)}
+.hero__media--mobile .hcal{max-width:440px;margin:6px auto 10px}
+@media (prefers-reduced-motion:reduce){
+  .hrev i{transform:none;animation:none}
+  .hcal{opacity:1;animation:none}
+  .hcal__cell--b{opacity:1;transform:none;filter:none;animation:none}
+  .hcal__stamp span{transform:rotate(-9deg) scale(1);opacity:1;animation:none}
+}
 .hero__sub{max-width:560px;margin-bottom:34px}
 .hero__sub strong{color:var(--ink);font-weight:700}
 .hero__actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
@@ -1212,34 +1256,81 @@ function Header() {
     className: "brand"
   }, "bride")));
 }
-function Hero() {
-  const mediaRef = useRef(null);
+const HCAL_NAMES = ['דנה', 'שיר', 'נועה', 'מאיה', 'רותם', 'טל', 'עדן', 'ליאן', 'אור', 'יעל', 'שני', 'אגם', 'רוני', 'הילה', 'מור', 'ליה', 'אלה', 'קורל', 'סתיו', 'עמית', 'אופיר', 'מיקה'];
+const HCAL_FREE = [0, 4, 9, 13, 16, 20, 24, 27];
+const HCAL_TIMES = (() => {
+  const t = [];
+  let d = 1.7;
+  for (let i = 0; i < 22; i++) {
+    d += .28 - .21 * (i / 21);
+    t.push(+d.toFixed(2));
+  }
+  return t;
+})();
+const HCAL_LAST = HCAL_TIMES[HCAL_TIMES.length - 1];
+function HeroCalendar() {
+  const [n, setN] = useState(0);
   useEffect(() => {
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
-    let raf,
-      ticking = false;
-    const f = () => {
-      if (ticking) return;
-      ticking = true;
-      raf = requestAnimationFrame(() => {
-        ticking = false;
-        const el = mediaRef.current;
-        if (!el) return;
-        const y = window.pageYOffset;
-        if (y > 900) {
-          return;
-        }
-        el.style.transform = "translateY(" + Math.min(y * 0.06, 40) + "px)";
-      });
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches) {
+      setN(22);
+      return;
+    }
+    let tos = [];
+    const start = () => {
+      tos = HCAL_TIMES.map((t, i) => setTimeout(() => setN(i + 1), (t + .2) * 1000));
     };
-    window.addEventListener('scroll', f, {
-      passive: true
-    });
+    const onVis = () => {
+      if (document.visibilityState === 'visible') {
+        document.removeEventListener('visibilitychange', onVis);
+        start();
+      }
+    };
+    /* CSS animation clocks freeze while the tab is hidden — start the JS
+       counter only once the page is visible so both stay in sync */
+    if (document.visibilityState === 'visible') start();else document.addEventListener('visibilitychange', onVis);
     return () => {
-      window.removeEventListener('scroll', f);
-      cancelAnimationFrame(raf);
+      tos.forEach(clearTimeout);
+      document.removeEventListener('visibilitychange', onVis);
     };
   }, []);
+  const cells = [];
+  let bi = 0;
+  for (let day = 0; day < 30; day++) {
+    if (HCAL_FREE.indexOf(day) === -1) {
+      cells.push(React.createElement("div", {
+        key: day,
+        className: "hcal__cell hcal__cell--b",
+        style: {
+          animationDelay: HCAL_TIMES[bi] + 's'
+        }
+      }, React.createElement("b", null, day + 1), React.createElement("small", null, HCAL_NAMES[bi] + " 🤍")));
+      bi++;
+    } else {
+      cells.push(React.createElement("div", {
+        key: day,
+        className: "hcal__cell"
+      }, React.createElement("b", null, day + 1)));
+    }
+  }
+  return React.createElement("div", {
+    className: "hcal",
+    style: {
+      '--stampAt': HCAL_LAST + .5 + 's',
+      '--shakeAt': HCAL_LAST + .65 + 's'
+    },
+    "aria-label": "\u05d9\u05d5\u05de\u05df \u05d7\u05d5\u05d3\u05e9\u05d9 \u05e9\u05de\u05ea\u05de\u05dc\u05d0 \u05d1\u05db\u05dc\u05d5\u05ea"
+  }, React.createElement("div", {
+    className: "hcal__head"
+  }, React.createElement("b", null, "היומן שלך · עוד 3 חודשים"), React.createElement("span", {
+    className: "hcal__count"
+  }, n, " כלות נסגרו")), React.createElement("div", {
+    className: "hcal__grid"
+  }, cells), React.createElement("div", {
+    className: "hcal__stamp",
+    "aria-hidden": "true"
+  }, React.createElement("span", null, "מלא ✓")));
+}
+function Hero() {
   return React.createElement("section", {
     className: "hero",
     id: "top"
@@ -1256,17 +1347,16 @@ function Hero() {
     delay: 0
   }, React.createElement("span", {
     className: "dot"
-  }), " מעל 100 בוגרות \xB7 שיטת BRIDE"), React.createElement(Reveal, {
-    as: "h1",
-    className: "h1",
-    delay: 80
-  }, "אותן ידיים.", React.createElement("br", null), React.createElement("em", null, "יומן מלא.")), React.createElement("div", {
+  }), " מעל 100 בוגרות · שיטת BRIDE"), React.createElement("h1", {
+    className: "h1"
+  }, React.createElement("span", {
+    className: "hrev"
+  }, React.createElement("i", null, "אותן ידיים.")), React.createElement("span", {
+    className: "hrev hrev--2"
+  }, React.createElement("i", null, "יומן מלא."))), React.createElement("div", {
     className: "hero__media--mobile",
     "aria-hidden": "true"
-  }, React.createElement("img", {
-    src: "images/hero-devices.png",
-    alt: "\u05E7\u05D5\u05E8\u05E1 bride \u2014 \u05E6\u05E4\u05D9\u05D9\u05D4 \u05DE\u05DB\u05DC \u05DE\u05DB\u05E9\u05D9\u05E8"
-  })), React.createElement(Reveal, {
+  }, React.createElement(HeroCalendar, null)), React.createElement(Reveal, {
     as: "p",
     className: "lead hero__sub",
     delay: 160
@@ -1277,37 +1367,12 @@ function Hero() {
     href: "#pricing",
     onClick: e => onAnchor(e, 'pricing'),
     className: "btn btn--accent btn--lg"
-  }, "\u05D0\u05E0\u05D9 \u05E8\u05D5\u05E6\u05D4 \u05DC\u05E8\u05DB\u05D5\u05E9 \u05D0\u05EA - BRIDE")), React.createElement(Reveal, {
+  }, "אני רוצה לרכוש את - BRIDE")), React.createElement(Reveal, {
     className: "hero__micro",
     delay: 320
-  }, React.createElement("span", null, "\u05D2\u05D9\u05E9\u05D4 \u05DE\u05D9\u05D9\u05D3\u05D9\u05EA"), React.createElement("span", null, "\u05EA\u05E9\u05DC\u05D5\u05DD \u05D7\u05D3\u05BE\u05E4\u05E2\u05DE\u05D9"), React.createElement("span", null, "\u05E7\u05D1\u05D5\u05E6\u05EA \u05D5\u05D5\u05D0\u05D8\u05E1\u05D0\u05E4 \u05E1\u05D2\u05D5\u05E8\u05D4"), React.createElement("span", null, "\u05D1\u05D5\u05E0\u05D5\u05E1 AI \u05D1\u05DE\u05EA\u05E0\u05D4"))), React.createElement(Reveal, {
-    className: "hero__visual",
-    delay: 180
-  }, React.createElement("div", {
-    className: "hero__media hero__media--devices",
-    ref: mediaRef
-  }, React.createElement("img", {
-    src: "images/hero-devices.png",
-    alt: "\u05E7\u05D5\u05E8\u05E1 bride \u2014 \u05E6\u05E4\u05D9\u05D9\u05D4 \u05DE\u05DB\u05DC \u05DE\u05DB\u05E9\u05D9\u05E8"
-  })), React.createElement("div", {
-    className: "floatcard floatcard--1"
-  }, React.createElement("b", null, React.createElement(CountUp, {
-    to: 38000,
-    sep: true
-  }), React.createElement("span", {
-    className: "accent"
-  }, "\xA0\u20AA")), React.createElement("small", null, "\u05D1\u05D7\u05D5\u05D3\u05E9 \u05D0\u05D7\u05D3 \xB7 \u05D1\u05D5\u05D2\u05E8\u05EA \u05D0\u05D7\u05EA")), React.createElement("div", {
-    className: "floatcard floatcard--2"
-  }, React.createElement("b", null, React.createElement(CountUp, {
-    to: 100,
-    suffix: "+"
-  })), React.createElement("small", null, "\u05D1\u05D5\u05D2\u05E8\u05D5\u05EA \u05DE\u05E8\u05D5\u05E6\u05D5\u05EA")), React.createElement("div", {
-    className: "floatcard floatcard--3"
-  }, React.createElement("b", {
-    className: "accent"
-  }, "1,770\xA0\u20AA"), React.createElement("small", null, React.createElement("span", {
-    className: "was"
-  }, "7,500\xA0₪"), " \xA0גישה מיידית"))))));
+  }, React.createElement("span", null, "גישה מיידית"), React.createElement("span", null, "תשלום חד־פעמי"), React.createElement("span", null, "קבוצת וואטסאפ סגורה"), React.createElement("span", null, "בונוס AI במתנה"))), React.createElement("div", {
+    className: "hero__visual"
+  }, React.createElement(HeroCalendar, null)))));
 }
 Object.assign(window, {
   Header,
