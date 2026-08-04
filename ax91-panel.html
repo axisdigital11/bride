@@ -4,6 +4,13 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>בק אופיס — bride</title>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="BRIDE" />
+<meta name="theme-color" content="#0A0A0C" />
+<link rel="apple-touch-icon" href="images/app-icon-180.png" />
+<link rel="manifest" href="panel-manifest.json" />
 <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&family=Heebo:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
 <style>
 :root{
@@ -265,7 +272,7 @@ tr:hover td{background:var(--panel-2)}
 <script>
 const WORKER = "https://bride-payment.axis-office11.workers.dev";
 let allSales = [];
-let sessionToken = sessionStorage.getItem('bride_admin_token') || '';
+let sessionToken = localStorage.getItem('bride_admin_token') || '';
 
 // ── SCREEN SWITCHING ──────────────────────────────────────────────────────────
 
@@ -305,7 +312,7 @@ async function doLogin() {
     const data = await res.json();
     if (data.ok) {
       sessionToken = data.token;
-      sessionStorage.setItem('bride_admin_token', sessionToken);
+      localStorage.setItem('bride_admin_token', sessionToken);
       loadSales();
     } else {
       err.textContent = data.error || 'שגיאת התחברות';
@@ -376,7 +383,7 @@ async function doReset() {
 
 function doLogout() {
   sessionToken = '';
-  sessionStorage.removeItem('bride_admin_token');
+  localStorage.removeItem('bride_admin_token');
   showLogin();
 }
 
