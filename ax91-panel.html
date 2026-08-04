@@ -187,6 +187,7 @@ tr:hover td{background:var(--panel-2)}
       <div class="sub" id="lastRefresh"></div>
     </div>
     <div class="topbar-right">
+      <button class="btn-sm btn-outline" id="notifBtn" style="display:none" onclick="enableNotifs()">🔔 הפעל התראות</button>
       <button class="btn-sm btn-outline" onclick="exportCSV()">ייצוא CSV</button>
       <button class="btn-sm btn-accent" onclick="loadSales()">רענן</button>
       <button class="btn-logout" onclick="doLogout()">יציאה</button>
@@ -400,12 +401,66 @@ async function loadSales() {
     document.getElementById('mainScreen').style.display = 'flex';
     document.getElementById('lastRefresh').textContent =
       'עודכן: ' + new Date().toLocaleTimeString('he-IL');
+    initNotifBtn();
 
     updateStats(); updateCharts(); updateSourceFilter(); applyFilters();
   } catch {
     document.getElementById('loginErr').textContent = 'שגיאת חיבור';
     showLogin();
   }
+}
+
+// ── PUSH NOTIFICATIONS (Web Push) ─────────────────────────────────────────────
+const VAPID_PUBLIC = 'BH-LjTqVlYAmXS1I_YZW5WQTmdMEq0TY4dW7FMz0SEP5Z73qLkxcXumJ9BeDJ6rylfFmyxjIBUV9yjwrQ83qo2c';
+
+function urlB64ToUint8(s) {
+  const pad = '='.repeat((4 - s.length % 4) % 4);
+  const b64 = (s + pad).replace(/-/g, '+').replace(/_/g, '/');
+  return Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+}
+
+async function initNotifBtn() {
+  const btn = document.getElementById('notifBtn');
+  if (!btn) return;
+  if (!('serviceWorker' in navigator) || !('PushManager' in window) || !('Notification' in window)) return;
+  btn.style.display = '';
+  try {
+    const reg = await navigator.serviceWorker.register('./panel-sw.js');
+    const sub = await reg.pushManager.getSubscription();
+    if (sub && Notification.permission === 'granted') setNotifOn(btn);
+  } catch (e) {}
+}
+
+async function enableNotifs() {
+  const btn = document.getElementById('notifBtn');
+  btn.disabled = true;
+  try {
+    const reg = await navigator.serviceWorker.register('./panel-sw.js');
+    await navigator.serviceWorker.ready;
+    const perm = await Notification.requestPermission();
+    if (perm !== 'granted') { btn.textContent = '🔕 אין הרשאה — בדוק הגדרות'; btn.disabled = false; return; }
+    const sub = await reg.pushManager.subscribe({
+      userVisibleOnly: true,
+      applicationServerKey: urlB64ToUint8(VAPID_PUBLIC)
+    });
+    const res = await fetch(`${WORKER}/push/subscribe`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token: sessionToken, subscription: sub.toJSON() })
+    });
+    const d = await res.json();
+    if (d.ok) setNotifOn(btn);
+    else { btn.textContent = 'שגיאה, נסה שוב'; btn.disabled = false; }
+  } catch (e) {
+    btn.textContent = 'שגיאה: ' + (e.message || 'נסה שוב');
+    btn.disabled = false;
+  }
+}
+
+function setNotifOn(btn) {
+  btn.textContent = '🔔 התראות פעילות ✓';
+  btn.disabled = true;
+  btn.style.opacity = .75;
 }
 
 // ── STATS & CHARTS ────────────────────────────────────────────────────────────
