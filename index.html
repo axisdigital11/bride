@@ -694,7 +694,8 @@ html.a11y-cursor,html.a11y-cursor *{cursor:url("data:image/svg+xml,%3Csvg xmlns=
   .nav,.header__cta{display:none}
   .menuBtn{display:flex}
   .header__inner{margin:10px;background:rgba(14,14,18,.78);backdrop-filter:blur(16px);box-shadow:var(--shadow-sm);border:1px solid var(--line)}
-  .sticky-cta{display:flex}
+  .sticky-cta{display:flex;transform:translateY(110%);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+  .sticky-cta.is-on{transform:translateY(0)}
   body{padding-bottom:74px}
   .painGrid{grid-template-columns:1fr}
   .media-grid{grid-template-columns:1fr}
@@ -2811,10 +2812,26 @@ function Progress() {
   }));
 }
 function StickyCTA() {
+  const [on, setOn] = useState(false);
+  useEffect(() => {
+    const check = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const p = max > 0 ? window.pageYOffset / max : 0;
+      // מופיע אחרי 50% גלילה, נעלם רק מתחת ל-45% — בלי הבהוב על הגבול
+      setOn(prev => (prev ? p >= 0.45 : p >= 0.5));
+    };
+    check();
+    window.addEventListener('scroll', check, { passive: true });
+    window.addEventListener('resize', check, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', check);
+      window.removeEventListener('resize', check);
+    };
+  }, []);
   return React.createElement("a", {
-    className: "sticky-cta",
+    className: "sticky-cta" + (on ? " is-on" : ""),
     href: PAY_LINK
-  }, React.createElement("span", null, React.createElement("b", null, "אני רוצה לרכוש את - BRIDE"), React.createElement("small", null, "גישה מיידית \xB7 תשלום חד-פעמי")), React.createElement("span", {
+  },React.createElement("span", null, React.createElement("b", null, "אני רוצה לרכוש את - BRIDE"), React.createElement("small", null, "גישה מיידית \xB7 תשלום חד-פעמי")), React.createElement("span", {
     className: "btn btn--accent"
   }, "1,770\xA0\u20AA"));
 }
