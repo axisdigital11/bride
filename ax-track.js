@@ -146,6 +146,7 @@
     var stopFn = null;
     var flushTimer = null;
     var recStarted = false;
+    var recT0 = 0;  // מתי ההקלטה עצמה התחילה (לא מתי הגולשת נחתה)
     var recDone = false;
 
     function seqNext() {
@@ -162,7 +163,9 @@
 
     function meta() {
       return {
-        t0: t0, page: page, dur: Date.now() - t0, dev: dev,
+        t0: recT0 || t0, page: page,
+        // משך ההקלטה בפועל — לא זמן השהות באתר, כדי שהאורך בפאנל יתאים לנגן
+        dur: Date.now() - (recT0 || t0), dev: dev,
         ref: ref, utm: utm, w: w, h: h, ua: ua
       };
     }
@@ -194,6 +197,7 @@
       if (recStarted || recDone) return;
       if (seqPeek() >= MAX_CHUNKS) return;
       recStarted = true;
+      recT0 = Date.now();
 
       var kick = function () {
         // עיכוב 1500ms אחרי load — כדי לא להתחרות ב-LCP של דף הנחיתה (תנועה בתשלום)
