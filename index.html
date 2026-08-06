@@ -2806,12 +2806,7 @@ function Progress() {
       cancelAnimationFrame(raf);
     };
   }, []);
-  return React.createElement("div", {
-    className: "progress"
-  }, React.createElement("div", {
-    className: "progress__bar",
-    ref: ref
-  }));
+  return null; // סרגל התקדמות הגלילה הוסר לבקשת ניב
 }
 function StickyCTA() {
   const [on, setOn] = useState(false);
