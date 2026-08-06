@@ -114,7 +114,62 @@ tr:hover td{background:var(--panel-2)}
 .spinner{display:inline-block;width:24px;height:24px;border:2px solid var(--line);
   border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite;margin-bottom:10px}
 @keyframes spin{to{transform:rotate(360deg)}}
-@media(max-width:768px){.sources-row{grid-template-columns:1fr}.content{padding:16px}table{display:block;overflow-x:auto}}
+/* ── LIVE VISITORS ── */
+.live-row{margin-bottom:16px}
+.live-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;transition:border-color .3s}
+.live-card.is-live{border-color:rgba(76,175,130,.34)}
+.live-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.live-card .label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.live-count{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:900;
+  font-size:34px;line-height:1;color:var(--muted);transition:color .3s}
+.live-card.is-live .live-count{color:var(--green)}
+.live-dot{width:10px;height:10px;border-radius:50%;background:var(--muted);flex:none}
+.live-card.is-live .live-dot{background:var(--green);animation:pulseDot 1.7s ease-out infinite}
+@keyframes pulseDot{
+  0%{box-shadow:0 0 0 0 rgba(76,175,130,.55)}
+  70%{box-shadow:0 0 0 12px rgba(76,175,130,0)}
+  100%{box-shadow:0 0 0 0 rgba(76,175,130,0)}}
+.live-note{font-size:11px;color:var(--muted);white-space:nowrap;padding-top:4px;text-align:left}
+.live-list{margin-top:16px;display:flex;flex-direction:column;gap:8px}
+.live-item{display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--bg-2);
+  border:1px solid var(--line);border-radius:10px;font-size:13px;min-width:0}
+.live-item.hot{border-color:var(--accent);background:var(--accent-soft)}
+.live-item .lv-dev{flex:none;font-size:14px}
+.live-item .lv-page{font-weight:700;color:var(--ink);white-space:nowrap}
+.live-item.hot .lv-page{color:var(--accent)}
+.live-item .lv-src{color:var(--muted);font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0;flex:1}
+.live-item .lv-ago{margin-inline-start:auto;color:var(--muted);font-size:11px;white-space:nowrap;flex:none}
+.live-msg{margin-top:14px;color:var(--muted);font-size:13px}
+
+/* ── SESSION RECORDINGS ── */
+.rec-wrap{margin-top:28px}
+.rec-actions{display:flex;align-items:center;gap:10px}
+.ltr{direction:ltr;display:inline-block;unicode-bidi:isolate}
+.btn-play{padding:5px 12px;border:1px solid var(--line);border-radius:8px;background:transparent;
+  color:var(--accent);font-family:var(--body);font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;transition:.15s}
+.btn-play:hover{border-color:var(--accent);background:var(--accent-soft)}
+.rec-pages{font-size:12px;color:var(--ink-soft);max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* ── REPLAY MODAL ── */
+.modal-back{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;
+  padding:10px;background:rgba(5,5,8,.84)}
+.modal-back.open{display:flex}
+.modal-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;width:100%;
+  max-width:1120px;max-height:96vh;display:flex;flex-direction:column;overflow:hidden}
+.modal-head{padding:14px 18px;border-bottom:1px solid var(--line);display:flex;
+  align-items:flex-start;justify-content:space-between;gap:12px;flex:none}
+.modal-head h3{font-family:var(--display);font-size:16px;font-weight:800}
+.modal-meta{font-size:12px;color:var(--muted);margin-top:5px;line-height:1.7}
+.modal-close{background:transparent;border:1px solid var(--line);color:var(--muted);width:32px;height:32px;
+  border-radius:8px;cursor:pointer;font-size:14px;flex:none;font-family:var(--body)}
+.modal-close:hover{border-color:var(--red);color:var(--red)}
+.modal-body{padding:12px;overflow:auto;flex:1;display:flex;align-items:flex-start;justify-content:center}
+#replayHost{direction:ltr;max-width:100%}
+#replayHost .rr-player{max-width:100%;box-shadow:none;border-radius:10px}
+
+@media(max-width:768px){.sources-row{grid-template-columns:1fr}.content{padding:16px}table{display:block;overflow-x:auto}
+  .live-count{font-size:28px}.live-card{padding:16px 16px}.rec-pages{max-width:150px}
+  .modal-card{max-height:100vh;border-radius:12px}.modal-body{padding:8px}}
 </style>
 </head>
 <body>
@@ -195,6 +250,20 @@ tr:hover td{background:var(--panel-2)}
   </div>
 
   <div class="content">
+    <div class="live-row">
+      <div class="live-card" id="liveCard">
+        <div class="live-head">
+          <div>
+            <div class="label">גולשים באתר עכשיו</div>
+            <div class="live-count"><span class="live-dot"></span><span id="liveCount">—</span></div>
+          </div>
+          <div class="live-note" id="liveNote"></div>
+        </div>
+        <div class="live-list" id="liveList"></div>
+        <div class="live-msg" id="liveMsg">טוען...</div>
+      </div>
+    </div>
+
     <div class="stats-grid">
       <div class="stat-card">
         <div class="label">סה"כ הכנסות</div>
@@ -267,6 +336,33 @@ tr:hover td{background:var(--panel-2)}
         <div class="loading-state"><div class="spinner"></div><br>טוען נתונים...</div>
       </div>
     </div>
+
+    <div class="table-wrap rec-wrap" id="recSection">
+      <div class="table-head">
+        <h2>הקלטות גלישה</h2>
+        <div class="rec-actions">
+          <span class="count-badge" id="recCount">0</span>
+          <button class="btn-sm btn-outline" onclick="loadSessions(true)">רענן</button>
+        </div>
+      </div>
+      <div id="recContainer">
+        <div class="empty">עדיין אין הקלטות — הן יופיעו כאן אחרי שגולשים ייכנסו לאתר</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SESSION REPLAY MODAL ── -->
+<div class="modal-back" id="replayModal">
+  <div class="modal-card">
+    <div class="modal-head">
+      <div>
+        <h3>צפייה בהקלטה</h3>
+        <div class="modal-meta" id="replayMeta"></div>
+      </div>
+      <button class="modal-close" onclick="closeReplay()" aria-label="סגור">✕</button>
+    </div>
+    <div class="modal-body" id="replayBody"></div>
   </div>
 </div>
 
@@ -385,6 +481,8 @@ async function doReset() {
 function doLogout() {
   sessionToken = '';
   localStorage.removeItem('bride_admin_token');
+  stopLivePolling();
+  closeReplay();
   showLogin();
 }
 
@@ -404,6 +502,7 @@ async function loadSales() {
     initNotifBtn();
 
     updateStats(); updateCharts(); updateSourceFilter(); applyFilters();
+    startLivePolling(); initRecObserver();
   } catch {
     document.getElementById('loginErr').textContent = 'שגיאת חיבור';
     showLogin();
@@ -586,6 +685,369 @@ function exportCSV() {
   a.download = `bride-sales-${new Date().toISOString().slice(0,10)}.csv`;
   a.click();
 }
+
+// ── SHARED HELPERS (live + recordings) ────────────────────────────────────────
+
+const PAGE_NAMES = {
+  'index.html':   'דף המכירה',
+  'checkout.html':'עמוד תשלום',
+  'thank-you.html':'דף תודה',
+  'chat.html':    "צ'אט"
+};
+
+function esc(v) {
+  return String(v == null ? '' : v).replace(/[&<>"']/g,
+    c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function pageFile(p) {
+  const clean = String(p || '').split('?')[0].split('#')[0];
+  const file = clean.split('/').pop();
+  return file || 'index.html';
+}
+
+function pageName(p) {
+  if (p == null || p === '') return 'דף לא ידוע';
+  const file = pageFile(p);
+  return PAGE_NAMES[file] || file;
+}
+
+function isHotPage(p) { return pageFile(p) === 'checkout.html'; }
+
+function devIcon(d) {
+  return /mob|phone|android|iphone|ipod|ipad|tablet/i.test(String(d || '')) ? '📱' : '💻';
+}
+
+// utm may arrive as a raw string or as "source=fb|medium=cpc|campaign=bride"
+function utmLabel(utm) {
+  const u = String(utm || '').trim();
+  if (!u) return '';
+  if (u.indexOf('=') === -1) return u;
+  const parts = {};
+  u.split(/[|&]/).forEach(p => {
+    const i = p.indexOf('=');
+    if (i > 0) parts[p.slice(0, i).trim().replace(/^utm_/, '')] = p.slice(i + 1).trim();
+  });
+  const src = parts.source || '';
+  const camp = parts.campaign || '';
+  if (src && camp) return `${src} / ${camp}`;
+  return src || camp || u;
+}
+
+function shortSource(utm, ref) {
+  const u = utmLabel(utm);
+  if (u) return u.length > 24 ? u.slice(0, 24) + '…' : u;
+  const r = String(ref || '').trim();
+  if (!r) return 'ישיר';
+  let h = r;
+  try { h = new URL(r).hostname.replace(/^www\./, ''); } catch (e) {}
+  return h.length > 24 ? h.slice(0, 24) + '…' : h;
+}
+
+function agoText(sec) {
+  const s = Math.max(0, Math.round(Number(sec) || 0));
+  if (s < 60) return `לפני ${s} שניות`;
+  const m = Math.round(s / 60);
+  if (m < 60) return m === 1 ? 'לפני דקה' : `לפני ${m} דקות`;
+  const h = Math.round(m / 60);
+  return h === 1 ? 'לפני שעה' : `לפני ${h} שעות`;
+}
+
+function durText(ms) {
+  const t = Math.max(0, Math.round((Number(ms) || 0) / 1000));
+  return `${Math.floor(t / 60)}:${String(t % 60).padStart(2, '0')}`;
+}
+
+function dtText(ms) {
+  const d = new Date(Number(ms) || 0);
+  if (isNaN(d.getTime()) || !ms) return '—';
+  return `${d.getDate()}.${d.getMonth() + 1} ` +
+    d.toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit' });
+}
+
+// ── LIVE VISITORS ─────────────────────────────────────────────────────────────
+
+let liveTimer = null;
+let liveBound = false;
+let liveEverLoaded = false;
+
+function startLivePolling() {
+  stopLivePolling();
+  loadLive();
+  liveTimer = setInterval(() => { if (!document.hidden) loadLive(); }, 15000);
+  if (!liveBound) {
+    liveBound = true;
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) { stopLivePolling(); return; }
+      const main = document.getElementById('mainScreen');
+      if (sessionToken && main && main.style.display !== 'none') startLivePolling();
+    });
+  }
+}
+
+function stopLivePolling() {
+  if (liveTimer) { clearInterval(liveTimer); liveTimer = null; }
+}
+
+async function loadLive() {
+  if (!sessionToken) return;
+  try {
+    const res = await fetch(`${WORKER}/live?token=${encodeURIComponent(sessionToken)}`);
+    if (res.status === 401) { doLogout(); return; }
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    if (!data || data.ok === false) throw new Error('bad payload');
+    const visitors = Array.isArray(data.visitors) ? data.visitors : [];
+    const count = typeof data.count === 'number' ? data.count : visitors.length;
+    liveEverLoaded = true;
+    renderLive(count, visitors);
+  } catch (e) {
+    renderLiveOffline();
+  }
+}
+
+function renderLive(count, visitors) {
+  const card = document.getElementById('liveCard');
+  const list = document.getElementById('liveList');
+  const msg  = document.getElementById('liveMsg');
+  document.getElementById('liveCount').textContent = count;
+  card.classList.toggle('is-live', count > 0);
+  document.getElementById('liveNote').textContent =
+    'עודכן ' + new Date().toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit' });
+
+  if (!visitors.length) {
+    list.innerHTML = '';
+    msg.style.display = '';
+    msg.textContent = 'אף אחד לא גולש באתר כרגע';
+    return;
+  }
+  msg.style.display = 'none';
+  list.innerHTML = visitors.slice(0, 12).map(v => `
+    <div class="live-item${isHotPage(v.page) ? ' hot' : ''}">
+      <span class="lv-dev">${devIcon(v.dev)}</span>
+      <span class="lv-page">${esc(pageName(v.page))}</span>
+      <span class="lv-src">${esc(shortSource(v.utm, v.ref))}</span>
+      <span class="lv-ago">${esc(agoText(v.ago))}</span>
+    </div>`).join('');
+}
+
+function renderLiveOffline() {
+  document.getElementById('liveNote').textContent = 'לא זמין כרגע';
+  if (liveEverLoaded) return;
+  const card = document.getElementById('liveCard');
+  const msg  = document.getElementById('liveMsg');
+  card.classList.remove('is-live');
+  document.getElementById('liveCount').textContent = '0';
+  document.getElementById('liveList').innerHTML = '';
+  msg.style.display = '';
+  msg.textContent = 'נתוני גולשים לא זמינים כרגע';
+}
+
+// ── SESSION RECORDINGS ────────────────────────────────────────────────────────
+
+let allSessions = [];
+let sessionsLoaded = false;
+let sessionsLoading = false;
+let recObserver = null;
+
+function recSectionVisible() {
+  const el = document.getElementById('recSection');
+  if (!el) return false;
+  const r = el.getBoundingClientRect();
+  return r.top < window.innerHeight + 150 && r.bottom > -150;
+}
+
+function checkRecVisible() {
+  if (sessionsLoaded || sessionsLoading) return;
+  if (recSectionVisible()) loadSessions(false);
+}
+
+function initRecObserver() {
+  const el = document.getElementById('recSection');
+  if (!el || recObserver === 'ready') return;
+  recObserver = 'ready';
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(en => { if (en.isIntersecting) loadSessions(false); });
+    }, { rootMargin: '150px' });
+    io.observe(el);
+  }
+  // fallback for browsers / states where IO doesn't fire (PWA standalone, bfcache)
+  window.addEventListener('scroll', checkRecVisible, { passive: true });
+  window.addEventListener('resize', checkRecVisible);
+  setTimeout(checkRecVisible, 400);
+}
+
+async function loadSessions(force) {
+  if (sessionsLoading) return;
+  if (sessionsLoaded && !force) return;
+  if (!sessionToken) return;
+  sessionsLoading = true;
+  const c = document.getElementById('recContainer');
+  c.innerHTML = '<div class="loading-state"><div class="spinner"></div><br>טוען הקלטות...</div>';
+  try {
+    const res = await fetch(`${WORKER}/sessions?token=${encodeURIComponent(sessionToken)}`);
+    if (res.status === 401) { doLogout(); return; }
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    if (!data || data.ok === false) throw new Error('bad payload');
+    allSessions = Array.isArray(data.sessions) ? data.sessions : [];
+    sessionsLoaded = true;
+    renderSessions();
+  } catch (e) {
+    allSessions = [];
+    document.getElementById('recCount').textContent = '0';
+    c.innerHTML = '<div class="empty">עדיין אין הקלטות — הן יופיעו כאן אחרי שגולשים ייכנסו לאתר</div>';
+  } finally {
+    sessionsLoading = false;
+  }
+}
+
+function renderSessions() {
+  const c = document.getElementById('recContainer');
+  document.getElementById('recCount').textContent = allSessions.length;
+  if (!allSessions.length) {
+    c.innerHTML = '<div class="empty">עדיין אין הקלטות — הן יופיעו כאן אחרי שגולשים ייכנסו לאתר</div>';
+    return;
+  }
+  const rows = allSessions.map((s, i) => {
+    const pages = Array.isArray(s.pages) && s.pages.length ? s.pages : (s.page ? [s.page] : []);
+    const names = pages.map(pageName);
+    const label = names.length ? names.slice(0, 3).join(' · ') + (names.length > 3 ? ' +' + (names.length - 3) : '') : '—';
+    const hot = pages.some(isHotPage);
+    return `<tr>
+      <td><span class="ltr">${esc(dtText(s.t0))}</span></td>
+      <td><span class="ltr">${esc(durText(s.dur))}</span></td>
+      <td><span class="rec-pages" title="${esc(names.join(' · '))}"${hot ? ' style="color:var(--accent);font-weight:700"' : ''}>${esc(label)}</span></td>
+      <td>${devIcon(s.dev)}</td>
+      <td><span class="source-tag">${esc(shortSource(s.utm, s.ref))}</span></td>
+      <td><button class="btn-play" data-idx="${i}">▶ צפייה</button></td>
+    </tr>`;
+  }).join('');
+
+  c.innerHTML = `<table><thead><tr>
+    <th>תאריך</th><th>משך</th><th>דפים</th><th>מכשיר</th><th>מקור</th><th></th>
+  </tr></thead><tbody>${rows}</tbody></table>`;
+}
+
+// ── RRWEB PLAYER (lazy loaded) ────────────────────────────────────────────────
+
+let rrwebLibPromise = null;
+let currentPlayer = null;
+
+function ensureRrwebPlayer() {
+  if (window.rrwebPlayer) return Promise.resolve();
+  if (rrwebLibPromise) return rrwebLibPromise;
+  rrwebLibPromise = new Promise((resolve, reject) => {
+    const css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.href = 'vendor/rrweb-player.css';
+    document.head.appendChild(css);
+    const js = document.createElement('script');
+    js.src = 'vendor/rrweb-player.js';
+    js.onload = () => window.rrwebPlayer ? resolve() : reject(new Error('rrwebPlayer missing'));
+    js.onerror = () => reject(new Error('failed to load rrweb-player'));
+    document.head.appendChild(js);
+  });
+  rrwebLibPromise.catch(() => { rrwebLibPromise = null; });
+  return rrwebLibPromise;
+}
+
+async function openReplay(idx) {
+  const s = allSessions[idx];
+  if (!s) return;
+  const modal = document.getElementById('replayModal');
+  const body  = document.getElementById('replayBody');
+  const pages = Array.isArray(s.pages) && s.pages.length ? s.pages : (s.page ? [s.page] : []);
+
+  document.getElementById('replayMeta').innerHTML =
+    `<span class="ltr">${esc(dtText(s.t0))}</span> · משך <span class="ltr">${esc(durText(s.dur))}</span> · ` +
+    `${devIcon(s.dev)} · מקור: ${esc(shortSource(s.utm, s.ref))}` +
+    (pages.length ? ` · ${esc(pages.map(pageName).join(' · '))}` : '');
+
+  body.innerHTML = '<div class="loading-state"><div class="spinner"></div><br>טוען הקלטה...</div>';
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  const libP = ensureRrwebPlayer();
+  libP.catch(() => {});
+
+  let events = [];
+  try {
+    const res = await fetch(`${WORKER}/session?token=${encodeURIComponent(sessionToken)}&sid=${encodeURIComponent(s.sid)}`);
+    if (res.status === 401) { closeReplay(); doLogout(); return; }
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    if (!data || data.ok === false) throw new Error('bad payload');
+    events = Array.isArray(data.events) ? data.events : [];
+  } catch (e) {
+    body.innerHTML = '<div class="empty">לא הצלחנו לטעון את ההקלטה — נסה שוב מאוחר יותר</div>';
+    return;
+  }
+
+  if (!modal.classList.contains('open')) return;
+  if (events.length < 2) {
+    body.innerHTML = '<div class="empty">ההקלטה קצרה מדי לצפייה</div>';
+    return;
+  }
+
+  try { await libP; }
+  catch (e) {
+    body.innerHTML = '<div class="empty">נגן ההקלטות לא נטען — רענן את הדף ונסה שוב</div>';
+    return;
+  }
+  if (!modal.classList.contains('open')) return;
+
+  const rw = Number(s.w) > 0 ? Number(s.w) : 1280;
+  const rh = Number(s.h) > 0 ? Number(s.h) : 800;
+  body.innerHTML = '';
+  const host = document.createElement('div');
+  host.id = 'replayHost';
+  body.appendChild(host);
+
+  const availW = Math.max(240, body.clientWidth - 6);
+  const availH = Math.max(220, Math.round(window.innerHeight * 0.94) - 170);
+  const scale  = Math.min(availW / rw, availH / rh, 1);
+
+  try {
+    currentPlayer = new window.rrwebPlayer({
+      target: host,
+      props: {
+        events: events,
+        width: Math.max(200, Math.round(rw * scale)),
+        height: Math.max(160, Math.round(rh * scale)),
+        autoPlay: true,
+        showController: true,
+        mouseTail: false
+      }
+    });
+  } catch (e) {
+    console.error('replay error:', e);
+    body.innerHTML = '<div class="empty">לא ניתן לנגן את ההקלטה</div>';
+  }
+}
+
+function closeReplay() {
+  const modal = document.getElementById('replayModal');
+  if (!modal || !modal.classList.contains('open')) return;
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
+  if (currentPlayer) {
+    try { if (typeof currentPlayer.pause === 'function') currentPlayer.pause(); } catch (e) {}
+    try { if (typeof currentPlayer.$destroy === 'function') currentPlayer.$destroy(); } catch (e) {}
+    currentPlayer = null;
+  }
+  document.getElementById('replayBody').innerHTML = '';
+}
+
+document.getElementById('recContainer').addEventListener('click', e => {
+  const btn = e.target.closest('.btn-play');
+  if (btn) openReplay(Number(btn.dataset.idx));
+});
+document.getElementById('replayModal').addEventListener('click', e => {
+  if (e.target.id === 'replayModal') closeReplay();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReplay(); });
 
 // ── INIT (runs after all functions defined) ───────────────────────────────────
 const resetToken = new URLSearchParams(location.search).get('reset');
