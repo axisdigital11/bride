@@ -13,9 +13,10 @@
     var API = 'https://bride-payment.axis-office11.workers.dev';
     var RRWEB_CDN = 'vendor/rrweb.min.js';  // מתארח אצלנו, בלי תלות ב-CDN
     var BEAT_MS = 45000;      // דופק נוכחות כל 45 שניות
-    var FLUSH_MS = 25000;     // שליחת צ'אנק הקלטה כל 25 שניות
-    var MAX_REC_MS = 300000;  // עוצרים הקלטה אחרי 5 דקות
-    var MAX_CHUNKS = 20;      // תקרת צ'אנקים לסשן (תואם לתקרה בשרת)
+    var FLUSH_MS = 12000;     // שליחת צ'אנק הקלטה כל 12 שניות
+    var MAX_REC_MS = 600000;  // עוצרים הקלטה אחרי 10 דקות
+    var MAX_CHUNKS = 40;      // תקרת צ'אנקים לסשן (תואם לתקרה בשרת)
+    var MAX_BUF_EVENTS = 150; // מעל זה שולחים מיד — כל צ'אנק נשאר הרחק מתחת ל-64KB של sendBeacon
 
     if (window.__axTrackLoaded) return; // הגנה מפני ירי כפול של התגית
     window.__axTrackLoaded = true;
@@ -25,6 +26,12 @@
       set: function (k, v) { try { window.sessionStorage.setItem(k, v); } catch (e) {} }
     };
 
+    // localStorage — זהות מבקרת קבועה בין ביקורים (מצב פרטי עלול לזרוק — נכשל בשקט)
+    var LS = {
+      get: function (k) { try { return window.localStorage.getItem(k); } catch (e) { return null; } },
+      set: function (k, v) { try { window.localStorage.setItem(k, v); } catch (e) {} }
+    };
+
     function clip(s, n) {
       s = s == null ? '' : String(s);
       return s.length > n ? s.slice(0, n) : s;
@@ -32,12 +39,30 @@
 
     /* ── זהות הסשן ──────────────────────────────────────────────────────── */
     var sid = SS.get('ax_sid');
+    var newSession = false;
     if (!sid) {
       sid = (Date.now().toString(36) + Math.random().toString(36).slice(2, 10)).slice(0, 20);
       SS.set('ax_sid', sid);
+      newSession = true;
     }
     var t0 = parseInt(SS.get('ax_t0'), 10);
     if (!t0 || isNaN(t0)) { t0 = Date.now(); SS.set('ax_t0', String(t0)); }
+
+    /* ── זהות מבקרת קבועה + מונה ביקורים ────────────────────────────────── */
+    var vid = LS.get('ax_vid');
+    if (!vid) {
+      vid = Math.random().toString(36).slice(2, 10);         // 8 תווים, נשמר לתמיד
+      LS.set('ax_vid', vid);
+    }
+    var visits = parseInt(LS.get('ax_visits'), 10);
+    if (!visits || isNaN(visits) || visits < 0) visits = 0;
+    if (newSession) {
+      // סשן חדש = ביקור חדש. מקדמים פעם אחת לסשן, לא לכל דף
+      visits += 1;
+      LS.set('ax_visits', String(visits));
+    }
+    if (visits < 1) visits = 1; // localStorage חסום — עדיין מדווחים ביקור ראשון
+    LS.set('ax_last_seen', String(Date.now()));
 
     /* ── איסוף חד-פעמי ──────────────────────────────────────────────────── */
     var path = '/';
@@ -111,7 +136,7 @@
     var firstBeatDone = false;
 
     function beat() {
-      post('/t/beat', { sid: sid, page: page, ref: ref, utm: utm, dev: dev, w: w, h: h }, true)
+      post('/t/beat', { sid: sid, vid: vid, visits: visits, page: page, ref: ref, utm: utm, dev: dev, w: w, h: h }, true)
         .then(function (r) { return r && r.json ? r.json() : null; })
         .then(function (data) {
           if (firstBeatDone) return;
@@ -143,6 +168,7 @@
 
     /* ── הקלטה (rrweb, נטען מה-CDN בעצלתיים) ────────────────────────────── */
     var buffer = [];
+    var flushing = false; // מגן כפילות — flush לא נכנס לתוך flush שרץ
     var stopFn = null;
     var flushTimer = null;
     var recStarted = false;
@@ -166,15 +192,18 @@
         t0: recT0 || t0, page: page,
         // משך ההקלטה בפועל — לא זמן השהות באתר, כדי שהאורך בפאנל יתאים לנגן
         dur: Date.now() - (recT0 || t0), dev: dev,
-        ref: ref, utm: utm, w: w, h: h, ua: ua
+        ref: ref, utm: utm, w: w, h: h, ua: ua,
+        vid: vid, visits: visits
       };
     }
 
     function flush(final) {
+      if (flushing) return;
+      flushing = true;
       try {
-        if (!buffer.length) return;
+        if (!buffer.length) { flushing = false; return; }
         var seq = seqPeek();
-        if (seq > MAX_CHUNKS) { stopRecording(); return; }
+        if (seq > MAX_CHUNKS) { stopRecording(); flushing = false; return; }
         var events = buffer;
         buffer = [];
         seqNext();
@@ -183,6 +212,7 @@
         else post('/t/rec', body).catch(function () {});
         if (seq >= MAX_CHUNKS) stopRecording();
       } catch (e) {}
+      flushing = false;
     }
 
     function stopRecording() {
@@ -224,7 +254,14 @@
         if (!rec || recDone || IS_CHECKOUT) return;
 
         stopFn = rec({
-          emit: function (e) { try { buffer.push(e); } catch (err) {} },
+          emit: function (e) {
+            try {
+              buffer.push(e);
+              // הצפת אירועים (הרבה תזוזות/גלילות) — שולחים מיד ולא מחכים לטיימר,
+              // כדי שהצ'אנק האחרון בעזיבת הדף תמיד ייכנס לתקרת sendBeacon
+              if (buffer.length >= MAX_BUF_EVENTS && !flushing) flush(false);
+            } catch (err) {}
+          },
           maskAllInputs: true,
           maskTextClass: 'ax-mask',
           blockClass: 'ax-block',
