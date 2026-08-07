@@ -265,7 +265,7 @@
           maskAllInputs: true,
           maskTextClass: 'ax-mask',
           blockClass: 'ax-block',
-          sampling: { mousemove: 100, scroll: 150, input: 'last' },
+          sampling: { mousemove: 100, scroll: 100, input: 'last' },
           recordCanvas: false,
           collectFonts: false
         });

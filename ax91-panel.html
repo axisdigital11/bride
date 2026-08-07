@@ -35,7 +35,8 @@ body{font-family:var(--body);background:var(--bg);color:var(--ink);min-height:10
 .auth-wrap{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px}
 .auth-card{background:var(--panel);border:1px solid var(--line);border-radius:20px;
   padding:40px;width:100%;max-width:380px;text-align:center}
-.auth-card .logo{font-family:var(--display);font-weight:900;font-size:26px;color:var(--accent);margin-bottom:6px}
+.auth-card .logo{font-family:var(--body);font-weight:700;font-size:24px;color:#FFFFFF;letter-spacing:.06em;margin-bottom:6px}
+.auth-card .logo::after{content:'';display:block;width:40px;height:3px;background:var(--accent);border-radius:2px;margin:9px auto 0}
 .auth-card .subtitle{color:var(--muted);font-size:14px;margin-bottom:28px}
 .auth-card .field{margin-bottom:14px;text-align:right}
 .auth-card .field label{display:block;font-size:12px;font-weight:600;color:var(--muted);margin-bottom:5px}
@@ -63,7 +64,9 @@ body{font-family:var(--body);background:var(--bg);color:var(--ink);min-height:10
   padding:calc(12px + env(safe-area-inset-top)) 28px 12px;
   display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;
   position:sticky;top:0;z-index:10}
-.topbar .logo{font-family:var(--display);font-weight:900;font-size:22px;color:var(--accent)}
+.topbar .logo{font-family:var(--body);font-weight:700;font-size:20px;line-height:1.15;color:#FFFFFF;letter-spacing:.06em}
+.topbar .logo::after{content:'';display:block;width:38px;height:3px;background:var(--accent);border-radius:2px;margin-top:3px}
+.topbar .sub{margin-top:1px}
 .topbar .sub{font-size:12px;color:var(--muted);margin-top:2px}
 .topbar-right{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .btn-sm{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px;
@@ -81,6 +84,24 @@ body{font-family:var(--body);background:var(--bg);color:var(--ink);min-height:10
 .btn-logout:active{transform:scale(.98)}
 
 .content{padding:24px 28px;flex:1;max-width:1280px;margin:0 auto;width:100%}
+
+/* ── DATE RANGE BAR ── */
+.range-bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:8px}
+.range-chips{display:flex;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:4px;gap:4px;flex-wrap:wrap}
+.range-chip{display:inline-flex;align-items:center;min-height:36px;border:none;background:transparent;
+  color:var(--muted);font-family:var(--body);font-size:13px;font-weight:600;padding:7px 14px;border-radius:9px;
+  cursor:pointer;transition:all .18s ease-out;white-space:nowrap}
+.range-chip:hover{color:var(--ink-soft)}
+.range-chip.active{background:var(--accent-soft);color:var(--accent)}
+.range-chip:active{transform:scale(.98)}
+.range-custom{display:none;align-items:center;gap:8px;flex-wrap:wrap}
+.range-bar.custom-open .range-custom{display:flex}
+.range-custom input[type=date]{min-height:40px;padding:8px 10px;border-radius:10px;border:1px solid var(--line);
+  background:var(--panel);color:var(--ink);font-family:var(--body);font-size:13px;outline:none;max-width:145px;
+  transition:border-color .18s ease-out}
+.range-custom input[type=date]:focus{border-color:var(--accent)}
+.range-sep{font-size:12px;color:var(--muted)}
+.range-caption{font-size:12px;color:var(--muted);margin-bottom:16px}
 
 /* ── KPI ROW ── */
 .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:16px}
@@ -221,6 +242,16 @@ tr:hover td{background:var(--panel-2)}
 .btn-play:hover{border-color:var(--accent);background:var(--accent-soft)}
 .btn-play:active{transform:scale(.98)}
 .rec-pages{font-size:12px;color:var(--ink-soft);max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rec-actions{display:flex;align-items:center;gap:8px}
+.btn-ic{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;
+  padding:8px;border:1px solid var(--line);border-radius:10px;background:transparent;
+  color:var(--muted);cursor:pointer;flex:none;transition:all .18s ease-out}
+.btn-ic .ic{width:16px;height:16px}
+.btn-ic:hover{border-color:var(--accent);color:var(--accent)}
+.btn-ic:active{transform:scale(.98)}
+.btn-ic.busy{pointer-events:none;opacity:.75}
+.mini-spin{width:15px;height:15px;border:2px solid var(--line);border-top-color:var(--accent);
+  border-radius:50%;animation:spin .7s linear infinite}
 
 /* ── VISITOR IDENTITY (vid / visits) ── */
 .vid-chip{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;
@@ -231,6 +262,8 @@ tr:hover td{background:var(--panel-2)}
 
 /* ── HEATMAPS ── */
 .heat-status{padding:34px 18px;text-align:center;color:var(--muted);font-size:13px}
+.heat-notice{margin:14px 18px 0;padding:9px 12px;border-radius:10px;background:var(--yellow-soft);
+  color:var(--yellow);font-size:12px;font-weight:600;line-height:1.5}
 .heat-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 18px 4px;flex-wrap:wrap}
 .heat-toggle{display:flex;background:var(--bg-2);border:1px solid var(--line);border-radius:10px;padding:3px;gap:3px}
 .heat-tab{display:inline-flex;align-items:center;gap:6px;min-height:38px;border:none;background:transparent;
@@ -239,28 +272,30 @@ tr:hover td{background:var(--panel-2)}
 .heat-tab .ic{width:15px;height:15px}
 .heat-tab.active{background:var(--accent-soft);color:var(--accent)}
 .heat-tab:active{transform:scale(.98)}
-.heat-info{font-size:12px;color:var(--muted)}
-.heat-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:14px;padding:12px 18px 18px}
+.heat-explain{padding:8px 18px 0;font-size:12px;color:var(--muted);line-height:1.6}
+.heat-body{display:flex;flex-direction:column;gap:10px;padding:12px 18px 18px}
+.heat-funnel{font-family:var(--display);font-weight:700;font-size:15px;line-height:1.7;color:var(--ink);
+  background:var(--bg-2);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.heat-funnel .num{color:var(--accent)}
+.heat-meta{display:flex;align-items:center;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+.heat-legend{display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+.legend-bar{width:110px;height:8px;border-radius:4px;flex:none;
+  background:linear-gradient(to left,#2AB3A6,var(--yellow),var(--red))}
+.heat-note{color:var(--accent);font-weight:600}
 .heat-card{background:var(--bg-2);border:1px solid var(--line);border-radius:10px;padding:14px;min-width:0}
-.heat-card h4{font-size:13px;font-weight:700;margin-bottom:3px}
-.heat-sub{font-size:11px;color:var(--muted);margin-bottom:10px;min-height:14px}
 .heat-clip{position:relative;direction:ltr;max-height:460px;overflow-y:auto;overflow-x:hidden;
   border:1px solid var(--line);border-radius:8px;background:#0d0d12}
 .heat-stage{position:relative;transform-origin:top left}
 .heat-stage iframe{position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none;background:#101015}
 .heat-stage canvas{position:absolute;inset:0;width:100%;height:100%}
+.heat-lbls{position:absolute;inset:0;pointer-events:none}
+.heat-lbl{position:absolute;right:2%;transform:translateY(-50%);direction:rtl;white-space:nowrap;
+  background:rgba(10,10,12,.85);border:1px solid rgba(255,255,255,.22);color:var(--ink);
+  border-radius:8px;padding:3px 9px;font-weight:700;font-family:var(--body)}
 .heat-fb{position:absolute;inset:0;display:none;direction:rtl;
   background:linear-gradient(180deg,#1B1B25 0%,#14141B 45%,#0F0F14 100%)}
 .heat-stage.fallback .heat-fb{display:block}
 .heat-fb span{position:absolute;right:4%;color:var(--muted);font-weight:600;opacity:.7}
-.scroll-map{display:flex;flex-direction:column;gap:6px}
-.scroll-band{display:flex;align-items:center;gap:8px}
-.sb-label{font-size:11px;color:var(--muted);min-width:34px}
-.sb-bar{flex:1;height:13px;background:var(--line);border-radius:7px;overflow:hidden}
-.sb-fill{height:100%;border-radius:7px;transition:width .4s}
-.sb-pct{font-size:11px;color:var(--ink-soft);min-width:32px;text-align:left;font-weight:700}
-.scroll-annot{font-size:11px;color:var(--accent);display:flex;align-items:center;gap:6px;padding:1px 0}
-.scroll-annot::before{content:'';flex:0 0 18px;height:1px;background:var(--accent);opacity:.5}
 
 /* ── REPLAY MODAL ── */
 .modal-back{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;
@@ -283,12 +318,20 @@ tr:hover td{background:var(--panel-2)}
 #replayHost{direction:ltr;max-width:100%}
 #replayHost .rr-player{max-width:100%;box-shadow:none;border-radius:10px}
 
+/* ── TOAST ── */
+.toast{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom));left:50%;
+  transform:translateX(-50%) translateY(8px);background:var(--panel-2);border:1px solid var(--line);
+  color:var(--ink);padding:12px 18px;border-radius:12px;font-size:13px;font-weight:600;z-index:300;
+  opacity:0;transition:opacity .2s ease-out,transform .2s ease-out;pointer-events:none;
+  box-shadow:0 12px 32px -8px rgba(0,0,0,.6);max-width:calc(100vw - 32px);text-align:center}
+.toast.show{opacity:1;transform:translateX(-50%)}
+
 @media(max-width:768px){
   .content{padding:16px}
   .topbar{padding:12px 16px}
   .topbar .logo{font-size:18px}
   .insights-grid{grid-template-columns:1fr}
-  .heat-grid{grid-template-columns:1fr}
+  .heat-body{padding:12px 14px 16px}.heat-card{padding:10px}
   table{display:block;overflow-x:auto}
   .live-count{font-size:28px}.live-card{padding:16px 16px}.rec-pages{max-width:150px}
   .modal-card{max-height:100vh;border-radius:12px}.modal-body{padding:8px}}
@@ -303,7 +346,7 @@ tr:hover td{background:var(--panel-2)}
 <!-- ── LOGIN ── -->
 <div id="loginScreen" class="auth-wrap">
   <div class="auth-card">
-    <div class="logo">bride</div>
+    <div class="logo">BRIDE</div>
     <div class="subtitle">בק אופיס — גישה מוגבלת</div>
     <div class="field">
       <label>שם משתמש</label>
@@ -324,7 +367,7 @@ tr:hover td{background:var(--panel-2)}
 <!-- ── FORGOT PASSWORD ── -->
 <div id="forgotScreen" class="auth-wrap" style="display:none">
   <div class="auth-card">
-    <div class="logo">bride</div>
+    <div class="logo">BRIDE</div>
     <div class="subtitle">שכחתי סיסמה</div>
     <p style="font-size:13px;color:var(--muted);margin-bottom:20px">הזן את שם המשתמש שלך ונשלח לך קישור לאיפוס הסיסמה למייל.</p>
     <div class="field">
@@ -343,7 +386,7 @@ tr:hover td{background:var(--panel-2)}
 <!-- ── RESET PASSWORD ── -->
 <div id="resetScreen" class="auth-wrap" style="display:none">
   <div class="auth-card">
-    <div class="logo">bride</div>
+    <div class="logo">BRIDE</div>
     <div class="subtitle">איפוס סיסמה</div>
     <div class="field">
       <label>סיסמה חדשה</label>
@@ -364,7 +407,7 @@ tr:hover td{background:var(--panel-2)}
 <div id="mainScreen">
   <div class="topbar">
     <div>
-      <div class="logo">bride — בק אופיס</div>
+      <div class="logo">BRIDE</div>
       <div class="sub" id="lastRefresh"></div>
     </div>
     <div class="topbar-right">
@@ -392,15 +435,32 @@ tr:hover td{background:var(--panel-2)}
       </div>
     </div>
 
-    <!-- 2. KPI ROW -->
+    <!-- 2. DATE RANGE FILTER -->
+    <div class="range-bar" id="rangeBar">
+      <div class="range-chips" role="group" aria-label="טווח תאריכים">
+        <button class="range-chip" data-range="today">היום</button>
+        <button class="range-chip" data-range="7">7 ימים</button>
+        <button class="range-chip" data-range="30">30 יום</button>
+        <button class="range-chip" data-range="all">הכל</button>
+        <button class="range-chip" data-range="custom">טווח מותאם</button>
+      </div>
+      <div class="range-custom" id="rangeCustom">
+        <input type="date" id="rangeFrom" aria-label="מתאריך" />
+        <span class="range-sep">עד</span>
+        <input type="date" id="rangeTo" aria-label="עד תאריך" />
+      </div>
+    </div>
+    <div class="range-caption" id="rangeCaption"></div>
+
+    <!-- 3. KPI ROW -->
     <div class="kpi-grid">
       <div class="stat-card">
-        <div class="label">מכירות היום</div>
+        <div class="label" id="kpiTodayLbl">מכירות היום</div>
         <div class="value accent" id="kpiToday">—</div>
         <div class="sub-val" id="kpiTodaySub"></div>
       </div>
       <div class="stat-card">
-        <div class="label">מכירות החודש</div>
+        <div class="label" id="kpiMonthLbl">מכירות החודש</div>
         <div class="value" id="kpiMonth">—</div>
         <div class="sub-val" id="kpiMonthSub"></div>
       </div>
@@ -410,7 +470,7 @@ tr:hover td{background:var(--panel-2)}
         <div class="sub-val" id="kpiRevenueSub"></div>
       </div>
       <div class="stat-card">
-        <div class="label">הוקלטו היום</div>
+        <div class="label" id="kpiRecTodayLbl">הוקלטו היום</div>
         <div class="value" id="kpiRecToday">—</div>
         <div class="sub-val" id="kpiRecTodaySub"></div>
       </div>
@@ -524,23 +584,23 @@ tr:hover td{background:var(--panel-2)}
         <div id="heatEmpty" class="empty" style="display:none">עדיין אין מספיק הקלטות למפת חום — היא תיבנה מהגלישות הבאות</div>
         <div id="heatStatus" class="heat-status" style="display:none"></div>
         <div id="heatUI" style="display:none">
+          <div class="heat-notice" id="heatNotice" style="display:none"></div>
           <div class="heat-toolbar">
+            <div class="heat-toggle">
+              <button class="heat-tab" id="heatViewScroll" onclick="setHeatMode('scroll')" aria-label="מפת עומק גלילה">עומק גלילה</button>
+              <button class="heat-tab" id="heatViewClicks" onclick="setHeatMode('clicks')" aria-label="מפת לחיצות">מפת לחיצות</button>
+            </div>
             <div class="heat-toggle">
               <button class="heat-tab" id="heatTabM" onclick="setHeatView('m')" aria-label="מפת חום מובייל">מובייל</button>
               <button class="heat-tab" id="heatTabD" onclick="setHeatView('d')" aria-label="מפת חום דסקטופ">דסקטופ</button>
             </div>
-            <span class="heat-info" id="heatInfo"></span>
           </div>
-          <div class="heat-grid">
+          <div class="heat-explain" id="heatExplain"></div>
+          <div class="heat-body">
+            <div class="heat-funnel" id="heatFunnel" style="display:none"></div>
+            <div class="heat-meta" id="heatMeta" style="display:none"></div>
             <div class="heat-card">
-              <h4>מפת לחיצות</h4>
-              <div class="heat-sub" id="heatClickInfo"></div>
               <div class="heat-clip" id="heatClip"><div id="heatSizer"></div></div>
-            </div>
-            <div class="heat-card">
-              <h4>מפת גלילה</h4>
-              <div class="heat-sub" id="heatScrollInfo"></div>
-              <div id="heatScrollHost"></div>
             </div>
           </div>
         </div>
@@ -558,7 +618,10 @@ tr:hover td{background:var(--panel-2)}
         <h3>צפייה בהקלטה</h3>
         <div class="modal-meta" id="replayMeta"></div>
       </div>
-      <button class="modal-close" id="modalCloseBtn" onclick="closeReplay()" aria-label="סגור"></button>
+      <div style="display:flex;gap:8px;flex:none">
+        <button class="btn-ic" id="modalDlBtn" onclick="dlFromModal(this)" aria-label="הורדת ההקלטה" title="הורדת ההקלטה"></button>
+        <button class="modal-close" id="modalCloseBtn" onclick="closeReplay()" aria-label="סגור"></button>
+      </div>
     </div>
     <div class="modal-body" id="replayBody"></div>
   </div>
@@ -815,40 +878,172 @@ async function enableNotifs() {
   }
 }
 
+// ── DATE RANGE (global filter for everything derived from data) ───────────────
+
+const RANGE_KEY = 'bride_panel_range';
+const RANGE_PRESETS = ['today', '7', '30', 'all', 'custom'];
+let rangeState = { preset: 'all', from: '', to: '' };
+
+function loadRangeState() {
+  try {
+    const o = JSON.parse(localStorage.getItem(RANGE_KEY) || 'null');
+    if (o && typeof o === 'object' && RANGE_PRESETS.includes(o.preset))
+      rangeState = { preset: o.preset, from: String(o.from || ''), to: String(o.to || '') };
+  } catch (e) {}
+}
+function saveRangeState() {
+  try { localStorage.setItem(RANGE_KEY, JSON.stringify(rangeState)); } catch (e) {}
+}
+function startOfDay(t) { const d = new Date(t); d.setHours(0, 0, 0, 0); return d.getTime(); }
+// null → no restriction; otherwise { from: ms|null, to: ms|null }
+function rangeBounds() {
+  const p = rangeState.preset;
+  if (p === 'today') return { from: startOfDay(Date.now()), to: null };
+  if (p === '7')  return { from: startOfDay(Date.now()) - 6 * 864e5, to: null };
+  if (p === '30') return { from: startOfDay(Date.now()) - 29 * 864e5, to: null };
+  if (p === 'custom') {
+    let from = null, to = null;
+    if (rangeState.from) { const d = new Date(rangeState.from + 'T00:00:00'); if (!isNaN(d)) from = d.getTime(); }
+    if (rangeState.to)   { const d = new Date(rangeState.to + 'T23:59:59.999'); if (!isNaN(d)) to = d.getTime(); }
+    if (from == null && to == null) return null;
+    return { from, to };
+  }
+  return null; // 'all'
+}
+function rangeActive() { return rangeBounds() != null; }
+function inRange(ts) {
+  const b = rangeBounds();
+  if (!b) return true;
+  const t = Number(ts);
+  if (!isFinite(t) || !t) return false;
+  if (b.from != null && t < b.from) return false;
+  if (b.to != null && t > b.to) return false;
+  return true;
+}
+// sale timestamp for the range: paidAt when set, otherwise createdAt
+function saleTs(s) { const t = Date.parse(s.paidAt || s.createdAt); return isNaN(t) ? 0 : t; }
+function fSales() { return rangeActive() ? allSales.filter(s => inRange(saleTs(s))) : allSales; }
+function fSessions() { return rangeActive() ? allSessions.filter(s => inRange(Number(s.t0))) : allSessions; }
+function rangeDayCount() {
+  const b = rangeBounds();
+  if (!b || b.from == null) return 0;
+  const to = b.to != null ? b.to : Date.now();
+  if (to < b.from) return 0;
+  return Math.max(1, Math.ceil((to - b.from + 1) / 864e5));
+}
+function fmtRangeDate(t) { const d = new Date(t); return `${d.getDate()}.${d.getMonth() + 1}.${d.getFullYear()}`; }
+function rangeCaptionText() {
+  const p = rangeState.preset;
+  if (p === 'today') return 'מציג: היום';
+  if (p === '7') return 'מציג: 7 הימים האחרונים';
+  if (p === '30') return 'מציג: 30 הימים האחרונים';
+  if (p === 'custom') {
+    const b = rangeBounds();
+    if (!b) return 'מציג: טווח מותאם — בחר תאריכים';
+    if (b.from != null && b.to != null) return `מציג: ${fmtRangeDate(b.from)} – ${fmtRangeDate(b.to)}`;
+    if (b.from != null) return `מציג: מ-${fmtRangeDate(b.from)}`;
+    return `מציג: עד ${fmtRangeDate(b.to)}`;
+  }
+  return 'מציג: כל הנתונים';
+}
+function renderRangeUI() {
+  document.querySelectorAll('.range-chip').forEach(ch => {
+    const on = ch.dataset.range === rangeState.preset;
+    ch.classList.toggle('active', on);
+    ch.setAttribute('aria-pressed', on ? 'true' : 'false');
+  });
+  document.getElementById('rangeBar').classList.toggle('custom-open', rangeState.preset === 'custom');
+  document.getElementById('rangeFrom').value = rangeState.from || '';
+  document.getElementById('rangeTo').value = rangeState.to || '';
+  document.getElementById('rangeCaption').textContent = rangeCaptionText();
+}
+function setRangePreset(p) {
+  if (!RANGE_PRESETS.includes(p)) p = 'all';
+  rangeState.preset = p;
+  saveRangeState();
+  renderRangeUI();
+  refreshDerived();
+}
+function onRangeDateInput() {
+  rangeState.from = document.getElementById('rangeFrom').value || '';
+  rangeState.to = document.getElementById('rangeTo').value || '';
+  rangeState.preset = 'custom';
+  saveRangeState();
+  renderRangeUI();
+  refreshDerived();
+}
+// re-derive everything the range touches (live hero is real-time and ignores it)
+function refreshDerived() {
+  if (!mainVisible()) return;
+  updateKpis();
+  updateInsights();
+  applyFilters();
+  if (sessionsLoaded) renderSessions();
+  if (isSecOpen('heatmaps')) buildHeatmaps(true);
+  else heatBuilt = false; // rebuild from the new range on next open
+}
+
 // ── KPI ROW ───────────────────────────────────────────────────────────────────
 
 function updateKpis() {
-  const paid = allSales.filter(s => s.status === 'paid');
-  const pending = allSales.filter(s => s.status === 'pending');
+  const active = rangeActive();
+  const sales = fSales();
+  const paid = sales.filter(s => s.status === 'paid');
+  const pending = sales.filter(s => s.status === 'pending');
   const now = new Date();
   const isToday = t => { const d = new Date(t); return !isNaN(d) && d.toDateString() === now.toDateString(); };
   const isMonth = t => { const d = new Date(t);
     return !isNaN(d) && d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear(); };
+  const el = id => document.getElementById(id);
 
-  const paidToday = paid.filter(s => isToday(s.paidAt || s.createdAt)).length;
-  const paidMonth = paid.filter(s => isMonth(s.paidAt || s.createdAt)).length;
+  // cards 1+2 are fixed windows (today / this month) when showing everything;
+  // with an active range those windows mislead — they become "בטווח" + daily average
+  if (!active) {
+    el('kpiTodayLbl').textContent = 'מכירות היום';
+    animNum(el('kpiToday'), paid.filter(s => isToday(s.paidAt || s.createdAt)).length, v => String(Math.round(v)));
+    el('kpiTodaySub').textContent = pending.length ? `${pending.length} ממתינות לתשלום` : 'שולמו';
+    el('kpiMonthLbl').textContent = 'מכירות החודש';
+    animNum(el('kpiMonth'), paid.filter(s => isMonth(s.paidAt || s.createdAt)).length, v => String(Math.round(v)));
+    el('kpiMonthSub').textContent = `${paid.length} מכירות סה"כ`;
+  } else {
+    el('kpiTodayLbl').textContent = 'מכירות בטווח';
+    animNum(el('kpiToday'), paid.length, v => String(Math.round(v)));
+    el('kpiTodaySub').textContent = pending.length ? `${pending.length} ממתינות לתשלום` : 'שולמו';
+    el('kpiMonthLbl').textContent = 'ממוצע ליום';
+    const days = rangeDayCount();
+    if (days > 0) {
+      animNum(el('kpiMonth'), Math.round(10 * paid.length / days) / 10, v => String(Math.round(v * 10) / 10));
+      el('kpiMonthSub').textContent = days === 1 ? 'יום אחד בטווח' : `${days} ימים בטווח`;
+    } else {
+      el('kpiMonth').textContent = '—';
+      el('kpiMonthSub').textContent = '';
+    }
+  }
+
   const rev = paid.reduce((sum, s) => sum + (s.amount || 0), 0);
-
-  animNum(document.getElementById('kpiToday'), paidToday, v => String(Math.round(v)));
-  document.getElementById('kpiTodaySub').textContent = pending.length ? `${pending.length} ממתינות לתשלום` : 'שולמו';
-  animNum(document.getElementById('kpiMonth'), paidMonth, v => String(Math.round(v)));
-  document.getElementById('kpiMonthSub').textContent = `${paid.length} מכירות סה"כ`;
-  animNum(document.getElementById('kpiRevenue'), rev, v => `₪${Math.round(v).toLocaleString('he-IL')}`);
-  document.getElementById('kpiRevenueSub').textContent = `${allSales.length} עסקאות סה"כ`;
+  animNum(el('kpiRevenue'), rev, v => `₪${Math.round(v).toLocaleString('he-IL')}`);
+  el('kpiRevenueSub').textContent = active ? `${sales.length} עסקאות בטווח` : `${allSales.length} עסקאות סה"כ`;
 
   if (sessionsLoaded) {
-    const recToday = allSessions.filter(s => isToday(Number(s.t0))).length;
-    animNum(document.getElementById('kpiRecToday'), recToday, v => String(Math.round(v)));
-    document.getElementById('kpiRecTodaySub').textContent = `${allSessions.length} הקלטות סה"כ`;
-    if (allSessions.length) {
-      const conv = Math.round(1000 * paid.length / allSessions.length) / 10;
-      animNum(document.getElementById('kpiConv'), conv, v => (Math.round(v * 10) / 10) + '%');
+    const sess = fSessions();
+    if (!active) {
+      el('kpiRecTodayLbl').textContent = 'הוקלטו היום';
+      animNum(el('kpiRecToday'), sess.filter(s => isToday(Number(s.t0))).length, v => String(Math.round(v)));
+      el('kpiRecTodaySub').textContent = `${allSessions.length} הקלטות סה"כ`;
     } else {
-      document.getElementById('kpiConv').textContent = '—';
+      el('kpiRecTodayLbl').textContent = 'הוקלטו בטווח';
+      animNum(el('kpiRecToday'), sess.length, v => String(Math.round(v)));
+      el('kpiRecTodaySub').textContent = `מתוך ${allSessions.length} סה"כ`;
+    }
+    if (sess.length) {
+      const conv = Math.round(1000 * paid.length / sess.length) / 10;
+      animNum(el('kpiConv'), conv, v => (Math.round(v * 10) / 10) + '%');
+    } else {
+      el('kpiConv').textContent = '—';
     }
   } else {
-    document.getElementById('kpiRecToday').textContent = '—';
-    document.getElementById('kpiConv').textContent = '—';
+    el('kpiRecToday').textContent = '—';
+    el('kpiConv').textContent = '—';
   }
 }
 
@@ -871,24 +1066,26 @@ function renderBar(id, entries) {
 }
 
 function updateInsights() {
-  // traffic sources — combined from recorded sessions + sales
+  const sess = fSessions();
+  const sales = fSales();
+  // traffic sources — combined from recorded sessions + sales (range-filtered)
   const src = {};
-  allSessions.forEach(s => { const k = shortSource(s.utm, s.ref); src[k] = (src[k] || 0) + 1; });
-  allSales.forEach(s => { const k = s.utm_source || 'ישיר'; src[k] = (src[k] || 0) + 1; });
+  sess.forEach(s => { const k = shortSource(s.utm, s.ref); src[k] = (src[k] || 0) + 1; });
+  sales.forEach(s => { const k = s.utm_source || 'ישיר'; src[k] = (src[k] || 0) + 1; });
   renderBar('insSources', topEntries(src, 6));
 
   // device split — from sessions
-  if (allSessions.length) {
+  if (sess.length) {
     const dv = { 'מובייל': 0, 'דסקטופ': 0 };
-    allSessions.forEach(s => { dv[isMobDev(s.dev) ? 'מובייל' : 'דסקטופ']++; });
+    sess.forEach(s => { dv[isMobDev(s.dev) ? 'מובייל' : 'דסקטופ']++; });
     renderBar('insDevices', Object.entries(dv));
   } else {
     document.getElementById('insDevices').innerHTML = '<div class="ins-empty">אין נתונים עדיין</div>';
   }
 
   // behavior — avg duration from sessions, avg scroll depth from heatmap processing
-  if (allSessions.length) {
-    const avg = allSessions.reduce((a, s) => a + (Number(s.dur) || 0), 0) / allSessions.length;
+  if (sess.length) {
+    const avg = sess.reduce((a, s) => a + (Number(s.dur) || 0), 0) / sess.length;
     document.getElementById('insDur').innerHTML = `<span class="ltr">${esc(durText(avg))}</span>`;
   } else {
     document.getElementById('insDur').textContent = '—';
@@ -899,16 +1096,16 @@ function updateInsights() {
     heatDepthAvg == null ? 'עומק גלילה — ייחושב במפות החום' : 'עומק גלילה ממוצע';
 
   // returning visitors — % of sessions with visits > 1 (vid records only; "—" when absent)
-  const withVisits = allSessions.filter(s => isFinite(Number(s.visits)) && Number(s.visits) > 0);
+  const withVisits = sess.filter(s => isFinite(Number(s.visits)) && Number(s.visits) > 0);
   document.getElementById('insReturn').textContent = withVisits.length
     ? Math.round(100 * withVisits.filter(s => Number(s.visits) > 1).length / withVisits.length) + '%'
     : '—';
 
   // activity hours histogram — from sessions t0
   const hoursEl = document.getElementById('insHours');
-  if (allSessions.length) {
+  if (sess.length) {
     const hrs = new Array(24).fill(0);
-    allSessions.forEach(s => { const d = new Date(Number(s.t0)); if (!isNaN(d.getTime())) hrs[d.getHours()]++; });
+    sess.forEach(s => { const d = new Date(Number(s.t0)); if (!isNaN(d.getTime())) hrs[d.getHours()]++; });
     const max = Math.max(...hrs, 1);
     hoursEl.innerHTML =
       '<div class="hours-chart">' + hrs.map((c, h) =>
@@ -972,6 +1169,7 @@ function applyFilters() {
   const q      = document.getElementById('filterSearch').value.toLowerCase();
 
   const filtered = allSales.filter(s => {
+    if (!inRange(saleTs(s))) return false; // global date range composes with the local filters
     if (status && s.status !== status) return false;
     if (source && (s.utm_source||'ישיר') !== source) return false;
     if (from && new Date(s.createdAt) < new Date(from)) return false;
@@ -1256,14 +1454,19 @@ function loadSessionsList(force) {
   return sessionsPromise;
 }
 
+let viewSessions = []; // the sessions currently rendered (after the global range filter)
 function renderSessions() {
   const c = document.getElementById('recContainer');
-  document.getElementById('recCount').textContent = allSessions.length;
-  if (!allSessions.length) {
-    c.innerHTML = emptyState('video', 'עדיין אין הקלטות', 'הן יופיעו כאן אחרי שגולשים ייכנסו לאתר');
+  const list = fSessions();
+  viewSessions = list;
+  document.getElementById('recCount').textContent = list.length;
+  if (!list.length) {
+    c.innerHTML = allSessions.length
+      ? emptyState('video', 'אין הקלטות בטווח שנבחר', 'שנה את טווח התאריכים כדי לראות עוד')
+      : emptyState('video', 'עדיין אין הקלטות', 'הן יופיעו כאן אחרי שגולשים ייכנסו לאתר');
     return;
   }
-  const rows = allSessions.map((s, i) => {
+  const rows = list.map((s, i) => {
     const pages = Array.isArray(s.pages) && s.pages.length ? s.pages : (s.page ? [s.page] : []);
     const names = pages.map(pageName);
     const label = names.length ? names.slice(0, 3).join(' · ') + (names.length > 3 ? ' +' + (names.length - 3) : '') : '—';
@@ -1275,7 +1478,10 @@ function renderSessions() {
       <td><span class="rec-pages" title="${esc(names.join(' · '))}"${hot ? ' style="color:var(--accent);font-weight:700"' : ''}>${esc(label)}</span></td>
       <td><span style="color:var(--muted);display:inline-flex">${devSvg(s.dev)}</span></td>
       <td><span class="source-tag">${esc(shortSource(s.utm, s.ref))}</span></td>
-      <td><button class="btn-play" data-idx="${i}" aria-label="צפייה בהקלטה">${icon('play')} צפייה</button></td>
+      <td><div class="rec-actions">
+        <button class="btn-play" data-idx="${i}" aria-label="צפייה בהקלטה">${icon('play')} צפייה</button>
+        <button class="btn-ic btn-dl" data-idx="${i}" aria-label="הורדת ההקלטה" title="הורדת ההקלטה">${icon('download')}</button>
+      </div></td>
     </tr>`;
   }).join('');
 
@@ -1288,8 +1494,10 @@ function renderSessions() {
 
 const HEAT_MAX_SESSIONS = 30;
 const heatCache = new Map();   // sid → extracted data | null (in-memory, per panel session)
+let heatSids = [];             // sids included in the last build (range-filtered)
 let heatBuilt = false;
 let heatBuilding = false;
+let heatMode = 'scroll';       // 'scroll' (default — the decision-useful view) | 'clicks'
 let heatView = null;           // 'm' | 'd'
 let heatDepthAvg = null;       // 0..1, overall avg scroll depth
 const heatH = { m: 0, d: 0 };  // estimated page height per device group (rep space)
@@ -1307,25 +1515,34 @@ async function buildHeatmaps(force) {
   status.innerHTML = skeletonHTML(2, 'טוען רשימת הקלטות...');
   try {
     if (!sessionsLoaded) await loadSessionsList(false);
-    const targets = allSessions.slice(0, HEAT_MAX_SESSIONS).filter(s => s && s.sid);
+    const targets = fSessions().slice(0, HEAT_MAX_SESSIONS).filter(s => s && s.sid);
+    heatSids = targets.map(s => s.sid);
     if (!targets.length) {
-      status.style.display = 'none'; ui.style.display = 'none';
-      emptyEl.style.display = '';
+      ui.style.display = 'none';
       heatEl('heatCount').textContent = '0';
       heatBuilt = true;
+      heatDepthAvg = null;
+      if (allSessions.length && rangeActive()) {
+        emptyEl.style.display = 'none';
+        status.style.display = '';
+        status.textContent = 'אין הקלטות בטווח שנבחר — שנה את טווח התאריכים';
+      } else {
+        status.style.display = 'none';
+        emptyEl.style.display = '';
+      }
+      updateInsights();
       return;
     }
     for (let i = 0; i < targets.length; i++) {
-      status.innerHTML = skeletonHTML(2, `מעבד הקלטות… ${i + 1}/${targets.length}`);
       const s = targets[i];
-      if (!heatCache.has(s.sid)) {
-        try {
-          const res = await fetch(`${WORKER}/session?token=${encodeURIComponent(sessionToken)}&sid=${encodeURIComponent(s.sid)}`);
-          if (res.status === 401) { doLogout(); return; }
-          if (!res.ok) throw new Error('HTTP ' + res.status);
-          const data = await res.json();
-          heatCache.set(s.sid, extractHeat(s, (data && Array.isArray(data.events)) ? data.events : []));
-        } catch (e) { heatCache.set(s.sid, null); }
+      if (heatCache.has(s.sid)) continue; // per-sid cache — re-filtering is cheap
+      status.innerHTML = skeletonHTML(2, `מעבד הקלטות… ${i + 1}/${targets.length}`);
+      try {
+        const events = await fetchSessionEvents(s.sid);
+        heatCache.set(s.sid, extractHeat(s, events));
+      } catch (e) {
+        if (!sessionToken) return; // logged out mid-build
+        heatCache.set(s.sid, null);
       }
     }
     heatBuilt = true;
@@ -1339,7 +1556,6 @@ async function buildHeatmaps(force) {
     }
     status.style.display = 'none';
     ui.style.display = '';
-    heatEl('heatInfo').textContent = `מבוסס על ${processed} ההקלטות האחרונות`;
     if (!heatView) heatView = g.m.length >= g.d.length ? 'm' : 'd';
     renderHeat();
     updateInsights(); // refresh avg scroll depth
@@ -1383,7 +1599,7 @@ function extractHeat(s, events) {
 
 function heatGroups() {
   const g = { m: [], d: [] };
-  for (const v of heatCache.values()) { if (v) g[v.dev].push(v); }
+  for (const sid of heatSids) { const v = heatCache.get(sid); if (v) g[v.dev].push(v); }
   return g;
 }
 
@@ -1414,44 +1630,72 @@ function setHeatView(k) {
   renderHeat();
 }
 
+function setHeatMode(m) {
+  heatMode = m;
+  renderHeat();
+}
+
+// 256-entry color palette for click density: few → teal, mid → yellow, many → red
+let _heatPal = null;
+function heatPalette() {
+  if (_heatPal) return _heatPal;
+  const c = document.createElement('canvas'); c.width = 256; c.height = 1;
+  const x = c.getContext('2d');
+  const g = x.createLinearGradient(0, 0, 256, 0);
+  g.addColorStop(0, '#2AB3A6');
+  g.addColorStop(.5, '#F0C85B');
+  g.addColorStop(1, '#E05C5C');
+  x.fillStyle = g; x.fillRect(0, 0, 256, 1);
+  _heatPal = x.getImageData(0, 0, 256, 1).data;
+  return _heatPal;
+}
+
 function renderHeat() {
   const g = computeHeatDepths();
+  const total = g.m.length + g.d.length;
+  // view tabs (what am I looking at) + device toggle (whose sessions)
+  heatEl('heatViewScroll').classList.toggle('active', heatMode === 'scroll');
+  heatEl('heatViewClicks').classList.toggle('active', heatMode === 'clicks');
   heatEl('heatTabM').innerHTML = `${icon('phone')} מובייל <span class="num">(${g.m.length})</span>`;
   heatEl('heatTabD').innerHTML = `${icon('monitor')} דסקטופ <span class="num">(${g.d.length})</span>`;
   heatEl('heatTabM').classList.toggle('active', heatView === 'm');
   heatEl('heatTabD').classList.toggle('active', heatView === 'd');
 
+  // one-line plain-Hebrew explainer per view
+  heatEl('heatExplain').textContent = heatMode === 'scroll'
+    ? 'צבע על הדף לפי כמה גולשות הגיעו לכל אזור — ירוק: כולן, אדום: מעטות'
+    : 'כל כתם = מקום שגולשות לחצו עליו. כתם בוהק יותר = יותר לחיצות';
+
+  // sparse-data honesty
+  const notice = heatEl('heatNotice');
+  if (total && total < 5) {
+    notice.style.display = '';
+    notice.textContent = `מבוסס על ${total === 1 ? 'הקלטה אחת' : total + ' הקלטות'} בלבד — ככל שייכנסו יותר גולשות המפה תדייק`;
+  } else {
+    notice.style.display = 'none';
+  }
+
   const arr = g[heatView];
   const sizer = heatEl('heatSizer');
-  const scrollHost = heatEl('heatScrollHost');
+  const funnel = heatEl('heatFunnel');
+  const meta = heatEl('heatMeta');
   if (!arr.length) {
-    sizer.innerHTML = '';
+    funnel.style.display = 'none'; funnel.innerHTML = '';
+    meta.style.display = 'none'; meta.innerHTML = '';
     sizer.style.height = '';
-    heatEl('heatClickInfo').textContent = '';
-    heatEl('heatScrollInfo').textContent = '';
-    const msg = emptyState('pointer', `אין הקלטות ${heatView === 'm' ? 'מובייל' : 'דסקטופ'} עדיין`, 'המפה תיבנה מהגלישות הבאות');
-    sizer.innerHTML = msg;
-    scrollHost.innerHTML = msg;
+    sizer.innerHTML = emptyState('pointer', `אין הקלטות ${heatView === 'm' ? 'מובייל' : 'דסקטופ'} עדיין`, 'המפה תיבנה מהגלישות הבאות');
     return;
   }
 
   const REP = heatView === 'm' ? 390 : 1280;
   const H = heatH[heatView] || 800;
+  const reach = t => arr.filter(v => (v._depth || 0) >= t - 1e-6).length;
+  const pct = t => Math.round(100 * reach(t) / arr.length);
 
-  // normalize clicks to representative space: scale x and page-y by REP / session viewport width
-  const pts = [];
-  for (const v of arr) {
-    const f = REP / v.w;
-    for (const c of v.clicks) pts.push({ x: c.x * f, y: c.y * f });
-  }
-
-  // ── click map: scaled iframe of the live page + additive canvas overlay ──
+  // shared stage: scaled iframe of the live page + overlay canvas
   const clip = heatEl('heatClip');
   const clipW = Math.max(240, clip.clientWidth || 320);
   const scale = Math.min(1, clipW / REP);
-  heatEl('heatClickInfo').textContent =
-    `${pts.length === 1 ? 'לחיצה אחת' : pts.length + ' לחיצות'} מתוך ${arr.length} הקלטות`;
-
   sizer.innerHTML = '';
   sizer.style.height = Math.round(H * scale) + 'px';
   const stage = document.createElement('div');
@@ -1486,43 +1730,287 @@ function renderHeat() {
   cv.width = REP;
   cv.height = H;
   const ctx = cv.getContext('2d');
-  ctx.globalCompositeOperation = 'lighter'; // additive blending
-  const R = heatView === 'm' ? 14 : 22;
-  for (const p of pts) {
-    const gr = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, R);
-    gr.addColorStop(0, 'rgba(240,138,91,.8)');
-    gr.addColorStop(.45, 'rgba(240,138,91,.32)');
-    gr.addColorStop(1, 'rgba(240,138,91,0)');
-    ctx.fillStyle = gr;
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, R, 0, Math.PI * 2);
-    ctx.fill();
-  }
 
   stage.appendChild(fb);
   stage.appendChild(ifr);
   stage.appendChild(cv);
-  sizer.appendChild(stage);
 
-  // ── scroll map: % of sessions reaching each 10% depth band, green→red ──
-  heatEl('heatScrollInfo').textContent = `על בסיס ${arr.length} הקלטות`;
-  const reach = t => Math.round(100 * arr.filter(v => (v._depth || 0) >= t - 1e-6).length / arr.length);
-  let html = '<div class="scroll-map">';
-  for (let i = 0; i < 10; i++) {
-    const pct = reach((i + 1) / 10);
-    const hue = Math.round(pct * 1.4); // 0% → red, 100% → green
-    html += `<div class="scroll-band">
-      <span class="sb-label">${(i + 1) * 10}%</span>
-      <div class="sb-bar"><div class="sb-fill" style="width:${pct}%;background:hsl(${hue},62%,46%)"></div></div>
-      <span class="sb-pct">${pct}%</span>
-    </div>`;
-    if (i === 1) html += `<div class="scroll-annot">עומק 25% — ${reach(.25)}% מגיעות לכאן</div>`;
-    if (i === 4) html += `<div class="scroll-annot">עומק 50% — ${reach(.5)}% מגיעות לכאן</div>`;
-    if (i === 6) html += `<div class="scroll-annot">עומק 75% — ${reach(.75)}% מגיעות לכאן</div>`;
+  if (heatMode === 'scroll') {
+    // ── the product: a funnel sentence in real numbers ──
+    const hero = reach(.25), price = reach(.7), end = reach(.95);
+    funnel.style.display = '';
+    funnel.innerHTML =
+      `מתוך <span class="num">${arr.length}</span> גולשות שהוקלטו: ` +
+      `<span class="num">${hero}</span> עברו את ההירו, ` +
+      `<span class="num">${price}</span> הגיעו למחיר, ` +
+      `<span class="num">${end}</span> הגיעו לסוף`;
+    meta.style.display = 'none'; meta.innerHTML = '';
+
+    // paint the page itself: smooth vertical gradient, green (everyone) → red (few)
+    const grad = ctx.createLinearGradient(0, 0, 0, H);
+    for (let i = 0; i <= 10; i++) {
+      const p = i === 0 ? 100 : pct(i / 10);
+      const hue = Math.round(p * 1.2); // 0% → red(0), 100% → green(120)
+      grad.addColorStop(i / 10, `hsla(${hue},70%,45%,.35)`);
+    }
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, REP, H);
+
+    // in-context labels at meaningful depths (price section ≈ 70% of this page)
+    const lbls = document.createElement('div');
+    lbls.className = 'heat-lbls';
+    const fs = Math.max(11, Math.round(12 / scale));
+    const put = (top, text) => {
+      const el = document.createElement('span');
+      el.className = 'heat-lbl';
+      el.style.top = top + '%';
+      el.style.fontSize = fs + 'px';
+      el.textContent = text;
+      lbls.appendChild(el);
+    };
+    put(3, '100% מתחילות כאן');
+    put(50, `${pct(.5)}% הגיעו לאמצע`);
+    put(70, `${pct(.7)}% הגיעו למחיר`);
+    put(96, `${pct(.95)}% הגיעו לסוף`);
+    stage.appendChild(lbls);
+  } else {
+    // ── click density: accumulate on an offscreen canvas, colorize low→high ──
+    const pts = [];
+    for (const v of arr) {
+      const f = REP / v.w;
+      for (const c of v.clicks) pts.push({ x: c.x * f, y: c.y * f });
+    }
+    funnel.style.display = 'none'; funnel.innerHTML = '';
+    meta.style.display = '';
+    meta.innerHTML =
+      `<span class="num">${pts.length === 1 ? 'לחיצה אחת' : pts.length + ' לחיצות'} מתוך ${arr.length} הקלטות</span>` +
+      `<span class="heat-legend">מעט <span class="legend-bar" aria-hidden="true"></span> הרבה לחיצות</span>` +
+      (pts.length < 5 ? '<span class="heat-note">עדיין מעט נתונים — המפה תתחדד עם עוד גולשות</span>' : '');
+
+    if (pts.length >= 5) {
+      const ds = REP > 500 ? 0.5 : 1; // half-res density pass on desktop keeps it light
+      const dw = Math.max(1, Math.round(REP * ds)), dh = Math.max(1, Math.round(H * ds));
+      const off = document.createElement('canvas');
+      off.width = dw; off.height = dh;
+      const octx = off.getContext('2d');
+      const R = (heatView === 'm' ? 16 : 26) * ds;
+      for (const p of pts) {
+        const x = p.x * ds, y = p.y * ds;
+        const gr = octx.createRadialGradient(x, y, 0, x, y, R);
+        gr.addColorStop(0, 'rgba(0,0,0,.28)');
+        gr.addColorStop(1, 'rgba(0,0,0,0)');
+        octx.fillStyle = gr;
+        octx.beginPath(); octx.arc(x, y, R, 0, Math.PI * 2); octx.fill();
+      }
+      const pal = heatPalette();
+      const img = octx.getImageData(0, 0, dw, dh), d = img.data;
+      for (let i = 0; i < d.length; i += 4) {
+        const a = d[i + 3];
+        if (!a) continue;
+        const j = a * 4;
+        d[i] = pal[j]; d[i + 1] = pal[j + 1]; d[i + 2] = pal[j + 2];
+        d[i + 3] = Math.min(210, Math.round(a * 1.6));
+      }
+      octx.putImageData(img, 0, 0);
+      ctx.imageSmoothingEnabled = true;
+      ctx.drawImage(off, 0, 0, REP, H);
+    } else {
+      // very few clicks — soft accent dots so it doesn't look broken
+      ctx.globalCompositeOperation = 'lighter';
+      const R = heatView === 'm' ? 14 : 22;
+      for (const p of pts) {
+        const gr = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, R);
+        gr.addColorStop(0, 'rgba(240,138,91,.8)');
+        gr.addColorStop(.45, 'rgba(240,138,91,.32)');
+        gr.addColorStop(1, 'rgba(240,138,91,0)');
+        ctx.fillStyle = gr;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, R, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
   }
-  html += '</div>';
-  scrollHost.innerHTML = html;
+
+  sizer.appendChild(stage);
 }
+
+// ── SESSION EVENTS CACHE (shared by replay, heatmaps and export) ──────────────
+
+const evCache = new Map(); // sid → rrweb events[]
+async function fetchSessionEvents(sid) {
+  if (evCache.has(sid)) return evCache.get(sid);
+  const res = await fetch(`${WORKER}/session?token=${encodeURIComponent(sessionToken)}&sid=${encodeURIComponent(sid)}`);
+  if (res.status === 401) { doLogout(); throw new Error('auth'); }
+  if (!res.ok) throw new Error('HTTP ' + res.status);
+  const data = await res.json();
+  if (!data || data.ok === false) throw new Error('bad payload');
+  const events = Array.isArray(data.events) ? data.events : [];
+  evCache.set(sid, events);
+  return events;
+}
+
+// ── TOAST ─────────────────────────────────────────────────────────────────────
+
+let toastT = null;
+function showToast(msg) {
+  let t = document.getElementById('axToast');
+  if (!t) {
+    t = document.createElement('div');
+    t.id = 'axToast';
+    t.className = 'toast';
+    t.setAttribute('role', 'status');
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  setTimeout(() => t.classList.add('show'), 10); // not rAF — it stalls in hidden tabs
+  clearTimeout(toastT);
+  toastT = setTimeout(() => t.classList.remove('show'), 3200);
+}
+
+// ── DOWNLOAD RECORDING (standalone html file, share-sheet friendly) ───────────
+
+// the site css sets html{scroll-behavior:smooth} — inside the replay iframe that makes every
+// sampled scrollTo animate and fight the next one (juddering replay). force it back to auto.
+const REPLAY_STYLE_RULES = [
+  'html, body { scroll-behavior: auto !important; }',
+  '* { scroll-behavior: auto !important; }'
+];
+
+let vendorAssets = null; // { js, css } — fetched once per panel session, reused for every export
+async function getVendorAssets() {
+  if (vendorAssets) return vendorAssets;
+  const [js, css] = await Promise.all([
+    fetch('vendor/rrweb-player.js').then(r => { if (!r.ok) throw new Error('vendor js'); return r.text(); }),
+    fetch('vendor/rrweb-player.css').then(r => { if (!r.ok) throw new Error('vendor css'); return r.text(); })
+  ]);
+  vendorAssets = { js, css };
+  return vendorAssets;
+}
+
+function exportFileName(s) {
+  const d = new Date(Number(s.t0) || Date.now());
+  const dd = String(d.getDate()).padStart(2, '0');
+  const mm = String(d.getMonth() + 1).padStart(2, '0');
+  const id = String(s.vid || '').trim() || String(s.sid || '').slice(-4);
+  return `bride-rec-${id}-${dd}-${mm}-${d.getFullYear()}.html`;
+}
+
+function buildExportHTML(s, events, assets) {
+  // a literal closing script tag inside the inlined js/json would terminate the
+  // export's own script tags — escape as <\/script (identical when evaluated)
+  const js = assets.js.replace(/<\/script/gi, '<\\/script');
+  const json = JSON.stringify(events)
+    .replace(/<\//g, '<\\/')          // closing tags → <\/...
+    .replace(/<\!--/g, '<\\u0021--'); // comment-open would flip the parser into escaped script state
+  const rw = Number(s.w) > 0 ? Number(s.w) : 1280;
+  const rh = Number(s.h) > 0 ? Number(s.h) : 800;
+  const chip = '#' + (String(s.vid || s.sid || '').slice(-4).toUpperCase() || '----');
+  return `<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>הקלטת גלישה — BRIDE</title>
+<style>${assets.css}</style>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0A0A0C;color:#F7F6F4;font-family:'Assistant','Heebo',-apple-system,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh}
+header{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,.09)}
+header .logo{font-weight:700;font-size:16px;color:#FFFFFF;letter-spacing:.06em}
+header .chip{font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;background:#1E1E27;color:#D9D8DE;border:1px solid rgba(255,255,255,.09)}
+header .meta{font-size:13px;color:#9C9CA7}
+.ltr{direction:ltr;display:inline-block;unicode-bidi:isolate;font-variant-numeric:tabular-nums}
+#player{padding:12px;direction:ltr}
+#player .rr-player{max-width:100%;margin:0 auto;box-shadow:none;border-radius:10px}
+</style>
+</head>
+<body>
+<header>
+  <span class="logo">BRIDE</span>
+  <span class="chip">${esc(chip)}</span>
+  <span class="meta"><span class="ltr">${esc(dtText(s.t0))}</span> · משך <span class="ltr">${esc(durText(s.dur))}</span></span>
+</header>
+<div id="player"></div>
+<script>${js}<\/script>
+<script>
+var EVENTS = ${json};
+(function () {
+  var W = ${rw}, H = ${rh};
+  function mount() {
+    var host = document.getElementById('player');
+    var avail = Math.max(260, (host.clientWidth || window.innerWidth) - 24);
+    var scale = Math.min(avail / W, 1);
+    new rrwebPlayer({
+      target: host,
+      props: {
+        events: EVENTS,
+        width: Math.round(W * scale),
+        height: Math.round(H * scale),
+        autoPlay: false,
+        showController: true,
+        mouseTail: false,
+        insertStyleRules: ['html, body { scroll-behavior: auto !important; }', '* { scroll-behavior: auto !important; }']
+      }
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mount);
+  else mount();
+})();
+<\/script>
+</body>
+</html>`;
+}
+
+function setBtnBusy(btn, busy) {
+  if (!btn) return;
+  if (busy) {
+    btn._html = btn.innerHTML;
+    btn.classList.add('busy');
+    btn.innerHTML = '<span class="mini-spin"></span>';
+  } else {
+    btn.classList.remove('busy');
+    if (btn._html) btn.innerHTML = btn._html;
+    btn._html = null;
+  }
+}
+
+let exportBusy = false;
+async function downloadRecording(s, btn) {
+  if (!s || !s.sid || exportBusy) return;
+  exportBusy = true;
+  setBtnBusy(btn, true);
+  try {
+    const [events, assets] = await Promise.all([fetchSessionEvents(s.sid), getVendorAssets()]);
+    if (!events.length) throw new Error('no events');
+    const html = buildExportHTML(s, events, assets);
+    const name = exportFileName(s);
+    const blob = new Blob([html], { type: 'text/html' });
+    const file = new File([blob], name, { type: 'text/html' });
+    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+      // iPhone / PWA path — share sheet (save to Files, send in WhatsApp)
+      try {
+        await navigator.share({ files: [file], title: 'הקלטת גלישה — BRIDE' });
+      } catch (e) {
+        if (!e || e.name !== 'AbortError') throw e; // closing the sheet is not an error
+      }
+    } else {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = name;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 4000);
+    }
+  } catch (e) {
+    if (sessionToken) showToast('ההורדה נכשלה — נסה שוב');
+  } finally {
+    exportBusy = false;
+    setBtnBusy(btn, false);
+  }
+}
+function dlFromModal(btn) { downloadRecording(currentReplaySession, btn); }
 
 // ── RRWEB PLAYER (lazy loaded) ────────────────────────────────────────────────
 
@@ -1547,9 +2035,11 @@ function ensureRrwebPlayer() {
   return rrwebLibPromise;
 }
 
+let currentReplaySession = null;
 async function openReplay(idx) {
-  const s = allSessions[idx];
+  const s = viewSessions[idx];
   if (!s) return;
+  currentReplaySession = s;
   const modal = document.getElementById('replayModal');
   const body  = document.getElementById('replayBody');
   const pages = Array.isArray(s.pages) && s.pages.length ? s.pages : (s.page ? [s.page] : []);
@@ -1568,13 +2058,9 @@ async function openReplay(idx) {
 
   let events = [];
   try {
-    const res = await fetch(`${WORKER}/session?token=${encodeURIComponent(sessionToken)}&sid=${encodeURIComponent(s.sid)}`);
-    if (res.status === 401) { closeReplay(); doLogout(); return; }
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    const data = await res.json();
-    if (!data || data.ok === false) throw new Error('bad payload');
-    events = Array.isArray(data.events) ? data.events : [];
+    events = await fetchSessionEvents(s.sid); // shared per-sid cache (replay / heatmap / export)
   } catch (e) {
+    if (!sessionToken) { closeReplay(); return; } // 401 → fetchSessionEvents already logged out
     body.innerHTML = '<div class="empty">לא הצלחנו לטעון את ההקלטה — נסה שוב מאוחר יותר</div>';
     return;
   }
@@ -1612,7 +2098,9 @@ async function openReplay(idx) {
         height: Math.max(160, Math.round(rh * scale)),
         autoPlay: true,
         showController: true,
-        mouseTail: false
+        mouseTail: false,
+        // forwarded to the Replayer — kills the smooth-scroll judder inside the replay iframe
+        insertStyleRules: REPLAY_STYLE_RULES
       }
     });
   } catch (e) {
@@ -1631,10 +2119,13 @@ function closeReplay() {
     try { if (typeof currentPlayer.$destroy === 'function') currentPlayer.$destroy(); } catch (e) {}
     currentPlayer = null;
   }
+  currentReplaySession = null;
   document.getElementById('replayBody').innerHTML = '';
 }
 
 document.getElementById('recContainer').addEventListener('click', e => {
+  const dl = e.target.closest('.btn-dl');
+  if (dl) { downloadRecording(viewSessions[Number(dl.dataset.idx)], dl); return; }
   const btn = e.target.closest('.btn-play');
   if (btn) openReplay(Number(btn.dataset.idx));
 });
@@ -1647,6 +2138,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReplay(
 // static icon slots (chevrons, modal close, topbar buttons, heat tabs)
 document.querySelectorAll('.chev').forEach(el => { el.innerHTML = icon('chevron'); });
 document.getElementById('modalCloseBtn').innerHTML = icon('x');
+document.getElementById('modalDlBtn').innerHTML = icon('download');
 document.getElementById('csvBtn').innerHTML = `${icon('download')} ייצוא CSV`;
 document.getElementById('refreshBtn').innerHTML = `${icon('refresh')} רענן`;
 document.getElementById('recRefreshBtn').innerHTML = `${icon('refresh')} רענן`;
@@ -1670,6 +2162,13 @@ window.addEventListener('resize', () => {
   clearTimeout(heatResizeT);
   heatResizeT = setTimeout(() => { if (heatBuilt && isSecOpen('heatmaps')) renderHeat(); }, 300);
 });
+// date range: restore, bind chips + custom inputs
+loadRangeState();
+document.querySelectorAll('.range-chip').forEach(ch =>
+  ch.addEventListener('click', () => setRangePreset(ch.dataset.range)));
+document.getElementById('rangeFrom').addEventListener('change', onRangeDateInput);
+document.getElementById('rangeTo').addEventListener('change', onRangeDateInput);
+renderRangeUI();
 applySecStates();
 const resetToken = new URLSearchParams(location.search).get('reset');
 if (resetToken) {
