@@ -91,6 +91,19 @@ button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
 .mxa{margin-inline:auto}
 .balance{text-wrap:balance}
 .tnum{font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+/* ---------- "כל האמת שלי" — סרטון לרוחב ---------- */
+.truth{position:relative}
+.truth__head{text-align:center;margin-bottom:clamp(22px,3vw,34px)}
+.truth__wrap{max-width:920px;margin-inline:auto;position:relative;border-radius:var(--r-lg);
+  overflow:hidden;border:1px solid var(--line-accent);box-shadow:0 40px 90px -40px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.03);
+  background:#000}
+.truth__box{position:relative;width:100%;aspect-ratio:16/9}
+.truth__box iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+.truth__glow{position:absolute;inset:-12% -6% auto;height:60%;pointer-events:none;z-index:-1;
+  background:radial-gradient(60% 100% at 50% 0%,rgba(240,138,91,.22),transparent 70%);filter:blur(28px)}
+.truth__note{text-align:center;color:var(--muted);font-size:13.5px;margin-top:16px}
+.exclusiveNote{font-family:var(--display);font-weight:700;color:var(--accent-2);
+  font-size:clamp(15px,1.7vw,18px);line-height:1.5;max-width:34ch;margin:18px auto 0;text-align:center}
 
 /* ---------- buttons ---------- */
 .btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;overflow:hidden;
@@ -1503,6 +1516,42 @@ function BrideMethod() {
     "aria-label": "שלב " + b[0]
   })))));
 }
+const TRUTH_VIDEO_ID = 'iouwJ8avjzo';  // סרטון "כל האמת שלי" — יוטיוב, לרוחב 16:9
+function TruthVideo() {
+  if (!TRUTH_VIDEO_ID) return null;  // בלי סרטון — הסקשן פשוט לא קיים
+  return React.createElement("section", {
+    className: "section truth",
+    id: "truth"
+  }, React.createElement("div", {
+    className: "container"
+  }, React.createElement("div", {
+    className: "truth__head"
+  }, React.createElement(Reveal, {
+    as: "p",
+    className: "eyebrow center"
+  }, "בלי סינון"), React.createElement(Reveal, {
+    as: "h2",
+    className: "h2 mxa",
+    delay: 60
+  }, "כל האמת שלי")), React.createElement(Reveal, {
+    className: "truth__wrap",
+    delay: 100
+  }, React.createElement("span", {
+    className: "truth__glow",
+    "aria-hidden": "true"
+  }), React.createElement("div", {
+    className: "truth__box"
+  }, React.createElement("iframe", {
+    src: "https://www.youtube-nocookie.com/embed/" + TRUTH_VIDEO_ID + "?rel=0&modestbranding=1&playsinline=1",
+    title: "כל האמת שלי — ניב גבאי",
+    loading: "lazy",
+    allow: "accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
+    allowFullScreen: true,
+    referrerPolicy: "strict-origin-when-cross-origin"
+  }))), React.createElement("p", {
+    className: "truth__note"
+  }, "כמה דקות. בלי מצגות ובלי הבטחות — פשוט איך זה התחיל ולמה זה עובד.")));
+}
 function Story() {
   return React.createElement("section", {
     className: "section section--ink",
@@ -1519,7 +1568,7 @@ function Story() {
   }), React.createElement("figcaption", null, "\u05E0\u05D9\u05D1 \u05D2\u05D1\u05D0\u05D9 \xB7 \u05D9\u05D5\u05E6\u05E8 \u05D4\u05E7\u05D5\u05E8\u05E1")), React.createElement("div", null, React.createElement(Reveal, {
     as: "p",
     className: "eyebrow"
-  }, "למה זה 1,770 ₪"), React.createElement(Reveal, {
+  }, "לפני שתחליטי"), React.createElement(Reveal, {
     as: "h2",
     className: "h2",
     delay: 60,
@@ -1528,36 +1577,18 @@ function Story() {
     }
   }, React.createElement("span", {
     className: "nbd"
-  }, "אין קאץ'."), React.createElement("br", null), "פשוט הורדתי את עצמי מהמשוואה."), React.createElement(Reveal, {
+  }, "מי אני,"), React.createElement("br", null), "ולמה שתסמכי עליי בכלל?"), React.createElement(Reveal, {
     className: "prose",
     delay: 120
-  }, React.createElement("p", null, "קוראים לי ", React.createElement("strong", null, "ניב גבאי"), ". במשך ארבע שנים עשיתי דבר אחד: לקחתי מאפרות ומסרקות עם ידיים של זהב — ולימדתי אותן להפוך את הכישרון לעסק שסוגר. בניתי שיטה: ליווי אישי שנמכר ב־", React.createElement("strong", null, "18,000\xA0₪"), ", וקורס דיגיטלי ב־", React.createElement("strong", null, "7,500\xA0₪"), ". עשרות נשים עברו את התהליך — והתוצאות דיברו בעד עצמן."), React.createElement("p", null, "אז למה זה עולה היום ", React.createElement("strong", null, "1,770\xA0₪"), "? כי בכל מדרגה הורדתי מהמחיר בדיוק דבר אחד — את הזמן שלי.")), React.createElement(Reveal, {
+  }, React.createElement("p", null, "קוראים לי ", React.createElement("strong", null, "ניב גבאי"), ". במשך ארבע שנים עשיתי דבר אחד: לקחתי מאפרות ומסרקות עם ידיים של זהב — ולימדתי אותן להפוך את הכישרון לעסק שסוגר. בניתי שיטה: ליווי אישי שנמכר ב־", React.createElement("strong", null, "18,000\xA0₪"), ", וקורס דיגיטלי ב־", React.createElement("strong", null, "7,500\xA0₪"), ". עשרות נשים עברו את התהליך — והתוצאות דיברו בעד עצמן.")), React.createElement(Reveal, {
     className: "prose",
     delay: 120
-  }, React.createElement("p", null, "והשיטה עצמה לא זזה מילימטר. אחת הבוגרות שלי הגיעה אליי ", React.createElement("strong", null, "על סף סגירת העסק"), ". חודש אחרי — היא סגרה ", React.createElement("strong", null, "38,000\xA0₪"), ". אותה שיטה בדיוק נמצאת היום כאן:")), React.createElement(Reveal, {
-    className: "priceMorph",
-    delay: 120
-  }, React.createElement("span", {
-    className: "pm"
-  }, "18,000\xA0\u20AA"), React.createElement("span", {
-    className: "arr"
-  }, "\u2190"), React.createElement("span", {
-    className: "pm"
-  }, "7,500\xA0\u20AA"), React.createElement("span", {
-    className: "arr"
-  }, "\u2190"), React.createElement("span", {
-    className: "pm now"
-  }, "1,770\xA0₪")), React.createElement(Reveal, {
-    className: "prose",
-    delay: 160,
-    style: {
-      marginTop: '28px'
-    }
-  }, React.createElement("p", null, React.createElement("strong", null, "18,000\xA0₪"), " — הליווי האישי. קנית את הזמן שלי.", React.createElement("br", null), React.createElement("strong", null, "7,500\xA0₪"), " — הקורס הדיגיטלי. אני עדיין זה שעניתי לך.", React.createElement("br", null), React.createElement("strong", null, "1,770\xA0₪"), " — אותו קורס בדיוק. בובי עונה במקומי."), React.createElement("p", null, "השיטה זהה בשלושתם. מה שהשתנה זה כמה ממני יש בפנים. בובי אומן על כל שיחה שלי עם מאפרות, כל תסריט מכירה וכל חומר בקורס — הוא עונה כמוני, רק גם ב־3 לפנות בוקר ובלי לחכות לי."), React.createElement("p", null, React.createElement("em", null, "זה המחיר של שיטה בלי הזמן שלי. לא של שיטה פחות טובה.")))))));
+  }, React.createElement("p", null, "את השיטה הזאת לא כתבתי בערב אחד. היא נבנתה לקוחה אחרי לקוחה, במשך ", React.createElement("strong", null, "ארבע שנים"), " של ליוויים אישיים: כל מה שעבד — נשאר בפנים. כל מה שלא — עף."), React.createElement("p", null, "היא כבר עבדה עבור מעל ", React.createElement("strong", null, "100 מאפרות ומסרקות"), ". חלקן הגיעו בלי עמוד, חלקן בלי ביטחון להגיד מחיר, ואחת מהן הגיעה ", React.createElement("strong", null, "צעד לפני סגירת העסק"), " — וחודש אחרי, סגרה ", React.createElement("strong", null, "38,000\xA0₪"), "."), React.createElement("p", null, "ולמה אני בטוח שזה יעבוד גם אצלך? כי השיטה לא בנויה על כישרון — הכישרון כבר יש לך. היא בנויה על סדר: עמוד, שיחה, תמחור, קמפיין. מי שעוברת את השלבים בסדר הזה — מגיעה לתוצאה. "), React.createElement("p", null, React.createElement("em", null, "זה לא קסם. זו שיטה.")))))));
 }
 Object.assign(window, {
   Identify,
   BrideMethod,
+  TruthVideo,
   Story
 });
 
@@ -1924,7 +1955,11 @@ function Curriculum() {
     style: {
       maxWidth: '16ch'
     }
-  }, "\u05DE\u05D4 \u05EA\u05D3\u05E2\u05D9 \u05DC\u05E2\u05E9\u05D5\u05EA \u05D0\u05D7\u05E8\u05D9 \u05D4\u05E7\u05D5\u05E8\u05E1?")), React.createElement("div", {
+  }, "מה תדעי לעשות אחרי הקורס?"), React.createElement(Reveal, {
+    as: "p",
+    className: "exclusiveNote",
+    delay: 100
+  }, "החומר הנלמד בקורס לא קיים בשום קורס או תוכנית בארץ — ותבדקו אותי. בהבטחה!")), React.createElement("div", {
     className: "acc"
   }, MODULES.map((m, i) => {
     const isOpen = open === i;
@@ -2056,11 +2091,11 @@ function Pricing() {
     className: "h2 balance mxa",
     delay: 60,
     style: {
-      maxWidth: '14ch'
+      maxWidth: '22ch'
     }
-  }, "אותה שיטה בדיוק. ", React.createElement("span", {
+  }, "עד עכשיו רדפת סביב הזנב של עצמך. ", React.createElement("span", {
     className: "accent"
-  }, "בלי הזמן שלי."))), React.createElement(Reveal, {
+  }, "זה הרגע לעשות שינוי אמיתי."))), React.createElement(Reveal, {
     className: "priceWrap",
     delay: 80
   }, React.createElement("div", {
@@ -2085,7 +2120,7 @@ function Pricing() {
     className: "spot"
   }), React.createElement("div", {
     className: "priceNow__lab"
-  }, "היום \xB7 אותה שיטה בדיוק"), React.createElement("div", {
+  }, "היום \xB7 הרגע לשינוי אמיתי"), React.createElement("div", {
     className: "priceNow__big"
   }, "1,770\xA0\u20AA", React.createElement("small", null, "\xA0\u05DB\u05D5\u05DC\u05DC \u05DE\u05E2\"\u05DE")), React.createElement("div", {
     className: "priceNow__sub"
@@ -3117,7 +3152,7 @@ function App() {
   }, []);
   return React.createElement(React.Fragment, null, React.createElement(Progress, null), React.createElement(Header, null), React.createElement("div", {
     id: "content"
-  }, React.createElement(Hero, null), React.createElement(Identify, null), React.createElement(BrideMethod, null), React.createElement(Story, null), React.createElement(CaseStudies, null), React.createElement(Proof, null), React.createElement(AIBot, null), React.createElement(Curriculum, null), React.createElement(Bonus, null), React.createElement(Pricing, null), React.createElement(ForWho, null), React.createElement(WhatYouGet, null), React.createElement(FAQ, null), React.createElement(Final, null), React.createElement(Footer, {
+  }, React.createElement(Hero, null), React.createElement(TruthVideo, null), React.createElement(Identify, null), React.createElement(BrideMethod, null), React.createElement(Story, null), React.createElement(CaseStudies, null), React.createElement(Proof, null), React.createElement(AIBot, null), React.createElement(Curriculum, null), React.createElement(Bonus, null), React.createElement(Pricing, null), React.createElement(ForWho, null), React.createElement(WhatYouGet, null), React.createElement(FAQ, null), React.createElement(Final, null), React.createElement(Footer, {
     onStatement: () => setStmt(true)
   })), React.createElement(StickyCTA, null), React.createElement(WhatsAppFab, null), React.createElement(A11y, {
     onStatement: () => setStmt(true)
