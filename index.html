@@ -118,6 +118,15 @@ button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
 .truth__glow{position:absolute;inset:-12% -6% auto;height:60%;pointer-events:none;z-index:-1;
   background:radial-gradient(60% 100% at 50% 0%,rgba(240,138,91,.22),transparent 70%);filter:blur(28px)}
 .truth__note{text-align:center;color:var(--muted);font-size:13.5px;margin-top:16px}
+/* מובייל: סרטון לרוחב על מסך אנכי יוצא רצועה נמוכה. מקצה לקצה הוא נראה
+   קולנועי במקום כמו כרטיס קטן שמרחף — וגם מרוויח ~10% גובה. */
+@media (max-width:760px){
+  .truth__wrap{margin-inline:calc(-1 * clamp(20px,5vw,52px));border-radius:0;
+    border-inline-width:0;box-shadow:0 18px 40px -22px rgba(0,0,0,.75)}
+  .truth.section--light .truth__wrap{box-shadow:0 10px 26px -14px rgba(26,23,20,.45)}
+  .truth__glow{display:none}
+  .truth__note{margin-top:14px}
+}
 .exclusiveNote{font-family:var(--display);font-weight:700;color:var(--accent-2);
   font-size:clamp(15px,1.7vw,18px);line-height:1.5;max-width:34ch;margin:18px auto 0;text-align:center}
 
