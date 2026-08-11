@@ -115,13 +115,31 @@ button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
   background:#000}
 .truth__box{position:relative;width:100%;aspect-ratio:16/9}
 .truth__box iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+/* פאסאדה: תמונה נקייה + כפתור משלנו. יוטיוב נטען רק בלחיצה —
+   בלי כותרת הקובץ, בלי מיתוג ובלי כפתור שיתוף על הסרטון. */
+.truth__facade{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;cursor:pointer;
+  display:block;background:#000;overflow:hidden}
+.truth__facade img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .5s cubic-bezier(.2,.7,.2,1),filter .3s}
+.truth__facade:hover img{transform:scale(1.03);filter:brightness(1.05)}
+.truth__play{position:absolute;top:50%;inset-inline-start:50%;transform:translate(50%,-50%);
+  width:clamp(62px,9vw,86px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--accent-2),var(--accent) 55%,var(--accent-deep));
+  box-shadow:0 14px 40px -10px rgba(240,138,91,.75),0 0 0 8px rgba(255,255,255,.10);
+  transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s}
+.truth__play::after{content:"";width:0;height:0;margin-inline-start:6px;
+  border-block:13px solid transparent;border-inline-start:21px solid #23120a;border-inline-end:0}
+.truth__facade:hover .truth__play{transform:translate(50%,-50%) scale(1.07);
+  box-shadow:0 18px 50px -8px rgba(240,138,91,.9),0 0 0 10px rgba(255,255,255,.14)}
+.truth__facade:focus-visible{outline:3px solid var(--accent-2);outline-offset:-3px}
 .truth__glow{position:absolute;inset:-12% -6% auto;height:60%;pointer-events:none;z-index:-1;
   background:radial-gradient(60% 100% at 50% 0%,rgba(240,138,91,.22),transparent 70%);filter:blur(28px)}
 .truth__note{text-align:center;color:var(--muted);font-size:13.5px;margin-top:16px}
 /* מובייל: סרטון לרוחב על מסך אנכי יוצא רצועה נמוכה. מקצה לקצה הוא נראה
    קולנועי במקום כמו כרטיס קטן שמרחף — וגם מרוויח ~10% גובה. */
 @media (max-width:760px){
-  .truth__wrap{margin-inline:calc(-1 * clamp(20px,5vw,52px));border-radius:0;
+  /* הנגן יושב מחוץ ל-container, אז מלוא הרוחב הוא פשוט 100% — בלי חשבון של מרג׳ינים שליליים */
+  .truth__wrap{max-width:none;width:100%;margin-inline:0;border-radius:0;
     border-inline-width:0;box-shadow:0 18px 40px -22px rgba(0,0,0,.75)}
   .truth.section--light .truth__wrap{box-shadow:0 10px 26px -14px rgba(26,23,20,.45)}
   .truth__glow{display:none}
@@ -655,15 +673,32 @@ html.can-anim .rv:not(.in){transform:translateY(26px)}
 .faq__a p{padding:0 clamp(20px,3vw,28px) 24px;font-size:16px;line-height:1.65;color:var(--ink-soft)}
 
 /* ---------- final ---------- */
-.final{position:relative;overflow:hidden;text-align:center}
-.final__photo{width:96px;height:96px;border-radius:50%;object-fit:cover;margin:0 auto 22px;border:3px solid var(--accent);
-  box-shadow:var(--shadow-accent)}
-.final h2{margin-bottom:24px}
-.final .lead{max-width:620px;margin:0 auto 14px}
-.final__lines{max-width:560px;margin:0 auto 34px}
-.final__lines p{font-size:18px;line-height:1.85;color:var(--ink-soft)}
-.final__lines strong{color:var(--accent)}
-.final__sign{font-family:var(--display);font-weight:800;color:var(--accent);margin-top:18px}
+/* ---------- הסגירה: בז' חם, נשימה, תחושת מכתב אישי ---------- */
+.final{position:relative;overflow:hidden;text-align:center;
+  background:linear-gradient(180deg,#F3EBE1 0%,#EDE2D5 55%,#E8DACB 100%);color:#241C15;
+  padding-block:clamp(64px,9vw,120px)}
+/* חותם עדין ברקע — הילה חמה במקום שטח שטוח */
+.final::before{content:"";position:absolute;inset:-30% -10% auto;height:70%;pointer-events:none;
+  background:radial-gradient(52% 100% at 50% 0%,rgba(240,138,91,.16),transparent 72%)}
+.final > *{position:relative}
+.final__photo{width:clamp(96px,12vw,116px);height:clamp(96px,12vw,116px);border-radius:50%;object-fit:cover;
+  margin:0 auto 24px;border:0;box-shadow:0 0 0 1px rgba(178,78,28,.22),0 0 0 9px rgba(255,255,255,.72),
+  0 26px 50px -22px rgba(60,38,20,.45)}
+.final .eyebrow{color:#8C3D14}
+.final .eyebrow::before,.final .eyebrow.center::after{background:#B24E1C;opacity:.55}
+.final h2{margin-bottom:26px;color:#1A140F;letter-spacing:-.03em}
+.final h2 .accent{color:#B24E1C}
+.final .lead{max-width:620px;margin:0 auto 14px;color:#5A4E43}
+.final__lines{max-width:560px;margin:0 auto 36px}
+.final__lines p{font-size:clamp(17px,1.9vw,19px);line-height:1.9;color:#4A4038}
+.final__lines p + p{margin-top:16px}
+.final__lines strong{color:#8C3D14;font-weight:800}
+/* החתימה כמו בסוף מכתב — קו דק מעליה */
+.final__lines p.final__sign{font-family:var(--display);font-weight:800;color:#8C3D14;margin-top:26px;
+  display:inline-block;padding-top:18px;position:relative}
+.final__sign::before{content:"";position:absolute;top:0;inset-inline-start:50%;transform:translateX(50%);
+  width:54px;height:2px;border-radius:2px;background:rgba(140,61,20,.35)}
+.final .btn--accent{box-shadow:0 18px 38px -16px rgba(178,78,28,.55)}
 
 /* ---------- footer ---------- */
 .footer{background:#070708;color:var(--muted);padding:64px 0 40px;text-align:center;border-top:1px solid var(--line)}
@@ -1614,6 +1649,7 @@ function BrideMethod() {
 }
 const TRUTH_VIDEO_ID = 'iouwJ8avjzo';  // סרטון "כל האמת שלי" — יוטיוב, לרוחב 16:9
 function TruthVideo() {
+  const [playing, setPlaying] = useState(false);
   if (!TRUTH_VIDEO_ID) return null;  // בלי סרטון — הסקשן פשוט לא קיים
   return React.createElement("section", {
     className: "section truth section--light",
@@ -1629,22 +1665,33 @@ function TruthVideo() {
     as: "h2",
     className: "h2 mxa",
     delay: 60
-  }, "כל האמת שלי")), React.createElement(Reveal, {
+  }, "כל האמת שלי"))), React.createElement(Reveal, {
     className: "truth__wrap",
     delay: 100
-  }, React.createElement("span", {
-    className: "truth__glow",
-    "aria-hidden": "true"
-  }), React.createElement("div", {
+  }, React.createElement("div", {
     className: "truth__box"
-  }, React.createElement("iframe", {
-    src: "https://www.youtube-nocookie.com/embed/" + TRUTH_VIDEO_ID + "?rel=0&modestbranding=1&playsinline=1",
+  }, playing ? React.createElement("iframe", {
+    src: "https://www.youtube-nocookie.com/embed/" + TRUTH_VIDEO_ID + "?rel=0&modestbranding=1&playsinline=1&autoplay=1",
     title: "כל האמת שלי — ניב גבאי",
-    loading: "lazy",
-    allow: "accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
+    allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
     allowFullScreen: true,
     referrerPolicy: "strict-origin-when-cross-origin"
-  }))), React.createElement("p", {
+  }) : React.createElement("button", {
+    className: "truth__facade",
+    type: "button",
+    onClick: () => setPlaying(true),
+    "aria-label": "נגן את הסרטון: כל האמת שלי"
+  }, React.createElement("img", {
+    src: "https://i.ytimg.com/vi/" + TRUTH_VIDEO_ID + "/maxresdefault.jpg",
+    alt: "",
+    loading: "lazy",
+    onError: e => { e.target.src = "https://i.ytimg.com/vi/" + TRUTH_VIDEO_ID + "/hqdefault.jpg"; }
+  }), React.createElement("span", {
+    className: "truth__play",
+    "aria-hidden": "true"
+  })))), React.createElement("div", {
+    className: "container"
+  }, React.createElement("p", {
     className: "truth__note"
   }, "כמה דקות. בלי מצגות ובלי הבטחות — פשוט איך זה התחיל ולמה זה עובד.")));
 }
@@ -2816,7 +2863,7 @@ function FAQ() {
 }
 function Final() {
   return React.createElement("section", {
-    className: "section section--ink final",
+    className: "section final",
     id: "final"
   }, React.createElement("div", {
     className: "container container--narrow"
