@@ -589,15 +589,27 @@ html.can-anim .rv:not(.in){transform:translateY(26px)}
   background:radial-gradient(circle at 50% 60%,rgba(240,138,91,.28),transparent 60%)}
 .priceCard{position:relative;z-index:1;background:var(--panel);border:1px solid var(--line-accent);border-radius:var(--r-lg);
   box-shadow:var(--shadow);overflow:hidden}
-/* reason-why replaces the struck-through anchors: the price is defended by a fact,
-   not by a number nobody can check */
-.priceWhy{padding:clamp(22px,3.6vw,30px);border-bottom:1px solid var(--line-accent)}
-.priceWhy__t{display:flex;align-items:center;gap:12px;margin-bottom:11px;
-  font-family:var(--display);font-weight:800;font-size:12.5px;letter-spacing:.1em;color:var(--accent)}
-.priceWhy__t::after{content:"";flex:1;height:1px;background:var(--line-accent)}
-.priceWhy p{margin:0;font-size:15.5px;line-height:1.75;color:var(--ink-soft)}
-.priceWhy p strong{color:var(--ink);font-weight:700}
-.priceNow{position:relative;padding:clamp(28px,4vw,40px);text-align:center;background:radial-gradient(120% 100% at 50% 0,rgba(240,138,91,.12),transparent 60%)}
+.priceCard::after{content:"";position:absolute;top:0;inset-inline:0;height:3px;pointer-events:none;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent)}
+  box-shadow:var(--shadow);overflow:hidden}
+/* ribbon + value stack: the number lands first, then the reasons it is small */
+.priceRibbon{position:relative;z-index:2;text-align:center;padding:16px 0 0}
+.priceRibbon span{display:inline-flex;align-items:center;gap:7px;padding:6px 15px;border-radius:999px;
+  background:var(--accent-soft);border:1px solid var(--line-accent);color:var(--accent-2);
+  font-family:var(--display);font-weight:800;font-size:12.5px;letter-spacing:.04em}
+.priceRibbon svg{width:14px;height:14px}
+.pricePills{position:relative;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:14px}
+.pricePills span{padding:5px 12px;border-radius:999px;border:1px solid var(--line);
+  background:rgba(255,255,255,.04);font-size:12.5px;font-weight:700;color:var(--ink-soft)}
+.pricePills span.is-accent{background:var(--accent-soft);border-color:var(--line-accent);color:var(--accent-2)}
+.priceIncl{position:relative;list-style:none;margin:24px 0;padding-top:22px;
+  border-top:1px dashed var(--line-accent);display:grid;gap:11px;text-align:start}
+.priceIncl li{display:flex;align-items:flex-start;gap:10px;font-size:14.5px;line-height:1.5;color:var(--muted)}
+.priceIncl li b{color:var(--ink);font-weight:700}
+.priceIncl .ck{flex:none;width:20px;height:20px;margin-top:1px;border-radius:50%;display:grid;place-items:center;
+  background:var(--accent-soft);border:1px solid var(--line-accent);color:var(--accent)}
+.priceIncl .ck svg{width:11px;height:11px}
+.priceNow{position:relative;padding:clamp(24px,3.4vw,34px) clamp(24px,4vw,38px) clamp(28px,4vw,38px);text-align:center;background:radial-gradient(120% 100% at 50% 0,rgba(240,138,91,.12),transparent 60%)}
 .priceNow .spot{position:absolute;top:0;inset-inline:0;height:100%;pointer-events:none;
   background:radial-gradient(60% 50% at 50% 32%,rgba(240,138,91,.17),transparent 70%)}
 /* rule \u2014 label \u2014 rule: the classical way to set a price */
@@ -615,7 +627,7 @@ html.can-anim .rv:not(.in){transform:translateY(26px)}
   font-size:clamp(19px,3.1vw,25px);color:var(--ink-soft);letter-spacing:-.01em;margin-top:12px}
 .priceNow__pay b{font-weight:800;color:var(--accent);font-size:1.3em;font-variant-numeric:tabular-nums;
   letter-spacing:-.03em;white-space:nowrap}
-.priceNow__pay .noInt{display:inline-block;vertical-align:middle;margin-inline-start:9px;padding:4px 11px;
+.pricePills .noInt--legacy{display:inline-block;vertical-align:middle;margin-inline-start:9px;padding:4px 11px;
   border:1px solid var(--line-accent);border-radius:999px;background:var(--accent-soft);
   font-family:var(--body);font-weight:700;font-size:12.5px;color:var(--accent-2);letter-spacing:0}
 .payMethods{position:relative;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:9px;
@@ -2324,6 +2336,13 @@ function Bonuses() {
   }))));
 }
 function Pricing() {
+  const incl = [
+    ['קורס bride המלא', '48 שיעורים ב־6 פרקים'],
+    ['11 שעות ו־38 דקות', 'של וידאו, בקצב שלך'],
+    ['3 בונוסים', 'קבוצת וואטסאפ, בובי, the top feed'],
+    ['גישה קבועה לכל התכנים', 'מכל מכשיר, בכל זמן'],
+    ['חשבונית מס כדין', 'תשלום חד־פעמי, בלי מנוי חודשי']
+  ];
   return React.createElement("section", {
     className: "section",
     id: "pricing"
@@ -2339,7 +2358,7 @@ function Pricing() {
     className: "h2 balance mxa",
     delay: 60,
     style: {
-      maxWidth: '20ch'
+      maxWidth: '22ch'
     }
   }, "אין מחיר השקה. אין טיימר. ", React.createElement("span", {
     className: "accent"
@@ -2349,10 +2368,8 @@ function Pricing() {
   }, React.createElement("div", {
     className: "priceCard"
   }, React.createElement("div", {
-    className: "priceWhy"
-  }, React.createElement("div", {
-    className: "priceWhy__t"
-  }, "למה זה עולה מה שזה עולה"), React.createElement("p", null, "כי אני לא יושב איתך אחד על אחד. הכל מוקלט — ", React.createElement("strong", null, "אותה שיטה, אותם שיעורים"), ", בלי הזמן שלי בפנים. זה מה שמאפשר לי לתמחר את זה במחיר שגם מאפרת בתחילת הדרך יכולה לעמוד בו — בלי להוריד אף שיעור.")), React.createElement("div", {
+    className: "priceRibbon"
+  }, React.createElement("span", null, Ico.spark, " ההצעה המלאה")), React.createElement("div", {
     className: "priceNow"
   }, React.createElement("span", {
     className: "spot"
@@ -2366,11 +2383,20 @@ function Pricing() {
     className: "priceNow__vat"
   }, "כולל מע\"מ"), React.createElement("div", {
     className: "priceNow__pay"
-  }, "או 3 תשלומים של ", React.createElement("b", null, "590\xA0₪"), React.createElement("span", {
-    className: "noInt"
-  }, "ללא ריבית")), React.createElement("div", {
-    className: "priceNow__sub"
-  }, "תשלום אחד \xB7 גישה מיידית לכל התכנים \xB7 בלי מנוי חודשי"), React.createElement("a", {
+  }, "או 3 תשלומים של ", React.createElement("b", null, "590\xA0₪")), React.createElement("div", {
+    className: "pricePills"
+  }, React.createElement("span", {
+    className: "is-accent"
+  }, "ללא ריבית"), React.createElement("span", null, "37\xA0₪ לשיעור"), React.createElement("span", null, "גישה מיידית")), React.createElement("ul", {
+    className: "priceIncl"
+  }, incl.map(function(it, i) {
+    return React.createElement("li", {
+      key: i
+    }, React.createElement("span", {
+      className: "ck",
+      "aria-hidden": "true"
+    }, Ico.check), React.createElement("span", null, React.createElement("b", null, it[0]), " \xB7 ", it[1]));
+  })), React.createElement("a", {
     href: PAY_LINK,
     className: "btn btn--accent btn--block btn--lg"
   }, "אני רוצה לרכוש את - BRIDE"), React.createElement("p", {
@@ -2412,7 +2438,7 @@ function Pricing() {
     as: "p",
     className: "priceNote",
     delay: 120
-  }, React.createElement("strong", null, "כלה אחת נוספת שתסגרי"), " יכולה להחזיר לך את ההשקעה. כל מה שמעבר לזה — כבר רווח.")));
+  }, React.createElement("strong", null, "כלה אחת נוספת שתסגרי מחזירה לך את ההשקעה."), " ולמה זה עולה מה שזה עולה? כי אני לא יושב איתך אחד על אחד — הכל מוקלט, אותה שיטה ואותם שיעורים, בלי הזמן שלי בפנים.")));
 }
 const YES = ['את מאפרת או מסרקת בעולם הכלות', 'יש לך כישרון אבל לא מספיק עבודה', 'את רוצה לסגור יותר כלות', 'את מוכנה ליישם, לא רק לצפות', 'את רוצה למכור בלי להרגיש "מוכרת"', 'את רוצה להפסיק להתחרות רק על מחיר'];
 const NO = ['את מחפשת קסם בלי לעשות כלום', 'את לא מוכנה לשנות איך שאת מדברת עם לקוחות', 'את לא עוסקת בעולם הכלות', 'את מצפה לפגישות אישיות עם ניב', 'את רוצה רק לצפות ולא ליישם'];
