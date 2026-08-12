@@ -113,26 +113,26 @@ button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
 .truth__wrap{max-width:920px;margin-inline:auto;position:relative;border-radius:var(--r-lg);
   overflow:hidden;border:1px solid var(--line-accent);box-shadow:0 40px 90px -40px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.03);
   background:#000}
-.truth__box{position:relative;width:100%;aspect-ratio:16/9}
-/* ספארי באייפון מתעלם מ-width:100% על iframe ומתנפח לגודל התוכן.
-   width:1px + min-width:100% הוא התיקון המוכר שמכריח מילוי מדויק. */
-.truth__box iframe{position:absolute;inset:0;width:1px;min-width:100%;max-width:100%;
-  height:1px;min-height:100%;max-height:100%;border:0;display:block}
+/* תבנית ההטמעה הרספונסיבית הקלאסית: גובה נגזר מ-padding באחוזים (56.25% = 16:9),
+   והילדים נמתחים לפי היסטים פיזיים (top/left) ולא לוגיים. aspect-ratio ו-inset
+   שניהם התנהגו לא צפוי בספארי כשיש zoom על הדף ו-RTL. */
+.truth__box{position:relative;width:100%;height:0;padding-bottom:56.25%;overflow:hidden}
+.truth__box > iframe,.truth__box > .truth__facade{position:absolute;top:0;left:0;
+  width:100%;height:100%;margin:0;border:0;display:block}
 /* פאסאדה: תמונה נקייה + כפתור משלנו. יוטיוב נטען רק בלחיצה —
    בלי כותרת הקובץ, בלי מיתוג ובלי כפתור שיתוף על הסרטון. */
-.truth__facade{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;cursor:pointer;
-  display:block;background:#000;overflow:hidden}
-.truth__facade img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
+.truth__facade{padding:0;cursor:pointer;background:#000;overflow:hidden}
+.truth__facade img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;
   transition:transform .5s cubic-bezier(.2,.7,.2,1),filter .3s}
 .truth__facade:hover img{transform:scale(1.03);filter:brightness(1.05)}
-.truth__play{position:absolute;top:50%;inset-inline-start:50%;transform:translate(50%,-50%);
+.truth__play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
   width:clamp(62px,9vw,86px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;
   background:linear-gradient(135deg,var(--accent-2),var(--accent) 55%,var(--accent-deep));
   box-shadow:0 14px 40px -10px rgba(240,138,91,.75),0 0 0 8px rgba(255,255,255,.10);
   transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s}
-.truth__play::after{content:"";width:0;height:0;margin-inline-start:6px;
-  border-block:13px solid transparent;border-inline-start:21px solid #23120a;border-inline-end:0}
-.truth__facade:hover .truth__play{transform:translate(50%,-50%) scale(1.07);
+.truth__play::after{content:"";width:0;height:0;margin-left:4px;
+  border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:21px solid #23120a}
+.truth__facade:hover .truth__play{transform:translate(-50%,-50%) scale(1.07);
   box-shadow:0 18px 50px -8px rgba(240,138,91,.9),0 0 0 10px rgba(255,255,255,.14)}
 .truth__facade:focus-visible{outline:3px solid var(--accent-2);outline-offset:-3px}
 .truth__glow{position:absolute;inset:-12% -6% auto;height:60%;pointer-events:none;z-index:-1;
