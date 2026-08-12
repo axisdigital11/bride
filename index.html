@@ -110,43 +110,18 @@ button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
 /* ---------- "כל האמת שלי" — סרטון לרוחב ---------- */
 .truth{position:relative}
 .truth__head{text-align:center;margin-bottom:clamp(22px,3vw,34px)}
-.truth__wrap{max-width:920px;margin-inline:auto;position:relative;border-radius:var(--r-lg);
-  overflow:hidden;border:1px solid var(--line-accent);box-shadow:0 40px 90px -40px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.03);
-  background:#000}
-/* תבנית ההטמעה הרספונסיבית הקלאסית: גובה נגזר מ-padding באחוזים (56.25% = 16:9),
-   והילדים נמתחים לפי היסטים פיזיים (top/left) ולא לוגיים. aspect-ratio ו-inset
-   שניהם התנהגו לא צפוי בספארי כשיש zoom על הדף ו-RTL. */
-.truth__box{position:relative;width:100%;height:0;padding-bottom:56.25%;overflow:hidden}
-.truth__box > iframe,.truth__box > .truth__facade{position:absolute;top:0;left:0;
-  width:100%;height:100%;margin:0;border:0;display:block}
-/* פאסאדה: תמונה נקייה + כפתור משלנו. יוטיוב נטען רק בלחיצה —
-   בלי כותרת הקובץ, בלי מיתוג ובלי כפתור שיתוף על הסרטון. */
-.truth__facade{padding:0;cursor:pointer;background:#000;overflow:hidden}
-.truth__facade img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;
-  transition:transform .5s cubic-bezier(.2,.7,.2,1),filter .3s}
-.truth__facade:hover img{transform:scale(1.03);filter:brightness(1.05)}
-.truth__play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  width:clamp(62px,9vw,86px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;
-  background:linear-gradient(135deg,var(--accent-2),var(--accent) 55%,var(--accent-deep));
-  box-shadow:0 14px 40px -10px rgba(240,138,91,.75),0 0 0 8px rgba(255,255,255,.10);
-  transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s}
-.truth__play::after{content:"";width:0;height:0;margin-left:4px;
-  border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:21px solid #23120a}
-.truth__facade:hover .truth__play{transform:translate(-50%,-50%) scale(1.07);
-  box-shadow:0 18px 50px -8px rgba(240,138,91,.9),0 0 0 10px rgba(255,255,255,.14)}
-.truth__facade:focus-visible{outline:3px solid var(--accent-2);outline-offset:-3px}
-.truth__glow{position:absolute;inset:-12% -6% auto;height:60%;pointer-events:none;z-index:-1;
-  background:radial-gradient(60% 100% at 50% 0%,rgba(240,138,91,.22),transparent 70%);filter:blur(28px)}
+/* הטמעה פשוטה: עוטף אחד עם יחס 16:9, ו-iframe שממלא אותו. בלי שכבות. */
+.truth__wrap{max-width:920px;margin:0 auto;position:relative;overflow:hidden;background:#000;
+  border-radius:var(--r-lg);border:1px solid var(--line-accent);
+  box-shadow:0 40px 90px -40px rgba(0,0,0,.9)}
+.truth__box{position:relative;width:100%;height:0;padding-bottom:56.25%}
+.truth__box iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
 .truth__note{text-align:center;color:var(--muted);font-size:13.5px;margin-top:16px}
-/* מובייל: סרטון לרוחב על מסך אנכי יוצא רצועה נמוכה. מקצה לקצה הוא נראה
-   קולנועי במקום כמו כרטיס קטן שמרחף — וגם מרוויח ~10% גובה. */
+/* מובייל: מקצה לקצה */
 @media (max-width:760px){
-  /* הנגן יושב מחוץ ל-container, אז מלוא הרוחב הוא פשוט 100% — בלי חשבון של מרג׳ינים שליליים */
-  .truth__wrap{max-width:none;width:100%;margin-inline:0;border-radius:0;
-    border-inline-width:0;box-shadow:0 18px 40px -22px rgba(0,0,0,.75)}
+  .truth__wrap{max-width:none;border-radius:0;border-left:0;border-right:0;
+    box-shadow:0 18px 40px -22px rgba(0,0,0,.75)}
   .truth.section--light .truth__wrap{box-shadow:0 10px 26px -14px rgba(26,23,20,.45)}
-  .truth__glow{display:none}
-  .truth__note{margin-top:14px}
 }
 .exclusiveNote{font-family:var(--display);font-weight:700;color:var(--accent-2);
   font-size:clamp(15px,1.7vw,18px);line-height:1.5;max-width:34ch;margin:18px auto 0;text-align:center}
@@ -1652,8 +1627,7 @@ function BrideMethod() {
 }
 const TRUTH_VIDEO_ID = 'iouwJ8avjzo';  // סרטון "כל האמת שלי" — יוטיוב, לרוחב 16:9
 function TruthVideo() {
-  const [playing, setPlaying] = useState(false);
-  if (!TRUTH_VIDEO_ID) return null;  // בלי סרטון — הסקשן פשוט לא קיים
+  if (!TRUTH_VIDEO_ID) return null;
   return React.createElement("section", {
     className: "section truth section--light",
     id: "truth"
@@ -1668,33 +1642,17 @@ function TruthVideo() {
     as: "h2",
     className: "h2 mxa",
     delay: 60
-  }, "כל האמת שלי"))), React.createElement(Reveal, {
-    className: "truth__wrap",
-    delay: 100
+  }, "כל האמת שלי"))), React.createElement("div", {
+    className: "truth__wrap"
   }, React.createElement("div", {
     className: "truth__box"
-  }, playing ? React.createElement("iframe", {
-    src: "https://www.youtube-nocookie.com/embed/" + TRUTH_VIDEO_ID + "?rel=0&modestbranding=1&playsinline=1&autoplay=1",
-    width: "1280",
-    height: "720",
+  }, React.createElement("iframe", {
+    src: "https://www.youtube.com/embed/" + TRUTH_VIDEO_ID + "?rel=0&playsinline=1",
     title: "כל האמת שלי — ניב גבאי",
-    allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
-    allowFullScreen: true,
-    referrerPolicy: "strict-origin-when-cross-origin"
-  }) : React.createElement("button", {
-    className: "truth__facade",
-    type: "button",
-    onClick: () => setPlaying(true),
-    "aria-label": "נגן את הסרטון: כל האמת שלי"
-  }, React.createElement("img", {
-    src: "https://i.ytimg.com/vi/" + TRUTH_VIDEO_ID + "/maxresdefault.jpg",
-    alt: "",
-    loading: "lazy",
-    onError: e => { e.target.src = "https://i.ytimg.com/vi/" + TRUTH_VIDEO_ID + "/hqdefault.jpg"; }
-  }), React.createElement("span", {
-    className: "truth__play",
-    "aria-hidden": "true"
-  })))), React.createElement("div", {
+    frameBorder: "0",
+    allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
+    allowFullScreen: true
+  }))), React.createElement("div", {
     className: "container"
   }, React.createElement("p", {
     className: "truth__note"
