@@ -732,39 +732,7 @@ html.can-anim .rv:not(.in){transform:translateY(26px)}
 .bCard--ai .bCard__tag{background:rgba(167,139,250,.13);border-color:rgba(167,139,250,.3);color:#c4b5fd}
 .bCard--feed::before{background:rgba(240,138,91,.3)}
 .bCard--feed .bCard__tag{background:var(--accent-soft);border-color:var(--line-accent);color:var(--accent-2)}
-/* --- illustration 1: the closed group --- */
-.waMock{position:absolute;inset:0;display:flex;flex-direction:column;background:#0b141a}
-.waMock__hd{display:flex;align-items:center;gap:8px;padding:8px 10px;background:#1f2c33}
-.waMock__av{flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:13px;
-  background:linear-gradient(135deg,#25D366,#128C7E)}
-.waMock__nm{font-weight:700;font-size:11.5px;color:#e9edef;line-height:1.25}
-.waMock__sub{font-size:9.5px;color:#8696a0}
-.waMock__body{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;padding:10px;overflow:hidden}
-.waMock__b{max-width:84%;padding:6px 9px;font-size:10.5px;line-height:1.5;color:#e9edef}
-.waMock__b--in{align-self:flex-start;background:#202c33;border-radius:11px 11px 11px 3px}
-.waMock__b--out{align-self:flex-end;background:#005c4b;border-radius:11px 11px 3px 11px}
-.waMock__b i{display:block;font-style:normal;font-size:9.5px;font-weight:700;color:#53bdeb;margin-bottom:2px}
-/* --- illustration 2: bobby --- */
-.aiMock{position:absolute;inset:0;display:flex;flex-direction:column;background:linear-gradient(150deg,#100c1e,#0c0912)}
-.aiMock__hd{display:flex;align-items:center;gap:8px;padding:8px 10px;border-bottom:1px solid rgba(167,139,250,.16)}
-.aiMock__av{flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:13px;
-  background:linear-gradient(135deg,#a78bfa,#7c3aed)}
-.aiMock__nm{font-weight:700;font-size:11.5px;color:var(--ink);line-height:1.25}
-.aiMock__sub{display:flex;align-items:center;gap:4px;font-size:9.5px;color:#a78bfa}
-.aiMock__sub::before{content:"";width:5px;height:5px;border-radius:50%;background:#a78bfa;box-shadow:0 0 6px #a78bfa}
-.aiMock__body{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:flex-end;gap:7px;padding:10px;overflow:hidden}
-.aiMock__b{max-width:88%;padding:7px 10px;font-size:10.5px;line-height:1.55}
-.aiMock__b--user{align-self:flex-start;border-radius:12px 12px 12px 3px;color:var(--ink-soft);
-  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09)}
-.aiMock__b--bot{align-self:flex-end;border-radius:12px 12px 3px 12px;color:var(--ink);
-  background:linear-gradient(135deg,rgba(167,139,250,.25),rgba(124,58,237,.2));border:1px solid rgba(167,139,250,.3)}
-/* --- illustration 3: the feed the AI bonus produces --- */
-.tfMock{position:absolute;inset:0;display:flex;flex-direction:column;background:#0f0f14}
-.tfMock__hd{padding:7px 10px;font-size:10.5px;font-weight:700;color:var(--accent-2);
-  background:rgba(240,138,91,.1);border-bottom:1px solid var(--line-accent)}
-.tfMock__grid{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:3px;padding:3px;min-height:0}
-.tfMock__cell{position:relative;overflow:hidden;border-radius:3px}
-.tfMock__cell img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.02)}
+.bCard__vis img{width:100%;height:100%;object-fit:cover;display:block}
 .bns__item{position:relative;display:flex}
 .bns__item--wide{grid-column:1 / -1}
 .bns__item>.aiBot,.bns__item>.bonus{flex:1;margin:0;max-width:none}
@@ -2288,69 +2256,24 @@ function Curriculum() {
   }, "\u05db\u05dc \u05e9\u05d9\u05e2\u05d5\u05e8 \u05d1\u05d5\u05d9\u05d3\u05d0\u05d5, \u05d1\u05e7\u05e6\u05d1 \u05e9\u05dc\u05da, \u05e2\u05dd \u05d2\u05d9\u05e9\u05d4 \u05d7\u05d5\u05d6\u05e8\u05ea \u05de\u05ea\u05d9 \u05e9\u05ea\u05e8\u05e6\u05d9.")));
 }
 function Bonuses() {
-  const waMsgs = [
-    {side:'in',  who:'מור',  text:'בנות, מישהי פנויה לכלה בחיפה ב־14.9? נפלה לי עבודה כפולה'},
-    {side:'out', who:'',     text:'אני פנויה — שלחי לי פרטים 🙏'},
-    {side:'in',  who:'עדיה', text:'כלה ביקשה הנחה של 500 ₪. מה עונים לה?'},
-  ];
-  const aiMsgs = [
-    {side:'user', text:'איך אני עונה ללקוחה שאומרת יקר לי?'},
-    {side:'bot',  text:'תגידי לה: מבינה אותך לגמרי. אני לא הבחירה הכי זולה — אני הבחירה הכי בטוחה ליום החתונה. 🤍'},
-  ];
-  const feed = ['feed-1.jpg','feed-2.jpg','feed-3.jpg','feed-4.jpg'];
   const cards = [
     {
       cls: 'bCard--wa', num: '1', ico: Ico.wa, tag: 'כלול בקורס',
       title: 'קבוצת וואטסאפ סגורה',
       desc: 'קבוצה סגורה של מאפרות ומסרקים מכל הארץ. שואלת שאלה — מקבלת תשובה. מעבירים עבודות אחת לשנייה, ומתייעצים לפני שסוגרים מחיר. יש לילות שהקבוצה הזאת שווה יותר מכל שיעור.',
-      vis: React.createElement("div", {className:"waMock"},
-        React.createElement("div", {className:"waMock__hd"},
-          React.createElement("div", {className:"waMock__av"}, "👰"),
-          React.createElement("div", null,
-            React.createElement("div", {className:"waMock__nm"}, "מאפרות ומסרקים \u2014 bride"),
-            React.createElement("div", {className:"waMock__sub"}, "הקבוצה הסגורה של הקורס")
-          )
-        ),
-        React.createElement("div", {className:"waMock__body"},
-          waMsgs.map(function(m,i) {
-            return React.createElement("div", {className:"waMock__b waMock__b--"+m.side, key:i},
-              m.who ? React.createElement("i", null, m.who) : null, m.text);
-          })
-        )
-      )
+      img: 'bonus-wa.jpg', alt: 'קבוצת וואטסאפ סגורה של מאפרות ומסרקים'
     },
     {
       cls: 'bCard--ai', num: '2', ico: Ico.spark, tag: 'כלול בקורס · לחצי שנה',
       title: 'בובי — צ׳אט ה־AI שלי',
       desc: 'בוט שאימנתי בעצמי על השיחות שלי עם מאפרות ומסרקים, על תסריטי המכירה ועל חומרי הקורס. מכירות, תמחור, קמפיינים, בניית פרופיל — שולחת לו שאלה בוואטסאפ ומקבלת תשובה תוך שניות, 24/7.',
-      vis: React.createElement("div", {className:"aiMock"},
-        React.createElement("div", {className:"aiMock__hd"},
-          React.createElement("div", {className:"aiMock__av"}, "🤖"),
-          React.createElement("div", null,
-            React.createElement("div", {className:"aiMock__nm"}, "בובי הבוט של bride"),
-            React.createElement("div", {className:"aiMock__sub"}, "מחובר ועונה")
-          )
-        ),
-        React.createElement("div", {className:"aiMock__body"},
-          aiMsgs.map(function(m,i) {
-            return React.createElement("div", {className:"aiMock__b aiMock__b--"+m.side, key:i}, m.text);
-          })
-        )
-      )
+      img: 'bonus-ai.jpg', alt: 'בובי, צ׳אט ה־AI של הקורס'
     },
     {
       cls: 'bCard--feed', num: '3', ico: Ico.spark, tag: 'מתנה למצטרפות עכשיו',
       title: 'the top feed — קורס ה־AI',
       desc: 'קורס שלם שמלמד אותך להפוך תמונה פשוטה מהטלפון להפקת צילום מושלמת — בלי צלם, בלי דוגמנית ובלי תקציב. פיד שנראה כמו קמפיין יוקרתי. הבונוס נמכר בנפרד — כאן הוא שלך במתנה.',
-      vis: React.createElement("div", {className:"tfMock"},
-        React.createElement("div", {className:"tfMock__hd"}, "✨ כל התמונות האלה נוצרו ב־AI"),
-        React.createElement("div", {className:"tfMock__grid"},
-          feed.map(function(f,i) {
-            return React.createElement("div", {className:"tfMock__cell", key:i},
-              React.createElement("img", {src:"images/"+f, alt:"", loading:"lazy", decoding:"async"}));
-          })
-        )
-      )
+      img: 'bonus-feed.jpg', alt: 'פיד אינסטגרם שנבנה בכלי AI'
     }
   ];
   return React.createElement("section", {
@@ -2390,7 +2313,14 @@ function Bonuses() {
       className: "bCard__d"
     }, c.desc), React.createElement("div", {
       className: "bCard__vis"
-    }, c.vis)));
+    }, React.createElement("img", {
+      src: "images/" + c.img,
+      alt: c.alt,
+      width: "900",
+      height: "672",
+      loading: "lazy",
+      decoding: "async"
+    }))));
   }))));
 }
 function Pricing() {
