@@ -622,7 +622,11 @@ html.can-anim .rv:not(.in){transform:translateY(26px)}
 .offer__lock{width:14px;height:14px;display:inline-flex;flex:none;color:#B24E1C}
 @media(max-width:900px){
   .offer__grid{grid-template-columns:1fr;min-height:0}
-  .offer__body{order:2;justify-self:stretch;max-width:none;padding:clamp(34px,7vw,48px) 20px clamp(44px,8vw,56px)}
+  .offer__body{order:2;justify-self:stretch;max-width:none;text-align:center;
+    padding:clamp(34px,7vw,48px) 20px clamp(44px,8vw,56px)}
+  .offer__lead{margin-inline:auto}
+  .offer__price,.offer__instal,.offer__fine{justify-content:center}
+  .offer__cta{justify-content:center}
   .offer__art{order:1;padding:14px 12px 0}
   .offer__cta{max-width:none}
 }
@@ -3411,7 +3415,7 @@ function App() {
   }, []);
   return React.createElement(React.Fragment, null, React.createElement(Progress, null), React.createElement(Header, null), React.createElement("div", {
     id: "content"
-  }, React.createElement(Hero, null), React.createElement(TruthVideo, null), React.createElement(Identify, null), React.createElement(BrideMethod, null), React.createElement(Story, null), React.createElement(CaseStudies, null), React.createElement(Curriculum, null), React.createElement(VideoTestimonials, null), React.createElement(Proof, null), React.createElement(Bonuses, null), React.createElement(Pricing, null), React.createElement(ForWho, null), React.createElement(WhatYouGet, null), React.createElement(FAQ, null), React.createElement(VoiceNotes, null), React.createElement(Final, null), React.createElement(Footer, {
+  }, React.createElement(Hero, null), React.createElement(TruthVideo, null), React.createElement(Identify, null), React.createElement(BrideMethod, null), React.createElement(Story, null), React.createElement(CaseStudies, null), React.createElement(Curriculum, null), React.createElement(VideoTestimonials, null), React.createElement(Proof, null), React.createElement(Bonuses, null), React.createElement(ForWho, null), React.createElement(Pricing, null), React.createElement(WhatYouGet, null), React.createElement(FAQ, null), React.createElement(VoiceNotes, null), React.createElement(Final, null), React.createElement(Footer, {
     onStatement: () => setStmt(true)
   })), React.createElement(StickyCTA, null), React.createElement(WhatsAppFab, null), React.createElement(A11y, {
     onStatement: () => setStmt(true)
