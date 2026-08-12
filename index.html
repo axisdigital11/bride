@@ -498,6 +498,8 @@ html.can-anim .rv:not(.in){transform:translateY(26px)}
 .currStat span{font-family:var(--display);font-weight:700;font-size:11px;letter-spacing:.14em;
   text-transform:uppercase;color:var(--muted-2)}
 .currStat+.currStat{border-inline-start:1px solid var(--line);padding-inline-start:clamp(12px,2.6vw,30px)}
+.currChap__dur{font-style:normal;color:var(--accent);opacity:.85;font-variant-numeric:tabular-nums}
+.currChap__dur::before{content:" \00b7 ";color:var(--muted-2)}
 .currStat--rev{flex-direction:column-reverse;gap:4px}
 .currStat--rev b{font-size:clamp(19px,2.5vw,27px)}
 
@@ -2130,7 +2132,10 @@ function currCount(n) {
 function Curriculum() {
   const [ix, setIx] = useState(0);
   const cur = CHAPTERS[ix];
-  const stats = [[String(CURR_LESSONS), "\u05e9\u05d9\u05e2\u05d5\u05e8\u05d9\u05dd", ''], [String(CHAPTERS.length), "\u05e4\u05e8\u05e7\u05d9\u05dd", ''], ["\u05de\u05d9\u05d9\u05d3\u05d9\u05ea", "\u05d2\u05d9\u05e9\u05d4", ' currStat--rev']];
+  // נמדד מכל 47 סרטוני הקורס בפועל, לא הערכה
+  const CURR_HOURS = "11:38";
+  const CHAP_HOURS = {"1": "2:27", "2": "2:29", "4": "0:18", "3": "2:46", "5": "2:44", "6": "0:52"};
+  const stats = [[String(CURR_LESSONS), "\u05e9\u05d9\u05e2\u05d5\u05e8\u05d9\u05dd", ''], [CURR_HOURS, "\u05e9\u05e2\u05d5\u05ea \u05ea\u05d5\u05db\u05df", ''], [String(CHAPTERS.length), "\u05e4\u05e8\u05e7\u05d9\u05dd", '']];
   return React.createElement("section", {
     className: "section section--alt",
     id: "curriculum"
@@ -2175,11 +2180,11 @@ function Curriculum() {
     className: "currChap__n"
   }, String(c.n)), React.createElement("span", {
     className: "currChap__t"
-  }, React.createElement("b", null, c.s), React.createElement("small", null, currCount(c.l.length)))))), React.createElement("div", {
+  }, React.createElement("b", null, c.s), React.createElement("small", null, currCount(c.l.length), CHAP_HOURS[String(c.n)] ? React.createElement("i", {className: "currChap__dur"}, CHAP_HOURS[String(c.n)] + " \u05e9\u05e2\u05d5\u05ea") : null))))), React.createElement("div", {
     className: "currList"
   }, React.createElement("div", {
     className: "currList__head"
-  }, React.createElement("h3", null, cur.f), React.createElement("span", null, currCount(cur.l.length))), React.createElement("div", {
+  }, React.createElement("h3", null, cur.f), React.createElement("span", null, currCount(cur.l.length) + (CHAP_HOURS[String(cur.n)] ? " \u00b7 " + CHAP_HOURS[String(cur.n)] + " \u05e9\u05e2\u05d5\u05ea" : ""))), React.createElement("div", {
     className: "currList__scroll",
     key: ix
   }, cur.l.map((name, i) => React.createElement("div", {
