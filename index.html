@@ -636,10 +636,12 @@ html.can-anim .rv:not(.in){transform:translateY(26px)}
 .payMethods svg{width:26px;height:18px;flex:none;color:var(--muted)}
 .payMethods b{font-weight:700;color:var(--ink-soft)}
 /* footer — vendor details required before the transaction (חוק הגנת הצרכן §14ג(א)) */
-.footer__biz{margin-top:16px;font-size:14px;line-height:1.9;color:var(--ink-soft)}
+/* one line for the vendor details; the phone is an inline link, which WCAG 2.2
+   exempts from the minimum target size, so it needs no min-height */
+.footer__biz{margin-top:9px;font-size:13px;line-height:1.7;color:var(--ink-soft)}
 .footer__biz strong{color:var(--ink);font-family:var(--display);font-weight:800}
-.footer__biz a{color:var(--accent);white-space:nowrap;display:inline-flex;align-items:center;min-height:55px;padding-inline:2px}
-.footer__biz .bizId{color:var(--muted);font-size:13px}
+.footer__biz a{color:var(--accent);white-space:nowrap;padding-inline:3px}
+.footer__biz .bizId{color:var(--muted)}
 .priceNote{text-align:center;max-width:520px;margin:30px auto 0;font-size:16px;color:var(--ink-soft);line-height:1.6}
 .priceNote strong{color:var(--ink)}
 
@@ -800,16 +802,20 @@ html.can-anim .rv:not(.in){transform:translateY(26px)}
 .final .btn--accent{box-shadow:0 18px 38px -16px rgba(178,78,28,.55)}
 
 /* ---------- footer ---------- */
-.footer{background:#070708;color:var(--muted);padding:64px 0 40px;text-align:center;border-top:1px solid var(--line)}
+.footer{background:#070708;color:var(--muted);padding:34px 0 26px;text-align:center;border-top:1px solid var(--line)}
+.footer__top{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:center;gap:10px}
 .footer .brand{color:var(--ink)}
-.footer__links{display:flex;gap:18px;align-items:center;justify-content:center;margin:22px 0;font-family:var(--display);font-weight:500;flex-wrap:wrap}
+.footer__tag{font-size:14px;color:var(--muted)}
+.footer__links{display:flex;gap:10px;align-items:center;justify-content:center;margin:12px 0 4px;
+  font-family:var(--display);font-weight:500;flex-wrap:wrap}
 .footer__links a{color:var(--accent)}
-.footer__links a:not(.footer__ig),.footer__links button{display:inline-flex;align-items:center;justify-content:center;min-height:55px;padding-inline:6px}
-.footer__ig{display:inline-flex;align-items:center;justify-content:center;width:55px;height:55px;border-radius:50%;border:1px solid var(--line-accent);color:var(--accent)!important;transition:.2s}
+.footer__links a:not(.footer__ig),.footer__links button{display:inline-flex;align-items:center;justify-content:center;
+  min-height:40px;padding-inline:8px;font-size:14px}
+.footer__ig{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;border:1px solid var(--line-accent);color:var(--accent)!important;transition:.2s}
 .footer__ig:hover{background:var(--accent-soft);transform:translateY(-2px)}
-.footer__ig svg{width:22px;height:22px}
+.footer__ig svg{width:18px;height:18px}
 .footer__links button{color:var(--accent);font-family:var(--display)}
-.footer small{display:block;color:var(--muted-2);font-size:12.5px;margin-top:14px}
+.footer small{display:block;color:var(--muted-2);font-size:12px;margin-top:6px}
 
 /* ===================== floating action buttons ===================== */
 .fab{position:fixed;z-index:170;width:60px;height:60px;border-radius:50%;display:grid;place-items:center;
@@ -3091,32 +3097,32 @@ function Footer({
   }, React.createElement("div", {
     className: "container"
   }, React.createElement("div", {
+    className: "footer__top"
+  }, React.createElement("span", {
     className: "brand"
-  }, "bride"), React.createElement("p", {
-    style: {
-      marginTop: '6px'
-    }
-  }, "\u05EA\u05D5\u05E8\u05EA \u05D4\u05DE\u05D0\u05E4\u05E8\u05D5\u05EA \u05D5\u05D4\u05DE\u05E1\u05E8\u05E7\u05D5\u05EA"), React.createElement("div", {
+  }, "bride"), React.createElement("span", {
+    className: "footer__tag"
+  }, "תורת המאפרות והמסרקות")), React.createElement("p", {
     className: "footer__biz"
-  }, React.createElement("p", null, React.createElement("strong", null, "\u05E0\u05D9\u05D1 \u05D2\u05D1\u05D0\u05D9"), " \xB7 \u05DE\u05E8\u05D3\u05DB\u05D9 6, \u05D0\u05D5\u05E4\u05E7\u05D9\u05DD \xB7 ", React.createElement("a", {
+  }, React.createElement("strong", null, "ניב גבאי"), " \xB7 מרדכי 6, אופקים \xB7 ", React.createElement("a", {
     href: "tel:0559125112"
-  }, "055-9125112")), BIZ_ID ? React.createElement("p", {
+  }, "055-9125112"), BIZ_ID ? React.createElement("span", {
     className: "bizId"
-  }, "\u05E2.\u05DE / \u05D7.\u05E4 ", BIZ_ID) : null), React.createElement("div", {
+  }, " \xB7 ע.מ / ח.פ ", BIZ_ID) : null), React.createElement("div", {
     className: "footer__links"
   }, React.createElement("a", {
     href: IG_LINK,
     target: "_blank",
     rel: "noopener",
-    "aria-label": "\u05D0\u05D9\u05E0\u05E1\u05D8\u05D2\u05E8\u05DD",
+    "aria-label": "אינסטגרם",
     className: "footer__ig"
   }, IG_ICON), React.createElement("button", {
     onClick: onStatement
-  }, "\u05D4\u05E6\u05D4\u05E8\u05EA \u05E0\u05D2\u05D9\u05E9\u05D5\u05EA"), React.createElement("button", {
+  }, "הצהרת נגישות"), React.createElement("button", {
     onClick: () => setPolicy(true)
-  }, "\u05DE\u05D3\u05D9\u05E0\u05D9\u05D5\u05EA \u05E4\u05E8\u05D8\u05D9\u05D5\u05EA"), React.createElement("button", {
+  }, "מדיניות פרטיות"), React.createElement("button", {
     onClick: () => setPolicy(true)
-  }, "\u05DE\u05D3\u05D9\u05E0\u05D9\u05D5\u05EA \u05D1\u05D9\u05D8\u05D5\u05DC")), React.createElement("small", null, "\xA9 ", new Date().getFullYear(), " bride \xB7 \u05DB\u05DC \u05D4\u05D6\u05DB\u05D5\u05D9\u05D5\u05EA \u05E9\u05DE\u05D5\u05E8\u05D5\u05EA."), React.createElement("small", null, "\u05D4\u05D0\u05EA\u05E8 \u05E0\u05D1\u05E0\u05D4 \u05D1\u05E0\u05D2\u05D9\u05E9\u05D5\u05EA \u05DC\u05E4\u05D9 \u05EA\u05E7\u05DF \u05D9\u05E9\u05E8\u05D0\u05DC\u05D9 5568 \u05D5\u05EA\u05E7\u05E0\u05D5\u05EA \u05E9\u05D5\u05D5\u05D9\u05D5\u05DF \u05D6\u05DB\u05D5\u05D9\u05D5\u05EA \u05DC\u05D0\u05E0\u05E9\u05D9\u05DD \u05E2\u05DD \u05DE\u05D5\u05D2\u05D1\u05DC\u05D5\u05EA.")), React.createElement(PolicyModal, {
+  }, "מדיניות ביטול")), React.createElement("small", null, "\xA9 ", new Date().getFullYear(), " bride \xB7 כל הזכויות שמורות \xB7 נגיש לפי תקן ישראלי 5568.")), React.createElement(PolicyModal, {
     open: policy,
     onClose: () => setPolicy(false)
   }));
