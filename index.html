@@ -588,10 +588,15 @@ html.can-anim .rv:not(.in){transform:translateY(26px)}
 .offer{padding:0;overflow:hidden}
 .offer__grid{display:grid;grid-template-columns:1.02fr .98fr;align-items:center;min-height:min(78vh,620px)}
 .offer__body{padding:clamp(46px,6vw,80px) clamp(22px,5vw,72px);max-width:640px;justify-self:end;width:100%}
-.offer__art{position:relative;align-self:stretch;min-height:320px}
-.offer__art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-.offer__art::after{content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(to right,transparent 62%,rgba(250,248,245,.55) 88%,#FAF8F5)}
+/* the shot is landscape and the column is portrait, so it must not be cropped —
+   all three devices have to survive. It sits at its own ratio in the cream field,
+   with only its outer edges masked away so it has no visible frame. */
+.offer__art{align-self:center;padding:clamp(18px,2.6vw,38px) 0}
+.offer__art img{display:block;width:100%;height:auto;
+  -webkit-mask-image:linear-gradient(to right,#000 87%,transparent 100%),linear-gradient(to bottom,#000 86%,transparent 100%);
+  -webkit-mask-composite:source-in;
+  mask-image:linear-gradient(to right,#000 87%,transparent 100%),linear-gradient(to bottom,#000 86%,transparent 100%);
+  mask-composite:intersect}
 .offer__h{margin-top:10px;font-size:clamp(30px,4.4vw,50px);line-height:1.14;letter-spacing:-.03em}
 .offer__lead{margin-top:16px;font-size:clamp(16px,1.35vw,18px);line-height:1.75;color:#5A554F;max-width:46ch}
 .offer__lead strong{color:#141414;font-weight:700}
@@ -618,8 +623,7 @@ html.can-anim .rv:not(.in){transform:translateY(26px)}
 @media(max-width:900px){
   .offer__grid{grid-template-columns:1fr;min-height:0}
   .offer__body{order:2;justify-self:stretch;max-width:none;padding:clamp(34px,7vw,48px) 20px clamp(44px,8vw,56px)}
-  .offer__art{order:1;min-height:0;aspect-ratio:16/10}
-  .offer__art::after{background:linear-gradient(to bottom,transparent 58%,rgba(250,248,245,.6) 86%,#FAF8F5)}
+  .offer__art{order:1;padding:14px 12px 0}
   .offer__cta{max-width:none}
 }
 
@@ -2389,7 +2393,7 @@ function Pricing() {
     className: "offer__art"
   }, React.createElement("img", {
     src: "images/offer-desk.jpg",
-    alt: "קורס bride פתוח על מחשב נייד",
+    alt: "קורס bride פתוח במחשב, בטאבלט ובנייד",
     width: "1100",
     height: "821",
     loading: "lazy",
