@@ -486,26 +486,83 @@ html.can-anim .rv:not(.in){transform:translateY(26px)}
   font-family:var(--display);font-weight:900;font-size:13px;box-shadow:var(--shadow-accent);z-index:2;border:3px solid var(--panel)}
 .baDivider::before{content:"";position:absolute;inset-block:0;width:2px;background:var(--line-accent)}
 
-/* ---------- curriculum accordion ---------- */
-.acc{max-width:840px;margin:48px auto 0;display:flex;flex-direction:column;gap:14px}
-.acc__item{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:border-color .3s,box-shadow .3s}
-.acc__item.open{border-color:var(--line-accent);box-shadow:var(--shadow)}
-.acc__head{width:100%;display:flex;align-items:center;gap:20px;padding:24px clamp(20px,3vw,30px);text-align:start}
-.acc__num{font-family:var(--display);font-weight:900;font-size:clamp(22px,3vw,32px);color:var(--accent);flex:none;width:54px}
-.acc__t{flex:1}
-.acc__t b{font-family:var(--display);font-weight:800;font-size:clamp(17px,2.1vw,21px);display:block}
-.acc__t small{color:var(--muted);font-size:13.5px;font-weight:500}
-.acc__plus{flex:none;width:38px;height:38px;border-radius:50%;border:1.5px solid var(--line-accent);display:grid;place-items:center;
-  color:var(--accent);transition:.3s;position:relative}
-.acc__plus::before,.acc__plus::after{content:"";position:absolute;background:currentColor;border-radius:2px}
-.acc__plus::before{width:14px;height:2px}.acc__plus::after{width:2px;height:14px;transition:transform .3s}
-.acc__item.open .acc__plus{background:var(--accent);color:#1a0e07;border-color:var(--accent)}
-.acc__item.open .acc__plus::after{transform:rotate(90deg)}
-.acc__body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.2,.7,.2,1)}
-.acc__bodyin{padding:0 clamp(20px,3vw,30px) 26px;margin-inline-start:74px}
-.acc__bodyin p{font-size:16.5px;line-height:1.65;color:var(--ink-soft)}
-.acc__tag{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-family:var(--display);font-weight:600;
-  font-size:13px;color:var(--accent);background:var(--accent-soft);border:1px solid var(--line-accent);padding:7px 14px;border-radius:999px}
+/* ---------- curriculum: course interface ---------- */
+.curr__head{text-align:center}
+.currStats{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;
+  gap:clamp(12px,2.6vw,30px);margin:clamp(20px,3vw,30px) auto 0;max-width:640px;
+  padding:clamp(14px,2vw,20px) clamp(18px,3vw,34px);background:var(--panel);
+  border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow-sm)}
+.currStat{display:flex;flex-direction:column;align-items:center;gap:3px;flex:1 1 auto;min-width:84px}
+.currStat b{font-family:var(--display);font-weight:900;line-height:1;color:var(--accent);
+  font-size:clamp(25px,3.4vw,38px);font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+.currStat span{font-family:var(--display);font-weight:700;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted-2)}
+.currStat+.currStat{border-inline-start:1px solid var(--line);padding-inline-start:clamp(12px,2.6vw,30px)}
+.currStat--rev{flex-direction:column-reverse;gap:4px}
+.currStat--rev b{font-size:clamp(19px,2.5vw,27px)}
+
+.currPanel{margin:clamp(26px,4vw,44px) auto 0;max-width:1000px;background:var(--panel);
+  border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow);
+  display:grid;grid-template-columns:minmax(0,296px) minmax(0,1fr)}
+.currRail{min-width:0;padding:14px;display:flex;flex-direction:column;gap:6px;
+  border-inline-end:1px solid var(--line);
+  background:linear-gradient(180deg,rgba(240,138,91,.07),rgba(240,138,91,0) 46%)}
+.currRail__ttl{font-family:var(--display);font-weight:700;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted-2);padding:6px 12px 8px}
+.currChap{display:flex;align-items:center;gap:12px;width:100%;text-align:start;padding:11px 13px;
+  border-radius:14px;border:1px solid transparent;transition:background .25s,border-color .25s}
+.currChap:hover{background:rgba(255,255,255,.045)}
+.currChap.on{background:var(--accent-soft);border-color:var(--line-accent)}
+.currChap__n{flex:none;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;
+  font-family:var(--display);font-weight:900;font-size:14px;font-variant-numeric:tabular-nums;
+  background:var(--panel-2);color:var(--muted);border:1px solid var(--line);transition:.25s}
+.currChap.on .currChap__n{background:linear-gradient(150deg,var(--accent-2),var(--accent-deep));
+  color:#1a0e07;border-color:transparent}
+.currChap__t{flex:1;min-width:0}
+.currChap__t b{display:block;font-family:var(--display);font-weight:700;font-size:14.5px;
+  line-height:1.32;color:var(--ink-soft);overflow-wrap:anywhere}
+.currChap.on .currChap__t b{color:var(--ink)}
+.currChap__t small{display:block;font-size:12px;font-weight:500;color:var(--muted-2);
+  font-variant-numeric:tabular-nums}
+
+.currList{display:flex;flex-direction:column;min-width:0}
+.currList__head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
+  padding:17px clamp(16px,2.4vw,26px);border-bottom:1px solid var(--line)}
+.currList__head h3{font-family:var(--display);font-weight:800;line-height:1.25;color:var(--ink);
+  font-size:clamp(16.5px,2vw,21px);overflow-wrap:anywhere}
+.currList__head span{font-family:var(--display);font-weight:700;font-size:12.5px;color:var(--accent);
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+.currList__scroll{max-height:420px;overflow-y:auto;overscroll-behavior:contain;
+  scrollbar-width:thin;scrollbar-color:var(--line-accent) transparent}
+.currList__scroll::-webkit-scrollbar{width:6px}
+.currList__scroll::-webkit-scrollbar-track{background:transparent}
+.currList__scroll::-webkit-scrollbar-thumb{background:var(--line-accent);border-radius:99px}
+.currLesson{display:flex;align-items:center;gap:11px;min-width:0;
+  padding:11px clamp(16px,2.4vw,26px);border-bottom:1px solid rgba(255,255,255,.055)}
+.currLesson:last-child{border-bottom:none}
+.currLesson__n{flex:none;width:22px;font-family:var(--display);font-weight:700;font-size:12.5px;
+  color:var(--muted-2);font-variant-numeric:tabular-nums;text-align:start}
+.currLesson__ico{flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;
+  background:var(--accent-soft);color:var(--accent);border:1px solid var(--line-accent)}
+.currLesson__ico svg{width:12px;height:12px;display:block}
+.currLesson p{flex:1;min-width:0;font-size:15px;line-height:1.5;color:var(--ink-soft);overflow-wrap:anywhere}
+.currNote{text-align:center;color:var(--muted);font-size:13.5px;margin-top:18px}
+
+@media (max-width:860px){
+  .currPanel{grid-template-columns:minmax(0,1fr)}
+  .currRail{flex-direction:row;gap:8px;padding:12px;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border-inline-end:none;border-bottom:1px solid var(--line);scrollbar-width:none}
+  .currRail::-webkit-scrollbar{display:none}
+  .currRail__ttl{display:none}
+  .currChap{flex:none;width:auto;gap:9px;padding:8px 14px 8px 10px;border-radius:999px;
+    border-color:var(--line);background:var(--panel-2)}
+  .currChap__n{width:23px;height:23px;border-radius:7px;font-size:12px}
+  .currChap__t{display:flex;align-items:baseline;gap:7px}
+  .currChap__t b{font-size:13.5px;white-space:nowrap}
+  .currChap__t small{white-space:nowrap}
+  .currList__scroll{max-height:370px}
+  .currLesson p{font-size:14.5px}
+}
 
 /* ---------- bonus ---------- */
 .bonus{position:relative;max-width:920px;margin:0 auto;border-radius:var(--r-lg);overflow:hidden;
@@ -750,7 +807,7 @@ html.a11y-gray .a11yPanel,html.a11y-gray .a11yBtn{filter:grayscale(0)}
 
 html.a11y-contrast,html.a11y-contrast body{background:#000!important;color:#fff!important}
 html.a11y-contrast .section,html.a11y-contrast .section--alt,html.a11y-contrast .section--ink,
-html.a11y-contrast .panel,html.a11y-contrast .painCard,html.a11y-contrast .tcard,html.a11y-contrast .acc__item,
+html.a11y-contrast .panel,html.a11y-contrast .painCard,html.a11y-contrast .tcard,html.a11y-contrast .currPanel,
 html.a11y-contrast .faq__item,html.a11y-contrast .getItem,html.a11y-contrast .whyCard,html.a11y-contrast .priceCard,
 html.a11y-contrast .bridePanel,html.a11y-contrast .quoteCard,html.a11y-contrast .resultBanner,html.a11y-contrast .bonus,
 html.a11y-contrast .fwCard,html.a11y-contrast .aud,html.a11y-contrast .baCol,html.a11y-contrast .header__inner,
@@ -2055,58 +2112,88 @@ Object.assign(window, {
 });
 
 /* ===== sectionsD.jsx ===== */
-const MODULES = [['01', 'בניית עמוד ברמה גבוהה', 'עמוד שנראה טוב, מושך ומעניין יעשה לכם את רוב העבודה ויגרום לכם להתפוצץ ליותר מ-100 פניות בחודש!', 'יותר מ-100 פניות בחודש'], ['02', 'שיחת המכירה שסוגרת', 'תדעי לנהל שיחה שמובילה ל"כן" בלי לרדוף, בלי ללחוץ ובלי להרגיש שאת מתחננת.', 'מבנה שיחת מכירה מוכן ליישום'], ['03', 'תמחור בלי פחד', 'תדעי לבקש את המחיר שמגיע לך, להסביר אותו, ולהפסיק להוריד מחיר מתוך פחד.', 'תמחור שאת עומדת מאחוריו'], ['04', 'מכונת הלידים', 'תדעי לבנות מערכת שמייצרת פניות רלוונטיות של כלות ולא רק לייקים.', 'זרם קבוע של פניות איכותיות'], ['05', 'ניהול זמן ויומן', 'תדעי לסנן מתעניינות, לחסוך זמן ולהתעסק רק עם מי שבאמת רלוונטית.', 'יומן מלא בלי בלאגן'], ['06', 'לקוחות שמביאות לקוחות', 'תדעי להפוך תיק עבודות, המלצות וחוויית לקוחה למנוע צמיחה אורגני.', 'כל לקוחה מביאה עוד שלוש']];
+const CHAPTERS = [{"n": 1, "f": "\u05d7\u05dc\u05e7 1 - \u05e0\u05e8\u05d0\u05d5\u05ea \u05d4\u05e4\u05d9\u05d3 \u05d5\u05d4\u05ea\u05e0\u05d4\u05dc\u05d5\u05ea", "s": "\u05e0\u05e8\u05d0\u05d5\u05ea \u05d4\u05e4\u05d9\u05d3 \u05d5\u05d4\u05ea\u05e0\u05d4\u05dc\u05d5\u05ea", "l": ["\u05de\u05d1\u05d5\u05d0 \u05d5\u05d4\u05e7\u05d3\u05de\u05d4", "\u05ea\u05de\u05d5\u05e0\u05ea \u05e4\u05e8\u05d5\u05e4\u05d9\u05dc", "\u05d1\u05d9\u05d5/\u05d0\u05d5\u05d3\u05d5\u05ea", "\u05e1\u05d8\u05d5\u05e8\u05d9 \u05d5\u05d4\u05d9\u05d9\u05dc\u05d9\u05d9\u05d8\u05e1", "\u05e2\u05d5\u05e7\u05d1\u05d9\u05dd \u05d5\u05dc\u05d9\u05d9\u05e7\u05d9\u05dd", "\u05d3\u05d9\u05d5\u05e7 \u05d4\u05e4\u05d9\u05d3", "\u05d3\u05d5\u05d2\u05de\u05d0\u05d5\u05ea \u05dc\u05e1\u05d9\u05e8\u05d8\u05d5\u05e0\u05d9\u05dd", "\u05d4\u05ea\u05e0\u05d4\u05dc\u05d5\u05ea \u05e2\u05dd \u05de\u05d5\u05d3\u05dc\u05d9\u05e1\u05d8\u05d9\u05d5\u05ea", "\u05e9\u05d9\u05ea\u05d5\u05e4\u05d9 \u05e4\u05e2\u05d5\u05dc\u05d4", "\u05e9\u05de\u05dc\u05d5\u05ea \u05db\u05dc\u05d4", "\u05e1\u05d5\u05d2 \u05de\u05e6\u05dc\u05de\u05d4", "\u05ea\u05de\u05d7\u05d5\u05e8", "\u05ea\u05de\u05d5\u05e0\u05ea \u05e7\u05d0\u05d1\u05e8", "\u05d4\u05e4\u05d9\u05d3 \u05d4\u05de\u05d5\u05e9\u05dc\u05dd", "\u05e4\u05ea\u05d9\u05d7\u05ea \u05e2\u05de\u05d5\u05d3 \u05e2\u05e1\u05e7\u05d9 \u05d1\u05e4\u05d9\u05d9\u05e1\u05d1\u05d5\u05e7 (\u05dc\u05de\u05d9 \u05e9\u05d0\u05d9\u05df \u05e2\u05de\u05d5\u05d3)", "\u05db\u05ea\u05d9\u05d1\u05ea \u05de\u05dc\u05dc \u05dc\u05e4\u05d5\u05e1\u05d8", "\u05d4\u05ea\u05e0\u05d4\u05dc\u05d5\u05ea \u05e4\u05d9\u05e0\u05e0\u05e1\u05d9\u05ea", "\u05de\u05d5\u05d3\u05dc\u05d9\u05e1\u05d8\u05d9\u05d5\u05ea \u05e9\u05de\u05ea\u05d0\u05d9\u05de\u05d5\u05ea \u05dc\u05e4\u05d9\u05d3 \u05d4\u05d9\u05e9\u05e8\u05d0\u05dc\u05d9"]}, {"n": 2, "f": "\u05d7\u05dc\u05e7 2 - \u05dc\u05d4\u05d9\u05d5\u05ea \u05de\u05d5\u05db\u05e8/\u05ea \u05e2\u05dc \u05d7\u05dc\u05dc", "s": "\u05dc\u05d4\u05d9\u05d5\u05ea \u05de\u05d5\u05db\u05e8/\u05ea \u05e2\u05dc \u05d7\u05dc\u05dc", "l": ["\u05ea\u05e1\u05e8\u05d9\u05d8 \u05de\u05db\u05d9\u05e8\u05d4 \u05de\u05d3\u05d5\u05d9\u05d9\u05e7", "\u05d4\u05e6\u05e2\u05ea \u05de\u05d7\u05d9\u05e8 \u05dc\u05e4\u05e0\u05d9 \u05e1\u05d2\u05d9\u05e8\u05d4", "\u05d4\u05d5\u05d3\u05e2\u05ea \u05e1\u05d9\u05db\u05d5\u05dd \u05d0\u05d7\u05e8\u05d9 \u05e1\u05d2\u05d9\u05e8\u05d4", "\u05e4\u05d5\u05dc\u05d5\u05d0\u05e4", "\u05d3\u05d9\u05d5\u05e7 \u05e9\u05d9\u05d0 \u05d1\u05de\u05db\u05d9\u05e8\u05d5\u05ea \u05d1\u05d4\u05d5\u05d1\u05dc\u05ea \u05de\u05d0\u05e8\u05d9\u05e7 \u05e7\u05d5\u05dc\u05e7\u05e8"]}, {"n": 3, "f": "\u05d7\u05dc\u05e7 3 - \u05e7\u05d9\u05d3\u05d5\u05dd \u05de\u05de\u05d5\u05de\u05df", "s": "\u05e7\u05d9\u05d3\u05d5\u05dd \u05de\u05de\u05d5\u05de\u05df", "l": ["\u05d4\u05e7\u05de\u05ea \u05d7\u05e9\u05d1\u05d5\u05df \u05d1\u05d9\u05d6\u05e0\u05e1", "\u05d4\u05db\u05e0\u05ea \u05d4\u05de\u05d5\u05d3\u05e2\u05d5\u05ea \u05e2\u05dd \u05e7\u05d0\u05e0\u05d1\u05d4 \u05d1\u05d3\u05e8\u05da \u05d4\u05de\u05dc\u05d0\u05d4 (*\u05d0\u05d5\u05e4\u05e6\u05d9\u05d5\u05e0\u05dc\u05d9* \u05dc\u05de\u05d9 \u05e9\u05e8\u05d5\u05e6\u05d4 \u05dc\u05e2\u05d1\u05d5\u05d3 \u05e7\u05e9\u05d4)", "\u05d1\u05e0\u05d9\u05d9\u05ea \u05d4\u05e7\u05de\u05e4\u05d9\u05d9\u05df", "\u05e9\u05d9\u05e4\u05d5\u05e8 \u05e0\u05ea\u05d5\u05e0\u05d9 \u05d4\u05e7\u05de\u05e4\u05d9\u05d9\u05df", "\u05d4\u05e7\u05de\u05ea \u05d7\u05e9\u05d1\u05d5\u05df \u05de\u05d5\u05d3\u05e2\u05d5\u05ea", "\u05d7\u05d9\u05d1\u05d5\u05e8 \u05d4\u05d7\u05e9\u05d1\u05d5\u05e0\u05d5\u05ea \u05dc\u05d1\u05d9\u05d6\u05e0\u05e1", "\u05e9\u05de\u05d9\u05e8\u05d4 \u05e2\u05dc \u05e2\u05d5\u05de\u05e7 \u05d1\u05ea\u05de\u05d5\u05e0\u05d5\u05ea \u05d5\u05d4\u05e1\u05d9\u05e8\u05d8\u05d5\u05e0\u05d9\u05dd \u05dc\u05e7\u05de\u05e4\u05d9\u05d9\u05df", "\u05de\u05e2\u05e0\u05d4 \u05dc\u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05de\u05dc\u05e7\u05d5\u05d7\u05d5\u05ea", "\u05e1\u05d5\u05d2\u05d9 \u05ea\u05db\u05e0\u05d9\u05dd \u05dc\u05e7\u05de\u05e4\u05d9\u05d9\u05df", "\u05de\u05e2\u05d1\u05e8 \u05e2\u05dc \u05e0\u05ea\u05d5\u05e0\u05d9 \u05d4\u05e7\u05de\u05e4\u05d9\u05d9\u05df", "\u05ea\u05d5\u05db\u05e0\u05d5\u05ea \u05e9\u05d7\u05d5\u05d1\u05d4 \u05dc\u05d4\u05db\u05d9\u05e8", "\u05d8\u05de\u05e4\u05dc\u05d8\u05d9\u05dd \u05dc\u05de\u05d5\u05d3\u05e2\u05d5\u05ea \u05d1\u05e7\u05d0\u05e0\u05d1\u05d4", "\u05de\u05d1\u05d5\u05d0 \u05d4\u05e7\u05d3\u05de\u05d4 \u05d5\u05d3\u05d7\u05d9\u05e4\u05d4", "\u05ea\u05e9\u05dc\u05d5\u05de\u05d9\u05dd", "\u05e1\u05d3\u05e8 \u05d5\u05d0\u05e8\u05d2\u05d5\u05df \u05d4\u05de\u05d5\u05d3\u05e2\u05d5\u05ea", "\u05e9\u05db\u05e4\u05d5\u05dc \u05e7\u05de\u05e4\u05d9\u05d9\u05df", "\u05d4\u05db\u05dc \u05d0\u05e4\u05e9\u05e8\u05d9!", "\u05e9\u05db\u05e4\u05d5\u05dc \u05de\u05d5\u05d3\u05e2\u05d4", "\u05d0\u05e4\u05dc\u05d9\u05e7\u05e6\u05d9\u05d9\u05ea \u05de\u05e0\u05d4\u05dc \u05de\u05d5\u05d3\u05e2\u05d5\u05ea"]}, {"n": 4, "f": "\u05e4\u05e8\u05e7 4 - \u05ea\u05d5\u05db\u05e0\u05d9\u05ea \u05e4\u05e2\u05d5\u05dc\u05d4", "s": "\u05ea\u05d5\u05db\u05e0\u05d9\u05ea \u05e4\u05e2\u05d5\u05dc\u05d4", "l": ["\u05de\u05d1\u05d5\u05d0 \u05dc\u05ea\u05d5\u05db\u05e0\u05d9\u05ea \u05e4\u05e2\u05d5\u05dc\u05d4", "\u05ea\u05d5\u05db\u05e0\u05d9\u05ea \u05e4\u05e2\u05d5\u05dc\u05d4!"]}, {"n": 5, "f": "\u05e4\u05e8\u05e7 5 - \u05d4\u05ea\u05d4\u05dc\u05d9\u05da \u05e9\u05dc \u05ea\u05db\u05dc\u05ea ", "s": "\u05d4\u05ea\u05d4\u05dc\u05d9\u05da \u05e9\u05dc \u05ea\u05db\u05dc\u05ea", "l": ["\u05d7\u05d5\u05d3\u05e9 \u05de\u05e1\u05e4\u05e8 1", "\u05d7\u05d5\u05d3\u05e9 \u05de\u05e1\u05e4\u05e8 3", "\u05d7\u05d5\u05d3\u05e9 \u05de\u05e1\u05e4\u05e8 5"]}, {"n": 6, "f": "\u05e4\u05e8\u05e7 6 - \u05e4\u05d5\u05d3\u05e7\u05d0\u05e1\u05d8 \u05e2\u05dd \u05de\u05d0\u05e4\u05e8\u05d5\u05ea/\u05de\u05e1\u05e8\u05e7\u05d5\u05ea \u05e2\u05dc \u05d4\u05d3\u05e8\u05da \u05dc\u05d4\u05e6\u05dc\u05d7\u05d4", "s": "\u05e4\u05d5\u05d3\u05e7\u05d0\u05e1\u05d8 \u05e2\u05dd \u05de\u05d0\u05e4\u05e8\u05d5\u05ea/\u05de\u05e1\u05e8\u05e7\u05d5\u05ea \u05e2\u05dc \u05d4\u05d3\u05e8\u05da \u05dc\u05d4\u05e6\u05dc\u05d7\u05d4", "l": ["\u05d0\u05d5\u05e9\u05e8\u05d9 \u05d1\u05d5\u05e0\u05df"]}];
+const CURR_LESSONS = CHAPTERS.reduce((n, c) => n + c.l.length, 0);
+function CurrPlay() {
+  return React.createElement("svg", {
+    viewBox: "0 0 24 24",
+    "aria-hidden": "true",
+    focusable: "false"
+  }, React.createElement("path", {
+    d: "M8 5v14l11-7z",
+    fill: "currentColor"
+  }));
+}
+function currCount(n) {
+  return n === 1 ? "\u05e9\u05d9\u05e2\u05d5\u05e8 \u05d0\u05d7\u05d3" : n + " \u05e9\u05d9\u05e2\u05d5\u05e8\u05d9\u05dd";
+}
 function Curriculum() {
-  const [open, setOpen] = useState(0);
+  const [ix, setIx] = useState(0);
+  const cur = CHAPTERS[ix];
+  const stats = [[String(CURR_LESSONS), "\u05e9\u05d9\u05e2\u05d5\u05e8\u05d9\u05dd", ''], [String(CHAPTERS.length), "\u05e4\u05e8\u05e7\u05d9\u05dd", ''], ["\u05de\u05d9\u05d9\u05d3\u05d9\u05ea", "\u05d2\u05d9\u05e9\u05d4", ' currStat--rev']];
   return React.createElement("section", {
     className: "section section--alt",
     id: "curriculum"
   }, React.createElement("div", {
     className: "container"
   }, React.createElement("div", {
-    className: "center"
+    className: "center curr__head"
   }, React.createElement(Reveal, {
     as: "p",
     className: "eyebrow center"
-  }, "\u05EA\u05D5\u05DB\u05DF \u05D4\u05E7\u05D5\u05E8\u05E1"), React.createElement(Reveal, {
+  }, "\u05ea\u05d5\u05db\u05df \u05d4\u05e7\u05d5\u05e8\u05e1"), React.createElement(Reveal, {
     as: "h2",
     className: "h2 balance mxa",
     delay: 60,
     style: {
       maxWidth: '16ch'
     }
-  }, "מה תדעי לעשות אחרי הקורס?"), React.createElement(Reveal, {
+  }, "\u05de\u05d4 \u05d1\u05d0\u05de\u05ea \u05d9\u05e9 \u05d1\u05e4\u05e0\u05d9\u05dd"), React.createElement(Reveal, {
     as: "p",
     className: "exclusiveNote",
     delay: 100
-  }, "החומר הנלמד בקורס לא קיים בשום קורס או תוכנית בארץ — ותבדקו אותי. בהבטחה!")), React.createElement("div", {
-    className: "acc"
-  }, MODULES.map((m, i) => {
-    const isOpen = open === i;
-    return React.createElement("div", {
-      className: "acc__item " + (isOpen ? 'open' : ''),
-      key: i
-    }, React.createElement("button", {
-      className: "acc__head",
-      onClick: () => setOpen(isOpen ? -1 : i),
-      "aria-expanded": isOpen
-    }, React.createElement("span", {
-      className: "acc__num"
-    }, m[0]), React.createElement("span", {
-      className: "acc__t"
-    }, React.createElement("b", null, m[1]), React.createElement("small", null, isOpen ? '' : 'לחצי לפתיחה')), React.createElement("span", {
-      className: "acc__plus"
-    })), React.createElement("div", {
-      className: "acc__body",
-      style: {
-        maxHeight: isOpen ? '320px' : '0'
-      }
-    }, React.createElement("div", {
-      className: "acc__bodyin"
-    }, React.createElement("p", null, m[2]), React.createElement("span", {
-      className: "acc__tag"
-    }, Ico.check, " ", m[3]))));
-  }))));
+  }, "\u05d4\u05d7\u05d5\u05de\u05e8 \u05d4\u05e0\u05dc\u05de\u05d3 \u05d1\u05e7\u05d5\u05e8\u05e1 \u05dc\u05d0 \u05e7\u05d9\u05d9\u05dd \u05d1\u05e9\u05d5\u05dd \u05e7\u05d5\u05e8\u05e1 \u05d0\u05d5 \u05ea\u05d5\u05db\u05e0\u05d9\u05ea \u05d1\u05d0\u05e8\u05e5 \u2014 \u05d5\u05ea\u05d1\u05d3\u05e7\u05d5 \u05d0\u05d5\u05ea\u05d9. \u05d1\u05d4\u05d1\u05d8\u05d7\u05d4!"), React.createElement(Reveal, {
+    className: "currStats",
+    delay: 140
+  }, stats.map((s, i) => React.createElement("div", {
+    className: "currStat" + s[2],
+    key: i
+  }, React.createElement("b", null, s[0]), React.createElement("span", null, s[1]))))), React.createElement(Reveal, {
+    className: "currPanel",
+    delay: 160
+  }, React.createElement("div", {
+    className: "currRail"
+  }, React.createElement("p", {
+    className: "currRail__ttl"
+  }, "\u05e4\u05e8\u05e7\u05d9 \u05d4\u05e7\u05d5\u05e8\u05e1"), CHAPTERS.map((c, i) => React.createElement("button", {
+    key: i,
+    type: "button",
+    className: "currChap " + (i === ix ? 'on' : ''),
+    onClick: () => setIx(i),
+    "aria-pressed": i === ix
+  }, React.createElement("span", {
+    className: "currChap__n"
+  }, String(c.n)), React.createElement("span", {
+    className: "currChap__t"
+  }, React.createElement("b", null, c.s), React.createElement("small", null, currCount(c.l.length)))))), React.createElement("div", {
+    className: "currList"
+  }, React.createElement("div", {
+    className: "currList__head"
+  }, React.createElement("h3", null, cur.f), React.createElement("span", null, currCount(cur.l.length))), React.createElement("div", {
+    className: "currList__scroll",
+    key: ix
+  }, cur.l.map((name, i) => React.createElement("div", {
+    className: "currLesson",
+    key: i
+  }, React.createElement("span", {
+    className: "currLesson__n"
+  }, String(i + 1).padStart(2, '0')), React.createElement("span", {
+    className: "currLesson__ico"
+  }, React.createElement(CurrPlay, null)), React.createElement("p", null, name)))))), React.createElement(Reveal, {
+    as: "p",
+    className: "currNote",
+    delay: 200
+  }, "\u05db\u05dc \u05e9\u05d9\u05e2\u05d5\u05e8 \u05d1\u05d5\u05d9\u05d3\u05d0\u05d5, \u05d1\u05e7\u05e6\u05d1 \u05e9\u05dc\u05da, \u05e2\u05dd \u05d2\u05d9\u05e9\u05d4 \u05d7\u05d5\u05d6\u05e8\u05ea \u05de\u05ea\u05d9 \u05e9\u05ea\u05e8\u05e6\u05d9.")));
 }
 function Bonuses() {
   const feats = [
@@ -3296,7 +3383,7 @@ function App() {
   }, []);
   return React.createElement(React.Fragment, null, React.createElement(Progress, null), React.createElement(Header, null), React.createElement("div", {
     id: "content"
-  }, React.createElement(Hero, null), React.createElement(TruthVideo, null), React.createElement(Identify, null), React.createElement(BrideMethod, null), React.createElement(Story, null), React.createElement(CaseStudies, null), React.createElement(VideoTestimonials, null), React.createElement(Proof, null), React.createElement(Curriculum, null), React.createElement(Bonuses, null), React.createElement(Pricing, null), React.createElement(ForWho, null), React.createElement(WhatYouGet, null), React.createElement(FAQ, null), React.createElement(VoiceNotes, null), React.createElement(Final, null), React.createElement(Footer, {
+  }, React.createElement(Hero, null), React.createElement(TruthVideo, null), React.createElement(Identify, null), React.createElement(BrideMethod, null), React.createElement(Story, null), React.createElement(CaseStudies, null), React.createElement(Curriculum, null), React.createElement(VideoTestimonials, null), React.createElement(Proof, null), React.createElement(Bonuses, null), React.createElement(Pricing, null), React.createElement(ForWho, null), React.createElement(WhatYouGet, null), React.createElement(FAQ, null), React.createElement(VoiceNotes, null), React.createElement(Final, null), React.createElement(Footer, {
     onStatement: () => setStmt(true)
   })), React.createElement(StickyCTA, null), React.createElement(WhatsAppFab, null), React.createElement(A11y, {
     onStatement: () => setStmt(true)
