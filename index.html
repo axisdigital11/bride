@@ -86,8 +86,8 @@ button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
 .section--light .bridePanel__title{color:#141414}
 .section--light .bridePanel__en{color:#B24E1C}
 .section--light .bridePanel__body{color:#4A453F}
-.section--light .brideDots i{background:rgba(26,23,20,.16)}
-.section--light .brideDots i.on{background:#B24E1C}
+.section--light .brideDots i::before{background:rgba(26,23,20,.16)}
+.section--light .brideDots i.on::before{background:#B24E1C}
 .bridePanelWrap{touch-action:pan-y}
 .section--tight{padding:clamp(43px,6.4vw,77px) 0}
 
@@ -359,7 +359,9 @@ html.can-anim .rv:not(.in){transform:translateY(26px)}
 .bride__head{text-align:center;margin-bottom:56px}
 .brideWord{display:flex;justify-content:center;gap:clamp(6px,1.4vw,16px);margin-top:18px;flex-wrap:wrap;direction:ltr}
 .brideWord button{font-family:var(--display);font-weight:900;font-size:clamp(40px,8vw,100px);letter-spacing:-.04em;
-  color:rgba(255,255,255,.14);transition:color .3s,transform .3s;line-height:1}
+  color:rgba(255,255,255,.14);transition:color .3s,transform .3s;line-height:1;
+  /* a11y: 55px * zoom .8 = 44px rendered hit area (WCAG 2.5.5 / ת"י 5568) */
+  display:inline-flex;align-items:center;justify-content:center;min-width:55px;min-height:55px}
 .brideWord button.on,.brideWord button:hover{color:var(--accent);transform:translateY(-5px);text-shadow:0 12px 40px var(--glow)}
 .bridePanel{max-width:760px;margin:0 auto;background:var(--panel);border:1px solid var(--line-accent);border-radius:var(--r-lg);
   padding:clamp(28px,4vw,44px);box-shadow:var(--shadow);display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:start}
@@ -369,9 +371,10 @@ html.can-anim .rv:not(.in){transform:translateY(26px)}
 .bridePanel__title{font-family:var(--display);font-weight:900;font-size:clamp(22px,2.6vw,30px);margin-bottom:6px;letter-spacing:-.01em}
 .bridePanel__en{font-family:var(--display);font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
 .bridePanel__body{font-size:18px;line-height:1.6;color:var(--ink-soft)}
-.brideDots{display:flex;justify-content:center;gap:8px;margin-top:26px}
-.brideDots i{width:8px;height:8px;border-radius:50%;background:var(--line);transition:.3s;cursor:pointer}
-.brideDots i.on{background:var(--accent);width:26px;border-radius:5px}
+.brideDots{display:flex;justify-content:center;gap:0;margin-top:26px}
+.brideDots i{position:relative;display:grid;place-items:center;width:34px;height:30px;background:none;cursor:pointer}
+.brideDots i::before{content:"";display:block;width:8px;height:8px;border-radius:50%;background:var(--line);transition:.3s}
+.brideDots i.on::before{background:var(--accent);width:26px;border-radius:5px}
 
 /* ---------- story ---------- */
 .story__grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(30px,5vw,60px);align-items:center}
@@ -421,7 +424,7 @@ html.can-anim .rv:not(.in){transform:translateY(26px)}
   font-size:11px;font-family:var(--display);font-weight:600;padding:5px 11px;border-radius:999px;display:flex;align-items:center;gap:5px;opacity:0;transition:.25s}
 .tcard:hover .tcard__zoom{opacity:1}
 .carousel__nav{display:flex;gap:10px;justify-content:flex-end;margin-top:6px}
-.carousel__nav button{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--line);background:var(--panel);
+.carousel__nav button{width:55px;height:55px;border-radius:50%;border:1.5px solid var(--line);background:var(--panel);
   display:grid;place-items:center;transition:.2s;color:var(--ink)}
 .carousel__nav button:hover{background:var(--accent);color:#1a0e07;border-color:var(--accent)}
 .carousel__nav svg{width:18px;height:18px}
@@ -436,7 +439,7 @@ html.can-anim .rv:not(.in){transform:translateY(26px)}
 .modal__inner img{width:100%;height:auto;object-fit:contain;max-height:74vh}
 .modal__bar{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--line)}
 .modal__bar b{font-family:var(--display);font-weight:700}
-.modal__close{position:fixed;top:20px;inset-inline-end:22px;width:46px;height:46px;border-radius:50%;
+.modal__close{position:fixed;top:20px;inset-inline-end:22px;width:55px;height:55px;border-radius:50%;
   background:rgba(255,255,255,.12);color:#fff;font-size:24px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.25)}
 
 /* video + audio */
@@ -448,9 +451,9 @@ html.can-anim .rv:not(.in){transform:translateY(26px)}
 .audios{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:30px}
 .aud{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;align-items:center;gap:13px;box-shadow:var(--shadow-sm);transition:border-color .2s}
 .aud--on{border-color:var(--line-accent)}
-.aud__btn{flex:none;width:46px;height:46px;border-radius:50%;background:linear-gradient(150deg,var(--accent-2),var(--accent-deep));color:#1a0e07;display:grid;place-items:center;box-shadow:var(--shadow-accent);cursor:pointer;transition:transform .2s}
+.aud__btn{flex:none;width:55px;height:55px;border-radius:50%;background:linear-gradient(150deg,var(--accent-2),var(--accent-deep));color:#1a0e07;display:grid;place-items:center;box-shadow:var(--shadow-accent);cursor:pointer;transition:transform .2s}
 .aud__btn:hover{transform:scale(1.06)}
-.aud__btn svg{width:20px;height:20px}
+.aud__btn svg{width:23px;height:23px}
 .aud__main{flex:1;min-width:0}
 .aud__name{font-family:var(--display);font-weight:700;font-size:14.5px;display:flex;align-items:center;gap:7px}
 .aud__name .wa{width:16px;height:16px;fill:#25D366}
@@ -556,7 +559,7 @@ html.can-anim .rv:not(.in){transform:translateY(26px)}
     border-inline-end:none;border-bottom:1px solid var(--line);scrollbar-width:none}
   .currRail::-webkit-scrollbar{display:none}
   .currRail__ttl{display:none}
-  .currChap{flex:none;width:auto;gap:9px;padding:8px 14px 8px 10px;border-radius:999px;
+  .currChap{flex:none;width:auto;gap:9px;padding:15px 14px 15px 10px;border-radius:999px;
     border-color:var(--line);background:var(--panel-2)}
   .currChap__n{width:23px;height:23px;border-radius:7px;font-size:12px}
   .currChap__t{display:flex;align-items:baseline;gap:7px}
@@ -599,7 +602,25 @@ html.can-anim .rv:not(.in){transform:translateY(26px)}
   text-transform:uppercase;color:var(--accent);margin-bottom:8px}
 .priceNow__big{position:relative;font-family:var(--display);font-weight:900;font-size:clamp(58px,10vw,100px);line-height:.95;letter-spacing:-.05em;color:var(--ink)}
 .priceNow__big small{font-size:.26em;color:var(--muted);font-weight:700;letter-spacing:0}
-.priceNow__sub{position:relative;color:var(--muted);font-size:14px;margin:6px 0 22px}
+.priceNow__sub{position:relative;color:var(--muted);font-size:14px;margin:4px 0 20px}
+/* instalment line — leads with the smaller periodic figure (Gourville 1998) */
+.priceNow__pay{position:relative;font-family:var(--display);font-weight:800;line-height:1.2;
+  font-size:clamp(19px,3.1vw,25px);color:var(--ink-soft);letter-spacing:-.01em;margin-top:12px}
+.priceNow__pay b{font-weight:800;color:var(--accent);font-size:1.3em;font-variant-numeric:tabular-nums;
+  letter-spacing:-.03em;white-space:nowrap}
+.priceNow__pay .noInt{display:inline-block;vertical-align:middle;margin-inline-start:9px;padding:4px 11px;
+  border:1px solid var(--line-accent);border-radius:999px;background:var(--accent-soft);
+  font-family:var(--body);font-weight:700;font-size:12.5px;color:var(--accent-2);letter-spacing:0}
+.payMethods{position:relative;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:9px;
+  margin-top:12px;padding-top:13px;border-top:1px solid var(--line);
+  font-size:12.5px;color:var(--muted);line-height:1.4}
+.payMethods svg{width:26px;height:18px;flex:none;color:var(--muted)}
+.payMethods b{font-weight:700;color:var(--ink-soft)}
+/* footer — vendor details required before the transaction (חוק הגנת הצרכן §14ג(א)) */
+.footer__biz{margin-top:16px;font-size:14px;line-height:1.9;color:var(--ink-soft)}
+.footer__biz strong{color:var(--ink);font-family:var(--display);font-weight:800}
+.footer__biz a{color:var(--accent);white-space:nowrap;display:inline-flex;align-items:center;min-height:55px;padding-inline:2px}
+.footer__biz .bizId{color:var(--muted);font-size:13px}
 .priceNote{text-align:center;max-width:520px;margin:30px auto 0;font-size:16px;color:var(--ink-soft);line-height:1.6}
 .priceNote strong{color:var(--ink)}
 
@@ -738,11 +759,12 @@ html.can-anim .rv:not(.in){transform:translateY(26px)}
 /* ---------- footer ---------- */
 .footer{background:#070708;color:var(--muted);padding:64px 0 40px;text-align:center;border-top:1px solid var(--line)}
 .footer .brand{color:var(--ink)}
-.footer__links{display:flex;gap:24px;justify-content:center;margin:22px 0;font-family:var(--display);font-weight:500;flex-wrap:wrap}
+.footer__links{display:flex;gap:18px;align-items:center;justify-content:center;margin:22px 0;font-family:var(--display);font-weight:500;flex-wrap:wrap}
 .footer__links a{color:var(--accent)}
-.footer__ig{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;border:1px solid var(--line-accent);color:var(--accent)!important;transition:.2s}
+.footer__links a:not(.footer__ig),.footer__links button{display:inline-flex;align-items:center;justify-content:center;min-height:55px;padding-inline:6px}
+.footer__ig{display:inline-flex;align-items:center;justify-content:center;width:55px;height:55px;border-radius:50%;border:1px solid var(--line-accent);color:var(--accent)!important;transition:.2s}
 .footer__ig:hover{background:var(--accent-soft);transform:translateY(-2px)}
-.footer__ig svg{width:19px;height:19px}
+.footer__ig svg{width:22px;height:22px}
 .footer__links button{color:var(--accent);font-family:var(--display)}
 .footer small{display:block;color:var(--muted-2);font-size:12.5px;margin-top:14px}
 
@@ -776,23 +798,23 @@ html.can-anim .rv:not(.in){transform:translateY(26px)}
 .a11yPanel__head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:18px 20px;
   background:#1d4ed8;color:#fff;position:sticky;top:0;z-index:2}
 .a11yPanel__head b{font-family:var(--display);font-weight:800;font-size:17px}
-.a11yPanel__head button{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.18);display:grid;place-items:center;font-size:20px;color:#fff}
+.a11yPanel__head button{width:55px;height:55px;border-radius:50%;background:rgba(255,255,255,.18);display:grid;place-items:center;font-size:20px;color:#fff}
 .a11yPanel__body{padding:16px}
 .a11yRow{margin-bottom:16px}
 .a11yRow>span{display:block;font-family:var(--display);font-weight:700;font-size:12.5px;color:#555;margin-bottom:8px;letter-spacing:.02em}
 .a11yGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .a11yOpt{display:flex;align-items:center;gap:10px;padding:12px 12px;border:1.5px solid #e3e3e8;border-radius:12px;
-  font-family:var(--display);font-weight:600;font-size:13.5px;color:#222;text-align:start;transition:.18s;background:#fff;min-height:52px}
+  font-family:var(--display);font-weight:600;font-size:13.5px;color:#222;text-align:start;transition:.18s;background:#fff;min-height:55px}
 .a11yOpt:hover{border-color:#1d4ed8;background:#f5f8ff}
 .a11yOpt.on{border-color:#1d4ed8;background:#1d4ed8;color:#fff;box-shadow:0 6px 16px -6px rgba(29,78,216,.6)}
 .a11yOpt svg{width:20px;height:20px;flex:none}
 .a11yFont{display:flex;align-items:center;gap:8px}
-.a11yFont button{flex:1;border:1.5px solid #e3e3e8;border-radius:12px;padding:12px;font-family:var(--display);font-weight:800;background:#fff;transition:.18s}
+.a11yFont button{flex:1;border:1.5px solid #e3e3e8;border-radius:12px;padding:12px;min-height:55px;font-family:var(--display);font-weight:800;background:#fff;transition:.18s}
 .a11yFont button:hover{border-color:#1d4ed8;background:#f5f8ff}
 .a11yFont .lvl{flex:1.4;text-align:center;font-family:var(--display);font-weight:700;font-size:13px;color:#444}
-.a11yReset{width:100%;margin-top:6px;padding:13px;border-radius:12px;background:#15151b;color:#fff;font-family:var(--display);font-weight:800;transition:.2s}
+.a11yReset{width:100%;margin-top:6px;padding:13px;min-height:55px;border-radius:12px;background:#15151b;color:#fff;font-family:var(--display);font-weight:800;transition:.2s}
 .a11yReset:hover{background:#000}
-.a11yState{display:block;width:100%;margin-top:12px;text-align:center;font-size:12px;color:#1d4ed8;font-family:var(--display);font-weight:700;text-decoration:underline}
+.a11yState{display:flex;align-items:center;justify-content:center;width:100%;min-height:55px;margin-top:12px;text-align:center;font-size:12px;color:#1d4ed8;font-family:var(--display);font-weight:700;text-decoration:underline}
 
 /* reading guide */
 .readGuide{position:fixed;z-index:195;inset-inline:0;height:42px;background:rgba(240,138,91,.16);
@@ -867,11 +889,11 @@ html.a11y-cursor,html.a11y-cursor *{cursor:url("data:image/svg+xml,%3Csvg xmlns=
   .fwGrid,.getGrid{grid-template-columns:1fr}
   .resultBanner{grid-template-columns:1fr;text-align:center;justify-items:center}
   .floatcard{transform:scale(.84)}
-  .fab,.a11yBtn{width:52px;height:52px;bottom:84px}
+  .fab,.a11yBtn{width:55px;height:55px;bottom:84px}
   .fab svg{width:26px;height:26px}.a11yBtn svg{width:28px;height:28px}
   .a11yPanel{bottom:146px}
   .fab--wa::after,.fab--wa::before{display:none}
-  .final .btn{display:flex;width:100%;max-width:340px;margin-inline:auto;white-space:normal;font-size:16px;padding:16px 22px;line-height:1.35;text-align:center}
+  .final .btn{display:flex;width:100%;max-width:340px;margin-inline:auto;white-space:normal;font-size:16px;padding:17px 22px;line-height:1.35;text-align:center;min-height:55px}
 }
 @media (max-width:420px){
   .hero__actions .btn{width:100%}
@@ -1148,6 +1170,8 @@ requestAnimationFrame(function (t1) {
   });
 });
 const PAY_LINK = "checkout.html";
+// \u05DE\u05E1\u05E4\u05E8 \u05E2\u05D5\u05E1\u05E7 / \u05D7.\u05E4 \u2014 \u05D7\u05D5\u05D1\u05D4 \u05E2\u05DC \u05E4\u05D9 \u05D7\u05D5\u05E7 \u05D4\u05D2\u05E0\u05EA \u05D4\u05E6\u05E8\u05DB\u05DF. \u05DC\u05DE\u05DC\u05D0 \u05DB\u05D0\u05DF (\u05E8\u05D9\u05E7 = \u05DC\u05D0 \u05DE\u05D5\u05E6\u05D2).
+const BIZ_ID = "";
 const WA_NUMBER = "972559125112";
 const WA_LINK = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent("היי! יש לי שאלה על קורס bride 🙂");
 const IG_LINK = "https://www.instagram.com/nivgabay12/";
@@ -2359,8 +2383,12 @@ function Pricing() {
   }, "היום \xB7 הרגע לשינוי אמיתי"), React.createElement("div", {
     className: "priceNow__big"
   }, "1,770\xA0\u20AA", React.createElement("small", null, "\xA0\u05DB\u05D5\u05DC\u05DC \u05DE\u05E2\"\u05DE")), React.createElement("div", {
+    className: "priceNow__pay"
+  }, "\u05D0\u05D5 3 \u05EA\u05E9\u05DC\u05D5\u05DE\u05D9\u05DD \u05E9\u05DC ", React.createElement("b", null, "590\xA0\u20AA"), React.createElement("span", {
+    className: "noInt"
+  }, "\u05DC\u05DC\u05D0 \u05E8\u05D9\u05D1\u05D9\u05EA")), React.createElement("div", {
     className: "priceNow__sub"
-  }, "\u05D0\u05D5 3 \u05EA\u05E9\u05DC\u05D5\u05DE\u05D9\u05DD \u05E9\u05D5\u05D5\u05D9\u05DD \u05E9\u05DC 590 \u20AA \xB7 \u05D2\u05D9\u05E9\u05D4 \u05DE\u05D9\u05D9\u05D3\u05D9\u05EA"), React.createElement("a", {
+  }, "\u05D2\u05D9\u05E9\u05D4 \u05DE\u05D9\u05D9\u05D3\u05D9\u05EA \u05DC\u05DB\u05DC \u05EA\u05DB\u05E0\u05D9 \u05D4\u05E7\u05D5\u05E8\u05E1"), React.createElement("a", {
     href: PAY_LINK,
     className: "btn btn--accent btn--block btn--lg"
   }, "\u05D0\u05E0\u05D9 \u05E8\u05D5\u05E6\u05D4 \u05DC\u05E8\u05DB\u05D5\u05E9 \u05D0\u05EA - BRIDE"), React.createElement("p", {
@@ -2379,7 +2407,26 @@ function Pricing() {
       height: '14px',
       display: 'inline-flex'
     }
-  }, Ico.lock), " \u05EA\u05E9\u05DC\u05D5\u05DD \u05DE\u05D0\u05D5\u05D1\u05D8\u05D7 \xB7 \u05E4\u05E8\u05D8\u05D9 \u05D4\u05D2\u05D9\u05E9\u05D4 \u05E0\u05E9\u05DC\u05D7\u05D9\u05DD \u05DC\u05DE\u05D9\u05D9\u05DC \u05DE\u05D9\u05D3")))), React.createElement(Reveal, {
+  }, Ico.lock), " \u05EA\u05E9\u05DC\u05D5\u05DD \u05DE\u05D0\u05D5\u05D1\u05D8\u05D7 \xB7 \u05E4\u05E8\u05D8\u05D9 \u05D4\u05D2\u05D9\u05E9\u05D4 \u05E0\u05E9\u05DC\u05D7\u05D9\u05DD \u05DC\u05DE\u05D9\u05D9\u05DC \u05DE\u05D9\u05D3"), React.createElement("div", {
+    className: "payMethods"
+  }, React.createElement("svg", {
+    viewBox: "0 0 34 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "1.7",
+    "aria-hidden": "true"
+  }, React.createElement("rect", {
+    x: "1",
+    y: "2.5",
+    width: "32",
+    height: "19",
+    rx: "3"
+  }), React.createElement("path", {
+    d: "M1 9h32"
+  }), React.createElement("path", {
+    d: "M5.5 16.5h6",
+    strokeLinecap: "round"
+  })), React.createElement("span", null, React.createElement("b", null, "\u05DB\u05DC \u05DB\u05E8\u05D8\u05D9\u05E1\u05D9 \u05D4\u05D0\u05E9\u05E8\u05D0\u05D9"), " \xB7 \u05E2\u05D3 3 \u05EA\u05E9\u05DC\u05D5\u05DE\u05D9\u05DD \u05DC\u05DC\u05D0 \u05E8\u05D9\u05D1\u05D9\u05EA \xB7 \u05D4\u05D7\u05D9\u05D5\u05D1 \u05D4\u05DB\u05D5\u05DC\u05DC 1,770\xA0\u20AA"))))), React.createElement(Reveal, {
     as: "p",
     className: "priceNote",
     delay: 120
@@ -3042,6 +3089,12 @@ function Footer({
       marginTop: '6px'
     }
   }, "\u05EA\u05D5\u05E8\u05EA \u05D4\u05DE\u05D0\u05E4\u05E8\u05D5\u05EA \u05D5\u05D4\u05DE\u05E1\u05E8\u05E7\u05D5\u05EA"), React.createElement("div", {
+    className: "footer__biz"
+  }, React.createElement("p", null, React.createElement("strong", null, "\u05E0\u05D9\u05D1 \u05D2\u05D1\u05D0\u05D9"), " \xB7 \u05DE\u05E8\u05D3\u05DB\u05D9 6, \u05D0\u05D5\u05E4\u05E7\u05D9\u05DD \xB7 ", React.createElement("a", {
+    href: "tel:0559125112"
+  }, "055-9125112")), BIZ_ID ? React.createElement("p", {
+    className: "bizId"
+  }, "\u05E2.\u05DE / \u05D7.\u05E4 ", BIZ_ID) : null), React.createElement("div", {
     className: "footer__links"
   }, React.createElement("a", {
     href: IG_LINK,
@@ -3053,7 +3106,9 @@ function Footer({
     onClick: onStatement
   }, "\u05D4\u05E6\u05D4\u05E8\u05EA \u05E0\u05D2\u05D9\u05E9\u05D5\u05EA"), React.createElement("button", {
     onClick: () => setPolicy(true)
-  }, "\u05DE\u05D3\u05D9\u05E0\u05D9\u05D5\u05EA \u05E4\u05E8\u05D8\u05D9\u05D5\u05EA")), React.createElement("small", null, "\xA9 ", new Date().getFullYear(), " bride \xB7 \u05DB\u05DC \u05D4\u05D6\u05DB\u05D5\u05D9\u05D5\u05EA \u05E9\u05DE\u05D5\u05E8\u05D5\u05EA."), React.createElement("small", null, "\u05D4\u05D0\u05EA\u05E8 \u05E0\u05D1\u05E0\u05D4 \u05D1\u05E0\u05D2\u05D9\u05E9\u05D5\u05EA \u05DC\u05E4\u05D9 \u05EA\u05E7\u05DF \u05D9\u05E9\u05E8\u05D0\u05DC\u05D9 5568 \u05D5\u05EA\u05E7\u05E0\u05D5\u05EA \u05E9\u05D5\u05D5\u05D9\u05D5\u05DF \u05D6\u05DB\u05D5\u05D9\u05D5\u05EA \u05DC\u05D0\u05E0\u05E9\u05D9\u05DD \u05E2\u05DD \u05DE\u05D5\u05D2\u05D1\u05DC\u05D5\u05EA.")), React.createElement(PolicyModal, {
+  }, "\u05DE\u05D3\u05D9\u05E0\u05D9\u05D5\u05EA \u05E4\u05E8\u05D8\u05D9\u05D5\u05EA"), React.createElement("button", {
+    onClick: () => setPolicy(true)
+  }, "\u05DE\u05D3\u05D9\u05E0\u05D9\u05D5\u05EA \u05D1\u05D9\u05D8\u05D5\u05DC")), React.createElement("small", null, "\xA9 ", new Date().getFullYear(), " bride \xB7 \u05DB\u05DC \u05D4\u05D6\u05DB\u05D5\u05D9\u05D5\u05EA \u05E9\u05DE\u05D5\u05E8\u05D5\u05EA."), React.createElement("small", null, "\u05D4\u05D0\u05EA\u05E8 \u05E0\u05D1\u05E0\u05D4 \u05D1\u05E0\u05D2\u05D9\u05E9\u05D5\u05EA \u05DC\u05E4\u05D9 \u05EA\u05E7\u05DF \u05D9\u05E9\u05E8\u05D0\u05DC\u05D9 5568 \u05D5\u05EA\u05E7\u05E0\u05D5\u05EA \u05E9\u05D5\u05D5\u05D9\u05D5\u05DF \u05D6\u05DB\u05D5\u05D9\u05D5\u05EA \u05DC\u05D0\u05E0\u05E9\u05D9\u05DD \u05E2\u05DD \u05DE\u05D5\u05D2\u05D1\u05DC\u05D5\u05EA.")), React.createElement(PolicyModal, {
     open: policy,
     onClose: () => setPolicy(false)
   }));
@@ -3105,7 +3160,7 @@ function StickyCTA() {
   return React.createElement("a", {
     className: "sticky-cta" + (on ? " is-on" : ""),
     href: PAY_LINK
-  },React.createElement("span", null, React.createElement("b", null, "אני רוצה לרכוש את - BRIDE"), React.createElement("small", null, "גישה מיידית \xB7 תשלום חד-פעמי")), React.createElement("span", {
+  },React.createElement("span", null, React.createElement("b", null, "אני רוצה לרכוש את - BRIDE"), React.createElement("small", null, "גישה מיידית \xB7 או 3 תשלומים של 590\xA0\u20AA")), React.createElement("span", {
     className: "btn btn--accent"
   }, "1,770\xA0\u20AA"));
 }

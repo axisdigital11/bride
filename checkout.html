@@ -58,6 +58,25 @@ body{font-family:var(--body);background:var(--bg);color:var(--ink);min-height:10
   margin-top:14px;font-size:13px;color:var(--muted)}
 .secure svg{width:14px;height:14px;color:var(--muted)}
 .divider{height:1px;background:var(--line);margin:24px 0}
+/* coupon — collapsed by default so the page doesn't advertise a price you're not getting */
+.coupon-wrap{margin-bottom:18px}
+.coupon-toggle{display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0 2px;
+  background:none;border:none;cursor:pointer;color:var(--muted);font-family:var(--body);
+  font-size:14px;font-weight:600;text-decoration:underline;text-underline-offset:3px;transition:.2s}
+.coupon-toggle:hover{color:var(--accent)}
+.coupon-toggle::before{content:"+";font-family:var(--display);font-weight:800;font-size:16px;line-height:1}
+.coupon-toggle[aria-expanded="true"]{color:var(--accent)}
+.coupon-toggle[aria-expanded="true"]::before{content:"−"}
+#couponField{margin-top:12px;margin-bottom:0}
+#couponBtn{padding:0 20px;min-height:44px;border-radius:10px;border:1px solid var(--line-accent);
+  background:var(--accent-soft);color:var(--accent);font-family:var(--display);font-weight:700;
+  font-size:14px;cursor:pointer;white-space:nowrap}
+#couponBtn:disabled{opacity:.6;cursor:default}
+/* touch targets ≥44px */
+.field input,.field select{min-height:48px}
+.terms-row input[type="checkbox"]{width:24px;height:24px;min-width:24px}
+.modal-close{min-width:44px;min-height:44px}
+.logo{display:inline-flex;align-items:center;min-height:44px}
 .summary{font-size:14px;color:var(--muted);line-height:1.7}
 .summary strong{color:var(--ink)}
 
@@ -122,28 +141,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <input type="email" id="email" name="email" placeholder="email@example.com" required />
     </div>
 
-    <div class="field">
-      <label for="country">מדינה *</label>
-      <select id="country" name="country" required>
-        <option value="">בחרי מדינה</option>
-        <option value="IL" selected>ישראל</option>
-        <option value="US">ארצות הברית</option>
-        <option value="GB">בריטניה</option>
-        <option value="CA">קנדה</option>
-        <option value="AU">אוסטרליה</option>
-        <option value="DE">גרמניה</option>
-        <option value="FR">צרפת</option>
-        <option value="other">אחר</option>
-      </select>
-    </div>
+    <!-- מוצר ישראלי בלבד: המדינה קבועה ל-IL. השדה נשאר בטופס (ה-worker מצפה ל-country) אך מוסתר. -->
+    <input type="hidden" id="country" name="country" value="IL" />
 
-    <div class="field">
-      <label for="coupon">קוד קופון (אופציונלי)</label>
-      <div style="display:flex;gap:10px">
-        <input type="text" id="coupon" name="coupon" placeholder="הזיני קוד" style="flex:1" autocapitalize="characters" />
-        <button type="button" id="couponBtn" onclick="applyCoupon()" style="padding:0 20px;border-radius:10px;border:1px solid var(--line-accent);background:var(--accent-soft);color:var(--accent);font-family:var(--display);font-weight:700;font-size:14px;cursor:pointer;white-space:nowrap">החל</button>
+    <div class="coupon-wrap">
+      <button type="button" class="coupon-toggle" id="couponToggle" aria-expanded="false" aria-controls="couponField">יש לך קוד קופון?</button>
+      <div class="field" id="couponField" hidden>
+        <label for="coupon">קוד קופון</label>
+        <div style="display:flex;gap:10px">
+          <input type="text" id="coupon" name="coupon" placeholder="הזיני קוד" style="flex:1" autocapitalize="characters" />
+          <button type="button" id="couponBtn" onclick="applyCoupon()">החל</button>
+        </div>
+        <div id="couponMsg" style="font-size:13px;margin-top:8px"></div>
       </div>
-      <div id="couponMsg" style="font-size:13px;margin-top:8px"></div>
     </div>
 
     <div class="divider"></div>
@@ -221,6 +231,27 @@ Object.entries(_utmParams).forEach(([k,v]) => v && sessionStorage.setItem(k, v))
 
 let appliedCoupon = '';
 let currentAmount = 1770;
+
+// קופון — מוסתר כברירת מחדל, נפתח בלחיצה על "יש לך קוד קופון?"
+(function initCoupon() {
+  const toggle = document.getElementById('couponToggle');
+  const field = document.getElementById('couponField');
+  if (!toggle || !field) return;
+  toggle.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!open));
+    field.hidden = open;
+    if (!open) document.getElementById('coupon').focus();
+  });
+  // אם הגיעה עם ?coupon=CODE בכתובת — לפתוח, למלא ולאמת אוטומטית
+  const pre = new URLSearchParams(location.search).get('coupon');
+  if (pre) {
+    toggle.setAttribute('aria-expanded', 'true');
+    field.hidden = false;
+    document.getElementById('coupon').value = pre;
+    applyCoupon();
+  }
+})();
 
 async function applyCoupon() {
   const code = document.getElementById('coupon').value.trim();
