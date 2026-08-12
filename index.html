@@ -583,67 +583,45 @@ html.can-anim .rv:not(.in){transform:translateY(26px)}
 .bonus p{position:relative;color:var(--ink-soft);font-size:17.5px;line-height:1.7;max-width:620px}
 .bonus p strong{color:#fff}
 
-/* ---------- pricing ---------- */
-.priceWrap{max-width:560px;margin:48px auto 0;position:relative}
-.priceWrap::before{content:"";position:absolute;inset:-60px -40px;z-index:0;
-  background:radial-gradient(circle at 50% 60%,rgba(240,138,91,.28),transparent 60%)}
-.priceCard{position:relative;z-index:1;background:var(--panel);border:1px solid var(--line-accent);border-radius:var(--r-lg);
-  box-shadow:var(--shadow);overflow:hidden}
-.priceCard::after{content:"";position:absolute;top:0;inset-inline:0;height:3px;pointer-events:none;
-  background:linear-gradient(90deg,transparent,var(--accent),transparent)}
-  box-shadow:var(--shadow);overflow:hidden}
-/* ribbon + value stack: the number lands first, then the reasons it is small */
-.priceRibbon{position:relative;z-index:2;text-align:center;padding:16px 0 0}
-.priceRibbon span{display:inline-flex;align-items:center;gap:7px;padding:6px 15px;border-radius:999px;
-  background:var(--accent-soft);border:1px solid var(--line-accent);color:var(--accent-2);
-  font-family:var(--display);font-weight:800;font-size:12.5px;letter-spacing:.04em}
-.priceRibbon svg{width:14px;height:14px}
-.pricePills{position:relative;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:14px}
-.pricePills span{padding:5px 12px;border-radius:999px;border:1px solid var(--line);
-  background:rgba(255,255,255,.04);font-size:12.5px;font-weight:700;color:var(--ink-soft)}
-.pricePills span.is-accent{background:var(--accent-soft);border-color:var(--line-accent);color:var(--accent-2)}
-.priceIncl{position:relative;list-style:none;margin:24px 0;padding-top:22px;
-  border-top:1px dashed var(--line-accent);display:grid;gap:11px;text-align:start}
-.priceIncl li{display:flex;align-items:flex-start;gap:10px;font-size:14.5px;line-height:1.5;color:var(--muted)}
-.priceIncl li b{color:var(--ink);font-weight:700}
-.priceIncl .ck{flex:none;width:20px;height:20px;margin-top:1px;border-radius:50%;display:grid;place-items:center;
-  background:var(--accent-soft);border:1px solid var(--line-accent);color:var(--accent)}
-.priceIncl .ck svg{width:11px;height:11px}
-.priceNow{position:relative;padding:clamp(24px,3.4vw,34px) clamp(24px,4vw,38px) clamp(28px,4vw,38px);text-align:center;background:radial-gradient(120% 100% at 50% 0,rgba(240,138,91,.12),transparent 60%)}
-.priceNow .spot{position:absolute;top:0;inset-inline:0;height:100%;pointer-events:none;
-  background:radial-gradient(60% 50% at 50% 32%,rgba(240,138,91,.17),transparent 70%)}
-/* rule \u2014 label \u2014 rule: the classical way to set a price */
-.priceNow__lab{position:relative;display:flex;align-items:center;justify-content:center;gap:14px;
-  font-family:var(--display);font-weight:800;font-size:12.5px;letter-spacing:.16em;color:var(--muted);margin-bottom:14px}
-.priceNow__lab::before,.priceNow__lab::after{content:"";width:clamp(22px,7vw,40px);height:1px;background:var(--line-accent)}
-.priceNow__big{position:relative;font-family:var(--display);font-weight:900;font-size:clamp(54px,8.6vw,84px);
-  line-height:1;letter-spacing:-.045em;color:var(--ink);font-variant-numeric:tabular-nums}
-.priceNow__big .cur{font-size:.42em;font-weight:800;color:var(--accent);letter-spacing:0;
-  margin-inline-start:.14em;vertical-align:.34em}
-.priceNow__vat{position:relative;margin-top:7px;font-size:13.5px;color:var(--muted);letter-spacing:.02em}
-.priceNow__sub{position:relative;color:var(--muted);font-size:13.5px;margin:10px 0 22px}
-/* instalment line — leads with the smaller periodic figure (Gourville 1998) */
-.priceNow__pay{position:relative;font-family:var(--display);font-weight:800;line-height:1.2;
-  font-size:clamp(19px,3.1vw,25px);color:var(--ink-soft);letter-spacing:-.01em;margin-top:12px}
-.priceNow__pay b{font-weight:800;color:var(--accent);font-size:1.3em;font-variant-numeric:tabular-nums;
-  letter-spacing:-.03em;white-space:nowrap}
-.pricePills .noInt--legacy{display:inline-block;vertical-align:middle;margin-inline-start:9px;padding:4px 11px;
-  border:1px solid var(--line-accent);border-radius:999px;background:var(--accent-soft);
-  font-family:var(--body);font-weight:700;font-size:12.5px;color:var(--accent-2);letter-spacing:0}
-.payMethods{position:relative;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:9px;
-  margin-top:12px;padding-top:13px;border-top:1px solid var(--line);
-  font-size:12.5px;color:var(--muted);line-height:1.4}
-.payMethods svg{width:26px;height:18px;flex:none;color:var(--muted)}
-.payMethods b{font-weight:700;color:var(--ink-soft)}
-/* footer — vendor details required before the transaction (חוק הגנת הצרכן §14ג(א)) */
-/* one line for the vendor details; the phone is an inline link, which WCAG 2.2
-   exempts from the minimum target size, so it needs no min-height */
-.footer__biz{margin-top:9px;font-size:13px;line-height:1.7;color:var(--ink-soft)}
-.footer__biz strong{color:var(--ink);font-family:var(--display);font-weight:800}
-.footer__biz a{color:var(--accent);white-space:nowrap;padding-inline:3px}
-.footer__biz .bizId{color:var(--muted)}
-.priceNote{text-align:center;max-width:520px;margin:30px auto 0;font-size:16px;color:var(--ink-soft);line-height:1.6}
-.priceNote strong{color:var(--ink)}
+/* ---------- offer ---------- */
+/* no card: a light band with the photograph bleeding to the edge of the viewport */
+.offer{padding:0;overflow:hidden}
+.offer__grid{display:grid;grid-template-columns:1.02fr .98fr;align-items:center;min-height:min(78vh,620px)}
+.offer__body{padding:clamp(46px,6vw,80px) clamp(22px,5vw,72px);max-width:640px;justify-self:end;width:100%}
+.offer__art{position:relative;align-self:stretch;min-height:320px}
+.offer__art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.offer__art::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(to right,transparent 62%,rgba(250,248,245,.55) 88%,#FAF8F5)}
+.offer__h{margin-top:10px;font-size:clamp(30px,4.4vw,50px);line-height:1.14;letter-spacing:-.03em}
+.offer__lead{margin-top:16px;font-size:clamp(16px,1.35vw,18px);line-height:1.75;color:#5A554F;max-width:46ch}
+.offer__lead strong{color:#141414;font-weight:700}
+.offer__price{display:flex;align-items:baseline;flex-wrap:wrap;gap:12px;margin-top:30px}
+.offer__only{font-family:var(--display);font-weight:800;font-size:20px;color:#8A857E}
+.offer__big{font-family:var(--display);font-weight:900;font-size:clamp(56px,7.4vw,86px);line-height:.95;
+  letter-spacing:-.055em;color:#141414;font-variant-numeric:tabular-nums}
+.offer__cur{font-size:.4em;font-weight:800;color:#B24E1C;letter-spacing:0;margin-inline-start:.1em;vertical-align:.36em}
+.offer__vat{font-size:14px;color:#8A857E}
+.offer__instal{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:12px;
+  font-family:var(--display);font-weight:800;font-size:clamp(17px,1.6vw,21px);color:#2B2620}
+.offer__instal b{color:#B24E1C;font-weight:900;font-variant-numeric:tabular-nums;white-space:nowrap}
+.offer__instal span{padding:4px 12px;border-radius:999px;background:rgba(178,78,28,.10);
+  border:1px solid rgba(178,78,28,.24);font-family:var(--body);font-weight:700;font-size:12.5px;color:#B24E1C}
+.offer__feats{display:flex;margin:30px 0 32px;border-block:1px solid rgba(26,23,20,.11);padding:20px 0}
+.offer__feat{flex:1;min-width:0;padding-inline:14px;text-align:center}
+.offer__feat+.offer__feat{border-inline-start:1px solid rgba(26,23,20,.11)}
+.offer__feat svg{width:22px;height:22px;color:#B24E1C}
+.offer__feat b{display:block;margin-top:7px;font-family:var(--display);font-weight:800;font-size:14.5px;color:#141414}
+.offer__feat span{display:block;margin-top:2px;font-size:12.5px;line-height:1.4;color:#8A857E}
+.offer__cta{display:flex;width:100%;max-width:430px}
+.offer__fine{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:14px;font-size:12.5px;color:#8A857E}
+.offer__lock{width:14px;height:14px;display:inline-flex;flex:none;color:#B24E1C}
+@media(max-width:900px){
+  .offer__grid{grid-template-columns:1fr;min-height:0}
+  .offer__body{order:2;justify-self:stretch;max-width:none;padding:clamp(34px,7vw,48px) 20px clamp(44px,8vw,56px)}
+  .offer__art{order:1;min-height:0;aspect-ratio:16/10}
+  .offer__art::after{background:linear-gradient(to bottom,transparent 58%,rgba(250,248,245,.6) 86%,#FAF8F5)}
+  .offer__cta{max-width:none}
+}
 
 /* ---------- why ---------- */
 .whyCard{max-width:780px;margin:0 auto;background:var(--panel);border:1px solid var(--line);border-radius:var(--r-lg);
@@ -881,14 +859,14 @@ html.a11y-gray .a11yPanel,html.a11y-gray .a11yBtn{filter:grayscale(0)}
 html.a11y-contrast,html.a11y-contrast body{background:#000!important;color:#fff!important}
 html.a11y-contrast .section,html.a11y-contrast .section--alt,html.a11y-contrast .section--ink,
 html.a11y-contrast .panel,html.a11y-contrast .painCard,html.a11y-contrast .tcard,html.a11y-contrast .currPanel,
-html.a11y-contrast .faq__item,html.a11y-contrast .getItem,html.a11y-contrast .whyCard,html.a11y-contrast .priceCard,
+html.a11y-contrast .faq__item,html.a11y-contrast .getItem,html.a11y-contrast .whyCard,
 html.a11y-contrast .bridePanel,html.a11y-contrast .quoteCard,html.a11y-contrast .resultBanner,html.a11y-contrast .bonus,
 html.a11y-contrast .fwCard,html.a11y-contrast .aud,html.a11y-contrast .baCol,html.a11y-contrast .header__inner,
 html.a11y-contrast .floatcard,html.a11y-contrast .hero__badge,html.a11y-contrast .sticky-cta{
   background:#000!important;border-color:#ffec3d!important;box-shadow:none!important}
 html.a11y-contrast *{color:#fff!important;text-shadow:none!important}
 html.a11y-contrast .accent,html.a11y-contrast .gold,html.a11y-contrast .h1 em,
-html.a11y-contrast .eyebrow,html.a11y-contrast .resultBanner__num,html.a11y-contrast .priceNow__big,
+html.a11y-contrast .eyebrow,html.a11y-contrast .resultBanner__num,
 html.a11y-contrast .brideWord button.on{color:#ffec3d!important}
 html.a11y-contrast .btn{background:#ffec3d!important;color:#000!important;border:2px solid #fff!important}
 html.a11y-contrast .eyebrow::before,html.a11y-contrast .eyebrow::after{background:#ffec3d!important}
@@ -950,7 +928,7 @@ html.a11y-cursor,html.a11y-cursor *{cursor:url("data:image/svg+xml,%3Csvg xmlns=
 
 /* pause decorative infinite loops for reduced-motion users (battery + jank friendly) */
 @media (prefers-reduced-motion:reduce){
-  .floatcard,.hero__badge .dot,.hero__bg .pcl,.priceNow .spot,
+  .floatcard,.hero__badge .dot,.hero__bg .pcl,
   .fab--wa .wa-ping{animation:none!important}
 }
 
@@ -2342,109 +2320,81 @@ function Bonuses() {
   }))));
 }
 function Pricing() {
-  const incl = [
-    ['קורס bride המלא', '48 שיעורים ב־6 פרקים'],
-    ['11 שעות ו־38 דקות', 'של וידאו, בקצב שלך'],
-    ['3 בונוסים', 'קבוצת וואטסאפ, בובי, the top feed'],
-    ['גישה קבועה לכל התכנים', 'מכל מכשיר, בכל זמן'],
-    ['חשבונית מס כדין', 'תשלום חד־פעמי, בלי מנוי חודשי']
+  const feats = [
+    [React.createElement("path", {d: "M5 3l14 9-14 9V3z"}), '48 שיעורים', '11 שעות ו־38 דקות'],
+    [React.createElement("path", {d: "M20 12v9H4v-9M2 7h20v5H2zM12 21V7M12 7S9.5 2 7 3.5 8 7 12 7zM12 7s2.5-5 5-3.5S16 7 12 7z"}), '3 בונוסים', 'כלולים במחיר'],
+    [React.createElement("path", {d: "M12 21a9 9 0 100-18 9 9 0 000 18zM12 7v5l3.5 2"}), 'גישה קבועה', 'מכל מכשיר, בכל זמן']
   ];
   return React.createElement("section", {
-    className: "section",
+    className: "section section--light offer",
     id: "pricing"
   }, React.createElement("div", {
-    className: "container"
+    className: "offer__grid"
   }, React.createElement("div", {
-    className: "center"
+    className: "offer__body"
   }, React.createElement(Reveal, {
     as: "p",
-    className: "eyebrow center"
+    className: "eyebrow"
   }, "ההצעה"), React.createElement(Reveal, {
     as: "h2",
-    className: "h2 balance mxa",
-    delay: 60,
-    style: {
-      maxWidth: '22ch'
-    }
-  }, "אין מחיר השקה. אין טיימר. ", React.createElement("span", {
+    className: "h2 offer__h",
+    delay: 60
+  }, "הקורס עולה פחות ", React.createElement("span", {
     className: "accent"
-  }, "זה המחיר."))), React.createElement(Reveal, {
-    className: "priceWrap",
-    delay: 80
-  }, React.createElement("div", {
-    className: "priceCard"
-  }, React.createElement("div", {
-    className: "priceRibbon"
-  }, React.createElement("span", null, Ico.spark, " ההצעה המלאה")), React.createElement("div", {
-    className: "priceNow"
-  }, React.createElement("span", {
-    className: "spot"
-  }), React.createElement("div", {
-    className: "priceNow__lab"
-  }, React.createElement("span", null, "מחיר הקורס")), React.createElement("div", {
-    className: "priceNow__big"
-  }, "1,770", React.createElement("span", {
-    className: "cur"
-  }, "₪")), React.createElement("div", {
-    className: "priceNow__vat"
-  }, "כולל מע\"מ"), React.createElement("div", {
-    className: "priceNow__pay"
-  }, "או 3 תשלומים של ", React.createElement("b", null, "590\xA0₪")), React.createElement("div", {
-    className: "pricePills"
-  }, React.createElement("span", {
-    className: "is-accent"
-  }, "ללא ריבית"), React.createElement("span", null, "37\xA0₪ לשיעור"), React.createElement("span", null, "גישה מיידית")), React.createElement("ul", {
-    className: "priceIncl"
-  }, incl.map(function(it, i) {
-    return React.createElement("li", {
-      key: i
-    }, React.createElement("span", {
-      className: "ck",
-      "aria-hidden": "true"
-    }, Ico.check), React.createElement("span", null, React.createElement("b", null, it[0]), " \xB7 ", it[1]));
-  })), React.createElement("a", {
-    href: PAY_LINK,
-    className: "btn btn--accent btn--block btn--lg"
-  }, "אני רוצה לרכוש את - BRIDE"), React.createElement("p", {
-    style: {
-      marginTop: '14px',
-      fontSize: '12.5px',
-      color: 'var(--muted)',
-      display: 'flex',
-      gap: '7px',
-      alignItems: 'center',
-      justifyContent: 'center'
-    }
-  }, React.createElement("span", {
-    style: {
-      width: '14px',
-      height: '14px',
-      display: 'inline-flex'
-    }
-  }, Ico.lock), " סליקה מאובטחת דרך Grow \xB7 פרטי הגישה נשלחים למייל מיד"), React.createElement("div", {
-    className: "payMethods"
-  }, React.createElement("svg", {
-    viewBox: "0 0 34 24",
-    fill: "none",
-    stroke: "currentColor",
-    strokeWidth: "1.7",
-    "aria-hidden": "true"
-  }, React.createElement("rect", {
-    x: "1",
-    y: "2.5",
-    width: "32",
-    height: "19",
-    rx: "3"
-  }), React.createElement("path", {
-    d: "M1 9h32"
-  }), React.createElement("path", {
-    d: "M5.5 16.5h6",
-    strokeLinecap: "round"
-  })), React.createElement("span", null, React.createElement("b", null, "ויזה \xB7 מאסטרקארד \xB7 דיינרס"), " \xB7 עד 3 תשלומים ללא ריבית \xB7 תקן אבטחה PCI"))))), React.createElement(Reveal, {
+  }, "מכלה אחת.")), React.createElement(Reveal, {
     as: "p",
-    className: "priceNote",
+    className: "offer__lead",
+    delay: 90
+  }, "כלה אחת אצלך שווה בין 2,000 ל־5,000 ₪. הקורס עולה 1,770 ₪, פעם אחת. ", React.createElement("strong", null, "את לא צריכה עשרות לקוחות חדשות כדי להצדיק את ההשקעה — את צריכה אחת."), " וגם היא נשארת אצלך."), React.createElement(Reveal, {
+    className: "offer__price",
     delay: 120
-  }, React.createElement("strong", null, "כלה אחת נוספת שתסגרי מחזירה לך את ההשקעה."), " ולמה זה עולה מה שזה עולה? כי אני לא יושב איתך אחד על אחד — הכל מוקלט, אותה שיטה ואותם שיעורים, בלי הזמן שלי בפנים.")));
+  }, React.createElement("span", {
+    className: "offer__only"
+  }, "רק"), React.createElement("span", {
+    className: "offer__big"
+  }, "1,770", React.createElement("span", {
+    className: "offer__cur"
+  }, "₪")), React.createElement("span", {
+    className: "offer__vat"
+  }, "כולל מע\"מ")), React.createElement(Reveal, {
+    as: "p",
+    className: "offer__instal",
+    delay: 140
+  }, "או 3 תשלומים של ", React.createElement("b", null, "590\xA0₪"), React.createElement("span", null, "ללא ריבית")), React.createElement(Reveal, {
+    className: "offer__feats",
+    delay: 160
+  }, feats.map(function(f, i) {
+    return React.createElement("div", {
+      className: "offer__feat",
+      key: i
+    }, React.createElement("svg", {
+      viewBox: "0 0 24 24",
+      fill: "none",
+      stroke: "currentColor",
+      strokeWidth: "1.6",
+      strokeLinecap: "round",
+      strokeLinejoin: "round",
+      "aria-hidden": "true"
+    }, f[0]), React.createElement("b", null, f[1]), React.createElement("span", null, f[2]));
+  })), React.createElement(Reveal, {
+    delay: 180
+  }, React.createElement("a", {
+    href: PAY_LINK,
+    className: "btn btn--accent btn--lg offer__cta"
+  }, "אני רוצה להצטרף ל־BRIDE"), React.createElement("p", {
+    className: "offer__fine"
+  }, React.createElement("span", {
+    className: "offer__lock"
+  }, Ico.lock), "סליקה מאובטחת דרך Grow \xB7 ויזה \xB7 מאסטרקארד \xB7 דיינרס \xB7 חשבונית מס כדין \xB7 גישה מיידית"))), React.createElement("div", {
+    className: "offer__art"
+  }, React.createElement("img", {
+    src: "images/offer-desk.jpg",
+    alt: "קורס bride פתוח על מחשב נייד",
+    width: "1100",
+    height: "821",
+    loading: "lazy",
+    decoding: "async"
+  }))));
 }
 const YES = ['את מאפרת או מסרקת בעולם הכלות', 'יש לך כישרון אבל לא מספיק עבודה', 'את רוצה לסגור יותר כלות', 'את מוכנה ליישם, לא רק לצפות', 'את רוצה למכור בלי להרגיש "מוכרת"', 'את רוצה להפסיק להתחרות רק על מחיר'];
 const NO = ['את מחפשת קסם בלי לעשות כלום', 'את לא מוכנה לשנות איך שאת מדברת עם לקוחות', 'את לא עוסקת בעולם הכלות', 'את מצפה לפגישות אישיות עם ניב', 'את רוצה רק לצפות ולא ליישם'];
