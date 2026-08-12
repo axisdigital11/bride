@@ -108,20 +108,18 @@ button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
 .balance{text-wrap:balance}
 .tnum{font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
 /* ---------- "כל האמת שלי" — סרטון לרוחב ---------- */
-.truth{position:relative}
+/* הסקשן מנטרל את ה-zoom:0.8 של הדף (0.8 x 1.25 = 1), כדי שהחישוב בתוכו
+   יהיה 1:1 — בדיוק כמו באתר קונטיין שבו ההטמעה הזאת עובדת. */
+.truth{position:relative;zoom:1.25}
 .truth__head{text-align:center;margin-bottom:clamp(22px,3vw,34px)}
-/* הטמעה פשוטה: עוטף אחד עם יחס 16:9, ו-iframe שממלא אותו. בלי שכבות. */
-.truth__wrap{max-width:920px;margin:0 auto;position:relative;overflow:hidden;background:#000;
-  border-radius:var(--r-lg);border:1px solid var(--line-accent);
-  box-shadow:0 40px 90px -40px rgba(0,0,0,.9)}
-.truth__box{position:relative;width:100%;height:0;padding-bottom:56.25%}
-.truth__box iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+/* ההטמעה עצמה — זהה לקונטיין */
+.truth__wrap{position:relative;aspect-ratio:16/9;max-width:960px;margin:0 auto;
+  border-radius:20px;overflow:hidden;border:1px solid var(--line-accent);
+  box-shadow:0 20px 60px rgba(0,0,0,.4);background:#000}
+.truth__wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .truth__note{text-align:center;color:var(--muted);font-size:13.5px;margin-top:16px}
-/* מובייל: מקצה לקצה */
 @media (max-width:760px){
-  .truth__wrap{max-width:none;border-radius:0;border-left:0;border-right:0;
-    box-shadow:0 18px 40px -22px rgba(0,0,0,.75)}
-  .truth.section--light .truth__wrap{box-shadow:0 10px 26px -14px rgba(26,23,20,.45)}
+  .truth__wrap{border-radius:14px}
 }
 .exclusiveNote{font-family:var(--display);font-weight:700;color:var(--accent-2);
   font-size:clamp(15px,1.7vw,18px);line-height:1.5;max-width:34ch;margin:18px auto 0;text-align:center}
@@ -1642,19 +1640,14 @@ function TruthVideo() {
     as: "h2",
     className: "h2 mxa",
     delay: 60
-  }, "כל האמת שלי"))), React.createElement("div", {
+  }, "כל האמת שלי")), React.createElement("div", {
     className: "truth__wrap"
-  }, React.createElement("div", {
-    className: "truth__box"
   }, React.createElement("iframe", {
-    src: "https://www.youtube.com/embed/" + TRUTH_VIDEO_ID + "?rel=0&playsinline=1",
+    src: "https://www.youtube.com/embed/" + TRUTH_VIDEO_ID,
     title: "כל האמת שלי — ניב גבאי",
-    frameBorder: "0",
-    allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
+    allow: "accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
     allowFullScreen: true
-  }))), React.createElement("div", {
-    className: "container"
-  }, React.createElement("p", {
+  })), React.createElement("p", {
     className: "truth__note"
   }, "כמה דקות. בלי מצגות ובלי הבטחות — פשוט איך זה התחיל ולמה זה עובד.")));
 }
