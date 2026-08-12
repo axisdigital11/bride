@@ -589,20 +589,27 @@ html.can-anim .rv:not(.in){transform:translateY(26px)}
   background:radial-gradient(circle at 50% 60%,rgba(240,138,91,.28),transparent 60%)}
 .priceCard{position:relative;z-index:1;background:var(--panel);border:1px solid var(--line-accent);border-radius:var(--r-lg);
   box-shadow:var(--shadow);overflow:hidden}
-.priceCompare{padding:clamp(24px,4vw,34px);border-bottom:1px dashed var(--line-accent)}
-.pRow{display:flex;align-items:center;justify-content:space-between;padding:13px 0}
-.pRow+.pRow{border-top:1px solid var(--line)}
-.pRow .lab{color:var(--muted);font-size:15.5px}
-.pRow .val{font-family:var(--display);font-weight:700;font-size:21px;color:var(--muted-2);text-decoration:line-through;text-decoration-color:var(--accent)}
+/* reason-why replaces the struck-through anchors: the price is defended by a fact,
+   not by a number nobody can check */
+.priceWhy{padding:clamp(22px,3.6vw,30px);border-bottom:1px solid var(--line-accent)}
+.priceWhy__t{display:flex;align-items:center;gap:12px;margin-bottom:11px;
+  font-family:var(--display);font-weight:800;font-size:12.5px;letter-spacing:.1em;color:var(--accent)}
+.priceWhy__t::after{content:"";flex:1;height:1px;background:var(--line-accent)}
+.priceWhy p{margin:0;font-size:15.5px;line-height:1.75;color:var(--ink-soft)}
+.priceWhy p strong{color:var(--ink);font-weight:700}
 .priceNow{position:relative;padding:clamp(28px,4vw,40px);text-align:center;background:radial-gradient(120% 100% at 50% 0,rgba(240,138,91,.12),transparent 60%)}
 .priceNow .spot{position:absolute;top:0;inset-inline:0;height:100%;pointer-events:none;
-  background:radial-gradient(60% 50% at 50% 30%,rgba(240,138,91,.26),transparent 70%);animation:spot 4s ease-in-out infinite}
-@keyframes spot{0%,100%{opacity:.55}50%{opacity:1}}
-.priceNow__lab{position:relative;font-family:var(--display);font-weight:800;font-size:14px;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--accent);margin-bottom:8px}
-.priceNow__big{position:relative;font-family:var(--display);font-weight:900;font-size:clamp(58px,10vw,100px);line-height:.95;letter-spacing:-.05em;color:var(--ink)}
-.priceNow__big small{font-size:.26em;color:var(--muted);font-weight:700;letter-spacing:0}
-.priceNow__sub{position:relative;color:var(--muted);font-size:14px;margin:4px 0 20px}
+  background:radial-gradient(60% 50% at 50% 32%,rgba(240,138,91,.17),transparent 70%)}
+/* rule \u2014 label \u2014 rule: the classical way to set a price */
+.priceNow__lab{position:relative;display:flex;align-items:center;justify-content:center;gap:14px;
+  font-family:var(--display);font-weight:800;font-size:12.5px;letter-spacing:.16em;color:var(--muted);margin-bottom:14px}
+.priceNow__lab::before,.priceNow__lab::after{content:"";width:clamp(22px,7vw,40px);height:1px;background:var(--line-accent)}
+.priceNow__big{position:relative;font-family:var(--display);font-weight:900;font-size:clamp(54px,8.6vw,84px);
+  line-height:1;letter-spacing:-.045em;color:var(--ink);font-variant-numeric:tabular-nums}
+.priceNow__big .cur{font-size:.42em;font-weight:800;color:var(--accent);letter-spacing:0;
+  margin-inline-start:.14em;vertical-align:.34em}
+.priceNow__vat{position:relative;margin-top:7px;font-size:13.5px;color:var(--muted);letter-spacing:.02em}
+.priceNow__sub{position:relative;color:var(--muted);font-size:13.5px;margin:10px 0 22px}
 /* instalment line — leads with the smaller periodic figure (Gourville 1998) */
 .priceNow__pay{position:relative;font-family:var(--display);font-weight:800;line-height:1.2;
   font-size:clamp(19px,3.1vw,25px);color:var(--ink-soft);letter-spacing:-.01em;margin-top:12px}
@@ -701,7 +708,63 @@ html.can-anim .rv:not(.in){transform:translateY(26px)}
 .aiBot__sub{font-family:var(--display);font-weight:800;font-size:clamp(18px,2.6vw,26px);line-height:1.25;color:var(--ink-soft);margin:-2px 0 18px}
 .aiBot__sub .glow{color:#c4b5fd;text-shadow:0 0 40px rgba(167,139,250,.5)}
 /* ---------- bonuses grid (3 cards) ---------- */
-.bns{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:52px;align-items:stretch}
+.bns{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:52px;align-items:stretch}
+@media(max-width:1000px){.bns{grid-template-columns:1fr;max-width:520px;margin-inline:auto;gap:26px}}
+/* every bonus gets the same frame; the illustration is pinned to the bottom
+   (margin-top:auto) so all three line up regardless of description length */
+.bCard{flex:1;position:relative;display:flex;flex-direction:column;overflow:hidden;
+  border-radius:var(--r-lg);border:1px solid var(--line);background:linear-gradient(150deg,#1c1c25,#121218);
+  padding:clamp(22px,2.4vw,30px);box-shadow:var(--shadow-sm)}
+.bCard::before{content:"";position:absolute;top:-140px;inset-inline-start:-90px;width:300px;height:300px;
+  border-radius:50%;filter:blur(60px);opacity:.55;pointer-events:none}
+.bCard__tag{position:relative;align-self:flex-start;display:inline-flex;align-items:center;gap:7px;
+  font-family:var(--display);font-weight:800;font-size:12px;letter-spacing:.02em;
+  padding:6px 12px;border-radius:999px;border:1px solid var(--line)}
+.bCard__tag svg{width:15px;height:15px;flex:none}
+.bCard__t{position:relative;font-family:var(--display);font-weight:900;letter-spacing:-.02em;
+  font-size:clamp(21px,1.9vw,25px);line-height:1.25;margin:15px 0 10px;color:var(--ink)}
+.bCard__d{position:relative;color:var(--ink-soft);font-size:15px;line-height:1.7;margin:0 0 20px}
+.bCard__vis{position:relative;margin-top:auto;aspect-ratio:4/3;border-radius:14px;overflow:hidden;
+  border:1px solid var(--line);background:#0b0b10}
+.bCard--wa::before{background:rgba(37,211,102,.3)}
+.bCard--wa .bCard__tag{background:rgba(37,211,102,.14);border-color:rgba(37,211,102,.32);color:#79E3A5}
+.bCard--ai::before{background:rgba(167,139,250,.32)}
+.bCard--ai .bCard__tag{background:rgba(167,139,250,.13);border-color:rgba(167,139,250,.3);color:#c4b5fd}
+.bCard--feed::before{background:rgba(240,138,91,.3)}
+.bCard--feed .bCard__tag{background:var(--accent-soft);border-color:var(--line-accent);color:var(--accent-2)}
+/* --- illustration 1: the closed group --- */
+.waMock{position:absolute;inset:0;display:flex;flex-direction:column;background:#0b141a}
+.waMock__hd{display:flex;align-items:center;gap:8px;padding:8px 10px;background:#1f2c33}
+.waMock__av{flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:13px;
+  background:linear-gradient(135deg,#25D366,#128C7E)}
+.waMock__nm{font-weight:700;font-size:11.5px;color:#e9edef;line-height:1.25}
+.waMock__sub{font-size:9.5px;color:#8696a0}
+.waMock__body{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;padding:10px;overflow:hidden}
+.waMock__b{max-width:84%;padding:6px 9px;font-size:10.5px;line-height:1.5;color:#e9edef}
+.waMock__b--in{align-self:flex-start;background:#202c33;border-radius:11px 11px 11px 3px}
+.waMock__b--out{align-self:flex-end;background:#005c4b;border-radius:11px 11px 3px 11px}
+.waMock__b i{display:block;font-style:normal;font-size:9.5px;font-weight:700;color:#53bdeb;margin-bottom:2px}
+/* --- illustration 2: bobby --- */
+.aiMock{position:absolute;inset:0;display:flex;flex-direction:column;background:linear-gradient(150deg,#100c1e,#0c0912)}
+.aiMock__hd{display:flex;align-items:center;gap:8px;padding:8px 10px;border-bottom:1px solid rgba(167,139,250,.16)}
+.aiMock__av{flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:13px;
+  background:linear-gradient(135deg,#a78bfa,#7c3aed)}
+.aiMock__nm{font-weight:700;font-size:11.5px;color:var(--ink);line-height:1.25}
+.aiMock__sub{display:flex;align-items:center;gap:4px;font-size:9.5px;color:#a78bfa}
+.aiMock__sub::before{content:"";width:5px;height:5px;border-radius:50%;background:#a78bfa;box-shadow:0 0 6px #a78bfa}
+.aiMock__body{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:flex-end;gap:7px;padding:10px;overflow:hidden}
+.aiMock__b{max-width:88%;padding:7px 10px;font-size:10.5px;line-height:1.55}
+.aiMock__b--user{align-self:flex-start;border-radius:12px 12px 12px 3px;color:var(--ink-soft);
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09)}
+.aiMock__b--bot{align-self:flex-end;border-radius:12px 12px 3px 12px;color:var(--ink);
+  background:linear-gradient(135deg,rgba(167,139,250,.25),rgba(124,58,237,.2));border:1px solid rgba(167,139,250,.3)}
+/* --- illustration 3: the feed the AI bonus produces --- */
+.tfMock{position:absolute;inset:0;display:flex;flex-direction:column;background:#0f0f14}
+.tfMock__hd{padding:7px 10px;font-size:10.5px;font-weight:700;color:var(--accent-2);
+  background:rgba(240,138,91,.1);border-bottom:1px solid var(--line-accent)}
+.tfMock__grid{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:3px;padding:3px;min-height:0}
+.tfMock__cell{position:relative;overflow:hidden;border-radius:3px}
+.tfMock__cell img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.02)}
 .bns__item{position:relative;display:flex}
 .bns__item--wide{grid-column:1 / -1}
 .bns__item>.aiBot,.bns__item>.bonus{flex:1;margin:0;max-width:none}
@@ -2225,18 +2288,70 @@ function Curriculum() {
   }, "\u05db\u05dc \u05e9\u05d9\u05e2\u05d5\u05e8 \u05d1\u05d5\u05d9\u05d3\u05d0\u05d5, \u05d1\u05e7\u05e6\u05d1 \u05e9\u05dc\u05da, \u05e2\u05dd \u05d2\u05d9\u05e9\u05d4 \u05d7\u05d5\u05d6\u05e8\u05ea \u05de\u05ea\u05d9 \u05e9\u05ea\u05e8\u05e6\u05d9.")));
 }
 function Bonuses() {
-  const feats = [
-    {ico:'📣', title:'קמפיינים שממירים', desc:'אסטרטגיה, קופי ומבנה קמפיין תשאלי, תקבלי תשובה מיידית'},
-    {ico:'💰', title:'מכירות וסגירות', desc:'תסריטי שיחה, התמודדות עם התנגדויות, איך להוביל לסגירה בטבעיות'},
-    {ico:'🎯', title:'תמחור נכון', desc:'איך להתמחר בביטחון ולא להתנצל על המחיר שלך'},
-    {ico:'📱', title:'בניית פרופיל', desc:'איך לבנות עמוד שידגיש את הרמה המקצועית שלך!'},
-    {ico:'🧠', title:'התייעצות אישית', desc:'כל שאלה עסקית שעולה לך יש מי שעונה 24/7'},
+  const waMsgs = [
+    {side:'in',  who:'מור',  text:'בנות, מישהי פנויה לכלה בחיפה ב־14.9? נפלה לי עבודה כפולה'},
+    {side:'out', who:'',     text:'אני פנויה — שלחי לי פרטים 🙏'},
+    {side:'in',  who:'עדיה', text:'כלה ביקשה הנחה של 500 ₪. מה עונים לה?'},
   ];
-  const msgs = [
-    {side:'user', text:'איך אני עונה ללקוחה שאומרת יקר לי?', time:'16:42'},
-    {side:'bot',  text:'תגידי לי קודם מה את כבר אמרת לה על המחיר ומה הייתה תגובתה?', time:'16:42'},
-    {side:'user', text:'אמרתי לה שהמחיר 4,500 ₪ והיא אמרה שזה יקר', time:'16:43'},
-    {side:'bot',  text:'מושלם! זו התנגדות קלאסית על מחיר. תעני לה: מבינה אותך לגמרי. נכון אני לא הבחירה הכי זולה, אלא הבחירה הכי בטוחה ליום החתונה. 🤍', time:'16:43'},
+  const aiMsgs = [
+    {side:'user', text:'איך אני עונה ללקוחה שאומרת יקר לי?'},
+    {side:'bot',  text:'תגידי לה: מבינה אותך לגמרי. אני לא הבחירה הכי זולה — אני הבחירה הכי בטוחה ליום החתונה. 🤍'},
+  ];
+  const feed = ['feed-1.jpg','feed-2.jpg','feed-3.jpg','feed-4.jpg'];
+  const cards = [
+    {
+      cls: 'bCard--wa', num: '1', ico: Ico.wa, tag: 'כלול בקורס',
+      title: 'קבוצת וואטסאפ סגורה',
+      desc: 'קבוצה סגורה של מאפרות ומסרקים מכל הארץ. שואלת שאלה — מקבלת תשובה. מעבירים עבודות אחת לשנייה, ומתייעצים לפני שסוגרים מחיר. יש לילות שהקבוצה הזאת שווה יותר מכל שיעור.',
+      vis: React.createElement("div", {className:"waMock"},
+        React.createElement("div", {className:"waMock__hd"},
+          React.createElement("div", {className:"waMock__av"}, "👰"),
+          React.createElement("div", null,
+            React.createElement("div", {className:"waMock__nm"}, "מאפרות ומסרקים \u2014 bride"),
+            React.createElement("div", {className:"waMock__sub"}, "הקבוצה הסגורה של הקורס")
+          )
+        ),
+        React.createElement("div", {className:"waMock__body"},
+          waMsgs.map(function(m,i) {
+            return React.createElement("div", {className:"waMock__b waMock__b--"+m.side, key:i},
+              m.who ? React.createElement("i", null, m.who) : null, m.text);
+          })
+        )
+      )
+    },
+    {
+      cls: 'bCard--ai', num: '2', ico: Ico.spark, tag: 'כלול בקורס · לחצי שנה',
+      title: 'בובי — צ׳אט ה־AI שלי',
+      desc: 'בוט שאימנתי בעצמי על השיחות שלי עם מאפרות ומסרקים, על תסריטי המכירה ועל חומרי הקורס. מכירות, תמחור, קמפיינים, בניית פרופיל — שולחת לו שאלה בוואטסאפ ומקבלת תשובה תוך שניות, 24/7.',
+      vis: React.createElement("div", {className:"aiMock"},
+        React.createElement("div", {className:"aiMock__hd"},
+          React.createElement("div", {className:"aiMock__av"}, "🤖"),
+          React.createElement("div", null,
+            React.createElement("div", {className:"aiMock__nm"}, "בובי הבוט של bride"),
+            React.createElement("div", {className:"aiMock__sub"}, "מחובר ועונה")
+          )
+        ),
+        React.createElement("div", {className:"aiMock__body"},
+          aiMsgs.map(function(m,i) {
+            return React.createElement("div", {className:"aiMock__b aiMock__b--"+m.side, key:i}, m.text);
+          })
+        )
+      )
+    },
+    {
+      cls: 'bCard--feed', num: '3', ico: Ico.spark, tag: 'מתנה למצטרפות עכשיו',
+      title: 'the top feed — קורס ה־AI',
+      desc: 'קורס שלם שמלמד אותך להפוך תמונה פשוטה מהטלפון להפקת צילום מושלמת — בלי צלם, בלי דוגמנית ובלי תקציב. פיד שנראה כמו קמפיין יוקרתי. הבונוס נמכר בנפרד — כאן הוא שלך במתנה.',
+      vis: React.createElement("div", {className:"tfMock"},
+        React.createElement("div", {className:"tfMock__hd"}, "✨ כל התמונות האלה נוצרו ב־AI"),
+        React.createElement("div", {className:"tfMock__grid"},
+          feed.map(function(f,i) {
+            return React.createElement("div", {className:"tfMock__cell", key:i},
+              React.createElement("img", {src:"images/"+f, alt:"", loading:"lazy", decoding:"async"}));
+          })
+        )
+      )
+    }
   ];
   return React.createElement("section", {
     className: "section section--ink",
@@ -2257,83 +2372,26 @@ function Bonuses() {
     }
   }, "3 בונוסים שעושים את כל ההבדל")), React.createElement("div", {
     className: "bns"
-  }, React.createElement(Reveal, {
-    className: "bns__item bns__item--wide",
-    delay: 80
-  }, React.createElement("span", {
-    className: "bns__num",
-    "aria-hidden": "true"
-  }, "1"), React.createElement("div", {className:"aiBot"},
-          React.createElement("div", {className:"aiBot__badge"},
-            React.createElement("span", null),
-            "כלול בקורס בלעדי לתלמידות"
-          ),
-          React.createElement("h2", null,
-            "לא צריך לחכות לתשובות. יש לך ",
-            React.createElement("span", {className:"glow"}, "AI"),
-            " שעונה עכשיו."
-          ),
-          React.createElement("h3", {className:"aiBot__sub"},
-            React.createElement("span", {className:"glow"}, "בובי"),
-            " הבוט שמכיר את ניב, ועונה כמוהו"
-          ),
-          React.createElement("p", {className:"aiBot__lead"},
-            "בוט ה-AI של קורס bride למד מכל השיחות של ניב עם מאפרות ומסרקים, מתסריטי המכירות ומחומרי הקורס. תשאלי אותו כל שאלה עסקית בוואטסאפ ותקבלי תשובה תוך שניות."
-          ),
-          React.createElement("div", {className:"aiBot__layout"},
-            React.createElement("div", {className:"aiBot__features"},
-              feats.map(function(f,i) {
-                return React.createElement("div", {className:"aiBot__feat", key:i},
-                  React.createElement("div", {className:"aiBot__feat-ico"}, f.ico),
-                  React.createElement("div", {className:"aiBot__feat-text"},
-                    React.createElement("b", null, f.title),
-                    React.createElement("span", null, f.desc)
-                  )
-                );
-              })
-            ),
-            React.createElement("div", null,
-              React.createElement("div", {className:"aiBot__chat"},
-                React.createElement("div", {className:"aiBot__chat-header"},
-                  React.createElement("div", {className:"aiBot__chat-av"}, "🤖"),
-                  React.createElement("div", null,
-                    React.createElement("div", {className:"aiBot__chat-name"}, "בובי הבוט של bride"),
-                    React.createElement("div", {className:"aiBot__chat-status"}, "מחובר ועונה")
-                  )
-                ),
-                msgs.map(function(m,i) {
-                  return React.createElement("div", {className:"msg msg--"+m.side, key:i},
-                    React.createElement("div", {className:"msg__bubble"}, m.text),
-                    React.createElement("div", {className:"msg__time"}, m.time)
-                  );
-                })
-              ),
-              React.createElement("div", {className:"aiBot__pill"}, "✨ כלול בקורס - למשך חצי שנה")
-            )
-          )
-        )), React.createElement(Reveal, {
-    className: "bns__item",
-    delay: 110
-  }, React.createElement("span", {
-    className: "bns__num",
-    "aria-hidden": "true"
-  }, "2"), React.createElement("div", {
-    className: "bonus"
-  }, React.createElement("span", {
-    className: "bonus__tag"
-  }, Ico.spark, " \u05DE\u05EA\u05E0\u05D4 \u05DC\u05DE\u05E6\u05D8\u05E8\u05E4\u05D5\u05EA \u05E2\u05DB\u05E9\u05D9\u05D5"), React.createElement("h3", null, "the\xA0top\xA0feed \u2014 ", React.createElement("span", {
-    className: "accent"
-  }, "\u05E7\u05D5\u05E8\u05E1 \u05D4\u05BEAI")), React.createElement("p", null, "\u05E7\u05D5\u05E8\u05E1 \u05E9\u05DC\u05DD \u05E9\u05DE\u05DC\u05DE\u05D3 \u05D0\u05D5\u05EA\u05DA \u05DC\u05D9\u05E6\u05D5\u05E8 ", React.createElement("strong", null, "\u05D4\u05E4\u05E7\u05EA \u05E6\u05D9\u05DC\u05D5\u05DD \u05DE\u05D5\u05E9\u05DC\u05DE\u05EA \u05DE\u05DB\u05DC \u05EA\u05DE\u05D5\u05E0\u05D4 \u05E4\u05E9\u05D5\u05D8\u05D4"), " \u2014 \u05D1\u05DC\u05D9 \u05E6\u05DC\u05DD, \u05D1\u05DC\u05D9 \u05D3\u05D5\u05D2\u05DE\u05E0\u05D9\u05EA \u05D5\u05D1\u05DC\u05D9 \u05EA\u05E7\u05E6\u05D9\u05D1. \u05E4\u05D9\u05D3 \u05E9\u05E0\u05E8\u05D0\u05D4 \u05DB\u05DE\u05D5 \u05E7\u05DE\u05E4\u05D9\u05D9\u05DF \u05D9\u05D5\u05E7\u05E8\u05EA\u05D9, \u05D9\u05E9\u05E8 \u05DE\u05D4\u05D8\u05DC\u05E4\u05D5\u05DF. \u05D4\u05D1\u05D5\u05E0\u05D5\u05E1 \u05E0\u05DE\u05DB\u05E8 \u05D1\u05E0\u05E4\u05E8\u05D3 \u2014 \u05DB\u05D0\u05DF \u05D4\u05D5\u05D0 \u05E9\u05DC\u05DA \u05D1\u05DE\u05EA\u05E0\u05D4."))), React.createElement(Reveal, {
-    className: "bns__item",
-    delay: 140
-  }, React.createElement("span", {
-    className: "bns__num",
-    "aria-hidden": "true"
-  }, "3"), React.createElement("div", {
-    className: "bonus bonus--calm"
-  }, React.createElement("span", {
-    className: "bonus__tag"
-  }, Ico.wa, " כלול בקורס"), React.createElement("h3", null, "קהילה שסוגרת לך את הגב"), React.createElement("p", null, "קבוצת וואטסאפ סגורה של מאפרות ומסרקים — עונים על כל שאלה, עוזרים אחת לשנייה, ומעבירים עבודות בין חברות הקבוצה. יש לילות שהקבוצה הזאת שווה יותר מכל שיעור."))))));
+  }, cards.map(function(c, i) {
+    return React.createElement(Reveal, {
+      className: "bns__item",
+      delay: 80 + i * 30,
+      key: c.num
+    }, React.createElement("span", {
+      className: "bns__num",
+      "aria-hidden": "true"
+    }, c.num), React.createElement("div", {
+      className: "bCard " + c.cls
+    }, React.createElement("span", {
+      className: "bCard__tag"
+    }, c.ico, " ", c.tag), React.createElement("h3", {
+      className: "bCard__t"
+    }, c.title), React.createElement("p", {
+      className: "bCard__d"
+    }, c.desc), React.createElement("div", {
+      className: "bCard__vis"
+    }, c.vis)));
+  }))));
 }
 function Pricing() {
   return React.createElement("section", {
@@ -2346,52 +2404,46 @@ function Pricing() {
   }, React.createElement(Reveal, {
     as: "p",
     className: "eyebrow center"
-  }, "\u05D4\u05D4\u05E6\u05E2\u05D4"), React.createElement(Reveal, {
+  }, "ההצעה"), React.createElement(Reveal, {
     as: "h2",
     className: "h2 balance mxa",
     delay: 60,
     style: {
-      maxWidth: '22ch'
+      maxWidth: '20ch'
     }
-  }, "עד עכשיו רדפת סביב הזנב של עצמך. ", React.createElement("span", {
+  }, "אין מחיר השקה. אין טיימר. ", React.createElement("span", {
     className: "accent"
-  }, "זה הרגע לעשות שינוי אמיתי."))), React.createElement(Reveal, {
+  }, "זה המחיר."))), React.createElement(Reveal, {
     className: "priceWrap",
     delay: 80
   }, React.createElement("div", {
     className: "priceCard"
   }, React.createElement("div", {
-    className: "priceCompare"
+    className: "priceWhy"
   }, React.createElement("div", {
-    className: "pRow"
-  }, React.createElement("span", {
-    className: "lab"
-  }, "\u05D4\u05DC\u05D9\u05D5\u05D5\u05D9 \u05D4\u05D0\u05D9\u05E9\u05D9 \u05E9\u05DC\u05D9"), React.createElement("span", {
-    className: "val"
-  }, "18,000\xA0\u20AA")), React.createElement("div", {
-    className: "pRow"
-  }, React.createElement("span", {
-    className: "lab"
-  }, "\u05D4\u05E7\u05D5\u05E8\u05E1 \u05D4\u05D3\u05D9\u05D2\u05D9\u05D8\u05DC\u05D9 \u05D4\u05DE\u05DC\u05D0"), React.createElement("span", {
-    className: "val"
-  }, "7,500\xA0\u20AA"))), React.createElement("div", {
+    className: "priceWhy__t"
+  }, "למה זה עולה מה שזה עולה"), React.createElement("p", null, "כי אני לא יושב איתך אחד על אחד. הכל מוקלט — ", React.createElement("strong", null, "אותה שיטה, אותם שיעורים"), ", בלי הזמן שלי בפנים. זה מה שמאפשר לי לתמחר את זה במחיר שגם מאפרת בתחילת הדרך יכולה לעמוד בו — בלי להוריד אף שיעור.")), React.createElement("div", {
     className: "priceNow"
   }, React.createElement("span", {
     className: "spot"
   }), React.createElement("div", {
     className: "priceNow__lab"
-  }, "היום \xB7 הרגע לשינוי אמיתי"), React.createElement("div", {
+  }, React.createElement("span", null, "מחיר הקורס")), React.createElement("div", {
     className: "priceNow__big"
-  }, "1,770\xA0\u20AA", React.createElement("small", null, "\xA0\u05DB\u05D5\u05DC\u05DC \u05DE\u05E2\"\u05DE")), React.createElement("div", {
+  }, "1,770", React.createElement("span", {
+    className: "cur"
+  }, "₪")), React.createElement("div", {
+    className: "priceNow__vat"
+  }, "כולל מע\"מ"), React.createElement("div", {
     className: "priceNow__pay"
-  }, "\u05D0\u05D5 3 \u05EA\u05E9\u05DC\u05D5\u05DE\u05D9\u05DD \u05E9\u05DC ", React.createElement("b", null, "590\xA0\u20AA"), React.createElement("span", {
+  }, "או 3 תשלומים של ", React.createElement("b", null, "590\xA0₪"), React.createElement("span", {
     className: "noInt"
-  }, "\u05DC\u05DC\u05D0 \u05E8\u05D9\u05D1\u05D9\u05EA")), React.createElement("div", {
+  }, "ללא ריבית")), React.createElement("div", {
     className: "priceNow__sub"
-  }, "\u05D2\u05D9\u05E9\u05D4 \u05DE\u05D9\u05D9\u05D3\u05D9\u05EA \u05DC\u05DB\u05DC \u05EA\u05DB\u05E0\u05D9 \u05D4\u05E7\u05D5\u05E8\u05E1"), React.createElement("a", {
+  }, "תשלום אחד \xB7 גישה מיידית לכל התכנים \xB7 בלי מנוי חודשי"), React.createElement("a", {
     href: PAY_LINK,
     className: "btn btn--accent btn--block btn--lg"
-  }, "\u05D0\u05E0\u05D9 \u05E8\u05D5\u05E6\u05D4 \u05DC\u05E8\u05DB\u05D5\u05E9 \u05D0\u05EA - BRIDE"), React.createElement("p", {
+  }, "אני רוצה לרכוש את - BRIDE"), React.createElement("p", {
     style: {
       marginTop: '14px',
       fontSize: '12.5px',
@@ -2430,7 +2482,7 @@ function Pricing() {
     as: "p",
     className: "priceNote",
     delay: 120
-  }, React.createElement("strong", null, "\u05DB\u05DC\u05D4 \u05D0\u05D7\u05EA \u05E0\u05D5\u05E1\u05E4\u05EA \u05E9\u05EA\u05E1\u05D2\u05E8\u05D9"), " \u05D9\u05DB\u05D5\u05DC\u05D4 \u05DC\u05D4\u05D7\u05D6\u05D9\u05E8 \u05DC\u05DA \u05D0\u05EA \u05D4\u05D4\u05E9\u05E7\u05E2\u05D4. \u05DB\u05DC \u05DE\u05D4 \u05E9\u05DE\u05E2\u05D1\u05E8 \u05DC\u05D6\u05D4 \u2014 \u05DB\u05D1\u05E8 \u05E8\u05D5\u05D5\u05D7.")));
+  }, React.createElement("strong", null, "כלה אחת נוספת שתסגרי"), " יכולה להחזיר לך את ההשקעה. כל מה שמעבר לזה — כבר רווח.")));
 }
 const YES = ['את מאפרת או מסרקת בעולם הכלות', 'יש לך כישרון אבל לא מספיק עבודה', 'את רוצה לסגור יותר כלות', 'את מוכנה ליישם, לא רק לצפות', 'את רוצה למכור בלי להרגיש "מוכרת"', 'את רוצה להפסיק להתחרות רק על מחיר'];
 const NO = ['את מחפשת קסם בלי לעשות כלום', 'את לא מוכנה לשנות איך שאת מדברת עם לקוחות', 'את לא עוסקת בעולם הכלות', 'את מצפה לפגישות אישיות עם ניב', 'את רוצה רק לצפות ולא ליישם'];
