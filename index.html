@@ -72,6 +72,14 @@ button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
 .container--narrow{max-width:840px}
 .section{position:relative;padding:clamp(58px,8.8vw,112px) 0}
 .section--alt{background:var(--bg-2)}
+.section--beige{background:linear-gradient(180deg,#F3EBE1 0%,#EDE2D5 55%,#E8DACB 100%);color:#241C15;
+  --panel:#FFFDFA;--bg-2:#EFE6DA;--ink:#1A140F;--ink-soft:#3D342C;--muted:#5A4E43;--muted-2:#635648;
+  --line:rgba(26,20,15,.13);--line-accent:rgba(178,78,28,.30);
+  --accent:#B24E1C;--accent-2:#8C3D14;--accent-deep:#8C3D14;--accent-soft:rgba(178,78,28,.10);
+  --shadow:0 24px 56px -28px rgba(74,54,38,.45);--shadow-sm:0 12px 30px -18px rgba(74,54,38,.40)}
+.section--beige .h2,.section--beige .h3{color:#141414}
+.section--beige .currChap:hover{background:rgba(26,20,15,.05)}
+.section--beige .currChap.on .currChap__n{color:#FFFDFA}
 .section--ink{background:radial-gradient(120% 130% at 80% -10%,#241710 0%,#0c0c0e 60%)}
 .section--light{background:#FAF8F5;color:#1A1714}
 .section--light .h2{color:#141414}
@@ -599,6 +607,8 @@ html.can-anim .rv:not(.in){transform:translateY(26px)}
   mask-composite:intersect}
 .offer__h{margin-top:10px;font-size:clamp(30px,4.4vw,50px);line-height:1.14;letter-spacing:-.03em}
 .offer__lead{margin-top:16px;font-size:clamp(16px,1.35vw,18px);line-height:1.75;color:#5A554F;max-width:46ch}
+.offer__lead p+p{margin-top:13px}
+.offer__lead strong{color:#141414;font-weight:700}
 .offer__lead strong{color:#141414;font-weight:700}
 .offer__price{display:flex;align-items:baseline;flex-wrap:wrap;gap:12px;margin-top:30px}
 .offer__only{font-family:var(--display);font-weight:800;font-size:20px;color:#8A857E}
@@ -1582,7 +1592,7 @@ function Hero() {
     as: "p",
     className: "lead hero__sub",
     delay: 160
-  }, React.createElement("strong", null, "שיטת BRIDE"), " — חמישה שלבים, בסדר אחד — הופכת כישרון של מאפרת לעסק שסוגר כלות.", React.createElement("br", null), "מעל ", React.createElement("strong", null, "100 מאפרות ומסרקות"), " כבר עברו אותה. אותן ידיים שהיו להן קודם — יומן אחר לגמרי."), React.createElement(Reveal, {
+  }, React.createElement("strong", null, "שיטת BRIDE"), " - חמישה שלבים, בסדר אחד - הופכת כישרון של מאפרת לעסק שסוגר כלות.", React.createElement("br", null), "מעל ", React.createElement("strong", null, "100 מאפרות ומסרקות"), " כבר עברו אותה. אותן ידיים שהיו להן קודם - יומן אחר לגמרי."), React.createElement(Reveal, {
     className: "hero__actions",
     delay: 240
   }, React.createElement("a", {
@@ -1699,7 +1709,7 @@ function BrideMethod() {
   }, "\u05D6\u05D5 \u05DC\u05D0 \u05E2\u05D5\u05D3 \u05D4\u05D3\u05E8\u05DB\u05D4 \u05E2\u05DC \u05E9\u05D9\u05D5\u05D5\u05E7."), React.createElement("span", {
     className: "accent",
     style: { display: 'block', whiteSpace: 'nowrap' }
-  }, "\u05D6\u05D5 \u05E9\u05D9\u05D8\u05EA BRIDE.")), React.createElement(Reveal, {
+  }, "זו שיטת BRIDE.")), React.createElement(Reveal, {
     as: "p",
     className: "lead mxa",
     delay: 120,
@@ -1707,7 +1717,7 @@ function BrideMethod() {
       maxWidth: '52ch',
       marginTop: '14px'
     }
-  }, "\u05E9\u05D9\u05D8\u05D4 \u05E9\u05E0\u05D1\u05E0\u05EA\u05D4 \u05D1\u05DE\u05D9\u05D5\u05D7\u05D3 \u05DC\u05DE\u05D0\u05E4\u05E8\u05D5\u05EA \u05D5\u05DE\u05E1\u05E8\u05E7\u05D5\u05EA \u05E9\u05E8\u05D5\u05E6\u05D5\u05EA \u05DC\u05D4\u05E4\u05D5\u05DA \u05DE\u05DB\u05D9\u05E9\u05E8\u05D5\u05DF \u05D8\u05D5\u05D1 \u2014 \u05DC\u05E2\u05E1\u05E7 \u05DE\u05D1\u05D5\u05E7\u05E9. \u05D7\u05DE\u05D9\u05E9\u05D4 \u05E9\u05DC\u05D1\u05D9\u05DD, \u05E1\u05D3\u05E8 \u05D0\u05D7\u05D3."), React.createElement(Reveal, {
+  }, "שיטה שנבנתה במיוחד למאפרות ומסרקים שרוצים להפוך כישרון טוב - לעסק מבוקש. השיטה בנויה על סדר: עמוד חזק, התנהלות נכונה, מכירות, קמפיינים, עקביות."), React.createElement(Reveal, {
     className: "brideWord",
     delay: 160
   }, BRIDE.map((b, i) => React.createElement("button", {
@@ -1761,12 +1771,12 @@ function TruthVideo() {
     className: "truth__wrap"
   }, React.createElement("iframe", {
     src: "https://www.youtube.com/embed/" + TRUTH_VIDEO_ID,
-    title: "כל האמת שלי — ניב גבאי",
+    title: "כל האמת שלי - ניב גבאי",
     allow: "accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
     allowFullScreen: true
   })), React.createElement("p", {
     className: "truth__note"
-  }, "כמה דקות. בלי מצגות ובלי הבטחות — פשוט איך זה התחיל ולמה זה עובד.")));
+  }, "כמה דקות. בלי מצגות ובלי הבטחות - פשוט איך זה התחיל ולמה זה עובד.")));
 }
 function Story() {
   return React.createElement("section", {
@@ -1796,10 +1806,10 @@ function Story() {
   }, "מי אני,"), React.createElement("br", null), "ולמה שתסמכי עליי בכלל?"), React.createElement(Reveal, {
     className: "prose",
     delay: 120
-  }, React.createElement("p", null, "קוראים לי ", React.createElement("strong", null, "ניב גבאי"), ". במשך ארבע שנים עשיתי דבר אחד: לקחתי מאפרות ומסרקות עם ידיים של זהב — ולימדתי אותן להפוך את הכישרון לעסק שסוגר. בניתי שיטה: ליווי אישי שנמכר ב־", React.createElement("strong", null, "18,000\xA0₪"), ", וקורס דיגיטלי ב־", React.createElement("strong", null, "7,500\xA0₪"), ". עשרות נשים עברו את התהליך — והתוצאות דיברו בעד עצמן.")), React.createElement(Reveal, {
+  }, React.createElement("p", null, "קוראים לי ", React.createElement("strong", null, "ניב גבאי"), ". במשך ארבע שנים עשיתי דבר אחד: לקחתי מאפרות ומסרקים עם ידיים של זהב - ולימדתי אותם להפוך את הכישרון לעסק ריווחי. בניתי שיטה: ליווי אישי שנמכר ב־", React.createElement("strong", null, "18,000\xA0₪"), ", וקורס דיגיטלי ב־", React.createElement("strong", null, "7,500\xA0₪"), ". מעל ", React.createElement("strong", null, "100 מאפרות ומסרקים"), " עברו את התהליך - והתוצאות דיברו בעד עצמן.")), React.createElement(Reveal, {
     className: "prose",
     delay: 120
-  }, React.createElement("p", null, "את השיטה הזאת לא כתבתי בערב אחד. היא נבנתה לקוחה אחרי לקוחה, במשך ", React.createElement("strong", null, "ארבע שנים"), " של ליוויים אישיים: כל מה שעבד — נשאר בפנים. כל מה שלא — עף."), React.createElement("p", null, "היא כבר עבדה עבור מעל ", React.createElement("strong", null, "100 מאפרות ומסרקות"), ". חלקן הגיעו בלי עמוד, חלקן בלי ביטחון להגיד מחיר, ואחת מהן הגיעה ", React.createElement("strong", null, "צעד לפני סגירת העסק"), " — וחודש אחרי, סגרה ", React.createElement("strong", null, "38,000\xA0₪"), "."), React.createElement("p", null, "ולמה אני בטוח שזה יעבוד גם אצלך? כי השיטה לא בנויה על כישרון — הכישרון כבר יש לך. היא בנויה על סדר: עמוד, שיחה, תמחור, קמפיין. מי שעוברת את השלבים בסדר הזה — מגיעה לתוצאה. "), React.createElement("p", null, React.createElement("em", null, "זה לא קסם. זו שיטה.")))))));
+  }, React.createElement("p", null, "את השיטה הזאת לא כתבתי בערב אחד. היא נבנתה לקוחה אחרי לקוחה, במשך ", React.createElement("strong", null, "חמש שנים"), " של עשייה בתחום. כל מה שעבד - נשאר בפנים. כל מה שלא - עף."), React.createElement("p", null, "השיטה שבניתי מוכיחה את עצמה פעם אחר פעם לכבר מעל ", React.createElement("strong", null, "100 מאפרות ומסרקים"), ". חלקן הגיעו בלי עמוד, חלקן בלי ביטחון להגיד מחיר, ואחת מהן הגיעה ", React.createElement("strong", null, "צעד לפני סגירת העסק"), " - וחודש אחרי, סגרה ", React.createElement("strong", null, "38,000\xA0₪"), "."), React.createElement("p", null, "ולמה אני בטוח שזה יעבוד גם אצלך? כי השיטה לא בנויה על כישרון - את הכישרון כבר יש לך. השיטה בנויה על סדר: ", React.createElement("strong", null, "עמוד חזק, התנהלות נכונה, מכירות, קמפיינים, עקביות"), ". מי שעוברת את השלבים בסדר הזה - מפסיקה לעמוד במקום ומתחילה לראות תוצאות בדיוק כמו אלה שמופיעות למטה."), React.createElement("p", null, React.createElement("em", null, "זה לא קסם. זו שיטה.")))))));
 }
 Object.assign(window, {
   Identify,
@@ -2020,7 +2030,15 @@ function VoiceNotes() {
   }, React.createElement(Reveal, {
     as: "p",
     className: "eyebrow center"
-  }, "\u05D5\u05D2\u05DD \u05D4\u05E7\u05DC\u05D8\u05D5\u05EA \u05E7\u05D5\u05DC\u05D9\u05D5\u05EA \u05E9\u05E9\u05DC\u05D7\u05D5 \u05DC\u05D9")), React.createElement("div", {
+  }, "הקלטות קוליות ששלחו לי"), React.createElement(Reveal, {
+    as: "h2",
+    className: "h2 balance mxa",
+    delay: 60,
+    style: {
+      maxWidth: '24ch',
+      marginTop: '12px'
+    }
+  }, "זה מה שגורם לי להמשיך לעשות את מה שאני עושה")), React.createElement("div", {
     className: "audios"
   }, VOICES.map((v, i) => React.createElement(AudioPlayer, {
     key: i,
@@ -2193,9 +2211,9 @@ function Curriculum() {
   // נמדד מכל 47 סרטוני הקורס בפועל, לא הערכה
   const CURR_HOURS = "11:38";
   const CHAP_HOURS = {"1": "2:27", "2": "2:29", "4": "0:18", "3": "2:46", "5": "2:44", "6": "0:52"};
-  const stats = [[String(CURR_LESSONS), "\u05e9\u05d9\u05e2\u05d5\u05e8\u05d9\u05dd", ''], [CURR_HOURS, "\u05e9\u05e2\u05d5\u05ea \u05ea\u05d5\u05db\u05df", ''], [String(CHAPTERS.length), "\u05e4\u05e8\u05e7\u05d9\u05dd", '']];
+  const stats = [[String(CURR_LESSONS), "שיעורים", ''], [CURR_HOURS, "שעות תוכן", ''], [String(CHAPTERS.length), "פרקים", '']];
   return React.createElement("section", {
-    className: "section section--alt",
+    className: "section section--beige",
     id: "curriculum"
   }, React.createElement("div", {
     className: "container"
@@ -2204,18 +2222,18 @@ function Curriculum() {
   }, React.createElement(Reveal, {
     as: "p",
     className: "eyebrow center"
-  }, "\u05ea\u05d5\u05db\u05df \u05d4\u05e7\u05d5\u05e8\u05e1"), React.createElement(Reveal, {
+  }, "תוכן הקורס"), React.createElement(Reveal, {
     as: "h2",
     className: "h2 balance mxa",
     delay: 60,
     style: {
       maxWidth: '16ch'
     }
-  }, "\u05de\u05d4 \u05d1\u05d0\u05de\u05ea \u05d9\u05e9 \u05d1\u05e4\u05e0\u05d9\u05dd"), React.createElement(Reveal, {
+  }, "מה מחכה לכם בקורס"), React.createElement(Reveal, {
     as: "p",
     className: "exclusiveNote",
     delay: 100
-  }, "\u05d4\u05d7\u05d5\u05de\u05e8 \u05d4\u05e0\u05dc\u05de\u05d3 \u05d1\u05e7\u05d5\u05e8\u05e1 \u05dc\u05d0 \u05e7\u05d9\u05d9\u05dd \u05d1\u05e9\u05d5\u05dd \u05e7\u05d5\u05e8\u05e1 \u05d0\u05d5 \u05ea\u05d5\u05db\u05e0\u05d9\u05ea \u05d1\u05d0\u05e8\u05e5 \u2014 \u05d5\u05ea\u05d1\u05d3\u05e7\u05d5 \u05d0\u05d5\u05ea\u05d9. \u05d1\u05d4\u05d1\u05d8\u05d7\u05d4!"), React.createElement(Reveal, {
+  }, "החומר הנלמד בקורס לא קיים בשום קורס או תוכנית בארץ - ותבדקו אותי. בהבטחה!"), React.createElement(Reveal, {
     className: "currStats",
     delay: 140
   }, stats.map((s, i) => React.createElement("div", {
@@ -2263,19 +2281,19 @@ function Bonuses() {
     {
       cls: 'bCard--wa', num: '1', ico: Ico.wa, tag: 'כלול בקורס',
       title: 'קבוצת וואטסאפ סגורה',
-      desc: 'קבוצה סגורה של מאפרות ומסרקים מכל הארץ. שואלת שאלה — מקבלת תשובה. מעבירים עבודות אחת לשנייה, ומתייעצים לפני שסוגרים מחיר. יש לילות שהקבוצה הזאת שווה יותר מכל שיעור.',
+      desc: 'קבוצה סגורה של מאפרות ומסרקים מכל הארץ. שואלת שאלה - מקבלת תשובה. מעבירים עבודות אחת לשנייה, ומתייעצים לפני שסוגרים מחיר. יש לילות שהקבוצה הזאת שווה יותר מכל שיעור.',
       img: 'bonus-wa.jpg', alt: 'קבוצת וואטסאפ סגורה של מאפרות ומסרקים'
     },
     {
       cls: 'bCard--ai', num: '2', ico: Ico.spark, tag: 'כלול בקורס · לחצי שנה',
-      title: 'בובי — צ׳אט ה־AI שלי',
-      desc: 'בוט שאימנתי בעצמי על השיחות שלי עם מאפרות ומסרקים, על תסריטי המכירה ועל חומרי הקורס. מכירות, תמחור, קמפיינים, בניית פרופיל — שולחת לו שאלה בוואטסאפ ומקבלת תשובה תוך שניות, 24/7.',
+      title: 'בובי - צ׳אט ה־AI שלי',
+      desc: 'בוט שאימנתי בעצמי על השיחות שלי עם מאפרות ומסרקים, על תסריטי המכירה ועל חומרי הקורס. מכירות, תמחור, קמפיינים, בניית פרופיל - שולחת לו שאלה בוואטסאפ ומקבלת תשובה תוך שניות, 24/7.',
       img: 'bonus-ai.jpg', alt: 'בובי, צ׳אט ה־AI של הקורס'
     },
     {
       cls: 'bCard--feed', num: '3', ico: Ico.spark, tag: 'מתנה למצטרפות עכשיו',
-      title: 'the top feed — קורס ה־AI',
-      desc: 'קורס שלם שמלמד אותך להפוך תמונה פשוטה מהטלפון להפקת צילום מושלמת — בלי צלם, בלי דוגמנית ובלי תקציב. פיד שנראה כמו קמפיין יוקרתי. הבונוס נמכר בנפרד — כאן הוא שלך במתנה.',
+      title: 'The Top Feed - קורס ה־AI',
+      desc: 'קורס שלם שמלמד אותך להפוך תמונה פשוטה מהטלפון להפקת צילום מושלמת - בלי צלם, בלי דוגמנית ובלי תקציב. פיד שנראה כמו קמפיין יוקרתי. הבונוס נמכר בנפרד - כאן הוא שלך במתנה.',
       img: 'bonus-feed.jpg', alt: 'פיד אינסטגרם שנבנה בכלי AI'
     }
   ];
@@ -2346,13 +2364,12 @@ function Pricing() {
     as: "h2",
     className: "h2 offer__h",
     delay: 60
-  }, "הקורס עולה פחות ", React.createElement("span", {
+  }, "הקורס הזה יכול להחזיר את עצמו ", React.createElement("span", {
     className: "accent"
   }, "מכלה אחת.")), React.createElement(Reveal, {
-    as: "p",
     className: "offer__lead",
     delay: 90
-  }, "כלה אחת אצלך שווה בין 2,000 ל־5,000 ₪. הקורס עולה 1,770 ₪, פעם אחת. ", React.createElement("strong", null, "את לא צריכה עשרות לקוחות חדשות כדי להצדיק את ההשקעה — את צריכה אחת."), " וגם היא נשארת אצלך."), React.createElement(Reveal, {
+  }, React.createElement("p", null, "תחשבי על זה רגע - כלה אחת שסוגרת איתך יכולה להיות שווה ", React.createElement("strong", null, "2,000-5,000 ₪"), "."), React.createElement("p", null, "ההשקעה שלך בקורס היא ", React.createElement("strong", null, "1,770 ₪"), ". פעם אחת."), React.createElement("p", null, "את לא צריכה עכשיו עשרות כלות חדשות כדי להגיד שהיה שווה לך. מספיקה כלה אחת שהגיעה בזכות מה שלמדת כאן - וכבר החזרת את ההשקעה.")), React.createElement(Reveal, {
     className: "offer__price",
     delay: 120
   }, React.createElement("span", {
@@ -2404,7 +2421,7 @@ function Pricing() {
   }))));
 }
 const YES = ['את מאפרת או מסרקת בעולם הכלות', 'יש לך כישרון אבל לא מספיק עבודה', 'את רוצה לסגור יותר כלות', 'את מוכנה ליישם, לא רק לצפות', 'את רוצה למכור בלי להרגיש "מוכרת"', 'את רוצה להפסיק להתחרות רק על מחיר'];
-const NO = ['את מחפשת קסם בלי לעשות כלום', 'את לא מוכנה לשנות איך שאת מדברת עם לקוחות', 'את לא עוסקת בעולם הכלות', 'את מצפה לפגישות אישיות עם ניב', 'את רוצה רק לצפות ולא ליישם'];
+const NO = ['את מחפשת קסם בלי לעשות כלום', 'את לא מוכנה לשנות איך שאת מדברת עם לקוחות', 'את לא עוסקת בעולם הכלות', 'את רוצה רק לצפות ולא ליישם'];
 function ForWho() {
   return React.createElement("section", {
     className: "section",
@@ -2441,9 +2458,9 @@ function ForWho() {
     "aria-hidden": "true"
   }), React.createElement("span", null, t)))))), React.createElement("p", {
     className: "fwNote"
-  }, "\u05E2\u05D3\u05D9\u05E3 \u05E9\u05EA\u05D3\u05E2\u05D9 \u05E2\u05DB\u05E9\u05D9\u05D5 \u05DE\u05D0\u05E9\u05E8 \u05D0\u05D7\u05E8\u05D9 \u05D4\u05E8\u05DB\u05D9\u05E9\u05D4."))));
+  }, "עדיף שתדעי עכשיו מאשר אחרי הרכישה."))));
 }
-const GET = [['קורס bride המלא', 'כל שיטת BRIDE, שלב אחר שלב'], ['גישה מיידית', 'מכל מכשיר, בכל זמן'], ['קבוצת וואטסאפ סגורה', 'להתייעצות וקהילה תומכת'], ['בונוס the top feed', 'קורס AI במתנה'], ['🤖 AI אישי בוואטסאפ', 'מכירות, תמחור, קמפיינים 24/7'], ['גישה חוזרת לתכנים', 'חוזרים מתי שרוצים']];
+const GET = [['קורס bride המלא', 'כל שיטת BRIDE, שלב אחר שלב'], ['גישה מיידית', 'מכל מכשיר, בכל זמן'], ['קבוצת וואטסאפ סגורה', 'להתייעצות וקהילה תומכת'], ['בונוס The Top Feed', 'קורס AI במתנה'], ['🤖 AI אישי בוואטסאפ', 'מכירות, תמחור, קמפיינים 24/7'], ['גישה חוזרת לתכנים', 'חוזרים מתי שרוצים']];
 function WhatYouGet() {
   return React.createElement("section", {
     className: "section section--ink",
@@ -2889,7 +2906,7 @@ Object.assign(window, {
 });
 
 /* ===== sectionsE.jsx ===== */
-const FAQS = [['המחיר נמוך מדי מה הקאץ\'?', 'אין קאץ\'. פשוט הורדתי את עצמי מהמשוואה. הליווי האישי עלה 18,000 ₪ כי קנית בו את הזמן שלי. הקורס הדיגיטלי נמכר ב־7,500 ₪ כי אני עדיין זה שעניתי לך. היום הוא 1,770 ₪ כי בובי עונה במקומי. השיטה זהה בשלושתם — מה שהשתנה זה כמה ממני יש בפנים.'], ['אני בתחילת הדרך זה מתאים לי?', 'כן, אם יש לך בסיס מקצועי ואת מוכנה ליישם. הקורס לא מלמד לאפר או לסרק הוא מלמד לבנות עסק שסוגר יותר כלות, והשיטה בנויה צעד אחר צעד.'], ['יש פגישות אישיות עם ניב?', 'לא, וזו בדיוק הסיבה שזה עולה 1,770 ₪ ולא 18,000 ₪. הליווי האישי הוא זה שעלה 18,000 ₪, כי קנית בו את הזמן שלי. כאן את מקבלת את אותה שיטה בדיוק, בלי הזמן שלי: קורס דיגיטלי מלא לצפייה עצמית, קבוצת וואטסאפ סגורה, וצ\'אט AI בשם "בובי" שניב אימן בעצמו על כל השיחות והתסריטים שלו הוא עונה לך בוואטסאפ 24/7, כאילו ניב עצמו מדבר איתך.'], ['איך מקבלים גישה?', 'מיד לאחר התשלום יישלח אלייך מייל עם פרטי הגישה לקורס. אם לא הגיע תוך כמה דקות בדקי גם בתיקיית הספאם / קידומי מכירות.'], ['לכמה זמן הגישה?', 'הגישה לתכני הקורס נשארת איתך תוכלי לחזור ולצפות מתי שתרצי, מכל מכשיר.'], ['אני מקבלת חשבונית?', 'כן, תופק לך חשבונית מס כדין על הרכישה.'], ['אפשר לבטל אחרי הרכישה?', 'לא. זה מוצר דיגיטלי שנפתח לך במלואו ברגע התשלום, ולכן לפי חוק הגנת הצרכן אין עליו זכות ביטול — וזה בדיוק למה שמתי כאן למעלה את כל 48 השיעורים בשמותיהם, את מספר השעות ואת כל ההמלצות. אני מעדיף שתדעי בדיוק מה את מקבלת לפני שאת משלמת, מאשר שתגלי אחרי. ואם נשארה לך שאלה — שלחי לי הודעה בוואטסאפ לפני הרכישה, אני עונה.'], ['אני לא טובה במכירות זה בשבילי?', 'בדיוק בשביל זה הקורס קיים. הוא מלמד אותך למכור בצורה טבעית, בלי לחץ ובלי להרגיש שאת משחקת דמות. מילים נכונות, מבנה ברור, וביטחון.'], ['מי עוזר לי אם יש לי שאלה?', 'אם יש לך שאלה את יכולה לשלוח בקבוצה של המאפרות והמסרקים חלקן מנוסות מאוד ועובדות חזק בשוק וחלקן בתחילת דרכן. בנוסף יש לך גם צ\'אט AI (בובי) זמין לך 24/7 שיענה לך במקצועיות רבה על כל שאלה.']];
+const FAQS = [['המחיר נמוך מדי מה הקאץ\'?', 'אין קאץ\'. פשוט הורדתי את עצמי מהמשוואה. הליווי האישי עלה 18,000 ₪ כי קנית בו את הזמן שלי. הקורס הדיגיטלי נמכר ב־7,500 ₪ כי אני עדיין זה שעניתי לך. היום הוא 1,770 ₪ כי בובי עונה במקומי. השיטה זהה בשלושתם - מה שהשתנה זה כמה ממני יש בפנים.'], ['אני בתחילת הדרך זה מתאים לי?', 'כן, אם יש לך בסיס מקצועי ואת מוכנה ליישם. הקורס לא מלמד לאפר או לסרק הוא מלמד לבנות עסק שסוגר יותר כלות, והשיטה בנויה צעד אחר צעד.'], ['איך מקבלים גישה?', 'מיד לאחר התשלום יישלח אלייך מייל עם פרטי הגישה לקורס. אם לא הגיע תוך כמה דקות בדקי גם בתיקיית הספאם / קידומי מכירות.'], ['לכמה זמן הגישה?', 'הגישה לתכני הקורס נשארת איתך תוכלי לחזור ולצפות מתי שתרצי, מכל מכשיר.'], ['אני מקבלת חשבונית?', 'כן, תופק לך חשבונית מס כדין על הרכישה.'], ['אפשר לבטל אחרי הרכישה?', 'לא. זה מוצר דיגיטלי שנפתח לך במלואו ברגע התשלום, ולכן לפי חוק הגנת הצרכן אין עליו זכות ביטול - וזה בדיוק למה שמתי כאן למעלה את כל 48 השיעורים בשמותיהם, את מספר השעות ואת כל ההמלצות. אני מעדיף שתדעי בדיוק מה את מקבלת לפני שאת משלמת, מאשר שתגלי אחרי. ואם נשארה לך שאלה - שלחי לי הודעה בוואטסאפ לפני הרכישה, אני עונה.'], ['אני לא טובה במכירות זה בשבילי?', 'בדיוק בשביל זה הקורס קיים. הוא מלמד אותך למכור בצורה טבעית, בלי לחץ ובלי להרגיש שאת משחקת דמות. מילים נכונות, מבנה ברור, וביטחון.'], ['מי עוזר לי אם יש לי שאלה?', 'אם יש לך שאלה את יכולה לשלוח בקבוצת הווטסאפ, זה קהילה שאוהבת לעזור אחד לשני. בנוסף יש לך גם צ\'אט AI (בובי) זמין לך 24/7 שיענה לך במקצועיות רבה על כל שאלה. ואם לא הגעת לתשובה שאת מחפשת ניב ישמח לעזור לך.']];
 function FAQ() {
   const [open, setOpen] = useState(-1);
   return React.createElement("section", {
@@ -2936,31 +2953,31 @@ function Final() {
   }, React.createElement(Reveal, null, React.createElement("img", {
     className: "final__photo",
     src: "images/founder.jpg",
-    alt: "\u05E0\u05D9\u05D1 \u05D2\u05D1\u05D0\u05D9"
+    alt: "ניב גבאי"
   })), React.createElement(Reveal, {
     as: "p",
     className: "eyebrow center",
     delay: 40
-  }, "\u05DE\u05D9\u05DC\u05D4 \u05D0\u05D9\u05E9\u05D9\u05EA \u05D0\u05D7\u05E8\u05D5\u05E0\u05D4"), React.createElement(Reveal, {
+  }, "מילה אישית אחרונה"), React.createElement(Reveal, {
     as: "h2",
     className: "h2 balance mxa",
     delay: 80,
     style: {
       maxWidth: '20ch'
     }
-  }, "\u05D0\u05DD \u05D9\u05E9 \u05DC\u05DA \u05D9\u05D3\u05D9\u05D9\u05DD \u05D8\u05D5\u05D1\u05D5\u05EA \u2014 ", React.createElement("span", {
+  }, "אם יש לך ידיים טובות - ", React.createElement("span", {
     className: "accent"
-  }, "\u05D0\u05DC \u05EA\u05EA\u05E0\u05D9 \u05DC\u05E2\u05E1\u05E7 \u05E9\u05DC\u05DA \u05DC\u05D4\u05D9\u05E9\u05D0\u05E8 \u05E7\u05D8\u05DF.")), React.createElement(Reveal, {
+  }, "אל תתני לעסק שלך להישאר קטן.")), React.createElement(Reveal, {
     className: "final__lines",
     delay: 120
-  }, React.createElement("p", null, "את לא צריכה להיות המאפרת הכי רועשת באינסטגרם. את לא צריכה לרדוף אחרי כלות. את לא צריכה להוריד מחירים כדי שיבחרו בך."), React.createElement("p", null, "את צריכה ", React.createElement("strong", null, "שיטה"), ". תהליך. מילים נכונות. ביטחון. והבנה איך להפוך את הכישרון שלך לעסק שסוגר."), React.createElement("p", null, "אותן ידיים שיש לך היום מספיקות בהחלט. מה שחסר זה מה שקורה אחרי שהן מסיימות. אם זה מדבר אלייך — זה הזמן."), React.createElement("p", {
+  }, React.createElement("p", null, "את לא צריכה להיות המאפרת הכי רועשת באינסטגרם. את לא צריכה לרדוף אחרי כלות. את לא צריכה להוריד מחירים כדי שיבחרו בך."), React.createElement("p", null, "את צריכה ", React.createElement("strong", null, "שיטה"), ". תהליך נכון. ביטחון. ודרך מדוייקת שתגרום לך להפוך את הכישרון שלך לעסק אמיתי!"), React.createElement("p", null, "אותה שיטה שכבר עזרה ליותר מ־", React.createElement("strong", null, "100 מאפרות ומסרקות"), " לצמוח - יכולה לעשות את זה גם לעסק שלך."), React.createElement("p", null, "אם את יודעת שמגיע לך יותר - זה הזמן לקחת שליטה, לפעול נכון ולגדול באמת."), React.createElement("p", {
     className: "final__sign"
-  }, "\u2014 \u05E0\u05D9\u05D1 \u05D2\u05D1\u05D0\u05D9")), React.createElement(Reveal, {
+  }, "- ניב גבאי")), React.createElement(Reveal, {
     delay: 160
   }, React.createElement("a", {
     href: PAY_LINK,
     className: "btn btn--accent btn--lg"
-  }, "\u05D0\u05E0\u05D9 \u05E8\u05D5\u05E6\u05D4 \u05DC\u05E8\u05DB\u05D5\u05E9 \u05D0\u05EA - BRIDE"))));
+  }, "אני רוצה לרכוש את - BRIDE"))));
 }
 const IG_ICON = React.createElement("svg", {
   viewBox: "0 0 24 24",
@@ -3029,7 +3046,7 @@ function PolicyModal({
   React.createElement("p",{style:{fontWeight:700,marginBottom:'4px'}},"\u05E4\u05E8\u05D8\u05D9\u05D5\u05EA"),
   React.createElement("p",{style:{marginBottom:'12px'}},"\u05D0\u05EA\u05E8 bride \u05E4\u05D5\u05E2\u05DC \u05D1\u05D4\u05EA\u05D0\u05DD \u05DC\u05D7\u05D5\u05E7 \u05D4\u05D2\u05E0\u05EA \u05D4\u05E4\u05E8\u05D8\u05D9\u05D5\u05EA \u05D4\u05EA\u05E9\u05DE\"\u05D0\u20131981. \u05E4\u05E8\u05D8\u05D9\u05DD \u05E9\u05E0\u05DE\u05E1\u05E8\u05D5 \u05D1\u05E2\u05EA \u05E8\u05DB\u05D9\u05E9\u05D4 \u05DE\u05E9\u05DE\u05E9\u05D9\u05DD \u05D0\u05DA \u05D5\u05E8\u05E7 \u05DC\u05E6\u05D5\u05E8\u05DA \u05D0\u05E1\u05E4\u05E7\u05EA \u05D4\u05E7\u05D5\u05E8\u05E1 \u05D5\u05EA\u05DE\u05D9\u05DB\u05D4. \u05D0\u05E0\u05D5 \u05E0\u05D5\u05E7\u05D8\u05D9\u05DD \u05D1\u05D0\u05DE\u05E6\u05E2\u05D9 \u05D0\u05D1\u05D8\u05D7\u05D4 \u05DE\u05E7\u05D5\u05D1\u05DC\u05D9\u05DD \u05D5\u05DC\u05D0 \u05DE\u05E2\u05D1\u05D9\u05E8\u05D9\u05DD \u05DE\u05D9\u05D3\u05E2 \u05DC\u05E6\u05D3\u05D3\u05D9\u05DD \u05E9\u05DC\u05D9\u05E9\u05D9\u05D9\u05DD, \u05DC\u05DE\u05E2\u05D8 \u05E1\u05E4\u05E7\u05D9 \u05E1\u05DC\u05D9\u05E7\u05D4 \u05D4\u05E0\u05D3\u05E8\u05E9\u05D9\u05DD \u05DC\u05D4\u05E9\u05DC\u05DE\u05EA \u05D4\u05E8\u05DB\u05D9\u05E9\u05D4."),
   React.createElement("p",{style:{fontWeight:700,marginBottom:'4px'}},"אנליטיקה והקלטת גלישה"),
-  React.createElement("p",{style:{marginBottom:'12px'}},"לצורך שיפור האתר וחוויית הגלישה אנו עושים שימוש בכלי מדידה וניתוח, לרבות הקלטה של פעילות הגלישה בדף (גלילה, תנועות עכבר ולחיצות) ומזהה אנונימי הנשמר בדפדפן לזיהוי ביקורים חוזרים. ההקלטות אינן כוללות את תוכן השדות שאתם ממלאים — כל שדות הקלט מוסתרים אוטומטית — ואינן מתבצעות כלל בעמוד התשלום. המזהה אינו כולל פרטים אישיים ואינו מוצלב עם מקורות מידע חיצוניים. הנתונים נשמרים לתקופה קצרה (הקלטות — עד 7 ימים), משמשים אותנו בלבד ואינם נמכרים או מועברים לצדדים שלישיים. ניתן למנוע את האיסוף באמצעות חסימת סקריפטים או מחיקת נתוני האתר בדפדפן. בנוסף פועלים באתר פיקסל של Meta ו-Google Analytics לצורך מדידת ביצועי הפרסום, בהתאם למדיניות הפרטיות של אותם ספקים."),
+  React.createElement("p",{style:{marginBottom:'12px'}},"לצורך שיפור האתר וחוויית הגלישה אנו עושים שימוש בכלי מדידה וניתוח, לרבות הקלטה של פעילות הגלישה בדף (גלילה, תנועות עכבר ולחיצות) ומזהה אנונימי הנשמר בדפדפן לזיהוי ביקורים חוזרים. ההקלטות אינן כוללות את תוכן השדות שאתם ממלאים - כל שדות הקלט מוסתרים אוטומטית - ואינן מתבצעות כלל בעמוד התשלום. המזהה אינו כולל פרטים אישיים ואינו מוצלב עם מקורות מידע חיצוניים. הנתונים נשמרים לתקופה קצרה (הקלטות - עד 7 ימים), משמשים אותנו בלבד ואינם נמכרים או מועברים לצדדים שלישיים. ניתן למנוע את האיסוף באמצעות חסימת סקריפטים או מחיקת נתוני האתר בדפדפן. בנוסף פועלים באתר פיקסל של Meta ו-Google Analytics לצורך מדידת ביצועי הפרסום, בהתאם למדיניות הפרטיות של אותם ספקים."),
   React.createElement("p",{style:{fontWeight:700,marginBottom:'4px'}},"\u05EA\u05E9\u05DC\u05D5\u05DE\u05D9\u05DD"),
   React.createElement("p",{style:{marginBottom:'12px'}},"\u05D4\u05EA\u05E9\u05DC\u05D5\u05DD \u05DE\u05EA\u05D1\u05E6\u05E2 \u05D1\u05E2\u05DE\u05D5\u05D3 \u05E1\u05DC\u05D9\u05E7\u05D4 \u05DE\u05D0\u05D5\u05D1\u05D8\u05D7. \u05E4\u05E8\u05D8\u05D9 \u05D4\u05D0\u05E9\u05E8\u05D0\u05D9 \u05D0\u05D9\u05E0\u05DD \u05E0\u05E9\u05DE\u05E8\u05D9\u05DD \u05D1\u05D9\u05D3\u05D9\u05E0\u05D5."),
   React.createElement("p",{style:{fontWeight:700,marginBottom:'4px'}},"\u05E7\u05E0\u05D9\u05D9\u05DF \u05E8\u05D5\u05D7\u05E0\u05D9"),
