@@ -266,7 +266,8 @@ html.can-anim .rv:not(.in){transform:translateY(26px)}
   .hcal__cell--b{opacity:1;transform:none;filter:none;animation:none}
   .hcal__stamp span{transform:rotate(-9deg) scale(1);opacity:1;animation:none}
 }
-.hero__sub{max-width:560px;margin-bottom:34px}
+.hero h1{font-size:clamp(29px,4vw,50px);line-height:1.12;letter-spacing:-.03em}
+.hero__sub{max-width:600px;margin-bottom:34px}
 .hero__sub strong{color:var(--ink);font-weight:700}
 .hero__actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
 .hero__micro{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:26px;font-family:var(--display);font-size:13.5px;color:var(--muted);font-weight:500}
@@ -1583,16 +1584,16 @@ function Hero() {
     className: "h1"
   }, React.createElement("span", {
     className: "hrev"
-  }, React.createElement("i", null, "רואה את היומן הזה?")), React.createElement("span", {
+  }, React.createElement("i", null, "יש לך כבר את הידיים.")), React.createElement("span", {
     className: "hrev hrev--2"
-  }, React.createElement("i", null, "ככה זה נראה כשיש שיטה."))), React.createElement("div", {
+  }, React.createElement("i", null, "עכשיו תלמדי איך לבנות סביבן עסק שמביא כלות וסוגר אותן."))), React.createElement("div", {
     className: "hero__media--mobile",
     "aria-hidden": "true"
   }, React.createElement(HeroCalendar, null)), React.createElement(Reveal, {
     as: "p",
     className: "lead hero__sub",
     delay: 160
-  }, React.createElement("strong", null, "שיטת BRIDE"), " - חמישה שלבים, בסדר אחד - הופכת כישרון של מאפרת לעסק שסוגר כלות.", React.createElement("br", null), "מעל ", React.createElement("strong", null, "100 מאפרות ומסרקות"), " כבר עברו אותה. אותן ידיים שהיו להן קודם - יומן אחר לגמרי."), React.createElement(Reveal, {
+  }, React.createElement("strong", null, "BRIDE"), " היא השיטה שמחברת בין הכישרון שלך לבין העסק שאת חולמת לבנות.", React.createElement("br", null), "איך למשוך את הכלות הנכונות, לגרום להן לבחור בך, לתמחר נכון ולסגור בביטחון.", React.createElement("br", null), "יותר מ־", React.createElement("strong", null, "100 מאפרות ומסרקות"), " כבר עברו את הדרך הזאת - עכשיו תורך."), React.createElement(Reveal, {
     className: "hero__actions",
     delay: 240
   }, React.createElement("a", {
